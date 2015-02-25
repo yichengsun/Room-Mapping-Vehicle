@@ -1,0 +1,123 @@
+C51 COMPILER V9.51   CYUTILS                                                               02/25/2015 00:18:38 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE CYUTILS
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\cyutils.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB DF(DEBU
+                    -G) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/cyutils.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\cyutils.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * FILENAME: cyutils.c
+   3          * Version 4.20
+   4          *
+   5          *  Description:
+   6          *   CyUtils provides a function to handle 24-bit value writes.
+   7          *
+   8          ********************************************************************************
+   9          * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  10          * You may use this file only in accordance with the license, terms, conditions,
+  11          * disclaimers, and limitations in the end user license agreement accompanying
+  12          * the software package with which this file was provided.
+  13          *******************************************************************************/
+  14          
+  15          #include "cytypes.h"
+  16          
+  17          #if (!CY_PSOC3)
+              
+                  /***************************************************************************
+                  * Function Name: CySetReg24
+                  ****************************************************************************
+                  *
+                  * Summary:
+                  *  Writes a 24-bit value to the specified register.
+                  *
+                  * Parameters:
+                  *  addr : the address where data must be written.
+                  *  value: the data that must be written.
+                  *
+                  * Return:
+                  *  None
+                  *
+                  * Reentrant:
+                  *  No
+                  *
+                  ***************************************************************************/
+                  void CySetReg24(uint32 volatile * addr, uint32 value)
+                  {
+                      uint8 volatile *tmpAddr;
+              
+                      tmpAddr = (uint8 volatile *) addr;
+              
+                      tmpAddr[0u] = (uint8) value;
+                      tmpAddr[1u] = (uint8) (value >> 8u);
+                      tmpAddr[2u] = (uint8) (value >> 16u);
+                  }
+              
+              
+                  #if(CY_PSOC4)
+              
+                      /***************************************************************************
+                      * Function Name: CyGetReg24
+                      ****************************************************************************
+C51 COMPILER V9.51   CYUTILS                                                               02/25/2015 00:18:38 PAGE 2   
+
+                      *
+                      * Summary:
+                      *  Reads the 24-bit value from the specified register.
+                      *
+                      * Parameters:
+                      *  addr : the address where data must be read.
+                      *
+                      * Return:
+                      *  None
+                      *
+                      * Reentrant:
+                      *  No
+                      *
+                      ***************************************************************************/
+                      uint32 CyGetReg24(uint32 const volatile * addr)
+                      {
+                          uint8 const volatile *tmpAddr;
+                          uint32 value;
+              
+                          tmpAddr = (uint8 const volatile *) addr;
+              
+                          value  =  (uint32) tmpAddr[0u];
+                          value |= ((uint32) tmpAddr[1u] << 8u );
+                          value |= ((uint32) tmpAddr[2u] << 16u);
+              
+                          return(value);
+                      }
+              
+                  #endif  /*(CY_PSOC4)*/
+              
+              #endif  /* (!CY_PSOC3) */
+  85          
+  86          
+  87          /* [] END OF FILE */
+C51 COMPILER V9.51   CYUTILS                                                               02/25/2015 00:18:38 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
