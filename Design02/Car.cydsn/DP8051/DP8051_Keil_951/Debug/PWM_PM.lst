@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 1   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE PWM_PM
@@ -62,7 +62,7 @@ line level    source
                           PWM_backup.InterruptMaskValue = PWM_STATUS_MASK;
                       #endif /* (PWM_UseStatus) */
   53   1      
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 2   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 2   
 
   54   1              #if(PWM_DeadBandMode == PWM__B_PWM__DBM_256_CLOCKS || \
   55   1                  PWM_DeadBandMode == PWM__B_PWM__DBM_2_4_CLOCKS)
@@ -126,7 +126,7 @@ line level    source
  113   1              #endif  /* (!PWM_UsingFixedFunction) */
  114   1          }
  115          
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 3   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 3   
 
  116          
  117          /*******************************************************************************
@@ -190,7 +190,7 @@ line level    source
  175          *  block on wakeup from sleep mode.
  176          *
  177          *******************************************************************************/
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 4   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 4   
 
  178          void PWM_Wakeup(void) 
  179          {
@@ -207,7 +207,7 @@ line level    source
  190          
  191          
  192          /* [] END OF FILE */
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 5   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -271,7 +271,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION PWM_Sleep (BEGIN)
                                            ; SOURCE LINE # 136
                                            ; SOURCE LINE # 137
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 6   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 6   
 
                                            ; SOURCE LINE # 139
 0000 906472            MOV     DPTR,#06472H
@@ -335,7 +335,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
-C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 00:18:39 PAGE 7   
+C51 COMPILER V9.51   PWM_PM                                                                02/25/2015 23:46:25 PAGE 7   
 
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
