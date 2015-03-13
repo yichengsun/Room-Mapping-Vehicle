@@ -29,6 +29,8 @@
 #include <HE_ISR.h>
 #include <HE_TIMER_CLK.h>
 #include <HE_TIMER.h>
+#include <CAM_OUT_PIN.h>
+#include <CAM_OUT_PIN_aliases.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

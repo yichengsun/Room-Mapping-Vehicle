@@ -1,7 +1,7 @@
---------------- Build Started: 02/26/2015 01:40:36 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Build Started: 03/10/2015 15:10:16 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
 The code generation step is up to date.
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/main.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
-LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_CLK.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
+LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_OUT_PIN.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\Debug\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Debug\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Debug\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
 *** WARNING L15: MULTIPLE CALL TO FUNCTION
     NAME:    _LCD_WRCNTRLNIB/LCD
@@ -31,14 +31,10 @@ LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\De
     NAME:    _LCD_WRDATNIB/LCD
     CALLER1: HE_INTER/MAIN
     CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _PWM_WRITECOMPARE/PWM
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-Program Size: data=20.1 xdata=216 const=50 code=7397
+Program Size: data=20.1 xdata=206 const=50 code=6425
 OHx51.exe Car.omf HEXFILE(Car.ihx)
 c8051-elf-omf2elf.exe Car.omf Car.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Debug\Car.hex -f .\DP8051\DP8051_Keil_951\Debug\Car.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 7447 of 65536 bytes (11.4 %).
-SRAM used: 216 of 8192 bytes (2.6 %).
---------------- Build Succeeded: 02/26/2015 01:40:39 ---------------
+Flash used: 6475 of 65536 bytes (9.9 %).
+SRAM used: 206 of 8192 bytes (2.5 %).
+--------------- Build Succeeded: 03/10/2015 15:10:19 ---------------
