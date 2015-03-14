@@ -1,11 +1,10 @@
 -- Project:   Car
--- Generated: 03/14/2015 11:24:25
+-- Generated: 03/14/2015 18:49:36
 -- PSoC Creator  3.1
 
 ENTITY Car IS
     PORT(
         COM_SYNC_OUT_PIN(0)_PAD : IN std_ulogic;
-        COM_VID_IN_PIN(0)_PAD : IN std_ulogic;
         HE_IN_PIN(0)_PAD : IN std_ulogic;
         PWM_OUT_PIN(0)_PAD : OUT std_ulogic;
         STEERING_PWM_OUT_PIN(0)_PAD : OUT std_ulogic;
@@ -51,8 +50,8 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE global_signal OF Net_193 : SIGNAL IS true;
     SIGNAL Net_193_local : bit;
     SIGNAL Net_2174 : bit;
-    SIGNAL Net_3140 : bit;
-    SIGNAL Net_3147 : bit;
+    SIGNAL Net_3206 : bit;
+    ATTRIBUTE placement_force OF Net_3206 : SIGNAL IS "U(3,5,B)1";
     SIGNAL Net_3213 : bit;
     SIGNAL Net_3302 : bit;
     ATTRIBUTE udbclken_assigned OF Net_3302 : SIGNAL IS "True";
@@ -60,8 +59,13 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL Net_3302_local : bit;
     SIGNAL Net_3712 : bit;
     ATTRIBUTE placement_force OF Net_3712 : SIGNAL IS "U(3,3,A)1";
+    SIGNAL Net_4376 : bit;
     SIGNAL Net_459 : bit;
     ATTRIBUTE placement_force OF Net_459 : SIGNAL IS "U(3,5,B)3";
+    SIGNAL Net_4870 : bit;
+    ATTRIBUTE global_signal OF Net_4870 : SIGNAL IS true;
+    SIGNAL Net_4870_local : bit;
+    SIGNAL Net_4882 : bit;
     SIGNAL Net_767 : bit;
     ATTRIBUTE udbclken_assigned OF Net_767 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_767 : SIGNAL IS true;
@@ -69,6 +73,28 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL PWM_OUT_PIN(0)__PA : bit;
     SIGNAL STEERING_PWM_OUT_PIN(0)__PA : bit;
     SIGNAL VERT_SYNC_OUT_IN(0)__PA : bit;
+    SIGNAL \CAM_ADC:Net_245_0\ : bit;
+    SIGNAL \CAM_ADC:Net_245_1\ : bit;
+    SIGNAL \CAM_ADC:Net_245_2\ : bit;
+    SIGNAL \CAM_ADC:Net_245_3\ : bit;
+    SIGNAL \CAM_ADC:Net_245_4\ : bit;
+    SIGNAL \CAM_ADC:Net_245_5\ : bit;
+    SIGNAL \CAM_ADC:Net_245_6\ : bit;
+    SIGNAL \CAM_ADC:Net_245_7\ : bit;
+    SIGNAL \CAM_ADC:Net_488\ : bit;
+    ATTRIBUTE global_signal OF \CAM_ADC:Net_488\ : SIGNAL IS true;
+    SIGNAL \CAM_ADC:Net_488_adig\ : bit;
+    SIGNAL \CAM_ADC:Net_488_adig_local\ : bit;
+    SIGNAL \CAM_ADC:Net_488_local\ : bit;
+    SIGNAL \CAM_ADC:Net_93\ : bit;
+    ATTRIBUTE global_signal OF \CAM_ADC:Net_93\ : SIGNAL IS true;
+    SIGNAL \CAM_ADC:Net_93_local\ : bit;
+    SIGNAL \CAM_ADC:aclock\ : bit;
+    SIGNAL \CAM_ADC:mod_dat_0\ : bit;
+    SIGNAL \CAM_ADC:mod_dat_1\ : bit;
+    SIGNAL \CAM_ADC:mod_dat_2\ : bit;
+    SIGNAL \CAM_ADC:mod_dat_3\ : bit;
+    SIGNAL \CAM_ADC:mod_reset\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_i\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:control_0\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:control_1\ : bit;
@@ -83,15 +109,13 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \CAM_COUNTER:CounterUDB:count_stored_i\ : bit;
     ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \CAM_COUNTER:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,B)1";
-    SIGNAL \CAM_COUNTER:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:prevCompare\ : SIGNAL IS "U(3,5,A)3";
-    SIGNAL \CAM_COUNTER:CounterUDB:reload\ : bit;
+    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,A)3";
+    SIGNAL \CAM_COUNTER:CounterUDB:per_equal\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(3,5,A)2";
+    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \CAM_COUNTER:CounterUDB:status_1\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(3,5,B)0";
+    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \CAM_COUNTER:CounterUDB:status_5\ : bit;
     SIGNAL \CAM_COUNTER:CounterUDB:status_6\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_0\ : bit;
@@ -143,7 +167,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE placement_force OF \STEERING_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \STEERING_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,5,A)3";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,B)0";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -151,6 +175,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE POWER OF tmpOE__HE_IN_PIN_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.z0__sig\ : bit;
@@ -212,21 +237,23 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE Location OF CAM_READ_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
-    ATTRIBUTE Location OF CAM_TIMER_ISR : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
+    ATTRIBUTE Location OF CAM_LINE_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
+    ATTRIBUTE Location OF CAM_READ_ISR : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF COM_SYNC_OUT_PIN(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF COM_SYNC_OUT_PIN(0) : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF COM_VID_IN_PIN(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF COM_VID_IN_PIN(0) : LABEL IS "P3[7]";
+    ATTRIBUTE Location OF COM_VID_IN_PIN(0) : LABEL IS "P4[0]";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF HE_IN_PIN(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF HE_IN_PIN(0) : LABEL IS "P4[3]";
     ATTRIBUTE Location OF HE_ISR : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF Net_1611 : LABEL IS "macrocell1";
     ATTRIBUTE Location OF Net_1611 : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF Net_3712 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_3206 : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF Net_3206 : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF Net_3712 : LABEL IS "macrocell3";
     ATTRIBUTE Location OF Net_3712 : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF Net_459 : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF Net_459 : LABEL IS "macrocell4";
     ATTRIBUTE Location OF Net_459 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF PWM_OUT_PIN(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P4[7]";
@@ -234,14 +261,16 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF STEERING_PWM_OUT_PIN(0) : LABEL IS "P4[6]";
     ATTRIBUTE lib_model OF VERT_SYNC_OUT_IN(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF VERT_SYNC_OUT_IN(0) : LABEL IS "P4[4]";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF VSYNC_ISR : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
+    ATTRIBUTE Location OF \CAM_ADC:DEC\ : LABEL IS "F(Decimator,0)";
+    ATTRIBUTE Location OF \CAM_ADC:DSM\ : LABEL IS "F(DSM,0)";
+    ATTRIBUTE Location OF \CAM_ADC:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(29)]";
+    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell5";
     ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:count_enable\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell6";
     ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell7";
     ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:prevCompare\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:prevCompare\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell1";
     ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
@@ -297,7 +326,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell9";
     ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,4)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -487,6 +516,39 @@ ARCHITECTURE __DEFAULT__ OF Car IS
             cmsbo : OUT std_ulogic;
             busclk : IN std_ulogic);
     END COMPONENT;
+    COMPONENT decimatorcell
+        PORT (
+            aclock : IN std_ulogic;
+            mod_dat_0 : IN std_ulogic;
+            mod_dat_1 : IN std_ulogic;
+            mod_dat_2 : IN std_ulogic;
+            mod_dat_3 : IN std_ulogic;
+            ext_start : IN std_ulogic;
+            modrst : OUT std_ulogic;
+            interrupt : OUT std_ulogic);
+    END COMPONENT;
+    COMPONENT dsmodcell
+        PORT (
+            aclock : IN std_ulogic;
+            modbitin_udb : IN std_ulogic;
+            reset_udb : IN std_ulogic;
+            reset_dec : IN std_ulogic;
+            dec_clock : OUT std_ulogic;
+            mod_dat_0 : OUT std_ulogic;
+            mod_dat_1 : OUT std_ulogic;
+            mod_dat_2 : OUT std_ulogic;
+            mod_dat_3 : OUT std_ulogic;
+            dout_udb_0 : OUT std_ulogic;
+            dout_udb_1 : OUT std_ulogic;
+            dout_udb_2 : OUT std_ulogic;
+            dout_udb_3 : OUT std_ulogic;
+            dout_udb_4 : OUT std_ulogic;
+            dout_udb_5 : OUT std_ulogic;
+            dout_udb_6 : OUT std_ulogic;
+            dout_udb_7 : OUT std_ulogic;
+            extclk_cp_udb : IN std_ulogic;
+            clk_udb : IN std_ulogic);
+    END COMPONENT;
     COMPONENT interrupt
         PORT (
             interrupt : IN std_ulogic;
@@ -583,18 +645,18 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     END COMPONENT;
 BEGIN
 
-    CAM_READ_ISR:interrupt
+    CAM_LINE_ISR:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_3140,
+            interrupt => Net_4870_local,
             clock => ClockBlock_BUS_CLK);
 
-    CAM_TIMER_ISR:interrupt
+    CAM_READ_ISR:interrupt
         GENERIC MAP(
             int_type => "00")
         PORT MAP(
-            interrupt => Net_3147,
+            interrupt => Net_3206,
             clock => ClockBlock_BUS_CLK);
 
     COM_SYNC_OUT_PIN:logicalport
@@ -690,8 +752,8 @@ BEGIN
 
     COM_VID_IN_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
-            ibuf_enabled => "1",
+            drive_mode => "000",
+            ibuf_enabled => "0",
             id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
             init_dr_st => "0",
             input_buffer_sel => "00",
@@ -726,7 +788,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "I",
+            pin_mode => "A",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -742,7 +804,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "0",
-            vtrip => "00",
+            vtrip => "10",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -756,22 +818,20 @@ BEGIN
             in_clock_en => open,
             in_reset => open,
             out_clock_en => open,
-            out_reset => open,
-            in_clock => open);
+            out_reset => open);
 
     COM_VID_IN_PIN(0):iocell
         GENERIC MAP(
-            in_sync_mode => 2,
+            in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "COM_VID_IN_PIN",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
             pa_out => COM_VID_IN_PIN(0)__PA,
             oe => open,
-            pad_in => COM_VID_IN_PIN(0)_PAD,
-            in_clock => ClockBlock_BUS_CLK,
+            in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -793,12 +853,21 @@ BEGIN
             imo => ClockBlock_IMO,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => Net_767,
-            dclk_0 => Net_767_local,
-            dclk_glb_1 => Net_3302,
-            dclk_1 => Net_3302_local,
-            dclk_glb_2 => Net_193,
-            dclk_2 => Net_193_local);
+            dclk_glb_0 => \CAM_ADC:Net_93\,
+            dclk_0 => \CAM_ADC:Net_93_local\,
+            dclk_glb_1 => Net_767,
+            dclk_1 => Net_767_local,
+            dclk_glb_2 => Net_3302,
+            dclk_2 => Net_3302_local,
+            aclk_glb_0 => \CAM_ADC:Net_488\,
+            aclk_0 => \CAM_ADC:Net_488_local\,
+            clk_a_dig_glb_0 => \CAM_ADC:Net_488_adig\,
+            clk_a_dig_0 => \CAM_ADC:Net_488_adig_local\,
+            dclk_glb_3 => Net_4870,
+            dclk_3 => Net_4870_local,
+            dclk_glb_4 => Net_193,
+            dclk_4 => Net_193_local,
+            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
     HE_IN_PIN:logicalport
         GENERIC MAP(
@@ -906,6 +975,14 @@ BEGIN
             clock_0 => Net_193,
             main_0 => \MOTOR_PWM:PWMUDB:control_7\,
             main_1 => \MOTOR_PWM:PWMUDB:cmp1_less\);
+
+    Net_3206:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)")
+        PORT MAP(
+            q => Net_3206,
+            main_0 => \CAM_COUNTER:CounterUDB:cmp_out_i\,
+            clock_0 => ClockBlock_BUS_CLK);
 
     Net_3712:macrocell
         GENERIC MAP(
@@ -1187,7 +1264,7 @@ BEGIN
         PORT MAP(
             pa_out => VERT_SYNC_OUT_IN(0)__PA,
             oe => open,
-            fb => Net_3147,
+            fb => Net_4376,
             pad_in => VERT_SYNC_OUT_IN(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1195,6 +1272,56 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
+
+    VSYNC_ISR:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => Net_4376,
+            clock => ClockBlock_BUS_CLK);
+
+    \CAM_ADC:DEC\:decimatorcell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            aclock => \CAM_ADC:aclock\,
+            mod_dat_3 => \CAM_ADC:mod_dat_3\,
+            mod_dat_2 => \CAM_ADC:mod_dat_2\,
+            mod_dat_1 => \CAM_ADC:mod_dat_1\,
+            mod_dat_0 => \CAM_ADC:mod_dat_0\,
+            ext_start => __ONE__,
+            modrst => \CAM_ADC:mod_reset\,
+            interrupt => Net_4882);
+
+    \CAM_ADC:DSM\:dsmodcell
+        GENERIC MAP(
+            cy_registers => "",
+            resolution => 16)
+        PORT MAP(
+            aclock => \ClockBlock.aclk_glb_ff_0__sig\,
+            reset_udb => open,
+            reset_dec => \CAM_ADC:mod_reset\,
+            extclk_cp_udb => \CAM_ADC:Net_93_local\,
+            dec_clock => \CAM_ADC:aclock\,
+            mod_dat_3 => \CAM_ADC:mod_dat_3\,
+            mod_dat_2 => \CAM_ADC:mod_dat_2\,
+            mod_dat_1 => \CAM_ADC:mod_dat_1\,
+            mod_dat_0 => \CAM_ADC:mod_dat_0\,
+            dout_udb_7 => \CAM_ADC:Net_245_7\,
+            dout_udb_6 => \CAM_ADC:Net_245_6\,
+            dout_udb_5 => \CAM_ADC:Net_245_5\,
+            dout_udb_4 => \CAM_ADC:Net_245_4\,
+            dout_udb_3 => \CAM_ADC:Net_245_3\,
+            dout_udb_2 => \CAM_ADC:Net_245_2\,
+            dout_udb_1 => \CAM_ADC:Net_245_1\,
+            dout_udb_0 => \CAM_ADC:Net_245_0\);
+
+    \CAM_ADC:IRQ\:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_4882,
+            clock => ClockBlock_BUS_CLK);
 
     \CAM_COUNTER:CounterUDB:count_enable\:macrocell
         GENERIC MAP(
@@ -1218,15 +1345,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \CAM_COUNTER:CounterUDB:overflow_reg_i\,
-            main_0 => \CAM_COUNTER:CounterUDB:reload\,
-            clock_0 => ClockBlock_BUS_CLK);
-
-    \CAM_COUNTER:CounterUDB:prevCompare\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)")
-        PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:prevCompare\,
-            main_0 => \CAM_COUNTER:CounterUDB:cmp_out_i\,
+            main_0 => \CAM_COUNTER:CounterUDB:per_equal\,
             clock_0 => ClockBlock_BUS_CLK);
 
     \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\:datapathcell
@@ -1258,10 +1377,9 @@ BEGIN
             clock => ClockBlock_BUS_CLK,
             cs_addr_2 => __ONE__,
             cs_addr_1 => \CAM_COUNTER:CounterUDB:count_enable\,
-            cs_addr_0 => \CAM_COUNTER:CounterUDB:reload\,
-            ce0_comb => \CAM_COUNTER:CounterUDB:reload\,
+            ce0_comb => \CAM_COUNTER:CounterUDB:per_equal\,
             z0_comb => \CAM_COUNTER:CounterUDB:status_1\,
-            cl1_comb => \CAM_COUNTER:CounterUDB:cmp_out_i\,
+            ce1_comb => \CAM_COUNTER:CounterUDB:cmp_out_i\,
             f0_bus_stat_comb => \CAM_COUNTER:CounterUDB:status_6\,
             f0_blk_stat_comb => \CAM_COUNTER:CounterUDB:status_5\,
             busclk => ClockBlock_BUS_CLK);
@@ -1298,23 +1416,22 @@ BEGIN
             status_3 => open,
             status_2 => \CAM_COUNTER:CounterUDB:status_2\,
             status_1 => \CAM_COUNTER:CounterUDB:status_1\,
-            status_0 => \CAM_COUNTER:CounterUDB:status_0\,
-            interrupt => Net_3140);
+            status_0 => \CAM_COUNTER:CounterUDB:status_0\);
 
     \CAM_COUNTER:CounterUDB:status_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)")
+            eqn_main => "(!main_1 * main_0)")
         PORT MAP(
             q => \CAM_COUNTER:CounterUDB:status_0\,
             main_0 => \CAM_COUNTER:CounterUDB:cmp_out_i\,
-            main_1 => \CAM_COUNTER:CounterUDB:prevCompare\);
+            main_1 => Net_3206);
 
     \CAM_COUNTER:CounterUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)")
         PORT MAP(
             q => \CAM_COUNTER:CounterUDB:status_2\,
-            main_0 => \CAM_COUNTER:CounterUDB:reload\,
+            main_0 => \CAM_COUNTER:CounterUDB:per_equal\,
             main_1 => \CAM_COUNTER:CounterUDB:overflow_reg_i\);
 
     \HE_TIMER:TimerUDB:rstSts:stsreg\:statusicell

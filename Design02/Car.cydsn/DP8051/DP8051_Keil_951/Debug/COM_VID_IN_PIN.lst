@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 1   
+C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 18:49:58 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE COM_VID_IN_PIN
@@ -62,7 +62,7 @@ line level    source
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
   52          *  COM_VID_IN_PIN_DM_STRONG     Strong Drive 
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 2   
+C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 18:49:58 PAGE 2   
 
   53          *  COM_VID_IN_PIN_DM_OD_HI      Open Drain, Drives High 
   54          *  COM_VID_IN_PIN_DM_OD_LO      Open Drain, Drives Low 
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 3   
+C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 18:49:58 PAGE 3   
 
  115          /* If Interrupts Are Enabled for this Pins component */ 
  116          #if defined(COM_VID_IN_PIN_INTSTAT) 
@@ -155,7 +155,7 @@ line level    source
  139          
  140          
  141          /* [] END OF FILE */
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 4   
+C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 18:49:58 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -167,11 +167,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 36
                                            ; SOURCE LINE # 37
-0005 905130            MOV     DPTR,#05130H
+0005 905140            MOV     DPTR,#05140H
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
 000A EF                MOV     A,R7
-000B 547F              ANL     A,#07FH
+000B 54FE              ANL     A,#0FEH
 000D FF                MOV     R7,A
 000E 900000      R     MOV     DPTR,#staticBits
 0011 EF                MOV     A,R7
@@ -181,26 +181,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 E0                MOVX    A,@DPTR
 0017 FF                MOV     R7,A
 0018 EF                MOV     A,R7
-0019 C4                SWAP    A
-001A 33                RLC     A
-001B 33                RLC     A
-001C 33                RLC     A
-001D 5480              ANL     A,#080H
-001F FF                MOV     R7,A
-0020 EF                MOV     A,R7
-0021 5480              ANL     A,#080H
+0019 5401              ANL     A,#01H
+001B FF                MOV     R7,A
+001C 900000      R     MOV     DPTR,#staticBits
+001F E0                MOVX    A,@DPTR
+0020 FE                MOV     R6,A
+0021 EF                MOV     A,R7
+0022 4E                ORL     A,R6
 0023 FF                MOV     R7,A
-0024 900000      R     MOV     DPTR,#staticBits
-0027 E0                MOVX    A,@DPTR
-0028 FE                MOV     R6,A
-0029 EF                MOV     A,R7
-002A 4E                ORL     A,R6
-002B FF                MOV     R7,A
-002C 905130            MOV     DPTR,#05130H
-002F EF                MOV     A,R7
-0030 F0                MOVX    @DPTR,A
+0024 905140            MOV     DPTR,#05140H
+0027 EF                MOV     A,R7
+0028 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 39
-0031 22                RET     
+0029 22                RET     
              ; FUNCTION _COM_VID_IN_PIN_Write (END)
 
              ; FUNCTION _COM_VID_IN_PIN_SetDriveMode (BEGIN)
@@ -216,18 +209,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A EF                MOV     A,R7
 000B 540E              ANL     A,#0EH
 000D FF                MOV     R7,A
-000E 90501F            MOV     DPTR,#0501FH
+000E 905020            MOV     DPTR,#05020H
 0011 E0                MOVX    A,@DPTR
 0012 FE                MOV     R6,A
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 5   
-
 0013 EE                MOV     A,R6
 0014 54F1              ANL     A,#0F1H
 0016 FE                MOV     R6,A
 0017 EE                MOV     A,R6
 0018 4F                ORL     A,R7
 0019 FF                MOV     R7,A
-001A 90501F            MOV     DPTR,#0501FH
+001A 905020            MOV     DPTR,#05020H
+C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 18:49:58 PAGE 5   
+
 001D EF                MOV     A,R7
 001E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 68
@@ -238,60 +231,38 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 89
                                            ; SOURCE LINE # 90
                                            ; SOURCE LINE # 91
-0000 905131            MOV     DPTR,#05131H
+0000 905141            MOV     DPTR,#05141H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5480              ANL     A,#080H
+0006 5401              ANL     A,#01H
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
-000B EF                MOV     A,R7
-000C 7807              MOV     R0,#07H
-000E         ?C0005:
-000E CE                XCH     A,R6
-000F C3                CLR     C
-0010 13                RRC     A
-0011 CE                XCH     A,R6
-0012 13                RRC     A
-0013 D8F9              DJNZ    R0,?C0005
-0015 FF                MOV     R7,A
                                            ; SOURCE LINE # 92
-0016         ?C0003:
-0016 22                RET     
+000B         ?C0003:
+000B 22                RET     
              ; FUNCTION COM_VID_IN_PIN_Read (END)
 
              ; FUNCTION COM_VID_IN_PIN_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 109
                                            ; SOURCE LINE # 110
                                            ; SOURCE LINE # 111
-0000 905130            MOV     DPTR,#05130H
+0000 905140            MOV     DPTR,#05140H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5480              ANL     A,#080H
+0006 5401              ANL     A,#01H
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
-000B EF                MOV     A,R7
-000C 7807              MOV     R0,#07H
-000E         ?C0006:
-000E CE                XCH     A,R6
-000F C3                CLR     C
-0010 13                RRC     A
-0011 CE                XCH     A,R6
-0012 13                RRC     A
-0013 D8F9              DJNZ    R0,?C0006
-0015 FF                MOV     R7,A
                                            ; SOURCE LINE # 112
-0016         ?C0004:
-C51 COMPILER V9.51   COM_VID_IN_PIN                                                        03/14/2015 11:24:37 PAGE 6   
-
-0016 22                RET     
+000B         ?C0004:
+000B 22                RET     
              ; FUNCTION COM_VID_IN_PIN_ReadDataReg (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    128    ----
+   CODE SIZE        =     98    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       3
    PDATA SIZE       =   ----    ----

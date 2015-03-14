@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Mar 14 11:24:21 2015
+--	Sat Mar 14 18:49:32 2015
 --
 
 USE cypress.cypress.all;
@@ -799,17 +799,12 @@ SIGNAL Net_3213 : bit;
 SIGNAL tmpIO_0__COM_SYNC_OUT_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__COM_SYNC_OUT_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0 : bit;
-SIGNAL tmpOE__COM_VID_IN_PIN_net_0 : bit;
-SIGNAL tmpFB_0__COM_VID_IN_PIN_net_0 : bit;
-TERMINAL Net_3106 : bit;
-SIGNAL tmpIO_0__COM_VID_IN_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__COM_VID_IN_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COM_VID_IN_PIN_net_0 : bit;
 SIGNAL tmpOE__VERT_SYNC_OUT_IN_net_0 : bit;
-SIGNAL Net_3147 : bit;
+SIGNAL Net_4376 : bit;
 SIGNAL tmpIO_0__VERT_SYNC_OUT_IN_net_0 : bit;
 TERMINAL tmpSIOVREF__VERT_SYNC_OUT_IN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__VERT_SYNC_OUT_IN_net_0 : bit;
+SIGNAL Net_3206 : bit;
 SIGNAL Net_3140 : bit;
 SIGNAL \CAM_COUNTER:Net_43\ : bit;
 SIGNAL Net_3205 : bit;
@@ -842,9 +837,6 @@ SIGNAL \CAM_COUNTER:CounterUDB:capt_falling\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:capt_either_edge\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:hwCapture\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:reload\ : bit;
-SIGNAL Net_3194 : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:overflow\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:underflow\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:final_enable\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:counter_enable\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:status_0\ : bit;
@@ -860,17 +852,19 @@ SIGNAL \CAM_COUNTER:CounterUDB:status_5\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:fifo_full\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:status_6\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:fifo_nempty\ : bit;
+SIGNAL Net_3194 : bit;
+SIGNAL \CAM_COUNTER:CounterUDB:overflow\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:dp_dir\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:per_equal\ : bit;
+SIGNAL \CAM_COUNTER:CounterUDB:underflow\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:overflow_reg_i\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:underflow_reg_i\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:tc_i\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:tc_reg_i\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_less\ : bit;
+SIGNAL \CAM_COUNTER:CounterUDB:cmp_equal\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:prevCompare\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_reg_i\ : bit;
-SIGNAL Net_3206 : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:count_stored_i\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:count_enable\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_2\ : bit;
@@ -878,7 +872,7 @@ SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_1\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_0\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:nc42\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:per_FF\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_equal\ : bit;
+SIGNAL \CAM_COUNTER:CounterUDB:cmp_less\ : bit;
 SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:z1\ : bit;
 ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:z1\:SIGNAL IS 2;
 SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ff1\ : bit;
@@ -1129,8 +1123,8 @@ SIGNAL \STEERING_PWM:PWMUDB:pwm2_i\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:tc_i_reg\ : bit;
 SIGNAL \STEERING_PWM:Net_101\ : bit;
 SIGNAL \STEERING_PWM:Net_96\ : bit;
-SIGNAL Net_4013 : bit;
-SIGNAL Net_4014 : bit;
+SIGNAL Net_4795 : bit;
+SIGNAL Net_4796 : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm_temp\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:cmp1\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:cmp2\ : bit;
@@ -1330,12 +1324,56 @@ SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
-SIGNAL Net_4015 : bit;
+SIGNAL Net_4797 : bit;
 SIGNAL \STEERING_PWM:Net_55\ : bit;
-SIGNAL Net_4012 : bit;
+SIGNAL Net_4794 : bit;
 SIGNAL \STEERING_PWM:Net_113\ : bit;
 SIGNAL \STEERING_PWM:Net_107\ : bit;
 SIGNAL \STEERING_PWM:Net_114\ : bit;
+SIGNAL tmpOE__COM_VID_IN_PIN_net_0 : bit;
+SIGNAL tmpFB_0__COM_VID_IN_PIN_net_0 : bit;
+TERMINAL Net_4828 : bit;
+SIGNAL tmpIO_0__COM_VID_IN_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__COM_VID_IN_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__COM_VID_IN_PIN_net_0 : bit;
+TERMINAL \CAM_ADC:Net_244\ : bit;
+TERMINAL \CAM_ADC:Net_690\ : bit;
+TERMINAL \CAM_ADC:Net_35\ : bit;
+TERMINAL \CAM_ADC:Net_34\ : bit;
+TERMINAL \CAM_ADC:Net_677\ : bit;
+TERMINAL \CAM_ADC:Net_20\ : bit;
+SIGNAL \CAM_ADC:Net_488\ : bit;
+TERMINAL \CAM_ADC:Net_520\ : bit;
+SIGNAL \CAM_ADC:Net_481\ : bit;
+SIGNAL \CAM_ADC:Net_482\ : bit;
+SIGNAL \CAM_ADC:mod_reset\ : bit;
+SIGNAL \CAM_ADC:Net_93\ : bit;
+TERMINAL \CAM_ADC:Net_573\ : bit;
+TERMINAL \CAM_ADC:Net_41\ : bit;
+TERMINAL \CAM_ADC:Net_109\ : bit;
+SIGNAL \CAM_ADC:aclock\ : bit;
+SIGNAL \CAM_ADC:mod_dat_3\ : bit;
+SIGNAL \CAM_ADC:mod_dat_2\ : bit;
+SIGNAL \CAM_ADC:mod_dat_1\ : bit;
+SIGNAL \CAM_ADC:mod_dat_0\ : bit;
+SIGNAL \CAM_ADC:Net_245_7\ : bit;
+SIGNAL \CAM_ADC:Net_245_6\ : bit;
+SIGNAL \CAM_ADC:Net_245_5\ : bit;
+SIGNAL \CAM_ADC:Net_245_4\ : bit;
+SIGNAL \CAM_ADC:Net_245_3\ : bit;
+SIGNAL \CAM_ADC:Net_245_2\ : bit;
+SIGNAL \CAM_ADC:Net_245_1\ : bit;
+SIGNAL \CAM_ADC:Net_245_0\ : bit;
+TERMINAL \CAM_ADC:Net_352\ : bit;
+TERMINAL \CAM_ADC:Net_257\ : bit;
+TERMINAL \CAM_ADC:Net_249\ : bit;
+SIGNAL Net_4882 : bit;
+SIGNAL \CAM_ADC:Net_250\ : bit;
+SIGNAL \CAM_ADC:Net_252\ : bit;
+SIGNAL \CAM_ADC:soc\ : bit;
+SIGNAL \CAM_ADC:Net_268\ : bit;
+SIGNAL \CAM_ADC:Net_270\ : bit;
+SIGNAL Net_4870 : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -1396,7 +1434,7 @@ Net_459 <= (not Net_2174);
 
 \CAM_COUNTER:CounterUDB:status_0\ <= ((not \CAM_COUNTER:CounterUDB:prevCompare\ and \CAM_COUNTER:CounterUDB:cmp_out_i\));
 
-\CAM_COUNTER:CounterUDB:status_2\ <= ((not \CAM_COUNTER:CounterUDB:overflow_reg_i\ and \CAM_COUNTER:CounterUDB:reload\));
+\CAM_COUNTER:CounterUDB:status_2\ <= ((not \CAM_COUNTER:CounterUDB:overflow_reg_i\ and \CAM_COUNTER:CounterUDB:per_equal\));
 
 \CAM_COUNTER:CounterUDB:count_enable\ <= ((not \CAM_COUNTER:CounterUDB:count_stored_i\ and Net_3213 and \CAM_COUNTER:CounterUDB:control_7\));
 
@@ -2287,75 +2325,6 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0);
-COM_VID_IN_PIN:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
-		drive_mode=>"001",
-		ibuf_enabled=>"1",
-		init_dr_st=>"0",
-		input_sync=>"1",
-		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"00",
-		invert_in_clock=>'0',
-		invert_in_clock_en=>'0',
-		invert_in_reset=>'0',
-		invert_out_clock=>'0',
-		invert_out_clock_en=>'0',
-		invert_out_reset=>'0',
-		io_voltage=>"",
-		layout_mode=>"CONTIGUOUS",
-		output_conn=>"0",
-		output_sync=>"0",
-		output_clk_en=>'0',
-		output_mode=>"0",
-		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
-		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"I",
-		por_state=>4,
-		sio_group_cnt=>0,
-		sio_hifreq=>"",
-		sio_hyst=>"1",
-		sio_ibuf=>"00000000",
-		sio_info=>"00",
-		sio_obuf=>"00000000",
-		sio_refsel=>"00000000",
-		sio_vtrip=>"00000000",
-		slew_rate=>"0",
-		spanning=>'0',
-		sw_only=>'0',
-		vtrip=>"00",
-		width=>1,
-		port_alias_required=>'0',
-		port_alias_group=>"",
-		use_annotation=>"0",
-		pa_in_clock=>-1,
-		pa_in_clock_en=>-1,
-		pa_in_reset=>-1,
-		pa_out_clock=>-1,
-		pa_out_clock_en=>-1,
-		pa_out_reset=>-1,
-		ovt_needed=>"0",
-		ovt_slew_control=>"00",
-		ovt_hyst_trim=>"0",
-		input_buffer_sel=>"00")
-	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
-		y=>(zero),
-		fb=>(tmpFB_0__COM_VID_IN_PIN_net_0),
-		analog=>Net_3106,
-		io=>(tmpIO_0__COM_VID_IN_PIN_net_0),
-		siovref=>(tmpSIOVREF__COM_VID_IN_PIN_net_0),
-		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COM_VID_IN_PIN_net_0);
 VERT_SYNC_OUT_IN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"dde470b0-d1c9-4f89-86e1-a5592986014d",
 		drive_mode=>"001",
@@ -2413,7 +2382,7 @@ VERT_SYNC_OUT_IN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>Net_3147,
+		fb=>Net_4376,
 		analog=>(open),
 		io=>(tmpIO_0__VERT_SYNC_OUT_IN_net_0),
 		siovref=>(tmpSIOVREF__VERT_SYNC_OUT_IN_net_0),
@@ -2426,8 +2395,8 @@ VERT_SYNC_OUT_IN:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__VERT_SYNC_OUT_IN_net_0);
 CAM_READ_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_3140);
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_3206);
 \CAM_COUNTER:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_3207,
@@ -2456,7 +2425,7 @@ CAM_READ_ISR:cy_isr_v1_0
 		clock=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		status=>(\CAM_COUNTER:CounterUDB:status_6\, \CAM_COUNTER:CounterUDB:status_5\, zero, zero,
 			\CAM_COUNTER:CounterUDB:status_2\, \CAM_COUNTER:CounterUDB:status_1\, \CAM_COUNTER:CounterUDB:status_0\),
-		interrupt=>Net_3140);
+		interrupt=>\CAM_COUNTER:Net_43\);
 \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
@@ -2481,19 +2450,19 @@ CAM_READ_ISR:cy_isr_v1_0
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		cs_addr=>(tmpOE__HE_IN_PIN_net_0, \CAM_COUNTER:CounterUDB:count_enable\, \CAM_COUNTER:CounterUDB:reload\),
+		cs_addr=>(tmpOE__HE_IN_PIN_net_0, \CAM_COUNTER:CounterUDB:count_enable\, zero),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>zero,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
-		ce0=>\CAM_COUNTER:CounterUDB:reload\,
+		ce0=>\CAM_COUNTER:CounterUDB:per_equal\,
 		cl0=>\CAM_COUNTER:CounterUDB:nc42\,
 		z0=>\CAM_COUNTER:CounterUDB:status_1\,
 		ff0=>\CAM_COUNTER:CounterUDB:per_FF\,
-		ce1=>\CAM_COUNTER:CounterUDB:cmp_equal\,
-		cl1=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
+		ce1=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
+		cl1=>\CAM_COUNTER:CounterUDB:cmp_less\,
 		z1=>open,
 		ff1=>open,
 		ov_msb=>open,
@@ -2543,9 +2512,9 @@ CAM_READ_ISR:cy_isr_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-CAM_TIMER_ISR:cy_isr_v1_0
+VSYNC_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
-	PORT MAP(int_signal=>Net_3147);
+	PORT MAP(int_signal=>Net_4376);
 STEERING_PWM_OUT_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e0aadc75-3a2d-4c46-b14b-5970435a29b0",
 		drive_mode=>"110",
@@ -2831,6 +2800,192 @@ CAM_COUNTER_CLK:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_3207,
 		dig_domain_out=>open);
+COM_VID_IN_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__COM_VID_IN_PIN_net_0),
+		analog=>Net_4828,
+		io=>(tmpIO_0__COM_VID_IN_PIN_net_0),
+		siovref=>(tmpSIOVREF__COM_VID_IN_PIN_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__COM_VID_IN_PIN_net_0);
+\CAM_ADC:vRef_2\:cy_vref_v1_0
+	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
+		name=>"Vssa (GND)",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\CAM_ADC:Net_244\);
+\CAM_ADC:cy_analog_virtualmux_6_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_690\,
+		signal2=>\CAM_ADC:Net_35\);
+\CAM_ADC:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\CAM_ADC:Net_34\);
+\CAM_ADC:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_677\,
+		signal2=>\CAM_ADC:Net_34\);
+\CAM_ADC:AMux\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>2,
+		hw_control=>'0',
+		one_active=>'0',
+		init_mux_sel=>"00",
+		api_type=>0,
+		connect_mode=>1)
+	PORT MAP(muxin=>(\CAM_ADC:Net_690\, \CAM_ADC:Net_244\),
+		hw_ctrl_en=>(others => zero),
+		vout=>\CAM_ADC:Net_20\);
+\CAM_ADC:DSM\:cy_psoc3_ds_mod_v4_0
+	GENERIC MAP(cy_registers=>"",
+		resolution=>16)
+	PORT MAP(aclock=>\CAM_ADC:Net_488\,
+		vplus=>Net_4828,
+		vminus=>\CAM_ADC:Net_520\,
+		modbit=>zero,
+		reset_udb=>zero,
+		reset_dec=>\CAM_ADC:mod_reset\,
+		clk_udb=>zero,
+		extclk_cp_udb=>\CAM_ADC:Net_93\,
+		ext_pin_1=>\CAM_ADC:Net_573\,
+		ext_pin_2=>\CAM_ADC:Net_41\,
+		ext_vssa=>\CAM_ADC:Net_109\,
+		qtz_ref=>\CAM_ADC:Net_677\,
+		dec_clock=>\CAM_ADC:aclock\,
+		mod_dat=>(\CAM_ADC:mod_dat_3\, \CAM_ADC:mod_dat_2\, \CAM_ADC:mod_dat_1\, \CAM_ADC:mod_dat_0\),
+		dout_udb=>(\CAM_ADC:Net_245_7\, \CAM_ADC:Net_245_6\, \CAM_ADC:Net_245_5\, \CAM_ADC:Net_245_4\,
+			\CAM_ADC:Net_245_3\, \CAM_ADC:Net_245_2\, \CAM_ADC:Net_245_1\, \CAM_ADC:Net_245_0\));
+\CAM_ADC:cy_analog_noconnect_5\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\CAM_ADC:Net_352\);
+\CAM_ADC:cy_analog_virtualmux_5_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_109\,
+		signal2=>\CAM_ADC:Net_352\);
+\CAM_ADC:Ext_CP_Clk\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"e1dab670-9fe1-407f-b610-2aac52acb5ce/b7604721-db56-4477-98c2-8fae77869066",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>1,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\CAM_ADC:Net_93\,
+		dig_domain_out=>open);
+\CAM_ADC:cy_analog_noconnect_3\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\CAM_ADC:Net_257\);
+\CAM_ADC:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\CAM_ADC:Net_249\);
+\CAM_ADC:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_41\,
+		signal2=>\CAM_ADC:Net_257\);
+\CAM_ADC:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_573\,
+		signal2=>\CAM_ADC:Net_249\);
+\CAM_ADC:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\CAM_ADC:Net_520\,
+		signal2=>\CAM_ADC:Net_20\);
+\CAM_ADC:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_4882);
+\CAM_ADC:theACLK\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"e1dab670-9fe1-407f-b610-2aac52acb5ce/edd15f43-b66b-457b-be3a-5342345270c8",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>0,
+		period=>"386100386.100386",
+		is_direct=>'0',
+		is_digital=>'0')
+	PORT MAP(clock_out=>\CAM_ADC:Net_488\,
+		dig_domain_out=>open);
+\CAM_ADC:DEC\:cy_psoc3_decimator_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(aclock=>\CAM_ADC:aclock\,
+		mod_dat=>(\CAM_ADC:mod_dat_3\, \CAM_ADC:mod_dat_2\, \CAM_ADC:mod_dat_1\, \CAM_ADC:mod_dat_0\),
+		ext_start=>tmpOE__HE_IN_PIN_net_0,
+		mod_reset=>\CAM_ADC:mod_reset\,
+		interrupt=>Net_4882);
+CAM_LINE_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_4870);
+CAM_LINE_CLK:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"8367d813-bbf5-4fc5-9690-60e29be5d7df",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"1000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_4870,
+		dig_domain_out=>open);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -2910,7 +3065,7 @@ CAM_COUNTER_CLK:cy_clock_v1_0
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		q=>\CAM_COUNTER:CounterUDB:prevCapture\);
 \CAM_COUNTER:CounterUDB:overflow_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:reload\,
+	PORT MAP(d=>\CAM_COUNTER:CounterUDB:per_equal\,
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		q=>\CAM_COUNTER:CounterUDB:overflow_reg_i\);
 \CAM_COUNTER:CounterUDB:underflow_reg_i\:cy_dff
@@ -2918,7 +3073,7 @@ CAM_COUNTER_CLK:cy_clock_v1_0
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		q=>\CAM_COUNTER:CounterUDB:underflow_reg_i\);
 \CAM_COUNTER:CounterUDB:tc_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:reload\,
+	PORT MAP(d=>\CAM_COUNTER:CounterUDB:per_equal\,
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		q=>\CAM_COUNTER:CounterUDB:tc_reg_i\);
 \CAM_COUNTER:CounterUDB:prevCompare\:cy_dff
@@ -2928,7 +3083,7 @@ CAM_COUNTER_CLK:cy_clock_v1_0
 \CAM_COUNTER:CounterUDB:cmp_out_reg_i\:cy_dff
 	PORT MAP(d=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:cmp_out_reg_i\);
+		q=>Net_3206);
 \CAM_COUNTER:CounterUDB:count_stored_i\:cy_dff
 	PORT MAP(d=>Net_3213,
 		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,

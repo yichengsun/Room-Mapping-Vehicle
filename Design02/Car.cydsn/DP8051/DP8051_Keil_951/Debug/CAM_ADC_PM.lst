@@ -1,0 +1,337 @@
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE CAM_ADC_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\CAM_ADC_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\CAM_ADC_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB DF(D
+                    -EBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_ADC_PM.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_ADC_PM
+                    -.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: CAM_ADC_PM.c
+   3          * Version 3.10
+   4          *
+   5          * Description:
+   6          *  This file provides the power manager source code to the API for the
+   7          *  Delta-Sigma ADC Component.
+   8          *
+   9          * Note:
+  10          *
+  11          ********************************************************************************
+  12          * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions,
+  14          * disclaimers, and limitations in the end user license agreement accompanying
+  15          * the software package with which this file was provided.
+  16          *******************************************************************************/
+  17          
+  18          #include "CAM_ADC.h"
+  19          
+  20          static CAM_ADC_BACKUP_STRUCT CAM_ADC_backup =
+  21          {
+  22              CAM_ADC_DISABLED,
+  23              CAM_ADC_CFG1_DEC_CR
+  24          };
+  25          
+  26          
+  27          /*******************************************************************************
+  28          * Function Name: CAM_ADC_SaveConfig
+  29          ********************************************************************************
+  30          *
+  31          * Summary:
+  32          *  Save the register configuration which are not retention.
+  33          *
+  34          * Parameters:
+  35          *  None
+  36          *
+  37          * Return:
+  38          *  None
+  39          *
+  40          * Global variables:
+  41          *  CAM_ADC_backup:  This global structure variable is used to store
+  42          *  configuration registers which are non retention whenever user wants to go
+  43          *  sleep mode by calling Sleep() API.
+  44          *
+  45          *******************************************************************************/
+  46          void CAM_ADC_SaveConfig(void) 
+  47          {
+  48   1          CAM_ADC_backup.deccr = CAM_ADC_DEC_CR_REG;
+  49   1      }
+  50          
+  51          
+  52          /*******************************************************************************
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 2   
+
+  53          * Function Name: CAM_ADC_RestoreConfig
+  54          ********************************************************************************
+  55          *
+  56          * Summary:
+  57          *  Restore the register configurations which are not retention.
+  58          *
+  59          * Parameters:
+  60          *  None
+  61          *
+  62          * Return:
+  63          *  None
+  64          *
+  65          * Global variables:
+  66          *  CAM_ADC_backup:  This global structure variable is used to restore
+  67          *  configuration registers which are non retention whenever user wants to switch
+  68          *  to active power mode by calling Wakeup() API.
+  69          *
+  70          *******************************************************************************/
+  71          void CAM_ADC_RestoreConfig(void) 
+  72          {
+  73   1          CAM_ADC_DEC_CR_REG = CAM_ADC_backup.deccr;
+  74   1      }
+  75          
+  76          
+  77          /*******************************************************************************
+  78          * Function Name: CAM_ADC_Sleep
+  79          ********************************************************************************
+  80          *
+  81          * Summary:
+  82          *  Stops the operation of the block and saves the user configuration.
+  83          *
+  84          * Parameters:
+  85          *  None
+  86          *
+  87          * Return:
+  88          *  None
+  89          *
+  90          * Global variables:
+  91          *  CAM_ADC_backup:  The structure field 'enableState' is modified
+  92          *  depending on the enable state of the block before entering to sleep mode.
+  93          *
+  94          *******************************************************************************/
+  95          void CAM_ADC_Sleep(void) 
+  96          {
+  97   1          /* Save ADC enable state */
+  98   1          if((CAM_ADC_ACT_PWR_DEC_EN == (CAM_ADC_PWRMGR_DEC_REG & CAM_ADC_ACT_PWR_DEC_EN)) &&
+  99   1             (CAM_ADC_ACT_PWR_DSM_EN == (CAM_ADC_PWRMGR_DSM_REG & CAM_ADC_ACT_PWR_DSM_EN)))
+ 100   1          {
+ 101   2              /* Component is enabled */
+ 102   2              CAM_ADC_backup.enableState = CAM_ADC_ENABLED;
+ 103   2              if((CAM_ADC_DEC_CR_REG & CAM_ADC_DEC_START_CONV) != 0u)
+ 104   2              {   
+ 105   3                  /* Conversion is started */
+ 106   3                  CAM_ADC_backup.enableState |= CAM_ADC_STARTED;
+ 107   3              }
+ 108   2                      
+ 109   2              /* Stop the configuration */
+ 110   2              CAM_ADC_Stop();
+ 111   2          }
+ 112   1          else
+ 113   1          {
+ 114   2              /* Component is disabled */
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 3   
+
+ 115   2              CAM_ADC_backup.enableState = CAM_ADC_DISABLED;
+ 116   2          }
+ 117   1      
+ 118   1          /* Save the user configuration */
+ 119   1          CAM_ADC_SaveConfig();
+ 120   1      }
+ 121          
+ 122          
+ 123          /*******************************************************************************
+ 124          * Function Name: CAM_ADC_Wakeup
+ 125          ********************************************************************************
+ 126          *
+ 127          * Summary:
+ 128          *  Restores the user configuration and enables the power to the block.
+ 129          *
+ 130          * Parameters:
+ 131          *  None
+ 132          *
+ 133          * Return:
+ 134          *  None
+ 135          *
+ 136          * Global variables:
+ 137          *  CAM_ADC_backup:  The structure field 'enableState' is used to
+ 138          *  restore the enable state of block after wakeup from sleep mode.
+ 139          *
+ 140          *******************************************************************************/
+ 141          void CAM_ADC_Wakeup(void) 
+ 142          {
+ 143   1          /* Restore the configuration */
+ 144   1          CAM_ADC_RestoreConfig();
+ 145   1      
+ 146   1          /* Enables the component operation */
+ 147   1          if(CAM_ADC_backup.enableState != CAM_ADC_DISABLED)
+ 148   1          {
+ 149   2              CAM_ADC_Enable();
+ 150   2              if((CAM_ADC_backup.enableState & CAM_ADC_STARTED) != 0u)
+ 151   2              {
+ 152   3                  CAM_ADC_StartConvert();
+ 153   3              }
+ 154   2          } /* Do nothing if component was disable before */
+ 155   1      }
+ 156          
+ 157          
+ 158          /* [] END OF FILE */
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION CAM_ADC_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 48
+0000 904E00            MOV     DPTR,#04E00H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 900000      R     MOV     DPTR,#CAM_ADC_backup+01H
+0008 EF                MOV     A,R7
+0009 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 49
+000A 22                RET     
+             ; FUNCTION CAM_ADC_SaveConfig (END)
+
+             ; FUNCTION CAM_ADC_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 71
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 73
+0000 900000      R     MOV     DPTR,#CAM_ADC_backup+01H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 904E00            MOV     DPTR,#04E00H
+0008 EF                MOV     A,R7
+0009 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+000A 22                RET     
+             ; FUNCTION CAM_ADC_RestoreConfig (END)
+
+             ; FUNCTION CAM_ADC_Sleep (BEGIN)
+                                           ; SOURCE LINE # 95
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 99
+0000 9043AA            MOV     DPTR,#043AAH
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 5401              ANL     A,#01H
+0008 FF                MOV     R7,A
+0009 7E00              MOV     R6,#00H
+000B EF                MOV     A,R7
+000C 6401              XRL     A,#01H
+000E 4E                ORL     A,R6
+000F 7039              JNZ     ?C0003
+0011 9043AA            MOV     DPTR,#043AAH
+0014 E0                MOVX    A,@DPTR
+0015 FF                MOV     R7,A
+0016 EF                MOV     A,R7
+0017 5410              ANL     A,#010H
+0019 FF                MOV     R7,A
+001A 7E00              MOV     R6,#00H
+001C EF                MOV     A,R7
+001D 6410              XRL     A,#010H
+001F 4E                ORL     A,R6
+0020 7028              JNZ     ?C0003
+                                           ; SOURCE LINE # 100
+                                           ; SOURCE LINE # 102
+0022 900000      R     MOV     DPTR,#CAM_ADC_backup
+0025 7401              MOV     A,#01H
+0027 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 5   
+
+                                           ; SOURCE LINE # 103
+0028 904E00            MOV     DPTR,#04E00H
+002B E0                MOVX    A,@DPTR
+002C FF                MOV     R7,A
+002D EF                MOV     A,R7
+002E 5401              ANL     A,#01H
+0030 FF                MOV     R7,A
+0031 7E00              MOV     R6,#00H
+0033 EF                MOV     A,R7
+0034 4E                ORL     A,R6
+0035 600E              JZ      ?C0004
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 106
+0037 900000      R     MOV     DPTR,#CAM_ADC_backup
+003A E0                MOVX    A,@DPTR
+003B FF                MOV     R7,A
+003C EF                MOV     A,R7
+003D 4402              ORL     A,#02H
+003F FF                MOV     R7,A
+0040 900000      R     MOV     DPTR,#CAM_ADC_backup
+0043 EF                MOV     A,R7
+0044 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 107
+0045         ?C0004:
+                                           ; SOURCE LINE # 110
+0045 120000      E     LCALL   CAM_ADC_Stop
+                                           ; SOURCE LINE # 111
+0048 8005              SJMP    ?C0005
+004A         ?C0003:
+                                           ; SOURCE LINE # 113
+                                           ; SOURCE LINE # 115
+004A 900000      R     MOV     DPTR,#CAM_ADC_backup
+004D E4                CLR     A
+004E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 116
+004F         ?C0005:
+                                           ; SOURCE LINE # 119
+004F 120000      R     LCALL   CAM_ADC_SaveConfig
+                                           ; SOURCE LINE # 120
+0052 22                RET     
+             ; FUNCTION CAM_ADC_Sleep (END)
+
+             ; FUNCTION CAM_ADC_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 141
+                                           ; SOURCE LINE # 142
+                                           ; SOURCE LINE # 144
+0000 120000      R     LCALL   CAM_ADC_RestoreConfig
+                                           ; SOURCE LINE # 147
+0003 900000      R     MOV     DPTR,#CAM_ADC_backup
+0006 E0                MOVX    A,@DPTR
+0007 FF                MOV     R7,A
+0008 EF                MOV     A,R7
+0009 6015              JZ      ?C0009
+                                           ; SOURCE LINE # 148
+                                           ; SOURCE LINE # 149
+000B 120000      E     LCALL   CAM_ADC_Enable
+                                           ; SOURCE LINE # 150
+000E 900000      R     MOV     DPTR,#CAM_ADC_backup
+0011 E0                MOVX    A,@DPTR
+0012 FF                MOV     R7,A
+0013 EF                MOV     A,R7
+0014 5402              ANL     A,#02H
+C51 COMPILER V9.51   CAM_ADC_PM                                                            03/14/2015 18:50:00 PAGE 6   
+
+0016 FF                MOV     R7,A
+0017 7E00              MOV     R6,#00H
+0019 EF                MOV     A,R7
+001A 4E                ORL     A,R6
+001B 6003              JZ      ?C0009
+                                           ; SOURCE LINE # 151
+                                           ; SOURCE LINE # 152
+001D 120000      E     LCALL   CAM_ADC_StartConvert
+                                           ; SOURCE LINE # 153
+                                           ; SOURCE LINE # 154
+                                           ; SOURCE LINE # 155
+0020         ?C0009:
+0020 22                RET     
+             ; FUNCTION CAM_ADC_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

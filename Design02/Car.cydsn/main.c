@@ -16,6 +16,7 @@ int gspeedMeasurements = 0;
 double gcurSpeed = 0;
 double speedCounts[5];
 double gki_error = 0;
+int glinepos = 0;
 
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
@@ -42,6 +43,42 @@ double getCurSpeed(){
     current_Speed = (double)INCH_PER_MAGNET/current_Speed/12;
     // return (double)current_Speed;
     return current_Speed;
+}
+
+double readLine() {
+    return CAM_ADC_GetResult16();
+}
+
+CY_ISR(CAM_READ_inter) {
+    LCD_ClearDisplay();
+    LCD_PrintString("read 100");
+    CAM_COUNTER_Stop();
+    CAM_LINE_CLK_Start();    
+}
+
+CY_ISR(VSYNC_inter) {
+    LCD_ClearDisplay();
+    LCD_PrintString("start one");
+    CAM_COUNTER_Start();
+    CAM_LINE_CLK_Start();
+}
+
+CY_ISR(CAM_LINE_inter) {
+    char buffer[15];
+    double lineval = 0;
+    lineval = CAM_ADC_GetResult16();
+    if (lineval > 0) {
+        LCD_ClearDisplay();
+        //sprintf(buffer, "%f", lineval);
+        //LCD_PrintString(buffer);
+        LCD_PrintString("HELLLOOOO");
+        LCD_PrintNumber(glinepos);
+    }
+    glinepos = glinepos + 1;
+    if (COM_SYNC_OUT_PIN_Read == 0) {
+        CAM_LINE_CLK_Stop();
+        glinepos = 0;
+    }
 }
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
@@ -117,13 +154,22 @@ int main()
     HE_ISR_Start();
     HE_ISR_SetVector(HE_inter);
     
+    VSYNC_ISR_Start();
+    VSYNC_ISR_SetVector(VSYNC_inter);
+    
+    CAM_READ_ISR_Start();
+    CAM_READ_ISR_SetVector(CAM_READ_inter);
+    
+    CAM_LINE_ISR_Start();
+    CAM_LINE_ISR_SetVector(CAM_LINE_inter);
+    
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
     
-    STEERING_PWM_Start();
-    STEERING_PWM_CLK_Start();
-    //left max 3600; center 4560; right max 5800
-    STEERING_PWM_WriteCompare(3600);
+//    STEERING_PWM_Start();
+//    STEERING_PWM_CLK_Start();
+//    //left max 3600; center 4560; right max 5800
+//    STEERING_PWM_WriteCompare(3600);
     
     LCD_Start();
     LCD_Position(0,0);

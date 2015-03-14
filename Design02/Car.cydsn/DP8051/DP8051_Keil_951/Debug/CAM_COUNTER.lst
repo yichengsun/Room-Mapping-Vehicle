@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 1   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CAM_COUNTER
@@ -62,7 +62,7 @@ line level    source
                           CAM_COUNTER_CONTROL &= CAM_COUNTER_CTRL_ENABLE;
                           
                           /* Clear the mode bits for continuous run mode */
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 2   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 2   
 
                           #if (CY_PSOC5A)
                               CAM_COUNTER_CONTROL2 &= ((uint8)(~CAM_COUNTER_CTRL_MODE_MASK));
@@ -126,7 +126,7 @@ line level    source
  112   1                  
  113   1                  /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
  114   1                  /* Enter Critical Region*/
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 3   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 3   
 
  115   1                  CAM_COUNTER_interruptState = CyEnterCriticalSection();
  116   1                  
@@ -190,7 +190,7 @@ line level    source
  174          *  CAM_COUNTER_initVar: Is modified when this function is called for the  
  175          *   first time. Is used to ensure that initialization happens only once.
  176          *
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 4   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 4   
 
  177          *******************************************************************************/
  178          void CAM_COUNTER_Start(void) 
@@ -254,7 +254,7 @@ line level    source
  236          *******************************************************************************/
  237          void CAM_COUNTER_SetInterruptMode(uint8 interruptsMask) 
  238          {
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 5   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 5   
 
  239   1          CAM_COUNTER_STATUS_MASK = interruptsMask;
  240   1      }
@@ -318,7 +318,7 @@ line level    source
  298          *  void
  299          *
  300          * Return: 
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 6   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 6   
 
  301          *  (uint8) The contents of the control register
  302          *
@@ -382,7 +382,7 @@ line level    source
  360   1          /* Must first do a software capture to be able to read the counter */
  361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
  362   1          #if(CAM_COUNTER_UsingFixedFunction)
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 7   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 7   
 
                               (void)CY_GET_REG16(CAM_COUNTER_COUNTER_LSB_PTR);
                       #else
@@ -446,7 +446,7 @@ line level    source
  422   1      }
  423          
  424          
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 8   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 8   
 
  425          /*******************************************************************************
  426          * Function Name: CAM_COUNTER_ReadPeriod
@@ -510,7 +510,7 @@ line level    source
  484          *
  485          * Return: 
  486          *  (uint8) Present compare value.
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 9   
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 9   
 
  487          *
  488          *******************************************************************************/
@@ -574,7 +574,7 @@ line level    source
  546          * Function Name: CAM_COUNTER_ClearFIFO
  547          ********************************************************************************
  548          * Summary:
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 10  
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 10  
 
  549          *   This function clears all capture data from the capture FIFO
  550          *
@@ -599,7 +599,7 @@ line level    source
  569          
  570          /* [] END OF FILE */
  571          
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 11  
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -621,68 +621,65 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 900000      R     MOV     DPTR,#ctrl
 0011 E0                MOVX    A,@DPTR
 0012 FF                MOV     R7,A
-0013 EF                MOV     A,R7
-0014 4401              ORL     A,#01H
-0016 FF                MOV     R7,A
-0017 906471            MOV     DPTR,#06471H
-001A EF                MOV     A,R7
-001B F0                MOVX    @DPTR,A
+0013 906471            MOV     DPTR,#06471H
+0016 EF                MOV     A,R7
+0017 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 83
-001C 906471            MOV     DPTR,#06471H
-001F E0                MOVX    A,@DPTR
+0018 906471            MOV     DPTR,#06471H
+001B E0                MOVX    A,@DPTR
+001C FF                MOV     R7,A
+001D EF                MOV     A,R7
+001E 54FC              ANL     A,#0FCH
 0020 FF                MOV     R7,A
-0021 EF                MOV     A,R7
-0022 54FC              ANL     A,#0FCH
-0024 FF                MOV     R7,A
-0025 900000      R     MOV     DPTR,#ctrl
-0028 EF                MOV     A,R7
-0029 F0                MOVX    @DPTR,A
+0021 900000      R     MOV     DPTR,#ctrl
+0024 EF                MOV     A,R7
+0025 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 88
-002A 900000      R     MOV     DPTR,#ctrl
-002D E0                MOVX    A,@DPTR
-002E FF                MOV     R7,A
-002F 906471            MOV     DPTR,#06471H
-0032 EF                MOV     A,R7
-0033 F0                MOVX    @DPTR,A
+0026 900000      R     MOV     DPTR,#ctrl
+0029 E0                MOVX    A,@DPTR
+002A FF                MOV     R7,A
+002B 906471            MOV     DPTR,#06471H
+002E EF                MOV     A,R7
+002F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 96
-0034 120000      R     LCALL   CAM_COUNTER_ClearFIFO
+0030 120000      R     LCALL   CAM_COUNTER_ClearFIFO
                                            ; SOURCE LINE # 100
-0037 7FFF              MOV     R7,#0FFH
-0039 120000      R     LCALL   _CAM_COUNTER_WritePeriod
+0033 7FFF              MOV     R7,#0FFH
+0035 120000      R     LCALL   _CAM_COUNTER_WritePeriod
                                            ; SOURCE LINE # 102
-003C 7F00              MOV     R7,#00H
-003E 120000      R     LCALL   _CAM_COUNTER_WriteCounter
+0038 7F00              MOV     R7,#00H
+003A 120000      R     LCALL   _CAM_COUNTER_WriteCounter
                                            ; SOURCE LINE # 104
-0041 7F02              MOV     R7,#02H
-0043 120000      R     LCALL   _CAM_COUNTER_SetInterruptMode
+003D 7F00              MOV     R7,#00H
+003F 120000      R     LCALL   _CAM_COUNTER_SetInterruptMode
                                            ; SOURCE LINE # 108
-0046 120000      R     LCALL   CAM_COUNTER_ReadStatusRegister
+0042 120000      R     LCALL   CAM_COUNTER_ReadStatusRegister
                                            ; SOURCE LINE # 110
-0049 7F80              MOV     R7,#080H
-004B 120000      R     LCALL   _CAM_COUNTER_WriteCompare
+0045 7F64              MOV     R7,#064H
+0047 120000      R     LCALL   _CAM_COUNTER_WriteCompare
                                            ; SOURCE LINE # 115
-004E 120000      E     LCALL   CyEnterCriticalSection
-0051 900000      R     MOV     DPTR,#CAM_COUNTER_interruptState
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 12  
-
-0054 EF                MOV     A,R7
-0055 F0                MOVX    @DPTR,A
+004A 120000      E     LCALL   CyEnterCriticalSection
+004D 900000      R     MOV     DPTR,#CAM_COUNTER_interruptState
+0050 EF                MOV     A,R7
+0051 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 117
-0056 906491            MOV     DPTR,#06491H
-0059 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 12  
+
+0052 906491            MOV     DPTR,#06491H
+0055 E0                MOVX    A,@DPTR
+0056 FF                MOV     R7,A
+0057 EF                MOV     A,R7
+0058 4410              ORL     A,#010H
 005A FF                MOV     R7,A
 005B EF                MOV     A,R7
-005C 4410              ORL     A,#010H
-005E FF                MOV     R7,A
-005F EF                MOV     A,R7
-0060 F0                MOVX    @DPTR,A
+005C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 120
-0061 900000      R     MOV     DPTR,#CAM_COUNTER_interruptState
-0064 E0                MOVX    A,@DPTR
-0065 FF                MOV     R7,A
-0066 120000      E     LCALL   _CyExitCriticalSection
+005D 900000      R     MOV     DPTR,#CAM_COUNTER_interruptState
+0060 E0                MOVX    A,@DPTR
+0061 FF                MOV     R7,A
+0062 120000      E     LCALL   _CyExitCriticalSection
                                            ; SOURCE LINE # 123
-0069 22                RET     
+0065 22                RET     
              ; FUNCTION CAM_COUNTER_Init (END)
 
              ; FUNCTION CAM_COUNTER_Enable (BEGIN)
@@ -727,11 +724,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION CAM_COUNTER_Stop (BEGIN)
                                            ; SOURCE LINE # 208
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 13  
-
                                            ; SOURCE LINE # 209
                                            ; SOURCE LINE # 212
 0000 906471            MOV     DPTR,#06471H
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 13  
+
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
@@ -791,11 +788,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 305
                                            ; SOURCE LINE # 306
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 14  
-
 0005 900000      R     MOV     DPTR,#control
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 14  
+
 000A 906471            MOV     DPTR,#06471H
 000D EF                MOV     A,R7
 000E F0                MOVX    @DPTR,A
@@ -855,11 +852,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 416
                                            ; SOURCE LINE # 420
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 15  
-
 0005 900000      R     MOV     DPTR,#period
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 15  
+
 000A 906421            MOV     DPTR,#06421H
 000D EF                MOV     A,R7
 000E F0                MOVX    @DPTR,A
@@ -919,11 +916,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 562
                                            ; SOURCE LINE # 563
 0007 120000      R     LCALL   CAM_COUNTER_ReadCapture
-C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 11:24:38 PAGE 16  
-
                                            ; SOURCE LINE # 564
 000A 80F4              SJMP    ?C0017
                                            ; SOURCE LINE # 566
+C51 COMPILER V9.51   CAM_COUNTER                                                           03/14/2015 18:49:59 PAGE 16  
+
 000C         ?C0019:
 000C 22                RET     
              ; FUNCTION CAM_COUNTER_ClearFIFO (END)
@@ -931,7 +928,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    285    ----
+   CODE SIZE        =    281    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1       7
    PDATA SIZE       =   ----    ----
