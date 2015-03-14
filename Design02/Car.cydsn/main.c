@@ -105,7 +105,7 @@ CY_ISR(HE_inter) {
         //sprintf(buffer, "%f", duty_cycle);
         LCD_PrintNumber(duty_cycle);
         
-        PWM_WriteCompare(duty_cycle);
+        MOTOR_PWM_WriteCompare(duty_cycle);
     }
 }
     
@@ -113,17 +113,22 @@ int main()
 {
     //initialize all modules
     CYGlobalIntEnable;  
-    LCD_Start();
-    LCD_Position(0,0);
-    LCD_PrintString("ELE302 Carlab");
-    
     HE_TIMER_Start();
     HE_ISR_Start();
     HE_ISR_SetVector(HE_inter);
     
-    PWM_Start();
-    PWM_CLK_Start();
-        
+    MOTOR_PWM_Start();
+    MOTOR_PWM_CLK_Start();
+    
+    STEERING_PWM_Start();
+    STEERING_PWM_CLK_Start();
+    //left max 3600; center 4560; right max 5800
+    STEERING_PWM_WriteCompare(3600);
+    
+    LCD_Start();
+    LCD_Position(0,0);
+    LCD_PrintString("ELE302 Carlab");
+ 
     for(;;)
     {
     }

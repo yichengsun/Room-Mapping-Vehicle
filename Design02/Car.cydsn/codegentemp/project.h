@@ -22,10 +22,10 @@
 #include <HE_IN_PIN.h>
 #include <HE_IN_PIN_aliases.h>
 #include <LCD.h>
-#include <PWM.h>
+#include <MOTOR_PWM.h>
 #include <PWM_OUT_PIN.h>
 #include <PWM_OUT_PIN_aliases.h>
-#include <PWM_CLK.h>
+#include <MOTOR_PWM_CLK.h>
 #include <HE_ISR.h>
 #include <HE_TIMER_CLK.h>
 #include <HE_TIMER.h>
@@ -35,7 +35,13 @@
 #include <COM_VID_IN_PIN_aliases.h>
 #include <VERT_SYNC_OUT_IN.h>
 #include <VERT_SYNC_OUT_IN_aliases.h>
-#include <CAM_TIIMER.h>
+#include <CAM_READ_ISR.h>
+#include <CAM_COUNTER.h>
+#include <CAM_TIMER_ISR.h>
+#include <STEERING_PWM_OUT_PIN.h>
+#include <STEERING_PWM_OUT_PIN_aliases.h>
+#include <STEERING_PWM.h>
+#include <STEERING_PWM_CLK.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   51   1          double time_diff_s = 0;
   52   1          double error = 0;
   53   1          double PID_speed = 0;
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 2   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 2   
 
   54   1          char buffer[15];
   55   1          double duty_cycle_buffer = 0;
@@ -118,7 +118,7 @@ line level    source
  105   2              //sprintf(buffer, "%f", duty_cycle);
  106   2              LCD_PrintNumber(duty_cycle);
  107   2              
- 108   2              PWM_WriteCompare(duty_cycle);
+ 108   2              MOTOR_PWM_WriteCompare(duty_cycle);
  109   2          }
  110   1      }
  111              
@@ -126,25 +126,30 @@ line level    source
  113          {
  114   1          //initialize all modules
  115   1          CYGlobalIntEnable;  
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 3   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 3   
 
- 116   1          LCD_Start();
- 117   1          LCD_Position(0,0);
- 118   1          LCD_PrintString("ELE302 Carlab");
+ 116   1          HE_TIMER_Start();
+ 117   1          HE_ISR_Start();
+ 118   1          HE_ISR_SetVector(HE_inter);
  119   1          
- 120   1          HE_TIMER_Start();
- 121   1          HE_ISR_Start();
- 122   1          HE_ISR_SetVector(HE_inter);
- 123   1          
- 124   1          PWM_Start();
- 125   1          PWM_CLK_Start();
- 126   1              
- 127   1          for(;;)
- 128   1          {
- 129   2          }
- 130   1      }
- 131          /* [] END OF FILE */
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 4   
+ 120   1          MOTOR_PWM_Start();
+ 121   1          MOTOR_PWM_CLK_Start();
+ 122   1          
+ 123   1          STEERING_PWM_Start();
+ 124   1          STEERING_PWM_CLK_Start();
+ 125   1          //left max 3200; center 4560; right max 5800
+ 126   1          STEERING_PWM_WriteCompare(3600);
+ 127   1          
+ 128   1          LCD_Start();
+ 129   1          LCD_Position(0,0);
+ 130   1          LCD_PrintString("ELE302 Carlab");
+ 131   1       
+ 132   1          for(;;)
+ 133   1          {
+ 134   2          }
+ 135   1      }
+ 136          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -208,7 +213,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0057 7F00              MOV     R7,#00H
 0059 7E00              MOV     R6,#00H
 005B 7D00              MOV     R5,#00H
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 5   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 5   
 
 005D 7C00              MOV     R4,#00H
 005F 900000      R     MOV     DPTR,#i
@@ -272,7 +277,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D8 E4                CLR     A
 00D9 120000      E     LCALL   ?C?FCASTL
 00DC A804              MOV     R0,AR4
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 6   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 6   
 
 00DE A905              MOV     R1,AR5
 00E0 AA06              MOV     R2,AR6
@@ -336,7 +341,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0065 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 44
 0068 900000      R     MOV     DPTR,#current_Speed
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 7   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 7   
 
 006B 120000      E     LCALL   ?C?LLDXDATA
                                            ; SOURCE LINE # 45
@@ -400,7 +405,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0067 7D00              MOV     R5,#00H
 0069 7C00              MOV     R4,#00H
 006B 900000      R     MOV     DPTR,#PID_speed
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 8   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 8   
 
 006E 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 55
@@ -464,7 +469,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D1 C004              PUSH    AR4
 00D3 C005              PUSH    AR5
 00D5 C006              PUSH    AR6
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 9   
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 9   
 
 00D7 C007              PUSH    AR7
 00D9 120000      E     LCALL   HE_TIMER_ReadPeriod
@@ -528,7 +533,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0154 ED                MOV     A,R5
 0155 AE04              MOV     R6,AR4
 0157 7802              MOV     R0,#02H
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 10  
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 10  
 
 0159         ?C0017:
 0159 C3                CLR     C
@@ -592,7 +597,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01D1 D007              POP     AR7
 01D3 D006              POP     AR6
 01D5 D005              POP     AR5
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 11  
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 11  
 
 01D7 D004              POP     AR4
 01D9 120000      E     LCALL   ?C?FPADD
@@ -656,7 +661,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0252 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 87
 0255 7F01              MOV     R7,#01H
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 12  
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 12  
 
 0257 120000      E     LCALL   _LCD_WriteControl
                                            ; SOURCE LINE # 88
@@ -720,7 +725,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02D8 D001              POP     AR1
 02DA D002              POP     AR2
 02DC D003              POP     AR3
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 13  
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 13  
 
 02DE 120000      E     LCALL   _sprintf
                                            ; SOURCE LINE # 93
@@ -784,7 +789,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 034C FE                MOV     R6,A
 034D A3                INC     DPTR
 034E E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 14  
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 14  
 
 034F FF                MOV     R7,A
 0350 E4                CLR     A
@@ -798,7 +803,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 035B A3                INC     DPTR
 035C E0                MOVX    A,@DPTR
 035D FF                MOV     R7,A
-035E 120000      E     LCALL   _PWM_WriteCompare
+035E 120000      E     LCALL   _MOTOR_PWM_WriteCompare
                                            ; SOURCE LINE # 109
                                            ; SOURCE LINE # 110
 0361         ?C0013:
@@ -831,42 +836,50 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 74FD              MOV     A,#0FDH
 0007 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 116
-0008 120000      E     LCALL   LCD_Start
+0008 120000      E     LCALL   HE_TIMER_Start
                                            ; SOURCE LINE # 117
-000B 7D00              MOV     R5,#00H
-000D 7F00              MOV     R7,#00H
-000F 120000      E     LCALL   _LCD_Position
+000B 120000      E     LCALL   HE_ISR_Start
                                            ; SOURCE LINE # 118
-0012 7BFF              MOV     R3,#0FFH
-0014 7A00        R     MOV     R2,#HIGH ?SC_6
-0016 7900        R     MOV     R1,#LOW ?SC_6
-0018 120000      E     LCALL   _LCD_PrintString
+000E 7E00        R     MOV     R6,#HIGH HE_inter
+0010 7F00        R     MOV     R7,#LOW HE_inter
+0012 120000      E     LCALL   _HE_ISR_SetVector
                                            ; SOURCE LINE # 120
-001B 120000      E     LCALL   HE_TIMER_Start
+0015 120000      E     LCALL   MOTOR_PWM_Start
                                            ; SOURCE LINE # 121
-001E 120000      E     LCALL   HE_ISR_Start
-                                           ; SOURCE LINE # 122
-0021 7E00        R     MOV     R6,#HIGH HE_inter
-0023 7F00        R     MOV     R7,#LOW HE_inter
-C51 COMPILER V9.51   MAIN                                                                  03/13/2015 21:31:27 PAGE 15  
-
-0025 120000      E     LCALL   _HE_ISR_SetVector
+0018 120000      E     LCALL   MOTOR_PWM_CLK_Start
+                                           ; SOURCE LINE # 123
+001B 120000      E     LCALL   STEERING_PWM_Start
                                            ; SOURCE LINE # 124
-0028 120000      E     LCALL   PWM_Start
-                                           ; SOURCE LINE # 125
-002B 120000      E     LCALL   PWM_CLK_Start
-                                           ; SOURCE LINE # 127
-002E         ?C0014:
+001E 120000      E     LCALL   STEERING_PWM_CLK_Start
+                                           ; SOURCE LINE # 126
+0021 7F10              MOV     R7,#010H
+C51 COMPILER V9.51   MAIN                                                                  03/14/2015 11:42:14 PAGE 15  
+
+0023 7E0E              MOV     R6,#0EH
+0025 120000      E     LCALL   _STEERING_PWM_WriteCompare
                                            ; SOURCE LINE # 128
+0028 120000      E     LCALL   LCD_Start
                                            ; SOURCE LINE # 129
-002E 80FE              SJMP    ?C0014
-0030 22                RET     
+002B 7D00              MOV     R5,#00H
+002D 7F00              MOV     R7,#00H
+002F 120000      E     LCALL   _LCD_Position
+                                           ; SOURCE LINE # 130
+0032 7BFF              MOV     R3,#0FFH
+0034 7A00        R     MOV     R2,#HIGH ?SC_6
+0036 7900        R     MOV     R1,#LOW ?SC_6
+0038 120000      E     LCALL   _LCD_PrintString
+                                           ; SOURCE LINE # 132
+003B         ?C0014:
+                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 134
+003B 80FE              SJMP    ?C0014
+003D 22                RET     
              ; FUNCTION main (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1298    ----
+   CODE SIZE        =   1311    ----
    CONSTANT SIZE    =     20    ----
    XDATA SIZE       =     36      60
    PDATA SIZE       =   ----    ----

@@ -1,52 +1,12 @@
---------------- Build Started: 03/13/2015 21:31:07 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
-cydsfit.exe -.appdatapath "C:\Users\Yicheng\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.cyprj -d CY8C3866AXI-040 -s C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Generated_Source\PSoC3 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=BE
-Elaborating Design...
-ADD: sdb.M0065: information: Analog terminal "COM_VID_IN_PIN.analog_0" on TopDesign is unconnected.
- * C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\TopDesign\TopDesign.cysch (Signal: Net_3106)
- * C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\TopDesign\TopDesign.cysch (Shape_80.1)
-HDL Generation ...
-Synthesis ...
-Place and Route ...
-Tech mapping ...
-Analog Placement ...
-Analog Routing ...
-Analog Code Generation ...
-Digital Placement ...
-Digital Routing ...
-Bitstream Generation ...
-Static timing analysis ...
-API Generation ...
-Dependency Generation ...
-Clean Temporary Files ...
+--------------- Build Started: 03/14/2015 11:42:14 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
+The code generation step is up to date.
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/main.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
-c51.exe .\Generated_Source\PSoC3\cyfitter_cfg.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/cyfitter_cfg.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj)
-c51.exe .\Generated_Source\PSoC3\HE_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_ISR.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj)
-Ax51.exe .\Generated_Source\PSoC3\CyBootAsmKeil.a51 CASE EP "INCDIR(., .\Generated_Source\PSoC3)" DB MACRO DF(DEBUG) NOCO PR(.\DP8051\DP8051_Keil_951\Debug/CyBootAsmKeil.lst) OJ(.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj)
-c51.exe .\Generated_Source\PSoC3\CyDmac.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CyDmac.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj)
-c51.exe .\Generated_Source\PSoC3\CyFlash.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CyFlash.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj)
-c51.exe .\Generated_Source\PSoC3\CyLib.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CyLib.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CyLib.obj)
-c51.exe .\Generated_Source\PSoC3\cyPm.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/cyPm.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\cyPm.obj)
-c51.exe .\Generated_Source\PSoC3\CySpc.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CySpc.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CySpc.obj)
-c51.exe .\Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/cyutils.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\cyutils.obj)
-Ax51.exe .\Generated_Source\PSoC3\KeilStart.a51 CASE EP "INCDIR(., .\Generated_Source\PSoC3)" DB MACRO DF(DEBUG) NOCO PR(.\DP8051\DP8051_Keil_951\Debug/KeilStart.lst) OJ(.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj)
-c51.exe .\Generated_Source\PSoC3\LCD.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/LCD.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\LCD.obj)
-c51.exe .\Generated_Source\PSoC3\LCD_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/LCD_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj)
-c51.exe .\Generated_Source\PSoC3\LCD_LCDPort.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/LCD_LCDPort.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj)
-c51.exe .\Generated_Source\PSoC3\HE_IN_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_IN_PIN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj)
-c51.exe .\Generated_Source\PSoC3\PWM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/PWM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\PWM.obj)
-c51.exe .\Generated_Source\PSoC3\PWM_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/PWM_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\PWM_PM.obj)
-c51.exe .\Generated_Source\PSoC3\PWM_OUT_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/PWM_OUT_PIN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj)
-c51.exe .\Generated_Source\PSoC3\HE_TIMER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_TIMER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj)
-c51.exe .\Generated_Source\PSoC3\HE_TIMER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_TIMER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj)
-c51.exe .\Generated_Source\PSoC3\HE_TIMER_CLK.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_TIMER_CLK.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj)
-c51.exe .\Generated_Source\PSoC3\PWM_CLK.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/PWM_CLK.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\PWM_CLK.obj)
-c51.exe .\Generated_Source\PSoC3\COM_SYNC_OUT_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/COM_SYNC_OUT_PIN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\COM_SYNC_OUT_PIN.obj)
-c51.exe .\Generated_Source\PSoC3\COM_VID_IN_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/COM_VID_IN_PIN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\COM_VID_IN_PIN.obj)
-c51.exe .\Generated_Source\PSoC3\VERT_SYNC_OUT_IN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VERT_SYNC_OUT_IN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_TIIMER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_TIIMER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_TIIMER.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_TIIMER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_TIIMER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_TIIMER_PM.obj)
-LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_VID_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_TIIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_TIIMER_PM.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
+LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_VID_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_READ_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_TIMER_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_CLK.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\Debug\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Debug\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Debug\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _MOTOR_PWM_WRITECOMPARE/MOTOR_PWM
+    CALLER1: HE_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
 *** WARNING L15: MULTIPLE CALL TO FUNCTION
     NAME:    _LCD_WRCNTRLNIB/LCD
     CALLER1: HE_INTER/MAIN
@@ -75,14 +35,10 @@ LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\De
     NAME:    _LCD_WRDATNIB/LCD
     CALLER1: HE_INTER/MAIN
     CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _PWM_WRITECOMPARE/PWM
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-Program Size: data=20.1 xdata=228 const=50 code=8047
+Program Size: data=20.1 xdata=229 const=45 code=8289
 OHx51.exe Car.omf HEXFILE(Car.ihx)
 c8051-elf-omf2elf.exe Car.omf Car.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Debug\Car.hex -f .\DP8051\DP8051_Keil_951\Debug\Car.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 8097 of 65536 bytes (12.4 %).
-SRAM used: 228 of 8192 bytes (2.8 %).
---------------- Build Succeeded: 03/13/2015 21:31:36 ---------------
+Flash used: 8334 of 65536 bytes (12.7 %).
+SRAM used: 229 of 8192 bytes (2.8 %).
+--------------- Build Succeeded: 03/14/2015 11:42:17 ---------------

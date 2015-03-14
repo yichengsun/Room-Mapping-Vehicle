@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 1   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYFITTER_CFG
@@ -62,7 +62,7 @@ line level    source
   50          #define CYCLOCKSTART_PLL_ERROR   3u
   51          
   52          #ifdef CY_NEED_CYCLOCKSTARTUPERROR
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 2   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 2   
 
   53          /*******************************************************************************
   54          * Function Name: CyClockStartupError
@@ -103,13 +103,13 @@ line level    source
   89          
   90          #define cfg_byte_table ((const void CYFAR *)0x080000u)
   91          /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-  92          #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080200u)
+  92          #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080340u)
   93          
   94          /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
-  95          #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x00080208u)
+  95          #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x00080348u)
   96          
   97          /* IOPINS0_4 Address: CYREG_PRT4_DM0 Size (bytes): 8 */
-  98          #define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080210u)
+  98          #define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080350u)
   99          
  100          
  101          /*******************************************************************************
@@ -126,7 +126,7 @@ line level    source
  112          *
  113          * Return:
  114          *  void
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 3   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 3   
 
  115          *
  116          *******************************************************************************/
@@ -140,214 +140,215 @@ line level    source
  124   1              /* Configure Digital Clocks based on settings from Clock DWR */
  125   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0001u);
  126   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG0_CFG0 + 0x2u), 0x18u);
- 127   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0017u);
+ 127   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0007u);
  128   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG1_CFG0 + 0x2u), 0x18u);
- 129   1      
- 130   1              /* Configure ILO based on settings from Clock DWR */
- 131   1              CY_SET_REG8((void CYXDATA *)(CYREG_SLOWCLK_ILO_CR0), 0x02u);
- 132   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_CR), 0x08u);
- 133   1      
- 134   1              /* Configure IMO based on settings from Clock DWR */
- 135   1              CY_SET_REG8((void CYXDATA *)(CYREG_FASTCLK_IMO_CR), 0x03u);
- 136   1              CY_SET_REG8((void CYXDATA *)(CYREG_IMO_TR1), (CY_GET_XTND_REG8((void CYFAR *)CYREG_FLSHID_CUST_TABLES_IMO
+ 129   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x0017u);
+ 130   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG2_CFG0 + 0x2u), 0x18u);
+ 131   1      
+ 132   1              /* Configure ILO based on settings from Clock DWR */
+ 133   1              CY_SET_REG8((void CYXDATA *)(CYREG_SLOWCLK_ILO_CR0), 0x02u);
+ 134   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_CR), 0x08u);
+ 135   1      
+ 136   1              /* Configure IMO based on settings from Clock DWR */
+ 137   1              CY_SET_REG8((void CYXDATA *)(CYREG_FASTCLK_IMO_CR), 0x03u);
+ 138   1              CY_SET_REG8((void CYXDATA *)(CYREG_IMO_TR1), (CY_GET_XTND_REG8((void CYFAR *)CYREG_FLSHID_CUST_TABLES_IMO
              -_3MHZ)));
- 137   1      
- 138   1              /* Configure PLL based on settings from Clock DWR */
- 139   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_FASTCLK_PLL_P), 0x0008u);
- 140   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_FASTCLK_PLL_CFG0), 0x1251u);
- 141   1              /* Wait up to 250us for the PLL to lock */
- 142   1              pllLock = 0u;
- 143   1              for (timeout = 250u / 10u; (timeout > 0u) && (pllLock != 0x03u); timeout--)
- 144   1              { 
- 145   2                      pllLock = 0x03u & ((uint8)((uint8)pllLock << 1) | ((CY_GET_REG8((void CYXDATA *)CYREG_FASTCLK_PLL_SR) & 
+ 139   1      
+ 140   1              /* Configure PLL based on settings from Clock DWR */
+ 141   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_FASTCLK_PLL_P), 0x0008u);
+ 142   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_FASTCLK_PLL_CFG0), 0x1251u);
+ 143   1              /* Wait up to 250us for the PLL to lock */
+ 144   1              pllLock = 0u;
+ 145   1              for (timeout = 250u / 10u; (timeout > 0u) && (pllLock != 0x03u); timeout--)
+ 146   1              { 
+ 147   2                      pllLock = 0x03u & ((uint8)((uint8)pllLock << 1) | ((CY_GET_REG8((void CYXDATA *)CYREG_FASTCLK_PLL_SR) & 
              -0x01u) >> 0));
- 146   2                      CyDelayCycles(10u * 48u); /* Delay 10us based on 48MHz clock */
- 147   2              }
- 148   1              /* If we ran out of time the PLL didn't lock so go to the error function */
- 149   1              if (timeout == 0u)
- 150   1              {
- 151   2                      CyClockStartupError(CYCLOCKSTART_PLL_ERROR);
- 152   2              }
- 153   1      
- 154   1              /* Configure Bus/Master Clock based on settings from Clock DWR */
- 155   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_MSTR0), 0x0100u);
- 156   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_MSTR0), 0x07u);
- 157   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_BCFG0), 0x00u);
- 158   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_BCFG2), 0x48u);
- 159   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_MSTR0), 0x00u);
- 160   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_LD), 0x02u);
- 161   1      
- 162   1              CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x03u
+ 148   2                      CyDelayCycles(10u * 48u); /* Delay 10us based on 48MHz clock */
+ 149   2              }
+ 150   1              /* If we ran out of time the PLL didn't lock so go to the error function */
+ 151   1              if (timeout == 0u)
+ 152   1              {
+ 153   2                      CyClockStartupError(CYCLOCKSTART_PLL_ERROR);
+ 154   2              }
+ 155   1      
+ 156   1              /* Configure Bus/Master Clock based on settings from Clock DWR */
+ 157   1              CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_MSTR0), 0x0100u);
+ 158   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_MSTR0), 0x07u);
+ 159   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_BCFG0), 0x00u);
+ 160   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_BCFG2), 0x48u);
+ 161   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_MSTR0), 0x00u);
+ 162   1              CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_LD), 0x02u);
+ 163   1      
+ 164   1              CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x07u
              -)));
- 163   1      }
- 164          
- 165          
- 166          /* Analog API Functions */
+ 165   1      }
+ 166          
  167          
- 168          
- 169          /*******************************************************************************
- 170          * Function Name: AnalogSetDefault
- 171          ********************************************************************************
- 172          *
- 173          * Summary:
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 4   
+ 168          /* Analog API Functions */
+ 169          
+ 170          
+ 171          /*******************************************************************************
+ 172          * Function Name: AnalogSetDefault
+ 173          ********************************************************************************
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 4   
 
- 174          *  Sets up the analog portions of the chip to default values based on chip
- 175          *  configuration options from the project.
- 176          *
- 177          * Parameters:
- 178          *  void
- 179          *
- 180          * Return:
- 181          *  void
- 182          *
- 183          *******************************************************************************/
- 184          static void AnalogSetDefault(void);
- 185          static void AnalogSetDefault(void)
- 186          {
- 187   1              uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
- 188   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
- 189   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
- 190   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
- 191   1      }
- 192          
- 193          
- 194          /*******************************************************************************
- 195          * Function Name: SetAnalogRoutingPumps
- 196          ********************************************************************************
- 197          *
- 198          * Summary:
- 199          * Enables or disables the analog pumps feeding analog routing switches.
- 200          * Intended to be called at startup, based on the Vdda system configuration;
- 201          * may be called during operation when the user informs us that the Vdda voltage
- 202          * crossed the pump threshold.
- 203          *
- 204          * Parameters:
- 205          *  enabled - 1 to enable the pumps, 0 to disable the pumps
- 206          *
- 207          * Return:
- 208          *  void
- 209          *
- 210          *******************************************************************************/
- 211          void SetAnalogRoutingPumps(uint8 enabled)
- 212          {
- 213   1              uint8 regValue = CY_GET_REG8((void CYXDATA *)CYREG_PUMP_CR0);
- 214   1              if (enabled != 0u)
- 215   1              {
- 216   2                      regValue |= 0x00u;
- 217   2              }
- 218   1              else
- 219   1              {
- 220   2                      regValue &= (uint8)~0x00u;
- 221   2              }
- 222   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, regValue);
- 223   1      }
- 224          
- 225          #define CY_AMUX_UNUSED CYREG_BOOST_SR
+ 174          *
+ 175          * Summary:
+ 176          *  Sets up the analog portions of the chip to default values based on chip
+ 177          *  configuration options from the project.
+ 178          *
+ 179          * Parameters:
+ 180          *  void
+ 181          *
+ 182          * Return:
+ 183          *  void
+ 184          *
+ 185          *******************************************************************************/
+ 186          static void AnalogSetDefault(void);
+ 187          static void AnalogSetDefault(void)
+ 188          {
+ 189   1              uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
+ 190   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
+ 191   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
+ 192   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
+ 193   1      }
+ 194          
+ 195          
+ 196          /*******************************************************************************
+ 197          * Function Name: SetAnalogRoutingPumps
+ 198          ********************************************************************************
+ 199          *
+ 200          * Summary:
+ 201          * Enables or disables the analog pumps feeding analog routing switches.
+ 202          * Intended to be called at startup, based on the Vdda system configuration;
+ 203          * may be called during operation when the user informs us that the Vdda voltage
+ 204          * crossed the pump threshold.
+ 205          *
+ 206          * Parameters:
+ 207          *  enabled - 1 to enable the pumps, 0 to disable the pumps
+ 208          *
+ 209          * Return:
+ 210          *  void
+ 211          *
+ 212          *******************************************************************************/
+ 213          void SetAnalogRoutingPumps(uint8 enabled)
+ 214          {
+ 215   1              uint8 regValue = CY_GET_REG8((void CYXDATA *)CYREG_PUMP_CR0);
+ 216   1              if (enabled != 0u)
+ 217   1              {
+ 218   2                      regValue |= 0x00u;
+ 219   2              }
+ 220   1              else
+ 221   1              {
+ 222   2                      regValue &= (uint8)~0x00u;
+ 223   2              }
+ 224   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, regValue);
+ 225   1      }
  226          
- 227          
- 228          /*******************************************************************************
- 229          * Function Name: cyfitter_cfg
- 230          ********************************************************************************
- 231          * Summary:
- 232          *  This function is called by the start-up code for the selected device. It
- 233          *  performs all of the necessary device configuration based on the design
- 234          *  settings.  This includes settings from the Design Wide Resources (DWR) such
- 235          *  as Clocks and Pins as well as any component configuration that is necessary.
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 5   
+ 227          #define CY_AMUX_UNUSED CYREG_BOOST_SR
+ 228          
+ 229          
+ 230          /*******************************************************************************
+ 231          * Function Name: cyfitter_cfg
+ 232          ********************************************************************************
+ 233          * Summary:
+ 234          *  This function is called by the start-up code for the selected device. It
+ 235          *  performs all of the necessary device configuration based on the design
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 5   
 
- 236          *
- 237          * Parameters:  
- 238          *   void
- 239          *
- 240          * Return:
- 241          *   void
- 242          *
- 243          *******************************************************************************/
- 244          
- 245          void cyfitter_cfg(void)
- 246          {
- 247   1              /* Enable/Disable Debug functionality based on settings from System DWR */
- 248   1              CY_SET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG, (CY_GET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG) | 
+ 236          *  settings.  This includes settings from the Design Wide Resources (DWR) such
+ 237          *  as Clocks and Pins as well as any component configuration that is necessary.
+ 238          *
+ 239          * Parameters:  
+ 240          *   void
+ 241          *
+ 242          * Return:
+ 243          *   void
+ 244          *
+ 245          *******************************************************************************/
+ 246          
+ 247          void cyfitter_cfg(void)
+ 248          {
+ 249   1              /* Enable/Disable Debug functionality based on settings from System DWR */
+ 250   1              CY_SET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG, (CY_GET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG) | 
              -0x05u));
- 249   1      
- 250   1              {
- 251   2      
- 252   2                      CYPACKED typedef struct {
- 253   2                              void CYFAR *address;
- 254   2                              uint16 size;
- 255   2                      } CYPACKED_ATTR cfg_memset_t;
- 256   2      
- 257   2                      static const cfg_memset_t CYCODE cfg_memset_list [] = {
- 258   2                              /* address, size */
- 259   2                              {(void CYFAR *)(CYREG_TMR0_CFG0), 12u},
- 260   2                              {(void CYFAR *)(CYREG_PRT0_DR), 32u},
- 261   2                              {(void CYFAR *)(CYREG_PRT5_DR), 32u},
- 262   2                              {(void CYFAR *)(CYREG_PRT12_DR), 16u},
- 263   2                              {(void CYFAR *)(CYREG_PRT15_DR), 16u},
- 264   2                              {(void CYFAR *)(CYDEV_UCFG_B0_P0_U0_BASE), 4096u},
- 265   2                              {(void CYFAR *)(CYDEV_UCFG_B1_P2_U0_BASE), 2048u},
- 266   2                              {(void CYFAR *)(CYDEV_UCFG_DSI0_BASE), 2560u},
- 267   2                              {(void CYFAR *)(CYDEV_UCFG_DSI12_BASE), 512u},
- 268   2                              {(void CYFAR *)(CYREG_BCTL0_MDCLK_EN), 32u},
- 269   2                      };
- 270   2      
- 271   2                      uint8 CYDATA i;
- 272   2      
- 273   2                      /* Zero out critical memory blocks before beginning configuration */
- 274   2                      for (i = 0u; i < (sizeof(cfg_memset_list)/sizeof(cfg_memset_list[0])); i++)
- 275   2                      {
- 276   3                              const cfg_memset_t CYCODE * CYDATA ms = &cfg_memset_list[i];
- 277   3                              CYMEMZERO(ms->address, ms->size);
- 278   3                      }
- 279   2      
- 280   2                      cfg_write_bytes(cfg_byte_table);
- 281   2      
- 282   2                      /* Enable digital routing */
- 283   2                      CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL
+ 251   1      
+ 252   1              {
+ 253   2      
+ 254   2                      CYPACKED typedef struct {
+ 255   2                              void CYFAR *address;
+ 256   2                              uint16 size;
+ 257   2                      } CYPACKED_ATTR cfg_memset_t;
+ 258   2      
+ 259   2                      static const cfg_memset_t CYCODE cfg_memset_list [] = {
+ 260   2                              /* address, size */
+ 261   2                              {(void CYFAR *)(CYREG_PRT0_DR), 32u},
+ 262   2                              {(void CYFAR *)(CYREG_PRT5_DR), 32u},
+ 263   2                              {(void CYFAR *)(CYREG_PRT12_DR), 16u},
+ 264   2                              {(void CYFAR *)(CYREG_PRT15_DR), 16u},
+ 265   2                              {(void CYFAR *)(CYDEV_UCFG_B0_P0_U0_BASE), 4096u},
+ 266   2                              {(void CYFAR *)(CYDEV_UCFG_B1_P2_U0_BASE), 2048u},
+ 267   2                              {(void CYFAR *)(CYDEV_UCFG_DSI0_BASE), 2560u},
+ 268   2                              {(void CYFAR *)(CYDEV_UCFG_DSI12_BASE), 512u},
+ 269   2                              {(void CYFAR *)(CYREG_BCTL0_MDCLK_EN), 32u},
+ 270   2                      };
+ 271   2      
+ 272   2                      uint8 CYDATA i;
+ 273   2      
+ 274   2                      /* Zero out critical memory blocks before beginning configuration */
+ 275   2                      for (i = 0u; i < (sizeof(cfg_memset_list)/sizeof(cfg_memset_list[0])); i++)
+ 276   2                      {
+ 277   3                              const cfg_memset_t CYCODE * CYDATA ms = &cfg_memset_list[i];
+ 278   3                              CYMEMZERO(ms->address, ms->size);
+ 279   3                      }
+ 280   2      
+ 281   2                      cfg_write_bytes(cfg_byte_table);
+ 282   2      
+ 283   2                      /* Enable digital routing */
+ 284   2                      CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL
              -) | 0x02u);
- 284   2                      CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL1_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL1_BANK_CTL
+ 285   2                      CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL1_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL1_BANK_CTL
              -) | 0x02u);
- 285   2      
- 286   2                      /* Enable UDB array */
- 287   2                      CY_SET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0) | 0x40u);
- 288   2                      CY_SET_REG8((void CYXDATA *)CYREG_PM_AVAIL_CR2, CY_GET_REG8((void CYXDATA *)CYREG_PM_AVAIL_CR2) | 0x10u)
+ 286   2      
+ 287   2                      /* Enable UDB array */
+ 288   2                      CY_SET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0) | 0x40u);
+ 289   2                      CY_SET_REG8((void CYXDATA *)CYREG_PM_AVAIL_CR2, CY_GET_REG8((void CYXDATA *)CYREG_PM_AVAIL_CR2) | 0x10u)
              -;
- 289   2              }
- 290   1      
- 291   1              /* Perform second pass device configuration. These items must be configured in specific order after the r
+ 290   2              }
+ 291   1      
+ 292   1              /* Perform second pass device configuration. These items must be configured in specific order after the r
              -egular configuration is done. */
- 292   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DM0), (const void CYFAR *)(BS_IOPINS0_2_VAL), 8u);
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 6   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 6   
 
- 293   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT3_DM0), (const void CYFAR *)(BS_IOPINS0_3_VAL), 8u);
- 294   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT4_DM0), (const void CYFAR *)(BS_IOPINS0_4_VAL), 8u);
- 295   1              CY_SET_REG8((void CYXDATA *)(CYREG_INTC_CSR_EN), 0x01u);
- 296   1      
- 297   1              /* Switch Boost to the precision bandgap reference from its internal reference */
- 298   1              CY_SET_REG8((void CYXDATA *)CYREG_BOOST_CR2, (CY_GET_REG8((void CYXDATA *)CYREG_BOOST_CR2) | 0x08u));
- 299   1              if (CYDEV_CHIP_REV_ACTUAL < 5u)
- 300   1              {
- 301   2                      CY_SET_REG8((void CYXDATA *)CYREG_PWRSYS_WAKE_TR2, 0x3Au);
- 302   2              }
- 303   1      
+ 293   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DM0), (const void CYFAR *)(BS_IOPINS0_2_VAL), 8u);
+ 294   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT3_DM0), (const void CYFAR *)(BS_IOPINS0_3_VAL), 8u);
+ 295   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT4_DM0), (const void CYFAR *)(BS_IOPINS0_4_VAL), 8u);
+ 296   1              CY_SET_REG8((void CYXDATA *)(CYREG_INTC_CSR_EN), 0x01u);
+ 297   1      
+ 298   1              /* Switch Boost to the precision bandgap reference from its internal reference */
+ 299   1              CY_SET_REG8((void CYXDATA *)CYREG_BOOST_CR2, (CY_GET_REG8((void CYXDATA *)CYREG_BOOST_CR2) | 0x08u));
+ 300   1              if (CYDEV_CHIP_REV_ACTUAL < 5u)
+ 301   1              {
+ 302   2                      CY_SET_REG8((void CYXDATA *)CYREG_PWRSYS_WAKE_TR2, 0x3Au);
+ 303   2              }
  304   1      
- 305   1              /* Set Flash Cycles based on max possible frequency in case a glitch occurs during ClockSetup(). */
- 306   1              CY_SET_REG8((void CYXDATA *)(CYREG_CACHE_CR), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0xF1u : 0xC0u));
- 307   1              /* Setup clocks based on selections from Clock DWR */
- 308   1              ClockSetup();
- 309   1              /* Set Flash Cycles based on newly configured 24.00MHz Bus Clock. */
- 310   1              CY_SET_REG8((void CYXDATA *)(CYREG_CACHE_CR), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0xB1u : 0x80u));
- 311   1      
- 312   1              /* Perform basic analog initialization to defaults */
- 313   1              AnalogSetDefault();
- 314   1      
- 315   1              /* Configure alternate active mode */
- 316   1              CYCONFIGCPY((void CYFAR *)CYDEV_PM_STBY_BASE, (const void CYFAR *)CYDEV_PM_ACT_BASE, 14u);
- 317   1              CY_SET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0) & (uint8)
+ 305   1      
+ 306   1              /* Set Flash Cycles based on max possible frequency in case a glitch occurs during ClockSetup(). */
+ 307   1              CY_SET_REG8((void CYXDATA *)(CYREG_CACHE_CR), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0xF1u : 0xC0u));
+ 308   1              /* Setup clocks based on selections from Clock DWR */
+ 309   1              ClockSetup();
+ 310   1              /* Set Flash Cycles based on newly configured 24.00MHz Bus Clock. */
+ 311   1              CY_SET_REG8((void CYXDATA *)(CYREG_CACHE_CR), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0xB1u : 0x80u));
+ 312   1      
+ 313   1              /* Perform basic analog initialization to defaults */
+ 314   1              AnalogSetDefault();
+ 315   1      
+ 316   1              /* Configure alternate active mode */
+ 317   1              CYCONFIGCPY((void CYFAR *)CYDEV_PM_STBY_BASE, (const void CYFAR *)CYDEV_PM_ACT_BASE, 14u);
+ 318   1              CY_SET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0) & (uint8)
              -~0x02u);        /* Disable CPU */
- 318   1      }
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 7   
+ 319   1      }
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -389,178 +390,189 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 7B00              MOV     R3,#00H
 0015 7A40              MOV     R2,#040H
 0017 7984              MOV     R1,#084H
-0019 7D17              MOV     R5,#017H
+0019 7D07              MOV     R5,#07H
 001B 7C00              MOV     R4,#00H
 001D 120000      E     LCALL   _cywrite16
                                            ; SOURCE LINE # 128
 0020 904086            MOV     DPTR,#04086H
 0023 7418              MOV     A,#018H
 0025 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 131
-0026 904300            MOV     DPTR,#04300H
-0029 7402              MOV     A,#02H
-002B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 132
-002C 904000            MOV     DPTR,#04000H
-002F 7408              MOV     A,#08H
-0031 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 135
-0032 904200            MOV     DPTR,#04200H
-0035 7403              MOV     A,#03H
-0037 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 136
-0038 7B0C              MOV     R3,#0CH
-003A 7A01              MOV     R2,#01H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 8   
+                                           ; SOURCE LINE # 129
+0026 7B00              MOV     R3,#00H
+0028 7A40              MOV     R2,#040H
+002A 7988              MOV     R1,#088H
+002C 7D17              MOV     R5,#017H
+002E 7C00              MOV     R4,#00H
+0030 120000      E     LCALL   _cywrite16
+                                           ; SOURCE LINE # 130
+0033 90408A            MOV     DPTR,#0408AH
+0036 7418              MOV     A,#018H
+0038 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 133
+0039 904300            MOV     DPTR,#04300H
+003C 7402              MOV     A,#02H
+003E F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 8   
 
-003C 7908              MOV     R1,#08H
-003E 120000      E     LCALL   _cyread8
-0041 9046A1            MOV     DPTR,#046A1H
-0044 EF                MOV     A,R7
-0045 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 139
-0046 7B00              MOV     R3,#00H
-0048 7A42              MOV     R2,#042H
-004A 7922              MOV     R1,#022H
-004C 7D08              MOV     R5,#08H
-004E 7C00              MOV     R4,#00H
-0050 120000      E     LCALL   _cywrite16
-                                           ; SOURCE LINE # 140
-0053 7B00              MOV     R3,#00H
-0055 7A42              MOV     R2,#042H
-0057 7920              MOV     R1,#020H
-0059 7D51              MOV     R5,#051H
-005B 7C12              MOV     R4,#012H
-005D 120000      E     LCALL   _cywrite16
+                                           ; SOURCE LINE # 134
+003F 904000            MOV     DPTR,#04000H
+0042 7408              MOV     A,#08H
+0044 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 137
+0045 904200            MOV     DPTR,#04200H
+0048 7403              MOV     A,#03H
+004A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 138
+004B 7B0C              MOV     R3,#0CH
+004D 7A01              MOV     R2,#01H
+004F 7908              MOV     R1,#08H
+0051 120000      E     LCALL   _cyread8
+0054 9046A1            MOV     DPTR,#046A1H
+0057 EF                MOV     A,R7
+0058 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 141
+0059 7B00              MOV     R3,#00H
+005B 7A42              MOV     R2,#042H
+005D 7922              MOV     R1,#022H
+005F 7D08              MOV     R5,#08H
+0061 7C00              MOV     R4,#00H
+0063 120000      E     LCALL   _cywrite16
                                            ; SOURCE LINE # 142
-0060 900000      R     MOV     DPTR,#pllLock
-0063 E4                CLR     A
-0064 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 143
-0065 7F19              MOV     R7,#019H
-0067 7E00              MOV     R6,#00H
-0069 7D00              MOV     R5,#00H
-006B 7C00              MOV     R4,#00H
-006D 900000      R     MOV     DPTR,#timeout
-0070 120000      E     LCALL   ?C?LSTXDATA
-0073         ?C0004:
-0073 900000      R     MOV     DPTR,#timeout
-0076 120000      E     LCALL   ?C?LLDXDATA
-0079 D3                SETB    C
-007A EF                MOV     A,R7
-007B 9400              SUBB    A,#00H
-007D EE                MOV     A,R6
-007E 9400              SUBB    A,#00H
-0080 404E              JC      ?C0005
-0082 900000      R     MOV     DPTR,#pllLock
-0085 E0                MOVX    A,@DPTR
-0086 FF                MOV     R7,A
-0087 EF                MOV     A,R7
-0088 6403              XRL     A,#03H
-008A 6044              JZ      ?C0005
+0066 7B00              MOV     R3,#00H
+0068 7A42              MOV     R2,#042H
+006A 7920              MOV     R1,#020H
+006C 7D51              MOV     R5,#051H
+006E 7C12              MOV     R4,#012H
+0070 120000      E     LCALL   _cywrite16
                                            ; SOURCE LINE # 144
+0073 900000      R     MOV     DPTR,#pllLock
+0076 E4                CLR     A
+0077 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 145
-008C 904225            MOV     DPTR,#04225H
-008F E0                MOVX    A,@DPTR
-0090 FF                MOV     R7,A
-0091 EF                MOV     A,R7
-0092 5401              ANL     A,#01H
-0094 FF                MOV     R7,A
-0095 7E00              MOV     R6,#00H
-0097 900000      R     MOV     DPTR,#pllLock
-009A E0                MOVX    A,@DPTR
-009B FE                MOV     R6,A
-009C EE                MOV     A,R6
-009D 25E0              ADD     A,ACC
-009F FE                MOV     R6,A
-00A0 EE                MOV     A,R6
-00A1 4F                ORL     A,R7
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 9   
-
-00A2 FF                MOV     R7,A
-00A3 EF                MOV     A,R7
-00A4 5403              ANL     A,#03H
-00A6 FF                MOV     R7,A
-00A7 900000      R     MOV     DPTR,#pllLock
-00AA EF                MOV     A,R7
-00AB F0                MOVX    @DPTR,A
+0078 7F19              MOV     R7,#019H
+007A 7E00              MOV     R6,#00H
+007C 7D00              MOV     R5,#00H
+007E 7C00              MOV     R4,#00H
+0080 900000      R     MOV     DPTR,#timeout
+0083 120000      E     LCALL   ?C?LSTXDATA
+0086         ?C0004:
+0086 900000      R     MOV     DPTR,#timeout
+0089 120000      E     LCALL   ?C?LLDXDATA
+008C D3                SETB    C
+008D EF                MOV     A,R7
+008E 9400              SUBB    A,#00H
+0090 EE                MOV     A,R6
+0091 9400              SUBB    A,#00H
+0093 404E              JC      ?C0005
+0095 900000      R     MOV     DPTR,#pllLock
+0098 E0                MOVX    A,@DPTR
+0099 FF                MOV     R7,A
+009A EF                MOV     A,R7
+009B 6403              XRL     A,#03H
+009D 6044              JZ      ?C0005
                                            ; SOURCE LINE # 146
-00AC 7FE0              MOV     R7,#0E0H
-00AE 7E01              MOV     R6,#01H
-00B0 7D00              MOV     R5,#00H
-00B2 7C00              MOV     R4,#00H
-00B4 120000      E     LCALL   _CyDelayCycles
                                            ; SOURCE LINE # 147
-00B7 900000      R     MOV     DPTR,#timeout
-00BA 120000      E     LCALL   ?C?LLDXDATA
-00BD 7BFF              MOV     R3,#0FFH
-00BF 7AFF              MOV     R2,#0FFH
-00C1 79FF              MOV     R1,#0FFH
-00C3 78FF              MOV     R0,#0FFH
-00C5 120000      E     LCALL   ?C?LADD
-00C8 900000      R     MOV     DPTR,#timeout
-00CB 120000      E     LCALL   ?C?LSTXDATA
-00CE 80A3              SJMP    ?C0004
-00D0         ?C0005:
-                                           ; SOURCE LINE # 149
-00D0 900000      R     MOV     DPTR,#timeout
-00D3 120000      E     LCALL   ?C?LLDXDATA
-00D6 EF                MOV     A,R7
-00D7 4E                ORL     A,R6
-00D8 7005              JNZ     ?C0007
-                                           ; SOURCE LINE # 150
-                                           ; SOURCE LINE # 151
-00DA 7F03              MOV     R7,#03H
-00DC 120000      R     LCALL   _CyClockStartupError
-                                           ; SOURCE LINE # 152
-00DF         ?C0007:
-                                           ; SOURCE LINE # 155
-00DF 7B00              MOV     R3,#00H
-00E1 7A40              MOV     R2,#040H
-00E3 7904              MOV     R1,#04H
-00E5 7D00              MOV     R5,#00H
-00E7 7C01              MOV     R4,#01H
-00E9 120000      E     LCALL   _cywrite16
-                                           ; SOURCE LINE # 156
-00EC 904004            MOV     DPTR,#04004H
-00EF 7407              MOV     A,#07H
-00F1 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 157
-00F2 904006            MOV     DPTR,#04006H
-00F5 E4                CLR     A
-00F6 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 158
-00F7 904008            MOV     DPTR,#04008H
-00FA 7448              MOV     A,#048H
-00FC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 159
-00FD 904004            MOV     DPTR,#04004H
-0100 E4                CLR     A
-0101 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 160
-0102 904001            MOV     DPTR,#04001H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 10  
+009F 904225            MOV     DPTR,#04225H
+00A2 E0                MOVX    A,@DPTR
+00A3 FF                MOV     R7,A
+00A4 EF                MOV     A,R7
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 9   
 
-0105 7402              MOV     A,#02H
-0107 F0                MOVX    @DPTR,A
+00A5 5401              ANL     A,#01H
+00A7 FF                MOV     R7,A
+00A8 7E00              MOV     R6,#00H
+00AA 900000      R     MOV     DPTR,#pllLock
+00AD E0                MOVX    A,@DPTR
+00AE FE                MOV     R6,A
+00AF EE                MOV     A,R6
+00B0 25E0              ADD     A,ACC
+00B2 FE                MOV     R6,A
+00B3 EE                MOV     A,R6
+00B4 4F                ORL     A,R7
+00B5 FF                MOV     R7,A
+00B6 EF                MOV     A,R7
+00B7 5403              ANL     A,#03H
+00B9 FF                MOV     R7,A
+00BA 900000      R     MOV     DPTR,#pllLock
+00BD EF                MOV     A,R7
+00BE F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 148
+00BF 7FE0              MOV     R7,#0E0H
+00C1 7E01              MOV     R6,#01H
+00C3 7D00              MOV     R5,#00H
+00C5 7C00              MOV     R4,#00H
+00C7 120000      E     LCALL   _CyDelayCycles
+                                           ; SOURCE LINE # 149
+00CA 900000      R     MOV     DPTR,#timeout
+00CD 120000      E     LCALL   ?C?LLDXDATA
+00D0 7BFF              MOV     R3,#0FFH
+00D2 7AFF              MOV     R2,#0FFH
+00D4 79FF              MOV     R1,#0FFH
+00D6 78FF              MOV     R0,#0FFH
+00D8 120000      E     LCALL   ?C?LADD
+00DB 900000      R     MOV     DPTR,#timeout
+00DE 120000      E     LCALL   ?C?LSTXDATA
+00E1 80A3              SJMP    ?C0004
+00E3         ?C0005:
+                                           ; SOURCE LINE # 151
+00E3 900000      R     MOV     DPTR,#timeout
+00E6 120000      E     LCALL   ?C?LLDXDATA
+00E9 EF                MOV     A,R7
+00EA 4E                ORL     A,R6
+00EB 7005              JNZ     ?C0007
+                                           ; SOURCE LINE # 152
+                                           ; SOURCE LINE # 153
+00ED 7F03              MOV     R7,#03H
+00EF 120000      R     LCALL   _CyClockStartupError
+                                           ; SOURCE LINE # 154
+00F2         ?C0007:
+                                           ; SOURCE LINE # 157
+00F2 7B00              MOV     R3,#00H
+00F4 7A40              MOV     R2,#040H
+00F6 7904              MOV     R1,#04H
+00F8 7D00              MOV     R5,#00H
+00FA 7C01              MOV     R4,#01H
+00FC 120000      E     LCALL   _cywrite16
+                                           ; SOURCE LINE # 158
+00FF 904004            MOV     DPTR,#04004H
+0102 7407              MOV     A,#07H
+0104 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 159
+0105 904006            MOV     DPTR,#04006H
+0108 E4                CLR     A
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 10  
+
+0109 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 160
+010A 904008            MOV     DPTR,#04008H
+010D 7448              MOV     A,#048H
+010F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 161
+0110 904004            MOV     DPTR,#04004H
+0113 E4                CLR     A
+0114 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 162
-0108 9043A2            MOV     DPTR,#043A2H
-010B E0                MOVX    A,@DPTR
-010C FF                MOV     R7,A
-010D EF                MOV     A,R7
-010E 4403              ORL     A,#03H
-0110 FF                MOV     R7,A
-0111 9043A2            MOV     DPTR,#043A2H
-0114 EF                MOV     A,R7
-0115 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 163
-0116 22                RET     
+0115 904001            MOV     DPTR,#04001H
+0118 7402              MOV     A,#02H
+011A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 164
+011B 9043A2            MOV     DPTR,#043A2H
+011E E0                MOVX    A,@DPTR
+011F FF                MOV     R7,A
+0120 EF                MOV     A,R7
+0121 4407              ORL     A,#07H
+0123 FF                MOV     R7,A
+0124 9043A2            MOV     DPTR,#043A2H
+0127 EF                MOV     A,R7
+0128 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 165
+0129 22                RET     
              ; FUNCTION ClockSetup (END)
 
              ; FUNCTION AnalogSetDefault (BEGIN)
-                                           ; SOURCE LINE # 185
-                                           ; SOURCE LINE # 186
                                            ; SOURCE LINE # 187
+                                           ; SOURCE LINE # 188
+                                           ; SOURCE LINE # 189
 0000 7B0C              MOV     R3,#0CH
 0002 7A01              MOV     R2,#01H
 0004 79CF              MOV     R1,#0CFH
@@ -568,7 +580,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 900000      R     MOV     DPTR,#bg_xover_inl_trim
 000C EF                MOV     A,R7
 000D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 188
+                                           ; SOURCE LINE # 190
 000E 900000      R     MOV     DPTR,#bg_xover_inl_trim
 0011 E0                MOVX    A,@DPTR
 0012 FF                MOV     R7,A
@@ -578,7 +590,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0017 90586E            MOV     DPTR,#0586EH
 001A EF                MOV     A,R7
 001B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 189
+                                           ; SOURCE LINE # 191
 001C 900000      R     MOV     DPTR,#bg_xover_inl_trim
 001F E0                MOVX    A,@DPTR
 0020 FF                MOV     R7,A
@@ -592,37 +604,37 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002A 90586F            MOV     DPTR,#0586FH
 002D EF                MOV     A,R7
 002E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 190
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 11  
+
+                                           ; SOURCE LINE # 192
 002F 905876            MOV     DPTR,#05876H
 0032 7444              MOV     A,#044H
 0034 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 191
+                                           ; SOURCE LINE # 193
 0035 22                RET     
              ; FUNCTION AnalogSetDefault (END)
 
              ; FUNCTION _SetAnalogRoutingPumps (BEGIN)
-                                           ; SOURCE LINE # 211
+                                           ; SOURCE LINE # 213
 0000 900000      R     MOV     DPTR,#enabled
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 11  
-
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 212
-                                           ; SOURCE LINE # 213
+                                           ; SOURCE LINE # 214
+                                           ; SOURCE LINE # 215
 0005 905876            MOV     DPTR,#05876H
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
 000A 900000      R     MOV     DPTR,#regValue
 000D EF                MOV     A,R7
 000E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 214
+                                           ; SOURCE LINE # 216
 000F 900000      R     MOV     DPTR,#enabled
 0012 E0                MOVX    A,@DPTR
 0013 FF                MOV     R7,A
 0014 EF                MOV     A,R7
 0015 6010              JZ      ?C0010
-                                           ; SOURCE LINE # 215
-                                           ; SOURCE LINE # 216
+                                           ; SOURCE LINE # 217
+                                           ; SOURCE LINE # 218
 0017 900000      R     MOV     DPTR,#regValue
 001A E0                MOVX    A,@DPTR
 001B FF                MOV     R7,A
@@ -632,11 +644,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0020 900000      R     MOV     DPTR,#regValue
 0023 EF                MOV     A,R7
 0024 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 217
+                                           ; SOURCE LINE # 219
 0025 800E              SJMP    ?C0011
 0027         ?C0010:
-                                           ; SOURCE LINE # 219
-                                           ; SOURCE LINE # 220
+                                           ; SOURCE LINE # 221
+                                           ; SOURCE LINE # 222
 0027 900000      R     MOV     DPTR,#regValue
 002A E0                MOVX    A,@DPTR
 002B FF                MOV     R7,A
@@ -646,29 +658,29 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0030 900000      R     MOV     DPTR,#regValue
 0033 EF                MOV     A,R7
 0034 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 221
+                                           ; SOURCE LINE # 223
 0035         ?C0011:
-                                           ; SOURCE LINE # 222
+                                           ; SOURCE LINE # 224
 0035 900000      R     MOV     DPTR,#regValue
 0038 E0                MOVX    A,@DPTR
 0039 FF                MOV     R7,A
 003A 905876            MOV     DPTR,#05876H
 003D EF                MOV     A,R7
 003E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 223
+                                           ; SOURCE LINE # 225
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 12  
+
 003F 22                RET     
              ; FUNCTION _SetAnalogRoutingPumps (END)
 
              ; FUNCTION cyfitter_cfg (BEGIN)
-                                           ; SOURCE LINE # 245
-                                           ; SOURCE LINE # 246
+                                           ; SOURCE LINE # 247
                                            ; SOURCE LINE # 248
+                                           ; SOURCE LINE # 250
 0000 7B00              MOV     R3,#00H
 0002 7A46              MOV     R2,#046H
 0004 79E8              MOV     R1,#0E8H
 0006 120000      E     LCALL   _cyread8
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 12  
-
 0009 EF                MOV     A,R7
 000A 4405              ORL     A,#05H
 000C FD                MOV     R5,A
@@ -676,16 +688,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000F 7A46              MOV     R2,#046H
 0011 79E8              MOV     R1,#0E8H
 0013 120000      E     LCALL   _cywrite8
-                                           ; SOURCE LINE # 250
-                                           ; SOURCE LINE # 274
+                                           ; SOURCE LINE # 252
+                                           ; SOURCE LINE # 275
 0016 750000      R     MOV     i,#00H
 0019         ?C0013:
 0019 E500        R     MOV     A,i
 001B C3                CLR     C
-001C 940A              SUBB    A,#0AH
+001C 9409              SUBB    A,#09H
 001E 503A              JNC     ?C0014
-                                           ; SOURCE LINE # 275
                                            ; SOURCE LINE # 276
+                                           ; SOURCE LINE # 277
 0020 AF00        R     MOV     R7,i
 0022 EF                MOV     A,R7
 0023 75F005            MOV     B,#05H
@@ -699,7 +711,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0032 AE83              MOV     R6,DPH
 0034 8E00        R     MOV     ms,R6
 0036 8F00        R     MOV     ms+01H,R7
-                                           ; SOURCE LINE # 277
+                                           ; SOURCE LINE # 278
 0038 AE00        R     MOV     R6,ms
 003A AF00        R     MOV     R7,ms+01H
 003C 8F82              MOV     DPL,R7
@@ -716,30 +728,30 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0051 93                MOVC    A,@A+DPTR
 0052 FD                MOV     R5,A
 0053 120000      E     LCALL   _cymemzero
-                                           ; SOURCE LINE # 278
+                                           ; SOURCE LINE # 279
 0056 0500        R     INC     i
 0058 80BF              SJMP    ?C0013
 005A         ?C0014:
-                                           ; SOURCE LINE # 280
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 13  
+
+                                           ; SOURCE LINE # 281
 005A 7B08              MOV     R3,#08H
 005C 7A00              MOV     R2,#00H
 005E 7900              MOV     R1,#00H
 0060 120000      E     LCALL   _cfg_write_bytes
-                                           ; SOURCE LINE # 283
+                                           ; SOURCE LINE # 284
 0063 7B01              MOV     R3,#01H
 0065 7A50              MOV     R2,#050H
 0067 7903              MOV     R1,#03H
 0069 120000      E     LCALL   _cyread8
 006C EF                MOV     A,R7
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 13  
-
 006D 4402              ORL     A,#02H
 006F FD                MOV     R5,A
 0070 7B01              MOV     R3,#01H
 0072 7A50              MOV     R2,#050H
 0074 7903              MOV     R1,#03H
 0076 120000      E     LCALL   _cywrite8
-                                           ; SOURCE LINE # 284
+                                           ; SOURCE LINE # 285
 0079 7B01              MOV     R3,#01H
 007B 7A50              MOV     R2,#050H
 007D 7913              MOV     R1,#013H
@@ -751,7 +763,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0088 7A50              MOV     R2,#050H
 008A 7913              MOV     R1,#013H
 008C 120000      E     LCALL   _cywrite8
-                                           ; SOURCE LINE # 287
+                                           ; SOURCE LINE # 288
 008F 9043A0            MOV     DPTR,#043A0H
 0092 E0                MOVX    A,@DPTR
 0093 FF                MOV     R7,A
@@ -761,7 +773,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0098 9043A0            MOV     DPTR,#043A0H
 009B EF                MOV     A,R7
 009C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 288
+                                           ; SOURCE LINE # 289
 009D 9043C2            MOV     DPTR,#043C2H
 00A0 E0                MOVX    A,@DPTR
 00A1 FF                MOV     R7,A
@@ -771,11 +783,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A6 9043C2            MOV     DPTR,#043C2H
 00A9 EF                MOV     A,R7
 00AA F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 289
-                                           ; SOURCE LINE # 292
+                                           ; SOURCE LINE # 290
+                                           ; SOURCE LINE # 293
 00AB 7B08              MOV     R3,#08H
-00AD 7A02              MOV     R2,#02H
-00AF 7900              MOV     R1,#00H
+00AD 7A03              MOV     R2,#03H
+00AF 7940              MOV     R1,#040H
 00B1 C003              PUSH    AR3
 00B3 C002              PUSH    AR2
 00B5 C001              PUSH    AR1
@@ -784,19 +796,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BB 7922              MOV     R1,#022H
 00BD 900000      E     MOV     DPTR,#?_cyconfigcpy?BYTE+05H
 00C0 120000      E     LCALL   ?C?PSTXDATA
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 14  
+
 00C3 D001              POP     AR1
 00C5 D002              POP     AR2
 00C7 D003              POP     AR3
 00C9 7F08              MOV     R7,#08H
 00CB 7E00              MOV     R6,#00H
 00CD 120000      E     LCALL   _cyconfigcpy
-                                           ; SOURCE LINE # 293
+                                           ; SOURCE LINE # 294
 00D0 7B08              MOV     R3,#08H
-00D2 7A02              MOV     R2,#02H
-00D4 7908              MOV     R1,#08H
+00D2 7A03              MOV     R2,#03H
+00D4 7948              MOV     R1,#048H
 00D6 C003              PUSH    AR3
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 14  
-
 00D8 C002              PUSH    AR2
 00DA C001              PUSH    AR1
 00DC 7B00              MOV     R3,#00H
@@ -810,10 +822,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00EE 7F08              MOV     R7,#08H
 00F0 7E00              MOV     R6,#00H
 00F2 120000      E     LCALL   _cyconfigcpy
-                                           ; SOURCE LINE # 294
+                                           ; SOURCE LINE # 295
 00F5 7B08              MOV     R3,#08H
-00F7 7A02              MOV     R2,#02H
-00F9 7910              MOV     R1,#010H
+00F7 7A03              MOV     R2,#03H
+00F9 7950              MOV     R1,#050H
 00FB C003              PUSH    AR3
 00FD C002              PUSH    AR2
 00FF C001              PUSH    AR1
@@ -828,11 +840,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0113 7F08              MOV     R7,#08H
 0115 7E00              MOV     R6,#00H
 0117 120000      E     LCALL   _cyconfigcpy
-                                           ; SOURCE LINE # 295
+                                           ; SOURCE LINE # 296
 011A 9044F4            MOV     DPTR,#044F4H
 011D 7401              MOV     A,#01H
 011F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 298
+                                           ; SOURCE LINE # 299
 0120 904322            MOV     DPTR,#04322H
 0123 E0                MOVX    A,@DPTR
 0124 FF                MOV     R7,A
@@ -842,36 +854,36 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0129 904322            MOV     DPTR,#04322H
 012C EF                MOV     A,R7
 012D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 299
+                                           ; SOURCE LINE # 300
 012E 9046EC            MOV     DPTR,#046ECH
 0131 E0                MOVX    A,@DPTR
 0132 FF                MOV     R7,A
 0133 EF                MOV     A,R7
 0134 C3                CLR     C
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 15  
+
 0135 9405              SUBB    A,#05H
 0137 5006              JNC     ?C0016
-                                           ; SOURCE LINE # 300
                                            ; SOURCE LINE # 301
+                                           ; SOURCE LINE # 302
 0139 904689            MOV     DPTR,#04689H
 013C 743A              MOV     A,#03AH
 013E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 302
+                                           ; SOURCE LINE # 303
 013F         ?C0016:
-                                           ; SOURCE LINE # 306
+                                           ; SOURCE LINE # 307
 013F 904800            MOV     DPTR,#04800H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          03/13/2015 21:31:27 PAGE 15  
-
 0142 74F1              MOV     A,#0F1H
 0144 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 308
+                                           ; SOURCE LINE # 309
 0145 120000      R     LCALL   ClockSetup
-                                           ; SOURCE LINE # 310
+                                           ; SOURCE LINE # 311
 0148 904800            MOV     DPTR,#04800H
 014B 74B1              MOV     A,#0B1H
 014D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 313
+                                           ; SOURCE LINE # 314
 014E 120000      R     LCALL   AnalogSetDefault
-                                           ; SOURCE LINE # 316
+                                           ; SOURCE LINE # 317
 0151 7B00              MOV     R3,#00H
 0153 7A43              MOV     R2,#043H
 0155 79A0              MOV     R1,#0A0H
@@ -889,7 +901,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 016F 7F0E              MOV     R7,#0EH
 0171 7E00              MOV     R6,#00H
 0173 120000      E     LCALL   _cyconfigcpy
-                                           ; SOURCE LINE # 317
+                                           ; SOURCE LINE # 318
 0176 9043B0            MOV     DPTR,#043B0H
 0179 E0                MOVX    A,@DPTR
 017A FF                MOV     R7,A
@@ -898,20 +910,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 017E FF                MOV     R7,A
 017F EF                MOV     A,R7
 0180 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 318
+                                           ; SOURCE LINE # 319
 0181 22                RET     
              ; FUNCTION cyfitter_cfg (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    801    ----
-   CONSTANT SIZE    =     50    ----
+   CODE SIZE        =    820    ----
+   CONSTANT SIZE    =     45    ----
    XDATA SIZE       =   ----       9
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       3
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
+C51 COMPILER V9.51   CYFITTER_CFG                                                          03/14/2015 11:24:33 PAGE 16  
+
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
