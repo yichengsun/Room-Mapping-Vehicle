@@ -45,24 +45,24 @@ double getCurSpeed(){
     return current_Speed;
 }
 
-CY_ISR(TOP_LINE_inter) {
+CY_ISR(FIRST_LINE_IN_FRAME_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("Frame start");
     LINE_COUNTER_Start();
     LCD_PrintString("Read top line");
     //read top line
-    BLACK_LINE_TIMER_Start();
+    BLACK_POSITION_TIMER_Start();
 }
 
-CY_ISR(BOTTOM_LINE_inter) {
+CY_ISR(SECOND_LINE_IN_FRAME_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("Read bottom line");
     LINE_COUNTER_Stop();
     //read bottom line
-    BLACK_LINE_TIMER_Start();
+    BLACK_POSITION_TIMER_Start();
 }
 
-CY_ISR(LINE_READ_inter) {
+CY_ISR(FIRST_BLACK_PIXEL_READ_inter) {
     //STORE DATA HERE
 }
 
@@ -157,14 +157,14 @@ int main()
     HE_ISR_Start();
     HE_ISR_SetVector(HE_inter);
     
-    TOP_LINE_ISR_Start();
-    TOP_LINE_ISR_SetVector(TOP_LINE_inter);
+    FIRST_LINE_IN_FRAME_ISR_Start();
+    FIRST_LINE_IN_FRAME_ISR_SetVector(FIRST_LINE_IN_FRAME_inter);
     
-    BOTTOM_LINE_ISR_Start();
-    BOTTOM_LINE_ISR_SetVector(BOTTOM_LINE_inter);
+    SECOND_LINE_IN_FRAME_ISR_Start();
+    SECOND_LINE_IN_FRAME_ISR_SetVector(SECOND_LINE_IN_FRAME_inter);
     
-    LINE_READ_ISR_Start();
-    LINE_READ_ISR_SetVector(LINE_READ_inter);
+    FIRST_BLACK_PIXEL_READ_ISR_Start();
+    FIRST_BLACK_PIXEL_READ_ISR_SetVector(FIRST_BLACK_PIXEL_READ_inter);
     
     VID_VDAC_Start();
     VID_COMPARE_Start();

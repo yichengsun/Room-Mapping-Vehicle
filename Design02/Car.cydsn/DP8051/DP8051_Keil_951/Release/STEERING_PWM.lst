@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 1   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STEERING_PWM
@@ -62,7 +62,7 @@ line level    source
   49          *
   50          * Global variables:
   51          *  STEERING_PWM_initVar: Is modified when this function is called for the
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 2   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 2   
 
   52          *   first time. Is used to ensure that initialization happens only once.
   53          *
@@ -126,7 +126,7 @@ line level    source
                       /*Enable DSI Sync all all inputs of the PWM*/
                       STEERING_PWM_RT1 &= ((uint8)(~STEERING_PWM_SYNCDSI_MASK));
                       STEERING_PWM_RT1 |= STEERING_PWM_SYNCDSI_EN;
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 3   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 3   
 
               
                   #elif (STEERING_PWM_UseControl)
@@ -190,7 +190,7 @@ line level    source
               
                           /* Clear the FIFO to enable the STEERING_PWM_STATUS_FIFOFULL
                                  bit to be set on FIFO full. */
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 4   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 4   
 
                           STEERING_PWM_ClearFIFO();
                       #endif /* (STEERING_PWM_UseStatus) */
@@ -254,7 +254,7 @@ line level    source
  235   1          #if (STEERING_PWM_UseControl || STEERING_PWM_UsingFixedFunction)
  236   1              STEERING_PWM_CONTROL &= ((uint8)(~STEERING_PWM_CTRL_ENABLE));
  237   1          #endif /* (STEERING_PWM_UseControl || STEERING_PWM_UsingFixedFunction) */
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 5   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 5   
 
  238   1      
  239   1          /* Globally disable the Fixed Function Block chosen */
@@ -318,7 +318,7 @@ line level    source
                               #endif /* (0 != STEERING_PWM_CTRL_CMPMODE2_SHIFT) */
               
                               /*Clear existing mode */
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 6   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 6   
 
                               STEERING_PWM_CONTROL &= ((uint8)(~(STEERING_PWM_CTRL_CMPMODE1_MASK |
                                                           STEERING_PWM_CTRL_CMPMODE2_MASK)));
@@ -382,7 +382,7 @@ line level    source
                   *  comparemode:  The new compare mode for the PWM output. Use the compare types
                   *                defined in the H file as input arguments.
                   *
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 7   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 7   
 
                   * Return:
                   *  None
@@ -446,7 +446,7 @@ line level    source
  415              *  This function returns the current value of the counter.  It doesn't matter
  416              *  if the counter is enabled or running.
  417              *
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 8   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 8   
 
  418              * Parameters:
  419              *  None
@@ -510,7 +510,7 @@ line level    source
  477          *
  478          * Return:
  479          *  None
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 9   
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 9   
 
  480          *
  481          *******************************************************************************/
@@ -574,7 +574,7 @@ line level    source
                   * Function Name: STEERING_PWM_WriteCompare1
                   ********************************************************************************
                   *
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 10  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 10  
 
                   * Summary:
                   *  This funtion is used to change the compare1 value.  The compare output will
@@ -638,7 +638,7 @@ line level    source
                   *
                   * Summary:
                   *  This function writes the dead-band counts to the corresponding register
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 11  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 11  
 
                   *
                   * Parameters:
@@ -702,7 +702,7 @@ line level    source
                               return (STEERING_PWM_DEADBAND_COUNT & STEERING_PWM_DEADBAND_COUNT_MASK);
                           #endif /* (STEERING_PWM_DEADBAND_COUNT_SHIFT) */
                       #endif /* (!STEERING_PWM_DeadBand2_4) */
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 12  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 12  
 
                   }
               #endif /* DeadBandUsed */
@@ -766,7 +766,7 @@ line level    source
  722              /*******************************************************************************
  723              * Function Name: STEERING_PWM_ReadControlRegister
  724              ********************************************************************************
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 13  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 13  
 
  725              *
  726              * Summary:
@@ -830,7 +830,7 @@ line level    source
  784              *  None
  785              *
  786              * Return:
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 14  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 14  
 
  787              *  uint8/uint16: The current capture value
  788              *
@@ -894,7 +894,7 @@ line level    source
               
               
                   /*******************************************************************************
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 15  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 15  
 
                   * Function Name: STEERING_PWM_ReadCompare2
                   ********************************************************************************
@@ -958,7 +958,7 @@ line level    source
                   *  None
                   *
                   *******************************************************************************/
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 16  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 16  
 
                   void STEERING_PWM_WriteKillTime(uint8 killtime) 
                   {
@@ -989,7 +989,7 @@ line level    source
               #endif /* ( STEERING_PWM_KillModeMinTime) */
  938          
  939          /* [] END OF FILE */
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 17  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 17  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1053,7 +1053,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 120000      R     LCALL   _STEERING_PWM_WriteCompare
                                            ; SOURCE LINE # 179
 002A 22                RET     
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 18  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 18  
 
              ; FUNCTION STEERING_PWM_Init (END)
 
@@ -1117,7 +1117,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 482
 ;---- Variable 'period' assigned to Register 'R6/R7' ----
                                            ; SOURCE LINE # 483
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 19  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 19  
 
                                            ; SOURCE LINE # 487
 0000 7B02              MOV     R3,#02H
@@ -1181,7 +1181,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 793
 0009         ?C0012:
-C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:33:51 PAGE 20  
+C51 COMPILER V9.51   STEERING_PWM                                                          03/26/2015 00:49:21 PAGE 20  
 
 0009 22                RET     
              ; FUNCTION STEERING_PWM_ReadCapture (END)

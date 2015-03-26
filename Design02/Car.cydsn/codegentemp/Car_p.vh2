@@ -1,10 +1,10 @@
 -- Project:   Car
--- Generated: 03/26/2015 00:33:35
+-- Generated: 03/26/2015 00:49:07
 -- PSoC Creator  3.1
 
 ENTITY Car IS
     PORT(
-        COMPARATOR_OUT(0)_PAD : OUT std_ulogic;
+        COMPARE_OUT(0)_PAD : OUT std_ulogic;
         COM_SYNC_OUT_PIN(0)_PAD : IN std_ulogic;
         HE_IN_PIN(0)_PAD : IN std_ulogic;
         PWM_OUT_PIN(0)_PAD : OUT std_ulogic;
@@ -28,7 +28,7 @@ ENTITY Car IS
 END Car;
 
 ARCHITECTURE __DEFAULT__ OF Car IS
-    SIGNAL COMPARATOR_OUT(0)__PA : bit;
+    SIGNAL COMPARE_OUT(0)__PA : bit;
     SIGNAL COM_SYNC_OUT_PIN(0)__PA : bit;
     SIGNAL COM_VID_IN_PIN(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
@@ -74,25 +74,25 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL PWM_OUT_PIN(0)__PA : bit;
     SIGNAL STEERING_PWM_OUT_PIN(0)__PA : bit;
     SIGNAL VERT_SYNC_OUT_PIN(0)__PA : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE soft OF \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:capture_last\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_0\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_1\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_2\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_3\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_4\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_5\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_6\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_7\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:per_zero\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ : bit;
+    ATTRIBUTE soft OF \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capture_last\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_0\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_1\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_2\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_3\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_4\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_5\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_6\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_7\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:per_zero\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_2\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_3\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_tc\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_2\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_3\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_tc\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_1\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_2\ : bit;
@@ -166,19 +166,19 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
-    SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
+    SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.z0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ff0__sig\ : bit;
@@ -239,8 +239,8 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE lib_model OF COMPARATOR_OUT(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF COMPARATOR_OUT(0) : LABEL IS "P3[6]";
+    ATTRIBUTE lib_model OF COMPARE_OUT(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF COMPARE_OUT(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF COM_SYNC_OUT_PIN(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF COM_SYNC_OUT_PIN(0) : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF COM_VID_IN_PIN(0) : LABEL IS "iocell3";
@@ -258,16 +258,16 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF STEERING_PWM_OUT_PIN(0) : LABEL IS "P4[6]";
     ATTRIBUTE lib_model OF VERT_SYNC_OUT_PIN(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF VERT_SYNC_OUT_PIN(0) : LABEL IS "P4[4]";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell7";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell8";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell10";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell2";
-    ATTRIBUTE lib_model OF \BLACK_LINE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell10";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell2";
+    ATTRIBUTE lib_model OF \BLACK_POSITION_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell3";
@@ -634,14 +634,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     END COMPONENT;
 BEGIN
 
-    BOTTOM_LINE_ISR:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_3206,
-            clock => ClockBlock_BUS_CLK);
-
-    COMPARATOR_OUT:logicalport
+    COMPARE_OUT:logicalport
         GENERIC MAP(
             drive_mode => "001",
             ibuf_enabled => "1",
@@ -711,20 +704,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    COMPARATOR_OUT(0):iocell
+    COMPARE_OUT(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "COMPARATOR_OUT",
+            logicalport => "COMPARE_OUT",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => COMPARATOR_OUT(0)__PA,
+            pa_out => COMPARE_OUT(0)__PA,
             oe => open,
             pin_input => Net_4946,
-            pad_out => COMPARATOR_OUT(0)_PAD,
-            pad_in => COMPARATOR_OUT(0)_PAD,
+            pad_out => COMPARE_OUT(0)_PAD,
+            pad_in => COMPARE_OUT(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -938,6 +931,20 @@ BEGIN
             clk_a_dig_0 => Net_4889_adig_local,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
+    FIRST_BLACK_PIXEL_READ_ISR:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_4949,
+            clock => ClockBlock_BUS_CLK);
+
+    FIRST_LINE_IN_FRAME_ISR:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => Net_4376,
+            clock => ClockBlock_BUS_CLK);
+
     HE_IN_PIN:logicalport
         GENERIC MAP(
             drive_mode => "001",
@@ -1034,13 +1041,6 @@ BEGIN
             int_type => "00")
         PORT MAP(
             interrupt => Net_459,
-            clock => ClockBlock_BUS_CLK);
-
-    LINE_READ_ISR:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_4949,
             clock => ClockBlock_BUS_CLK);
 
     Net_1611:macrocell
@@ -1177,6 +1177,13 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    SECOND_LINE_IN_FRAME_ISR:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => Net_3206,
+            clock => ClockBlock_BUS_CLK);
+
     STEERING_PWM_OUT_PIN:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -1267,13 +1274,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    TOP_LINE_ISR:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_4376,
-            clock => ClockBlock_BUS_CLK);
 
     VERT_SYNC_OUT_PIN:logicalport
         GENERIC MAP(
@@ -1366,65 +1366,65 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\:macrocell
         GENERIC MAP(
             soft => 1,
             eqn_main => "(!main_0 * main_1 * !main_2) + (main_0 * main_1 * main_2)")
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
+            q => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
             main_0 => \VID_COMPARE:Net_1\,
-            main_1 => \BLACK_LINE_TIMER:TimerUDB:control_7\,
-            main_2 => \BLACK_LINE_TIMER:TimerUDB:capture_last\);
+            main_1 => \BLACK_POSITION_TIMER:TimerUDB:control_7\,
+            main_2 => \BLACK_POSITION_TIMER:TimerUDB:capture_last\);
 
-    \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * !main_4) + (!main_0 * main_1 * main_2 * !main_3 * main_4) + (main_0 * !main_1 * main_2 * main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4)",
             clk_inv => '0')
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\,
+            q => \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \BLACK_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \BLACK_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\);
+            main_0 => \BLACK_POSITION_TIMER:TimerUDB:control_1\,
+            main_1 => \BLACK_POSITION_TIMER:TimerUDB:control_0\,
+            main_2 => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\);
 
-    \BLACK_LINE_TIMER:TimerUDB:capture_last\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:capture_last\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
             clk_inv => '0')
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:capture_last\,
+            q => \BLACK_POSITION_TIMER:TimerUDB:capture_last\,
             clock_0 => ClockBlock_BUS_CLK,
             main_0 => \VID_COMPARE:Net_1\);
 
-    \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * !main_1 * main_3 * !main_4) + (!main_2)",
             clk_inv => '0')
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\,
+            q => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \BLACK_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \BLACK_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\);
+            main_0 => \BLACK_POSITION_TIMER:TimerUDB:control_1\,
+            main_1 => \BLACK_POSITION_TIMER:TimerUDB:control_0\,
+            main_2 => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\);
 
-    \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * main_3) + (main_0 * main_2 * main_4) + (!main_1 * main_2 * main_4) + (main_2 * main_3 * main_4)",
             clk_inv => '0')
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\,
+            q => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\,
             clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \BLACK_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \BLACK_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\);
+            main_0 => \BLACK_POSITION_TIMER:TimerUDB:control_1\,
+            main_1 => \BLACK_POSITION_TIMER:TimerUDB:control_0\,
+            main_2 => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\);
 
-    \BLACK_LINE_TIMER:TimerUDB:rstSts:stsreg\:statusicell
+    \BLACK_POSITION_TIMER:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(
             cy_force_order => 1,
             cy_int_mask => "1111111",
@@ -1435,13 +1435,13 @@ BEGIN
             status_6 => open,
             status_5 => open,
             status_4 => open,
-            status_3 => \BLACK_LINE_TIMER:TimerUDB:status_3\,
-            status_2 => \BLACK_LINE_TIMER:TimerUDB:status_2\,
-            status_1 => \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\,
-            status_0 => \BLACK_LINE_TIMER:TimerUDB:status_tc\,
+            status_3 => \BLACK_POSITION_TIMER:TimerUDB:status_3\,
+            status_2 => \BLACK_POSITION_TIMER:TimerUDB:status_2\,
+            status_1 => \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\,
+            status_0 => \BLACK_POSITION_TIMER:TimerUDB:status_tc\,
             interrupt => Net_4949);
 
-    \BLACK_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+    \BLACK_POSITION_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "11111111",
             cy_ctrl_mode_1 => "00000000",
@@ -1451,17 +1451,17 @@ BEGIN
             clk_inv => '0')
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            control_7 => \BLACK_LINE_TIMER:TimerUDB:control_7\,
-            control_6 => \BLACK_LINE_TIMER:TimerUDB:control_6\,
-            control_5 => \BLACK_LINE_TIMER:TimerUDB:control_5\,
-            control_4 => \BLACK_LINE_TIMER:TimerUDB:control_4\,
-            control_3 => \BLACK_LINE_TIMER:TimerUDB:control_3\,
-            control_2 => \BLACK_LINE_TIMER:TimerUDB:control_2\,
-            control_1 => \BLACK_LINE_TIMER:TimerUDB:control_1\,
-            control_0 => \BLACK_LINE_TIMER:TimerUDB:control_0\,
+            control_7 => \BLACK_POSITION_TIMER:TimerUDB:control_7\,
+            control_6 => \BLACK_POSITION_TIMER:TimerUDB:control_6\,
+            control_5 => \BLACK_POSITION_TIMER:TimerUDB:control_5\,
+            control_4 => \BLACK_POSITION_TIMER:TimerUDB:control_4\,
+            control_3 => \BLACK_POSITION_TIMER:TimerUDB:control_3\,
+            control_2 => \BLACK_POSITION_TIMER:TimerUDB:control_2\,
+            control_1 => \BLACK_POSITION_TIMER:TimerUDB:control_1\,
+            control_0 => \BLACK_POSITION_TIMER:TimerUDB:control_0\,
             busclk => ClockBlock_BUS_CLK);
 
-    \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0\:datapathcell
+    \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0\:datapathcell
         GENERIC MAP(
             a0_init => "00000000",
             a1_init => "00000000",
@@ -1489,25 +1489,25 @@ BEGIN
             clk_inv => '0')
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            cs_addr_1 => \BLACK_LINE_TIMER:TimerUDB:control_7\,
-            cs_addr_0 => \BLACK_LINE_TIMER:TimerUDB:per_zero\,
-            f0_load => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
+            cs_addr_1 => \BLACK_POSITION_TIMER:TimerUDB:control_7\,
+            cs_addr_0 => \BLACK_POSITION_TIMER:TimerUDB:per_zero\,
+            f0_load => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
             busclk => ClockBlock_BUS_CLK,
-            ce0 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
-            cl0 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
-            z0 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
-            ff0 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
-            ce1 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
-            cl1 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
-            z1 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
-            ff1 => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
-            co_msb => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
-            sol_msb => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
-            cfbo => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
-            sil => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
-            cmsbi => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+            ce0 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1 => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            co_msb => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sol_msb => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbo => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sil => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbi => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
 
-    \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1\:datapathcell
+    \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1\:datapathcell
         GENERIC MAP(
             a0_init => "00000000",
             a1_init => "00000000",
@@ -1535,34 +1535,34 @@ BEGIN
             clk_inv => '0')
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            cs_addr_1 => \BLACK_LINE_TIMER:TimerUDB:control_7\,
-            cs_addr_0 => \BLACK_LINE_TIMER:TimerUDB:per_zero\,
-            f0_load => \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            z0_comb => \BLACK_LINE_TIMER:TimerUDB:per_zero\,
-            f0_bus_stat_comb => \BLACK_LINE_TIMER:TimerUDB:status_3\,
-            f0_blk_stat_comb => \BLACK_LINE_TIMER:TimerUDB:status_2\,
+            cs_addr_1 => \BLACK_POSITION_TIMER:TimerUDB:control_7\,
+            cs_addr_0 => \BLACK_POSITION_TIMER:TimerUDB:per_zero\,
+            f0_load => \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
+            z0_comb => \BLACK_POSITION_TIMER:TimerUDB:per_zero\,
+            f0_bus_stat_comb => \BLACK_POSITION_TIMER:TimerUDB:status_3\,
+            f0_blk_stat_comb => \BLACK_POSITION_TIMER:TimerUDB:status_2\,
             busclk => ClockBlock_BUS_CLK,
-            ce0i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
-            cl0i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
-            z0i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
-            ff0i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
-            ce1i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
-            cl1i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
-            z1i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
-            ff1i => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
-            ci => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
-            sir => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
-            cfbi => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
-            sor => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
-            cmsbo => \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+            ce0i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1i => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            ci => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sir => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbi => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sor => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbo => \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
 
-    \BLACK_LINE_TIMER:TimerUDB:status_tc\:macrocell
+    \BLACK_POSITION_TIMER:TimerUDB:status_tc\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)")
         PORT MAP(
-            q => \BLACK_LINE_TIMER:TimerUDB:status_tc\,
-            main_0 => \BLACK_LINE_TIMER:TimerUDB:control_7\,
-            main_1 => \BLACK_LINE_TIMER:TimerUDB:per_zero\);
+            q => \BLACK_POSITION_TIMER:TimerUDB:status_tc\,
+            main_0 => \BLACK_POSITION_TIMER:TimerUDB:control_7\,
+            main_1 => \BLACK_POSITION_TIMER:TimerUDB:per_zero\);
 
     \HE_TIMER:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 1   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MOTOR_PWM
@@ -62,7 +62,7 @@ line level    source
   50          * Global variables:
   51          *  MOTOR_PWM_initVar: Is modified when this function is called for the
   52          *   first time. Is used to ensure that initialization happens only once.
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 2   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 2   
 
   53          *
   54          *******************************************************************************/
@@ -126,7 +126,7 @@ line level    source
                       MOTOR_PWM_RT1 &= ((uint8)(~MOTOR_PWM_SYNCDSI_MASK));
                       MOTOR_PWM_RT1 |= MOTOR_PWM_SYNCDSI_EN;
               
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 3   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 3   
 
                   #elif (MOTOR_PWM_UseControl)
  116   1              /* Set the default compare mode defined in the parameter */
@@ -190,7 +190,7 @@ line level    source
                           /* Clear the FIFO to enable the MOTOR_PWM_STATUS_FIFOFULL
                                  bit to be set on FIFO full. */
                           MOTOR_PWM_ClearFIFO();
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 4   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 4   
 
                       #endif /* (MOTOR_PWM_UseStatus) */
  178   1          #endif /* (MOTOR_PWM_UsingFixedFunction) */
@@ -254,7 +254,7 @@ line level    source
  236   1              MOTOR_PWM_CONTROL &= ((uint8)(~MOTOR_PWM_CTRL_ENABLE));
  237   1          #endif /* (MOTOR_PWM_UseControl || MOTOR_PWM_UsingFixedFunction) */
  238   1      
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 5   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 5   
 
  239   1          /* Globally disable the Fixed Function Block chosen */
  240   1          #if (MOTOR_PWM_UsingFixedFunction)
@@ -318,7 +318,7 @@ line level    source
                               /*Clear existing mode */
                               MOTOR_PWM_CONTROL &= ((uint8)(~(MOTOR_PWM_CTRL_CMPMODE1_MASK |
                                                           MOTOR_PWM_CTRL_CMPMODE2_MASK)));
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 6   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 6   
 
                               MOTOR_PWM_CONTROL |= (comparemode1masked | comparemode2masked);
               
@@ -382,7 +382,7 @@ line level    source
                   *  None
                   *
                   *******************************************************************************/
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 7   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 7   
 
                   void MOTOR_PWM_SetCompareMode2(uint8 comparemode) 
                   {
@@ -446,7 +446,7 @@ line level    source
  419              *  None
  420              *
  421              * Return:
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 8   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 8   
 
  422              *  The current value of the counter.
  423              *
@@ -510,7 +510,7 @@ line level    source
  481          *******************************************************************************/
  482          void MOTOR_PWM_WritePeriod(uint16 period) 
  483          {
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 9   
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 9   
 
  484   1          #if(MOTOR_PWM_UsingFixedFunction)
                       CY_SET_REG16(MOTOR_PWM_PERIOD_LSB_PTR, (uint16)period);
@@ -574,7 +574,7 @@ line level    source
                   *  This funtion is used to change the compare1 value.  The compare output will
                   *  reflect the new value on the next UDB clock.  The compare output will be
                   *  driven high when the present counter value is less than or less than or
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 10  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 10  
 
                   *  equal to the compare register, depending on the mode.
                   *
@@ -638,7 +638,7 @@ line level    source
                   * Parameters:
                   *  deadtime:  Number of counts for dead time
                   *
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 11  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 11  
 
                   * Return:
                   *  None
@@ -702,7 +702,7 @@ line level    source
  666          #if (MOTOR_PWM_UseStatus || MOTOR_PWM_UsingFixedFunction)
               
               
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 12  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 12  
 
                   /*******************************************************************************
                   * Function Name: MOTOR_PWM_SetInterruptMode
@@ -766,7 +766,7 @@ line level    source
  728              *  only if the control register is not removed.
  729              *
  730              * Parameters:
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 13  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 13  
 
  731              *  None
  732              *
@@ -830,7 +830,7 @@ line level    source
  790              uint16 MOTOR_PWM_ReadCapture(void) 
  791              {
  792   1              return (CY_GET_REG16(MOTOR_PWM_CAPTURE_LSB_PTR));
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 14  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 14  
 
  793   1          }
  794          
@@ -894,7 +894,7 @@ line level    source
                   * Summary:
                   *  Reads the compare value for the compare2 output.
                   *
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 15  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 15  
 
                   * Parameters:
                   *  None
@@ -958,7 +958,7 @@ line level    source
                   }
               
               
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 16  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 16  
 
                   /*******************************************************************************
                   * Function Name: MOTOR_PWM_ReadKillTime
@@ -983,7 +983,7 @@ line level    source
               #endif /* ( MOTOR_PWM_KillModeMinTime) */
  938          
  939          /* [] END OF FILE */
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 17  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 17  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1014,7 +1014,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 84
                                            ; SOURCE LINE # 85
                                            ; SOURCE LINE # 118
-0000 906473            MOV     DPTR,#06473H
+0000 906472            MOV     DPTR,#06472H
 0003 E0                MOVX    A,@DPTR
 0004 54C0              ANL     A,#0C0H
 0006 FF                MOV     R7,A
@@ -1047,7 +1047,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 120000      R     LCALL   _MOTOR_PWM_WriteCompare
                                            ; SOURCE LINE # 179
 002A 22                RET     
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 18  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 18  
 
              ; FUNCTION MOTOR_PWM_Init (END)
 
@@ -1055,7 +1055,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 199
                                            ; SOURCE LINE # 200
                                            ; SOURCE LINE # 209
-0000 906473            MOV     DPTR,#06473H
+0000 906472            MOV     DPTR,#06472H
 0003 E0                MOVX    A,@DPTR
 0004 4480              ORL     A,#080H
 0006 F0                MOVX    @DPTR,A
@@ -1067,7 +1067,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 233
                                            ; SOURCE LINE # 234
                                            ; SOURCE LINE # 236
-0000 906473            MOV     DPTR,#06473H
+0000 906472            MOV     DPTR,#06472H
 0003 E0                MOVX    A,@DPTR
 0004 547F              ANL     A,#07FH
 0006 F0                MOVX    @DPTR,A
@@ -1111,7 +1111,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 482
 ;---- Variable 'period' assigned to Register 'R6/R7' ----
                                            ; SOURCE LINE # 483
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 19  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 19  
 
                                            ; SOURCE LINE # 487
 0000 7B02              MOV     R3,#02H
@@ -1143,7 +1143,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 737
                                            ; SOURCE LINE # 738
                                            ; SOURCE LINE # 741
-0000 906473            MOV     DPTR,#06473H
+0000 906472            MOV     DPTR,#06472H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 ;---- Variable 'result' assigned to Register 'R7' ----
@@ -1158,7 +1158,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'control' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 766
                                            ; SOURCE LINE # 767
-0000 906473            MOV     DPTR,#06473H
+0000 906472            MOV     DPTR,#06472H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 768
@@ -1175,7 +1175,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 793
 0009         ?C0012:
-C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:33:50 PAGE 20  
+C51 COMPILER V9.51   MOTOR_PWM                                                             03/26/2015 00:49:20 PAGE 20  
 
 0009 22                RET     
              ; FUNCTION MOTOR_PWM_ReadCapture (END)

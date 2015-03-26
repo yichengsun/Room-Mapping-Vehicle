@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/26/2015 at 00:33
+// 03/26/2015 at 00:48
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -665,7 +665,7 @@ module VDAC8_v1_90_6 (
 
 endmodule
 
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=2, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=BLACK_LINE_TIMER, CY_INSTANCE_SHORT_NAME=BLACK_LINE_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=BLACK_LINE_TIMER, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=2, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=BLACK_POSITION_TIMER, CY_INSTANCE_SHORT_NAME=BLACK_POSITION_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=BLACK_POSITION_TIMER, )
 module Timer_v2_70_7 (
     clock,
     reset,
@@ -1176,7 +1176,7 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b00))
-		BOTTOM_LINE_ISR
+		SECOND_LINE_IN_FRAME_ISR
 		 (.int_signal(Net_3206));
 
 
@@ -1208,7 +1208,7 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b00))
-		TOP_LINE_ISR
+		FIRST_LINE_IN_FRAME_ISR
 		 (.int_signal(Net_4376));
 
 
@@ -1444,7 +1444,7 @@ module top ;
     ZeroTerminal ZeroTerminal_3 (
         .z(Net_4932));
 
-    Timer_v2_70_7 BLACK_LINE_TIMER (
+    Timer_v2_70_7 BLACK_POSITION_TIMER (
         .reset(Net_4932),
         .interrupt(Net_4949),
         .enable(1'b1),
@@ -1453,26 +1453,26 @@ module top ;
         .capture_out(Net_5075),
         .tc(Net_5076),
         .clock(Net_10));
-    defparam BLACK_LINE_TIMER.CaptureCount = 2;
-    defparam BLACK_LINE_TIMER.CaptureCounterEnabled = 0;
-    defparam BLACK_LINE_TIMER.DeviceFamily = "PSoC3";
-    defparam BLACK_LINE_TIMER.InterruptOnCapture = 1;
-    defparam BLACK_LINE_TIMER.InterruptOnTC = 0;
-    defparam BLACK_LINE_TIMER.Resolution = 16;
-    defparam BLACK_LINE_TIMER.SiliconRevision = "3";
+    defparam BLACK_POSITION_TIMER.CaptureCount = 2;
+    defparam BLACK_POSITION_TIMER.CaptureCounterEnabled = 0;
+    defparam BLACK_POSITION_TIMER.DeviceFamily = "PSoC3";
+    defparam BLACK_POSITION_TIMER.InterruptOnCapture = 1;
+    defparam BLACK_POSITION_TIMER.InterruptOnTC = 0;
+    defparam BLACK_POSITION_TIMER.Resolution = 16;
+    defparam BLACK_POSITION_TIMER.SiliconRevision = "3";
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		LINE_READ_ISR
+		FIRST_BLACK_PIXEL_READ_ISR
 		 (.int_signal(Net_4949));
 
 
-	wire [0:0] tmpOE__COMPARATOR_OUT_net;
-	wire [0:0] tmpFB_0__COMPARATOR_OUT_net;
-	wire [0:0] tmpIO_0__COMPARATOR_OUT_net;
-	wire [0:0] tmpINTERRUPT_0__COMPARATOR_OUT_net;
-	electrical [0:0] tmpSIOVREF__COMPARATOR_OUT_net;
+	wire [0:0] tmpOE__COMPARE_OUT_net;
+	wire [0:0] tmpFB_0__COMPARE_OUT_net;
+	wire [0:0] tmpIO_0__COMPARE_OUT_net;
+	wire [0:0] tmpINTERRUPT_0__COMPARE_OUT_net;
+	electrical [0:0] tmpSIOVREF__COMPARE_OUT_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("f57d7d3c-c41b-4050-a394-fb8021a5d8c2"),
@@ -1525,13 +1525,13 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		COMPARATOR_OUT
-		 (.oe(tmpOE__COMPARATOR_OUT_net),
+		COMPARE_OUT
+		 (.oe(tmpOE__COMPARE_OUT_net),
 		  .y({Net_4946}),
-		  .fb({tmpFB_0__COMPARATOR_OUT_net[0:0]}),
-		  .io({tmpIO_0__COMPARATOR_OUT_net[0:0]}),
-		  .siovref(tmpSIOVREF__COMPARATOR_OUT_net),
-		  .interrupt({tmpINTERRUPT_0__COMPARATOR_OUT_net[0:0]}),
+		  .fb({tmpFB_0__COMPARE_OUT_net[0:0]}),
+		  .io({tmpIO_0__COMPARE_OUT_net[0:0]}),
+		  .siovref(tmpSIOVREF__COMPARE_OUT_net),
+		  .interrupt({tmpINTERRUPT_0__COMPARE_OUT_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1539,7 +1539,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__COMPARATOR_OUT_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__COMPARE_OUT_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 

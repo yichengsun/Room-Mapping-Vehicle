@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Mar 26 00:33:31 2015
+--	Thu Mar 26 00:49:03 2015
 --
 
 USE cypress.cypress.all;
@@ -1347,268 +1347,268 @@ SIGNAL \VID_VDAC:Net_81\ : bit;
 SIGNAL \VID_VDAC:Net_82\ : bit;
 TERMINAL \VID_VDAC:Net_77\ : bit;
 SIGNAL Net_4932 : bit;
-SIGNAL \BLACK_LINE_TIMER:Net_260\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:Net_260\ : bit;
 SIGNAL Net_4949 : bit;
-SIGNAL \BLACK_LINE_TIMER:Net_55\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:Net_55\ : bit;
 SIGNAL Net_5076 : bit;
-SIGNAL \BLACK_LINE_TIMER:Net_53\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:Clk_Ctl_i\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_7\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_6\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_5\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_4\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_3\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_2\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:control_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_enable\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_ten\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_cmode_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_cmode_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_tmode_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_tmode_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_ic_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:ctrl_ic_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:fifo_load_polarized\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capture_last\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ : bit;
-ATTRIBUTE soft of \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\:SIGNAL IS '1';
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:timer_enable\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:run_mode\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:hwEnable\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_tc\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:trigger_enable\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:per_zero\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:tc_i\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:tc_reg_i\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:hwEnable_reg\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capture_out_reg_i\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:Net_53\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:Clk_Ctl_i\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_7\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_6\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_5\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_4\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_3\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_2\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:control_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_enable\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_ten\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_cmode_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_cmode_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_tmode_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_tmode_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_ic_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:ctrl_ic_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capture_last\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ : bit;
+ATTRIBUTE soft of \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\:SIGNAL IS '1';
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:timer_enable\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:run_mode\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:hwEnable\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_tc\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:trigger_enable\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:per_zero\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:tc_i\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:tc_reg_i\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:hwEnable_reg\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capture_out_reg_i\ : bit;
 SIGNAL Net_5075 : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load_int\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN3_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN3_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN4_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN4_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eqi_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lti_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gti_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xneq\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlt\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlte\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgt\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgte\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN5_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODIN5_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:runmode_enable\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:trig_reg\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_6\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_5\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_4\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_2\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:fifo_full\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:status_3\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:fifo_nempty\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:cs_addr_2\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:cs_addr_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:cs_addr_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:zeros_3\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:zeros_2\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:nc0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:nc3\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:nc4\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:carry\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:msb\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \BLACK_LINE_TIMER:Net_102\ : bit;
-SIGNAL \BLACK_LINE_TIMER:Net_266\ : bit;
-SIGNAL tmpOE__COMPARATOR_OUT_net_0 : bit;
-SIGNAL tmpFB_0__COMPARATOR_OUT_net_0 : bit;
-SIGNAL tmpIO_0__COMPARATOR_OUT_net_0 : bit;
-TERMINAL tmpSIOVREF__COMPARATOR_OUT_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COMPARATOR_OUT_net_0 : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load_int\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN3_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN3_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN4_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN4_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xneq\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlt\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlte\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgt\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgte\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN5_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODIN5_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:runmode_enable\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:trig_reg\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_6\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_5\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_4\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_2\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:fifo_full\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:status_3\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:fifo_nempty\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:cs_addr_2\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:cs_addr_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:cs_addr_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:zeros_3\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:zeros_2\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:nc0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:nc3\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:nc4\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:carry\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_right\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_left\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:msb\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_1\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_0\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cfb\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \BLACK_POSITION_TIMER:Net_102\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:Net_266\ : bit;
+SIGNAL tmpOE__COMPARE_OUT_net_0 : bit;
+SIGNAL tmpFB_0__COMPARE_OUT_net_0 : bit;
+SIGNAL tmpIO_0__COMPARE_OUT_net_0 : bit;
+TERMINAL tmpSIOVREF__COMPARE_OUT_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__COMPARE_OUT_net_0 : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -1644,13 +1644,13 @@ SIGNAL \STEERING_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:tc_i_reg\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capture_last\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:tc_reg_i\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:hwEnable_reg\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\\D\ : bit;
-SIGNAL \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capture_last\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:tc_reg_i\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:hwEnable_reg\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\\D\ : bit;
+SIGNAL \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\\D\ : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -1695,26 +1695,26 @@ Net_459 <= (not Net_2174);
 
 Net_4946 <= (not \VID_COMPARE:Net_1\);
 
-\BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ <= ((not \VID_COMPARE:Net_1\ and not \BLACK_LINE_TIMER:TimerUDB:capture_last\ and \BLACK_LINE_TIMER:TimerUDB:control_7\)
-	OR (\VID_COMPARE:Net_1\ and \BLACK_LINE_TIMER:TimerUDB:control_7\ and \BLACK_LINE_TIMER:TimerUDB:capture_last\));
+\BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ <= ((not \VID_COMPARE:Net_1\ and not \BLACK_POSITION_TIMER:TimerUDB:capture_last\ and \BLACK_POSITION_TIMER:TimerUDB:control_7\)
+	OR (\VID_COMPARE:Net_1\ and \BLACK_POSITION_TIMER:TimerUDB:control_7\ and \BLACK_POSITION_TIMER:TimerUDB:capture_last\));
 
-\BLACK_LINE_TIMER:TimerUDB:status_tc\ <= ((\BLACK_LINE_TIMER:TimerUDB:control_7\ and \BLACK_LINE_TIMER:TimerUDB:per_zero\));
+\BLACK_POSITION_TIMER:TimerUDB:status_tc\ <= ((\BLACK_POSITION_TIMER:TimerUDB:control_7\ and \BLACK_POSITION_TIMER:TimerUDB:per_zero\));
 
-\BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \BLACK_LINE_TIMER:TimerUDB:control_0\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_LINE_TIMER:TimerUDB:control_1\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:control_0\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:control_1\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\));
+\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \BLACK_POSITION_TIMER:TimerUDB:control_0\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_POSITION_TIMER:TimerUDB:control_1\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:control_0\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:control_1\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\));
 
-\BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:control_1\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:control_1\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:control_0\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\));
+\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:control_1\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:control_1\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:control_0\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\));
 
-\BLACK_LINE_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \BLACK_LINE_TIMER:TimerUDB:control_1\ and not \BLACK_LINE_TIMER:TimerUDB:control_0\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:control_0\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_LINE_TIMER:TimerUDB:control_1\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \BLACK_LINE_TIMER:TimerUDB:control_1\ and not \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_LINE_TIMER:TimerUDB:control_0\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (\BLACK_LINE_TIMER:TimerUDB:control_1\ and \BLACK_LINE_TIMER:TimerUDB:control_0\ and \BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\));
+\BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \BLACK_POSITION_TIMER:TimerUDB:control_1\ and not \BLACK_POSITION_TIMER:TimerUDB:control_0\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:control_0\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\ and \BLACK_POSITION_TIMER:TimerUDB:control_1\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \BLACK_POSITION_TIMER:TimerUDB:control_1\ and not \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_POSITION_TIMER:TimerUDB:control_0\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\)
+	OR (\BLACK_POSITION_TIMER:TimerUDB:control_1\ and \BLACK_POSITION_TIMER:TimerUDB:control_0\ and \BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\ and \BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -2659,7 +2659,7 @@ VERT_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__VERT_SYNC_OUT_PIN_net_0);
-BOTTOM_LINE_ISR:cy_isr_v1_0
+SECOND_LINE_IN_FRAME_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_3206);
 \LINE_COUNTER:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
@@ -2777,7 +2777,7 @@ BOTTOM_LINE_ISR:cy_isr_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-TOP_LINE_ISR:cy_isr_v1_0
+FIRST_LINE_IN_FRAME_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_4376);
 STEERING_PWM_OUT_PIN:cy_psoc3_pins_v1_10
@@ -3176,36 +3176,36 @@ CAM_LINE_CLK:cy_clock_v1_0
 		iout=>\VID_VDAC:Net_77\);
 \VID_VDAC:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\VID_VDAC:Net_77\);
-\BLACK_LINE_TIMER:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+\BLACK_POSITION_TIMER:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\);
-\BLACK_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+		clock_out=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\);
+\BLACK_POSITION_TIMER:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\BLACK_LINE_TIMER:TimerUDB:Clk_Ctl_i\);
-\BLACK_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+		clock_out=>\BLACK_POSITION_TIMER:TimerUDB:Clk_Ctl_i\);
+\BLACK_POSITION_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
 		cy_force_order=>'1',
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
 	PORT MAP(reset=>zero,
-		clock=>\BLACK_LINE_TIMER:TimerUDB:Clk_Ctl_i\,
-		control=>(\BLACK_LINE_TIMER:TimerUDB:control_7\, \BLACK_LINE_TIMER:TimerUDB:control_6\, \BLACK_LINE_TIMER:TimerUDB:control_5\, \BLACK_LINE_TIMER:TimerUDB:control_4\,
-			\BLACK_LINE_TIMER:TimerUDB:control_3\, \BLACK_LINE_TIMER:TimerUDB:control_2\, \BLACK_LINE_TIMER:TimerUDB:control_1\, \BLACK_LINE_TIMER:TimerUDB:control_0\));
-\BLACK_LINE_TIMER:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
+		clock=>\BLACK_POSITION_TIMER:TimerUDB:Clk_Ctl_i\,
+		control=>(\BLACK_POSITION_TIMER:TimerUDB:control_7\, \BLACK_POSITION_TIMER:TimerUDB:control_6\, \BLACK_POSITION_TIMER:TimerUDB:control_5\, \BLACK_POSITION_TIMER:TimerUDB:control_4\,
+			\BLACK_POSITION_TIMER:TimerUDB:control_3\, \BLACK_POSITION_TIMER:TimerUDB:control_2\, \BLACK_POSITION_TIMER:TimerUDB:control_1\, \BLACK_POSITION_TIMER:TimerUDB:control_0\));
+\BLACK_POSITION_TIMER:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
 	PORT MAP(reset=>zero,
-		clock=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \BLACK_LINE_TIMER:TimerUDB:status_3\,
-			\BLACK_LINE_TIMER:TimerUDB:status_2\, \BLACK_LINE_TIMER:TimerUDB:capt_int_temp\, \BLACK_LINE_TIMER:TimerUDB:status_tc\),
+		clock=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		status=>(zero, zero, zero, \BLACK_POSITION_TIMER:TimerUDB:status_3\,
+			\BLACK_POSITION_TIMER:TimerUDB:status_2\, \BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\, \BLACK_POSITION_TIMER:TimerUDB:status_tc\),
 		interrupt=>Net_4949);
-\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -3228,17 +3228,17 @@ CAM_LINE_CLK:cy_clock_v1_0
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \BLACK_LINE_TIMER:TimerUDB:control_7\, \BLACK_LINE_TIMER:TimerUDB:per_zero\),
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \BLACK_POSITION_TIMER:TimerUDB:control_7\, \BLACK_POSITION_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
-		f0_load=>\BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
+		f0_load=>\BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
 		ce0=>open,
 		cl0=>open,
-		z0=>\BLACK_LINE_TIMER:TimerUDB:nc0\,
+		z0=>\BLACK_POSITION_TIMER:TimerUDB:nc0\,
 		ff0=>open,
 		ce1=>open,
 		cl1=>open,
@@ -3248,8 +3248,8 @@ CAM_LINE_CLK:cy_clock_v1_0
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\BLACK_LINE_TIMER:TimerUDB:nc3\,
-		f0_blk_stat=>\BLACK_LINE_TIMER:TimerUDB:nc4\,
+		f0_bus_stat=>\BLACK_POSITION_TIMER:TimerUDB:nc3\,
+		f0_blk_stat=>\BLACK_POSITION_TIMER:TimerUDB:nc4\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -3269,29 +3269,29 @@ CAM_LINE_CLK:cy_clock_v1_0
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
 		ci=>zero,
-		co=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:carry\,
+		co=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:carry\,
 		sir=>zero,
 		sor=>open,
-		sil=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\,
-		sol=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\,
-		msbi=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:msb\,
+		sil=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_right\,
+		sol=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_left\,
+		msbi=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:msb\,
 		msbo=>open,
 		cei=>(zero, zero),
-		ceo=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
 		cli=>(zero, zero),
-		clo=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
 		zi=>(zero, zero),
-		zo=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
 		fi=>(zero, zero),
-		fo=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
 		capi=>(zero, zero),
-		capo=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_0\),
 		cfbi=>zero,
-		cfbo=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cfb\,
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -3314,17 +3314,17 @@ CAM_LINE_CLK:cy_clock_v1_0
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \BLACK_LINE_TIMER:TimerUDB:control_7\, \BLACK_LINE_TIMER:TimerUDB:per_zero\),
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \BLACK_POSITION_TIMER:TimerUDB:control_7\, \BLACK_POSITION_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
-		f0_load=>\BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
+		f0_load=>\BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
 		ce0=>open,
 		cl0=>open,
-		z0=>\BLACK_LINE_TIMER:TimerUDB:per_zero\,
+		z0=>\BLACK_POSITION_TIMER:TimerUDB:per_zero\,
 		ff0=>open,
 		ce1=>open,
 		cl1=>open,
@@ -3334,8 +3334,8 @@ CAM_LINE_CLK:cy_clock_v1_0
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\BLACK_LINE_TIMER:TimerUDB:status_3\,
-		f0_blk_stat=>\BLACK_LINE_TIMER:TimerUDB:status_2\,
+		f0_bus_stat=>\BLACK_POSITION_TIMER:TimerUDB:status_3\,
+		f0_blk_stat=>\BLACK_POSITION_TIMER:TimerUDB:status_2\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -3354,33 +3354,33 @@ CAM_LINE_CLK:cy_clock_v1_0
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:carry\,
+		ci=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:carry\,
 		co=>open,
-		sir=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\,
-		sor=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\,
+		sir=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_left\,
+		sor=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:sh_right\,
 		sil=>zero,
 		sol=>open,
 		msbi=>zero,
-		msbo=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:msb\,
-		cei=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		msbo=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:msb\,
+		cei=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
 		ceo=>open,
-		cli=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		cli=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
 		clo=>open,
-		zi=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zi=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
 		zo=>open,
-		fi=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fi=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
 		fo=>open,
-		capi=>(\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\, \BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\),
+		capi=>(\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_1\, \BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cap_0\),
 		capo=>open,
-		cfbi=>\BLACK_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\,
+		cfbi=>\BLACK_POSITION_TIMER:TimerUDB:sT16:timerdp:cfb\,
 		cfbo=>open,
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-LINE_READ_ISR:cy_isr_v1_0
+FIRST_BLACK_PIXEL_READ_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_4949);
-COMPARATOR_OUT:cy_psoc3_pins_v1_10
+COMPARE_OUT:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"f57d7d3c-c41b-4050-a394-fb8021a5d8c2",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
@@ -3437,10 +3437,10 @@ COMPARATOR_OUT:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>Net_4946,
-		fb=>(tmpFB_0__COMPARATOR_OUT_net_0),
+		fb=>(tmpFB_0__COMPARE_OUT_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__COMPARATOR_OUT_net_0),
-		siovref=>(tmpSIOVREF__COMPARATOR_OUT_net_0),
+		io=>(tmpIO_0__COMPARE_OUT_net_0),
+		siovref=>(tmpSIOVREF__COMPARE_OUT_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
@@ -3448,7 +3448,7 @@ COMPARATOR_OUT:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COMPARATOR_OUT_net_0);
+		interrupt=>tmpINTERRUPT_0__COMPARE_OUT_net_0);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -3609,33 +3609,33 @@ COMPARATOR_OUT:cy_psoc3_pins_v1_10
 	PORT MAP(d=>\STEERING_PWM:PWMUDB:tc_i_reg\\D\,
 		clk=>\STEERING_PWM:PWMUDB:ClockOutFromEnBlock\,
 		q=>\STEERING_PWM:PWMUDB:tc_i_reg\);
-\BLACK_LINE_TIMER:TimerUDB:capture_last\:cy_dff
+\BLACK_POSITION_TIMER:TimerUDB:capture_last\:cy_dff
 	PORT MAP(d=>Net_4946,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:capture_last\);
-\BLACK_LINE_TIMER:TimerUDB:tc_reg_i\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:status_tc\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:tc_reg_i\);
-\BLACK_LINE_TIMER:TimerUDB:hwEnable_reg\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:control_7\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:hwEnable_reg\);
-\BLACK_LINE_TIMER:TimerUDB:capture_out_reg_i\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:capt_fifo_load\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:capture_out_reg_i\);
-\BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\\D\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:int_capt_count_1\);
-\BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\\D\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:int_capt_count_0\);
-\BLACK_LINE_TIMER:TimerUDB:capt_int_temp\:cy_dff
-	PORT MAP(d=>\BLACK_LINE_TIMER:TimerUDB:capt_int_temp\\D\,
-		clk=>\BLACK_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\BLACK_LINE_TIMER:TimerUDB:capt_int_temp\);
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:capture_last\);
+\BLACK_POSITION_TIMER:TimerUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:status_tc\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:tc_reg_i\);
+\BLACK_POSITION_TIMER:TimerUDB:hwEnable_reg\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:control_7\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:hwEnable_reg\);
+\BLACK_POSITION_TIMER:TimerUDB:capture_out_reg_i\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:capt_fifo_load\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:capture_out_reg_i\);
+\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\\D\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_1\);
+\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\\D\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:int_capt_count_0\);
+\BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\:cy_dff
+	PORT MAP(d=>\BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\\D\,
+		clk=>\BLACK_POSITION_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\BLACK_POSITION_TIMER:TimerUDB:capt_int_temp\);
 
 END R_T_L;
