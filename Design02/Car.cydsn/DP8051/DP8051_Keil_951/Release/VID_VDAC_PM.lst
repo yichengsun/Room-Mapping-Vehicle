@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 1   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VID_VDAC_PM
@@ -62,7 +62,7 @@ line level    source
   49          *
   50          * Summary:
   51          *  Restores the current user configuration.
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 2   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 2   
 
   52          *
   53          * Parameters:  
@@ -126,7 +126,7 @@ line level    source
  111   1      }
  112          
  113          
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 3   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 3   
 
  114          /*******************************************************************************
  115          * Function Name: VID_VDAC_Wakeup
@@ -162,7 +162,7 @@ line level    source
  145          
  146          
  147          /* [] END OF FILE */
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 4   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -171,7 +171,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 37
                                            ; SOURCE LINE # 38
                                            ; SOURCE LINE # 39
-0000 905829            MOV     DPTR,#05829H
+0000 90582D            MOV     DPTR,#0582DH
 0003 E0                MOVX    A,@DPTR
 0004 5420              ANL     A,#020H
 0006 6420              XRL     A,#020H
@@ -184,7 +184,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 4008              JC      ?C0004
                                            ; SOURCE LINE # 40
                                            ; SOURCE LINE # 41
-0010 905B82            MOV     DPTR,#05B82H
+0010 905B83            MOV     DPTR,#05B83H
 0013 E0                MOVX    A,@DPTR
 0014 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
 0017 F0                MOVX    @DPTR,A
@@ -198,7 +198,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 60
                                            ; SOURCE LINE # 61
                                            ; SOURCE LINE # 62
-0000 905829            MOV     DPTR,#05829H
+0000 90582D            MOV     DPTR,#0582DH
 0003 E0                MOVX    A,@DPTR
 0004 5420              ANL     A,#020H
 0006 6420              XRL     A,#020H
@@ -211,7 +211,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 4026              JC      ?C0010
                                            ; SOURCE LINE # 63
                                            ; SOURCE LINE # 64
-0010 905A97            MOV     DPTR,#05A97H
+0010 905A9F            MOV     DPTR,#05A9FH
 0013 E0                MOVX    A,@DPTR
 0014 5408              ANL     A,#08H
 0016 6408              XRL     A,#08H
@@ -224,12 +224,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 67
 001E 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
 0021 E0                MOVX    A,@DPTR
-0022 905B82            MOV     DPTR,#05B82H
+0022 905B83            MOV     DPTR,#05B83H
 0025 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 5   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 5   
 
                                            ; SOURCE LINE # 68
-0026 905A97            MOV     DPTR,#05A97H
+0026 905A9F            MOV     DPTR,#05A9FH
 0029 E0                MOVX    A,@DPTR
 002A 4408              ORL     A,#08H
 002C F0                MOVX    @DPTR,A
@@ -240,7 +240,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 72
 002E 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
 0031 E0                MOVX    A,@DPTR
-0032 905B82            MOV     DPTR,#05B82H
+0032 905B83            MOV     DPTR,#05B83H
 0035 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 73
                                            ; SOURCE LINE # 74
@@ -255,8 +255,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 98
 0000 9043A8            MOV     DPTR,#043A8H
 0003 E0                MOVX    A,@DPTR
-0004 5404              ANL     A,#04H
-0006 6404              XRL     A,#04H
+0004 5408              ANL     A,#08H
+0006 6408              XRL     A,#08H
 0008 7007              JNZ     ?C0011
                                            ; SOURCE LINE # 99
                                            ; SOURCE LINE # 101
@@ -290,13 +290,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 900000      R     MOV     DPTR,#VID_VDAC_backup
 0006 E0                MOVX    A,@DPTR
 0007 B4010B            CJNE    A,#01H,?C0015
-C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 03:46:03 PAGE 6   
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 14:25:30 PAGE 6   
 
                                            ; SOURCE LINE # 137
                                            ; SOURCE LINE # 139
 000A 120000      E     LCALL   VID_VDAC_Enable
                                            ; SOURCE LINE # 142
-000D 905B82            MOV     DPTR,#05B82H
+000D 905B83            MOV     DPTR,#05B83H
 0010 E0                MOVX    A,@DPTR
 0011 FF                MOV     R7,A
 0012 120000      E     LCALL   _VID_VDAC_SetValue

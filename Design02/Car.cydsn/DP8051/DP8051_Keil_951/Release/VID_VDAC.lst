@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 1   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VID_VDAC
@@ -62,7 +62,7 @@ line level    source
   50          * Theory:
   51          *
   52          * Side Effects:
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 2   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 2   
 
   53          *
   54          *******************************************************************************/
@@ -126,7 +126,7 @@ line level    source
  112          
  113          /*******************************************************************************
  114          * Function Name: VID_VDAC_Start
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 3   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 3   
 
  115          ********************************************************************************
  116          *
@@ -190,7 +190,7 @@ line level    source
  174   1          /* This is a work around for PSoC5A  ,
  175   1          this sets VDAC to current mode with output off */
  176   1          #if (CY_PSOC5A)
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 4   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 4   
 
                       VID_VDAC_backup.data_value = VID_VDAC_CR0;
                       VID_VDAC_CR0 = VID_VDAC_CUR_MODE_OUT_OFF;
@@ -254,7 +254,7 @@ line level    source
  236          /*******************************************************************************
  237          * Function Name: VID_VDAC_SetValue
  238          ********************************************************************************
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 5   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 5   
 
  239          *
  240          * Summary:
@@ -316,7 +316,7 @@ line level    source
  296          
  297          
  298          /* [] END OF FILE */
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 6   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 6   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -325,7 +325,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 55
                                            ; SOURCE LINE # 56
                                            ; SOURCE LINE # 57
-0000 905828            MOV     DPTR,#05828H
+0000 90582C            MOV     DPTR,#0582CH
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 63
@@ -348,12 +348,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 98
 0000 9043A8            MOV     DPTR,#043A8H
 0003 E0                MOVX    A,@DPTR
-0004 4404              ORL     A,#04H
+0004 4408              ORL     A,#08H
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 99
 0007 9043B8            MOV     DPTR,#043B8H
 000A E0                MOVX    A,@DPTR
-000B 4404              ORL     A,#04H
+000B 4408              ORL     A,#08H
 000D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 110
 000E 22                RET     
@@ -378,9 +378,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 143
 000F 120000      R     LCALL   VID_VDAC_Enable
                                            ; SOURCE LINE # 146
-0012 7F64              MOV     R7,#064H
+0012 7FFF              MOV     R7,#0FFH
 0014 120000      R     LCALL   _VID_VDAC_SetValue
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 7   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 7   
 
                                            ; SOURCE LINE # 147
 0017 22                RET     
@@ -392,12 +392,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 171
 0000 9043A8            MOV     DPTR,#043A8H
 0003 E0                MOVX    A,@DPTR
-0004 54FB              ANL     A,#0FBH
+0004 54F7              ANL     A,#0F7H
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 172
 0007 9043B8            MOV     DPTR,#043B8H
 000A E0                MOVX    A,@DPTR
-000B 54FB              ANL     A,#0FBH
+000B 54F7              ANL     A,#0F7H
 000D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 181
 000E 22                RET     
@@ -408,7 +408,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'speed' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 203
                                            ; SOURCE LINE # 205
-0000 905828            MOV     DPTR,#05828H
+0000 90582C            MOV     DPTR,#0582CH
 0003 E0                MOVX    A,@DPTR
 0004 54FD              ANL     A,#0FDH
 0006 F0                MOVX    @DPTR,A
@@ -430,7 +430,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'range' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 229
                                            ; SOURCE LINE # 230
-0000 905828            MOV     DPTR,#05828H
+0000 90582C            MOV     DPTR,#0582CH
 0003 E0                MOVX    A,@DPTR
 0004 54F3              ANL     A,#0F3H
 0006 F0                MOVX    @DPTR,A
@@ -444,7 +444,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 4F                ORL     A,R7
 000F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 232
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 8   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 8   
 
 0010 120000      R     LCALL   VID_VDAC_DacTrim
                                            ; SOURCE LINE # 233
@@ -456,7 +456,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'value' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 255
                                            ; SOURCE LINE # 260
-0000 905B82            MOV     DPTR,#05B82H
+0000 905B83            MOV     DPTR,#05B83H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 268
@@ -467,7 +467,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 289
                                            ; SOURCE LINE # 290
                                            ; SOURCE LINE # 293
-0000 905828            MOV     DPTR,#05828H
+0000 90582C            MOV     DPTR,#0582CH
 0003 E0                MOVX    A,@DPTR
 0004 540C              ANL     A,#0CH
 0006 7E00              MOV     R6,#00H
@@ -485,7 +485,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 294
 0014 E4                CLR     A
 0015 EF                MOV     A,R7
-0016 2428              ADD     A,#028H
+0016 2438              ADD     A,#038H
 0018 FF                MOV     R7,A
 0019 E4                CLR     A
 001A 3401              ADDC    A,#01H
@@ -499,7 +499,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0025 AA06              MOV     R2,AR6
 0027 AB05              MOV     R3,AR5
 0029 120000      E     LCALL   _cyread8
-002C 90460A            MOV     DPTR,#0460AH
+002C 90460B            MOV     DPTR,#0460BH
 002F EF                MOV     A,R7
 0030 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 295
@@ -508,7 +508,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 
-C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 03:46:02 PAGE 9   
+C51 COMPILER V9.51   VID_VDAC                                                              03/26/2015 14:25:30 PAGE 9   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    164    ----

@@ -93,10 +93,10 @@ void VID_COMPARE_Wakeup(void)                    ;
 *           Parameter Defaults        
 **************************************/
 
-#define VID_COMPARE_DEFAULT_SPEED       (0u) 
+#define VID_COMPARE_DEFAULT_SPEED       (1u) 
 #define VID_COMPARE_DEFAULT_HYSTERESIS  (0u)
 #define VID_COMPARE_DEFAULT_POLARITY    (1u)
-#define VID_COMPARE_DEFAULT_BYPASS_SYNC (0u)
+#define VID_COMPARE_DEFAULT_BYPASS_SYNC (1u)
 #define VID_COMPARE_DEFAULT_PWRDWN_OVRD (0u)
 
 

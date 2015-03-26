@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Mar 26 03:45:43 2015
+--	Thu Mar 26 19:23:03 2015
 --
 
 USE cypress.cypress.all;
@@ -794,27 +794,28 @@ SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:f1_blk_stat_reg_3\ : bit;
 ATTRIBUTE port_state_att of \HE_TIMER:TimerUDB:sT32:timerdp:f1_blk_stat_reg_3\:SIGNAL IS 2;
 SIGNAL \HE_TIMER:Net_102\ : bit;
 SIGNAL \HE_TIMER:Net_266\ : bit;
-SIGNAL tmpOE__COM_SYNC_OUT_PIN_net_0 : bit;
-SIGNAL Net_3213 : bit;
-SIGNAL tmpIO_0__COM_SYNC_OUT_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__COM_SYNC_OUT_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0 : bit;
+SIGNAL tmpOE__LINE_IS_READ_PIN_net_0 : bit;
+SIGNAL tmpFB_0__LINE_IS_READ_PIN_net_0 : bit;
+SIGNAL tmpIO_0__LINE_IS_READ_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__LINE_IS_READ_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__LINE_IS_READ_PIN_net_0 : bit;
+SIGNAL Net_5390 : bit;
 SIGNAL tmpOE__VERT_SYNC_OUT_PIN_net_0 : bit;
 SIGNAL Net_4376 : bit;
 SIGNAL tmpIO_0__VERT_SYNC_OUT_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__VERT_SYNC_OUT_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__VERT_SYNC_OUT_PIN_net_0 : bit;
-SIGNAL Net_3206 : bit;
-SIGNAL Net_3140 : bit;
+SIGNAL Net_5388 : bit;
+SIGNAL Net_3207 : bit;
+SIGNAL Net_5391 : bit;
 SIGNAL \LINE_COUNTER:Net_43\ : bit;
-SIGNAL Net_3205 : bit;
+SIGNAL Net_5389 : bit;
 SIGNAL \LINE_COUNTER:Net_49\ : bit;
 SIGNAL \LINE_COUNTER:Net_82\ : bit;
 SIGNAL \LINE_COUNTER:Net_89\ : bit;
 SIGNAL \LINE_COUNTER:Net_95\ : bit;
 SIGNAL \LINE_COUNTER:Net_91\ : bit;
 SIGNAL \LINE_COUNTER:Net_102\ : bit;
-SIGNAL Net_3207 : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:ClockOutFromEnBlock\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:ctrl_cmod_2\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:ctrl_cmod_1\ : bit;
@@ -852,7 +853,6 @@ SIGNAL \LINE_COUNTER:CounterUDB:status_5\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:fifo_full\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:status_6\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:fifo_nempty\ : bit;
-SIGNAL Net_3194 : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:overflow\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:dp_dir\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:per_equal\ : bit;
@@ -866,6 +866,7 @@ SIGNAL \LINE_COUNTER:CounterUDB:cmp_equal\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:prevCompare\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:cmp_out_reg_i\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:count_stored_i\ : bit;
+SIGNAL Net_3213 : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:count_enable\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:cs_addr_2\ : bit;
 SIGNAL \LINE_COUNTER:CounterUDB:cs_addr_1\ : bit;
@@ -921,15 +922,9 @@ SIGNAL \LINE_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \LINE_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\:SIGNAL IS 2;
 SIGNAL \LINE_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \LINE_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\:SIGNAL IS 2;
-SIGNAL tmpOE__STEERING_PWM_OUT_PIN_net_0 : bit;
-SIGNAL Net_3712 : bit;
-SIGNAL tmpFB_0__STEERING_PWM_OUT_PIN_net_0 : bit;
-SIGNAL tmpIO_0__STEERING_PWM_OUT_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__STEERING_PWM_OUT_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__STEERING_PWM_OUT_PIN_net_0 : bit;
+SIGNAL Net_3302 : bit;
 SIGNAL \STEERING_PWM:PWMUDB:km_run\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:min_kill_reg\ : bit;
-SIGNAL Net_3302 : bit;
 SIGNAL \STEERING_PWM:PWMUDB:ClockOutFromEnBlock\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:control_7\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:control_6\ : bit;
@@ -1123,8 +1118,8 @@ SIGNAL \STEERING_PWM:PWMUDB:pwm2_i\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:tc_i_reg\ : bit;
 SIGNAL \STEERING_PWM:Net_101\ : bit;
 SIGNAL \STEERING_PWM:Net_96\ : bit;
-SIGNAL Net_4795 : bit;
-SIGNAL Net_4796 : bit;
+SIGNAL Net_6007 : bit;
+SIGNAL Net_6008 : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm_temp\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:cmp1\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:cmp2\ : bit;
@@ -1324,34 +1319,28 @@ SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
-SIGNAL Net_4797 : bit;
+SIGNAL Net_5259 : bit;
+SIGNAL Net_6009 : bit;
 SIGNAL \STEERING_PWM:Net_55\ : bit;
-SIGNAL Net_4794 : bit;
+SIGNAL Net_6006 : bit;
 SIGNAL \STEERING_PWM:Net_113\ : bit;
 SIGNAL \STEERING_PWM:Net_107\ : bit;
 SIGNAL \STEERING_PWM:Net_114\ : bit;
-SIGNAL tmpOE__COM_VID_IN_PIN_net_0 : bit;
-SIGNAL tmpFB_0__COM_VID_IN_PIN_net_0 : bit;
-TERMINAL Net_4886 : bit;
-SIGNAL tmpIO_0__COM_VID_IN_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__COM_VID_IN_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COM_VID_IN_PIN_net_0 : bit;
-SIGNAL Net_4889 : bit;
-TERMINAL Net_4888 : bit;
-SIGNAL \VID_COMPARE:Net_1\ : bit;
-SIGNAL Net_4946 : bit;
-SIGNAL \VID_COMPARE:Net_9\ : bit;
-SIGNAL Net_10 : bit;
-SIGNAL \VID_VDAC:Net_83\ : bit;
-SIGNAL \VID_VDAC:Net_81\ : bit;
-SIGNAL \VID_VDAC:Net_82\ : bit;
-TERMINAL \VID_VDAC:Net_77\ : bit;
-SIGNAL Net_4932 : bit;
-SIGNAL \SEC_TIL_BLACK_TIMER:Net_260\ : bit;
+SIGNAL tmpOE__STEERING_PWM_OUT_PIN_net_0 : bit;
+SIGNAL tmpFB_0__STEERING_PWM_OUT_PIN_net_0 : bit;
+SIGNAL tmpIO_0__STEERING_PWM_OUT_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__STEERING_PWM_OUT_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__STEERING_PWM_OUT_PIN_net_0 : bit;
 SIGNAL Net_4949 : bit;
+SIGNAL tmpOE__COM_SYNC_OUT_PIN_net_0 : bit;
+SIGNAL tmpIO_0__COM_SYNC_OUT_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__COM_SYNC_OUT_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0 : bit;
+SIGNAL \SEC_TIL_BLACK_TIMER:Net_260\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_55\ : bit;
-SIGNAL Net_5076 : bit;
+SIGNAL Net_5307 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_53\ : bit;
+SIGNAL Net_10 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:Clk_Ctl_i\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ : bit;
@@ -1373,7 +1362,6 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:ctrl_ic_0\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:fifo_load_polarized\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : bit;
-ATTRIBUTE soft of \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\:SIGNAL IS '1';
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:timer_enable\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:run_mode\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:hwEnable\ : bit;
@@ -1384,8 +1372,9 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:tc_i\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:tc_reg_i\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:hwEnable_reg\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_out_reg_i\ : bit;
-SIGNAL Net_5075 : bit;
+SIGNAL Net_5306 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : bit;
+SIGNAL Net_5302 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : bit;
@@ -1604,20 +1593,15 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
 ATTRIBUTE port_state_att of \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_102\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_266\ : bit;
-SIGNAL tmpOE__COMPARE_OUT_net_0 : bit;
-SIGNAL tmpFB_0__COMPARE_OUT_net_0 : bit;
-SIGNAL tmpIO_0__COMPARE_OUT_net_0 : bit;
-TERMINAL tmpSIOVREF__COMPARE_OUT_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COMPARE_OUT_net_0 : bit;
+SIGNAL Net_5337 : bit;
 SIGNAL Net_5086 : bit;
-SIGNAL Net_5088 : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_260\ : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_266\ : bit;
+SIGNAL Net_5088 : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_51\ : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_261\ : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_57\ : bit;
-SIGNAL Net_5117 : bit;
-SIGNAL Net_5122 : bit;
+SIGNAL Net_5342 : bit;
 SIGNAL \UPDATE_STEERING_TIMER:Net_102\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
@@ -1688,7 +1672,7 @@ Net_459 <= (not Net_2174);
 
 \LINE_COUNTER:CounterUDB:status_2\ <= ((not \LINE_COUNTER:CounterUDB:overflow_reg_i\ and \LINE_COUNTER:CounterUDB:per_equal\));
 
-\LINE_COUNTER:CounterUDB:count_enable\ <= ((not \LINE_COUNTER:CounterUDB:count_stored_i\ and Net_3213 and \LINE_COUNTER:CounterUDB:control_7\));
+\LINE_COUNTER:CounterUDB:count_enable\ <= ((not \LINE_COUNTER:CounterUDB:count_stored_i\ and \LINE_COUNTER:CounterUDB:control_7\ and Net_3213));
 
 \STEERING_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \STEERING_PWM:PWMUDB:tc_i\);
 
@@ -1703,28 +1687,27 @@ Net_459 <= (not Net_2174);
 
 \STEERING_PWM:PWMUDB:pwm_i\ <= ((\STEERING_PWM:PWMUDB:control_7\ and \STEERING_PWM:PWMUDB:cmp1_less\));
 
-Net_4946 <= (not \VID_COMPARE:Net_1\);
-
-\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ <= ((not \VID_COMPARE:Net_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\)
-	OR (\VID_COMPARE:Net_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ <= ((\SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\));
 
 \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ <= ((\SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
 	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
 	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (\SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+	OR (\SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -2531,8 +2514,8 @@ HE_TIMER_CLK:cy_clock_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"33561971-6f39-4061-9120-b68378588396",
+LINE_IS_READ_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"ef32c7a3-0d28-4acf-acff-89cc35aafcb4",
 		drive_mode=>"001",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
@@ -2558,7 +2541,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"I",
+		pin_mode=>"O",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"",
@@ -2571,7 +2554,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"00",
+		vtrip=>"10",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
@@ -2588,10 +2571,10 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>Net_3213,
+		fb=>(tmpFB_0__LINE_IS_READ_PIN_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__COM_SYNC_OUT_PIN_net_0),
-		siovref=>(tmpSIOVREF__COM_SYNC_OUT_PIN_net_0),
+		io=>(tmpIO_0__LINE_IS_READ_PIN_net_0),
+		siovref=>(tmpSIOVREF__LINE_IS_READ_PIN_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
@@ -2599,7 +2582,10 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0);
+		interrupt=>tmpINTERRUPT_0__LINE_IS_READ_PIN_net_0);
+COUNTER_N_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_5390);
 VERT_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"dde470b0-d1c9-4f89-86e1-a5592986014d",
 		drive_mode=>"001",
@@ -2669,9 +2655,16 @@ VERT_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__VERT_SYNC_OUT_PIN_net_0);
-COUNTER_N_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00")
-	PORT MAP(int_signal=>Net_3206);
+LINE_COUNTER_CLK:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"9361e110-22ac-4e22-9f9e-ae08ea8f56c2",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_3207,
+		dig_domain_out=>open);
 \LINE_COUNTER:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_3207,
@@ -2787,78 +2780,16 @@ COUNTER_N_ISR:cy_isr_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-FRAME_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00")
-	PORT MAP(int_signal=>Net_4376);
-STEERING_PWM_OUT_PIN:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"e0aadc75-3a2d-4c46-b14b-5970435a29b0",
-		drive_mode=>"110",
-		ibuf_enabled=>"1",
-		init_dr_st=>"0",
-		input_sync=>"1",
-		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"00",
-		invert_in_clock=>'0',
-		invert_in_clock_en=>'0',
-		invert_in_reset=>'0',
-		invert_out_clock=>'0',
-		invert_out_clock_en=>'0',
-		invert_out_reset=>'0',
-		io_voltage=>"",
-		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
-		output_sync=>"0",
-		output_clk_en=>'0',
-		output_mode=>"0",
-		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
-		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"O",
-		por_state=>4,
-		sio_group_cnt=>0,
-		sio_hifreq=>"",
-		sio_hyst=>"1",
-		sio_ibuf=>"00000000",
-		sio_info=>"00",
-		sio_obuf=>"00000000",
-		sio_refsel=>"00000000",
-		sio_vtrip=>"00000000",
-		slew_rate=>"0",
-		spanning=>'0',
-		sw_only=>'0',
-		vtrip=>"10",
-		width=>1,
-		port_alias_required=>'0',
-		port_alias_group=>"",
-		use_annotation=>"0",
-		pa_in_clock=>-1,
-		pa_in_clock_en=>-1,
-		pa_in_reset=>-1,
-		pa_out_clock=>-1,
-		pa_out_clock_en=>-1,
-		pa_out_reset=>-1,
-		ovt_needed=>"0",
-		ovt_slew_control=>"00",
-		ovt_hyst_trim=>"0",
-		input_buffer_sel=>"00")
-	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
-		y=>Net_3712,
-		fb=>(tmpFB_0__STEERING_PWM_OUT_PIN_net_0),
-		analog=>(open),
-		io=>(tmpIO_0__STEERING_PWM_OUT_PIN_net_0),
-		siovref=>(tmpSIOVREF__STEERING_PWM_OUT_PIN_net_0),
-		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__STEERING_PWM_OUT_PIN_net_0);
+STEERING_PWM_CLK:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"fa01c60e-4a51-492b-b5b2-25c0ae791bba",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"333333333.333333",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_3302,
+		dig_domain_out=>open);
 \STEERING_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_3302,
@@ -3055,30 +2986,10 @@ STEERING_PWM_OUT_PIN:cy_psoc3_pins_v1_10
 \STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
 	PORT MAP(x=>zero,
 		y=>\STEERING_PWM:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_8\);
-STEERING_PWM_CLK:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"fa01c60e-4a51-492b-b5b2-25c0ae791bba",
-		source_clock_id=>"",
-		divisor=>0,
-		period=>"333333333.333333",
-		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_3302,
-		dig_domain_out=>open);
-LINE_COUNTER_CLK:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"9361e110-22ac-4e22-9f9e-ae08ea8f56c2",
-		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
-		divisor=>0,
-		period=>"0",
-		is_direct=>'1',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_3207,
-		dig_domain_out=>open);
-COM_VID_IN_PIN:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
-		drive_mode=>"000",
-		ibuf_enabled=>"0",
+STEERING_PWM_OUT_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e0aadc75-3a2d-4c46-b14b-5970435a29b0",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"1",
 		input_clk_en=>'0',
@@ -3092,7 +3003,7 @@ COM_VID_IN_PIN:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"0",
+		output_conn=>"1",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -3102,7 +3013,7 @@ COM_VID_IN_PIN:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"A",
+		pin_mode=>"O",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"",
@@ -3131,11 +3042,11 @@ COM_VID_IN_PIN:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
-		y=>(zero),
-		fb=>(tmpFB_0__COM_VID_IN_PIN_net_0),
-		analog=>Net_4886,
-		io=>(tmpIO_0__COM_VID_IN_PIN_net_0),
-		siovref=>(tmpSIOVREF__COM_VID_IN_PIN_net_0),
+		y=>Net_5259,
+		fb=>(tmpFB_0__STEERING_PWM_OUT_PIN_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__STEERING_PWM_OUT_PIN_net_0),
+		siovref=>(tmpSIOVREF__STEERING_PWM_OUT_PIN_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
@@ -3143,49 +3054,82 @@ COM_VID_IN_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COM_VID_IN_PIN_net_0);
-VID_COMPARE_CLK:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"5599f6eb-6a2b-47ae-ad94-0537d85c2cd2",
-		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
-		divisor=>0,
-		period=>"0",
-		is_direct=>'1',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_4889,
-		dig_domain_out=>open);
-\VID_COMPARE:ctComp\:cy_psoc3_ctcomp_v1_0
-	GENERIC MAP(cy_registers=>"")
-	PORT MAP(vplus=>Net_4886,
-		vminus=>Net_4888,
-		clock=>Net_4889,
-		clk_udb=>Net_4889,
-		cmpout=>\VID_COMPARE:Net_1\);
-CAM_LINE_CLK:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
-		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
-		divisor=>0,
-		period=>"0",
-		is_direct=>'1',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_10,
-		dig_domain_out=>open);
-\VID_VDAC:viDAC8\:cy_psoc3_vidac8_v1_0
-	GENERIC MAP(cy_registers=>"",
-		reg_data=>'0',
-		is_all_if_any=>'0')
-	PORT MAP(reset=>zero,
-		idir=>zero,
-		ioff=>zero,
-		data=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
-		strobe=>zero,
-		strobe_udb=>zero,
-		vout=>Net_4888,
-		iout=>\VID_VDAC:Net_77\);
-\VID_VDAC:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
-	PORT MAP(noconnect=>\VID_VDAC:Net_77\);
+		interrupt=>tmpINTERRUPT_0__STEERING_PWM_OUT_PIN_net_0);
+FRAME_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_4376);
+SEC_TIL_BLACK_TIMER_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_4949);
+COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"33561971-6f39-4061-9120-b68378588396",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
+		y=>(zero),
+		fb=>Net_3213,
+		analog=>(open),
+		io=>(tmpIO_0__COM_SYNC_OUT_PIN_net_0),
+		siovref=>(tmpSIOVREF__COM_SYNC_OUT_PIN_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__COM_SYNC_OUT_PIN_net_0);
 \SEC_TIL_BLACK_TIMER:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
@@ -3387,78 +3331,29 @@ CAM_LINE_CLK:cy_clock_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-SEC_TIL_BLACK_TIMER_ISR:cy_isr_v1_0
+CAM_LINE_CLK:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_10,
+		dig_domain_out=>open);
+UPDATE_STEERING_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_4949);
-COMPARE_OUT:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"f57d7d3c-c41b-4050-a394-fb8021a5d8c2",
-		drive_mode=>"001",
-		ibuf_enabled=>"1",
-		init_dr_st=>"0",
-		input_sync=>"1",
-		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"00",
-		invert_in_clock=>'0',
-		invert_in_clock_en=>'0',
-		invert_in_reset=>'0',
-		invert_out_clock=>'0',
-		invert_out_clock_en=>'0',
-		invert_out_reset=>'0',
-		io_voltage=>"",
-		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
-		output_sync=>"0",
-		output_clk_en=>'0',
-		output_mode=>"0",
-		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
-		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"O",
-		por_state=>4,
-		sio_group_cnt=>0,
-		sio_hifreq=>"",
-		sio_hyst=>"1",
-		sio_ibuf=>"00000000",
-		sio_info=>"00",
-		sio_obuf=>"00000000",
-		sio_refsel=>"00000000",
-		sio_vtrip=>"00000000",
-		slew_rate=>"0",
-		spanning=>'0',
-		sw_only=>'0',
-		vtrip=>"10",
-		width=>1,
-		port_alias_required=>'0',
-		port_alias_group=>"",
-		use_annotation=>"0",
-		pa_in_clock=>-1,
-		pa_in_clock_en=>-1,
-		pa_in_reset=>-1,
-		pa_out_clock=>-1,
-		pa_out_clock_en=>-1,
-		pa_out_reset=>-1,
-		ovt_needed=>"0",
-		ovt_slew_control=>"00",
-		ovt_hyst_trim=>"0",
-		input_buffer_sel=>"00")
-	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
-		y=>Net_4946,
-		fb=>(tmpFB_0__COMPARE_OUT_net_0),
-		analog=>(open),
-		io=>(tmpIO_0__COMPARE_OUT_net_0),
-		siovref=>(tmpSIOVREF__COMPARE_OUT_net_0),
-		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
-		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COMPARE_OUT_net_0);
+	PORT MAP(int_signal=>Net_5337);
+\UPDATE_STEERING_TIMER:TimerHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_5086,
+		kill=>zero,
+		enable=>tmpOE__HE_IN_PIN_net_0,
+		capture=>zero,
+		timer_reset=>zero,
+		tc=>\UPDATE_STEERING_TIMER:Net_51\,
+		compare=>\UPDATE_STEERING_TIMER:Net_261\,
+		interrupt=>Net_5337);
 timer_clock:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"40b5eca0-a2a3-4490-95ab-905a6f89b35c",
@@ -3469,19 +3364,6 @@ timer_clock:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_5086,
 		dig_domain_out=>open);
-\UPDATE_STEERING_TIMER:TimerHW\:cy_psoc3_timer_v1_0
-	GENERIC MAP(cy_registers=>"")
-	PORT MAP(clock=>Net_5086,
-		kill=>zero,
-		enable=>tmpOE__HE_IN_PIN_net_0,
-		capture=>zero,
-		timer_reset=>zero,
-		tc=>\UPDATE_STEERING_TIMER:Net_51\,
-		compare=>\UPDATE_STEERING_TIMER:Net_261\,
-		interrupt=>Net_5117);
-UPDATE_STEERING_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_5117);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -3579,7 +3461,7 @@ UPDATE_STEERING_ISR:cy_isr_v1_0
 \LINE_COUNTER:CounterUDB:cmp_out_reg_i\:cy_dff
 	PORT MAP(d=>\LINE_COUNTER:CounterUDB:cmp_out_i\,
 		clk=>\LINE_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>Net_3206);
+		q=>Net_5390);
 \LINE_COUNTER:CounterUDB:count_stored_i\:cy_dff
 	PORT MAP(d=>Net_3213,
 		clk=>\LINE_COUNTER:CounterUDB:ClockOutFromEnBlock\,
@@ -3629,7 +3511,7 @@ UPDATE_STEERING_ISR:cy_isr_v1_0
 \STEERING_PWM:PWMUDB:pwm_i_reg\:cy_dff
 	PORT MAP(d=>\STEERING_PWM:PWMUDB:pwm_i\,
 		clk=>\STEERING_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>Net_3712);
+		q=>Net_5259);
 \STEERING_PWM:PWMUDB:pwm1_i_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\STEERING_PWM:PWMUDB:ClockOutFromEnBlock\,
@@ -3643,7 +3525,7 @@ UPDATE_STEERING_ISR:cy_isr_v1_0
 		clk=>\STEERING_PWM:PWMUDB:ClockOutFromEnBlock\,
 		q=>\STEERING_PWM:PWMUDB:tc_i_reg\);
 \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\:cy_dff
-	PORT MAP(d=>Net_4946,
+	PORT MAP(d=>zero,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
 		q=>\SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\);
 \SEC_TIL_BLACK_TIMER:TimerUDB:tc_reg_i\:cy_dff

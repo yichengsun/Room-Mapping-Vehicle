@@ -1,0 +1,311 @@
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE ADC_DELSIG_1_AMUX
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\ADC_DelSig_1_AMux.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\ADC_DelSig_1_AMux.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) 
+                    -DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/ADC_DelSig_1_AMux.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\AD
+                    -C_DelSig_1_AMux.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: ADC_DelSig_1_AMux.c
+   3          * Version 1.80
+   4          *
+   5          *  Description:
+   6          *    This file contains all functions required for the analog multiplexer
+   7          *    AMux User Module.
+   8          *
+   9          *   Note:
+  10          *
+  11          *******************************************************************************
+  12          * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions, 
+  14          * disclaimers, and limitations in the end user license agreement accompanying 
+  15          * the software package with which this file was provided.
+  16          ********************************************************************************/
+  17          
+  18          #include "ADC_DelSig_1_AMux.h"
+  19          
+  20          static uint8 ADC_DelSig_1_AMux_lastChannel = ADC_DelSig_1_AMux_NULL_CHANNEL;
+  21          
+  22          
+  23          /*******************************************************************************
+  24          * Function Name: ADC_DelSig_1_AMux_Start
+  25          ********************************************************************************
+  26          * Summary:
+  27          *  Disconnect all channels.
+  28          *
+  29          * Parameters:
+  30          *  void
+  31          *
+  32          * Return:
+  33          *  void
+  34          *
+  35          *******************************************************************************/
+  36          void ADC_DelSig_1_AMux_Start(void) 
+  37          {
+  38   1          uint8 chan;
+  39   1      
+  40   1          for(chan = 0u; chan < ADC_DelSig_1_AMux_CHANNELS ; chan++)
+  41   1          {
+  42   2      #if (ADC_DelSig_1_AMux_MUXTYPE == ADC_DelSig_1_AMux_MUX_SINGLE)
+  43   2              ADC_DelSig_1_AMux_Unset(chan);
+  44   2      #else
+                      ADC_DelSig_1_AMux_CYAMUXSIDE_A_Unset(chan);
+                      ADC_DelSig_1_AMux_CYAMUXSIDE_B_Unset(chan);
+              #endif
+  48   2          }
+  49   1      
+  50   1          ADC_DelSig_1_AMux_lastChannel = ADC_DelSig_1_AMux_NULL_CHANNEL;
+  51   1      }
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 2   
+
+  52          
+  53          
+  54          #if (!ADC_DelSig_1_AMux_ATMOSTONE)
+  55          /*******************************************************************************
+  56          * Function Name: ADC_DelSig_1_AMux_Select
+  57          ********************************************************************************
+  58          * Summary:
+  59          *  This functions first disconnects all channels then connects the given
+  60          *  channel.
+  61          *
+  62          * Parameters:
+  63          *  channel:  The channel to connect to the common terminal.
+  64          *
+  65          * Return:
+  66          *  void
+  67          *
+  68          *******************************************************************************/
+  69          void ADC_DelSig_1_AMux_Select(uint8 channel) 
+  70          {
+  71   1          ADC_DelSig_1_AMux_DisconnectAll();        /* Disconnect all previous connections */
+  72   1          ADC_DelSig_1_AMux_Connect(channel);       /* Make the given selection */
+  73   1          ADC_DelSig_1_AMux_lastChannel = channel;  /* Update last channel */
+  74   1      }
+  75          #endif
+  76          
+  77          
+  78          /*******************************************************************************
+  79          * Function Name: ADC_DelSig_1_AMux_FastSelect
+  80          ********************************************************************************
+  81          * Summary:
+  82          *  This function first disconnects the last connection made with FastSelect or
+  83          *  Select, then connects the given channel. The FastSelect function is similar
+  84          *  to the Select function, except it is faster since it only disconnects the
+  85          *  last channel selected rather than all channels.
+  86          *
+  87          * Parameters:
+  88          *  channel:  The channel to connect to the common terminal.
+  89          *
+  90          * Return:
+  91          *  void
+  92          *
+  93          *******************************************************************************/
+  94          void ADC_DelSig_1_AMux_FastSelect(uint8 channel) 
+  95          {
+  96   1          /* Disconnect the last valid channel */
+  97   1          if( ADC_DelSig_1_AMux_lastChannel != ADC_DelSig_1_AMux_NULL_CHANNEL)
+  98   1          {
+  99   2              ADC_DelSig_1_AMux_Disconnect(ADC_DelSig_1_AMux_lastChannel);
+ 100   2          }
+ 101   1      
+ 102   1          /* Make the new channel connection */
+ 103   1      #if (ADC_DelSig_1_AMux_MUXTYPE == ADC_DelSig_1_AMux_MUX_SINGLE)
+ 104   1          ADC_DelSig_1_AMux_Set(channel);
+ 105   1      #else
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_A_Set(channel);
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_B_Set(channel);
+              #endif
+ 109   1      
+ 110   1      
+ 111   1          ADC_DelSig_1_AMux_lastChannel = channel;   /* Update last channel */
+ 112   1      }
+ 113          
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 3   
+
+ 114          
+ 115          #if (ADC_DelSig_1_AMux_MUXTYPE == ADC_DelSig_1_AMux_MUX_DIFF)
+              #if (!ADC_DelSig_1_AMux_ATMOSTONE)
+              /*******************************************************************************
+              * Function Name: ADC_DelSig_1_AMux_Connect
+              ********************************************************************************
+              * Summary:
+              *  This function connects the given channel without affecting other connections.
+              *
+              * Parameters:
+              *  channel:  The channel to connect to the common terminal.
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void ADC_DelSig_1_AMux_Connect(uint8 channel) 
+              {
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_A_Set(channel);
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_B_Set(channel);
+              }
+              #endif
+              
+              /*******************************************************************************
+              * Function Name: ADC_DelSig_1_AMux_Disconnect
+              ********************************************************************************
+              * Summary:
+              *  This function disconnects the given channel from the common or output
+              *  terminal without affecting other connections.
+              *
+              * Parameters:
+              *  channel:  The channel to disconnect from the common terminal.
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void ADC_DelSig_1_AMux_Disconnect(uint8 channel) 
+              {
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_A_Unset(channel);
+                  ADC_DelSig_1_AMux_CYAMUXSIDE_B_Unset(channel);
+              }
+              #endif
+ 157          
+ 158          #if (ADC_DelSig_1_AMux_ATMOSTONE)
+              /*******************************************************************************
+              * Function Name: ADC_DelSig_1_AMux_DisconnectAll
+              ********************************************************************************
+              * Summary:
+              *  This function disconnects all channels.
+              *
+              * Parameters:
+              *  void
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void ADC_DelSig_1_AMux_DisconnectAll(void) 
+              {
+                  if(ADC_DelSig_1_AMux_lastChannel != ADC_DelSig_1_AMux_NULL_CHANNEL) 
+                  {
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 4   
+
+                      ADC_DelSig_1_AMux_Disconnect(ADC_DelSig_1_AMux_lastChannel);
+                      ADC_DelSig_1_AMux_lastChannel = ADC_DelSig_1_AMux_NULL_CHANNEL;
+                  }
+              }
+              #endif
+ 181          
+ 182          /* [] END OF FILE */
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 5   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION ADC_DelSig_1_AMux_Start (BEGIN)
+                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 40
+0000 E4                CLR     A
+0001 900000      R     MOV     DPTR,#chan
+0004 F0                MOVX    @DPTR,A
+0005         ?C0001:
+0005 900000      R     MOV     DPTR,#chan
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A C3                CLR     C
+000B 9402              SUBB    A,#02H
+000D 500B              JNC     ?C0002
+                                           ; SOURCE LINE # 41
+                                           ; SOURCE LINE # 43
+000F 120000      E     LCALL   _ADC_DelSig_1_AMux_Unset
+                                           ; SOURCE LINE # 48
+0012 900000      R     MOV     DPTR,#chan
+0015 E0                MOVX    A,@DPTR
+0016 04                INC     A
+0017 F0                MOVX    @DPTR,A
+0018 80EB              SJMP    ?C0001
+001A         ?C0002:
+                                           ; SOURCE LINE # 50
+001A 900000      R     MOV     DPTR,#ADC_DelSig_1_AMux_lastChannel
+001D 74FF              MOV     A,#0FFH
+001F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 51
+0020 22                RET     
+             ; FUNCTION ADC_DelSig_1_AMux_Start (END)
+
+             ; FUNCTION _ADC_DelSig_1_AMux_Select (BEGIN)
+                                           ; SOURCE LINE # 69
+0000 900000      R     MOV     DPTR,#channel
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 70
+                                           ; SOURCE LINE # 71
+0005 120000      R     LCALL   ADC_DelSig_1_AMux_Start
+                                           ; SOURCE LINE # 72
+0008 900000      R     MOV     DPTR,#channel
+000B E0                MOVX    A,@DPTR
+000C FF                MOV     R7,A
+000D 120000      E     LCALL   _ADC_DelSig_1_AMux_Set
+                                           ; SOURCE LINE # 73
+0010 900000      R     MOV     DPTR,#channel
+0013 E0                MOVX    A,@DPTR
+0014 900000      R     MOV     DPTR,#ADC_DelSig_1_AMux_lastChannel
+0017 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+0018 22                RET     
+             ; FUNCTION _ADC_DelSig_1_AMux_Select (END)
+
+             ; FUNCTION _ADC_DelSig_1_AMux_FastSelect (BEGIN)
+                                           ; SOURCE LINE # 94
+0000 900000      R     MOV     DPTR,#channel
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   ADC_DELSIG_1_AMUX                                                     03/26/2015 14:57:55 PAGE 6   
+
+                                           ; SOURCE LINE # 95
+                                           ; SOURCE LINE # 97
+0005 900000      R     MOV     DPTR,#ADC_DelSig_1_AMux_lastChannel
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A F4                CPL     A
+000B 6003              JZ      ?C0006
+                                           ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 99
+000D 120000      E     LCALL   _ADC_DelSig_1_AMux_Unset
+                                           ; SOURCE LINE # 100
+0010         ?C0006:
+                                           ; SOURCE LINE # 104
+0010 900000      R     MOV     DPTR,#channel
+0013 E0                MOVX    A,@DPTR
+0014 FF                MOV     R7,A
+0015 120000      E     LCALL   _ADC_DelSig_1_AMux_Set
+                                           ; SOURCE LINE # 111
+0018 900000      R     MOV     DPTR,#channel
+001B E0                MOVX    A,@DPTR
+001C 900000      R     MOV     DPTR,#ADC_DelSig_1_AMux_lastChannel
+001F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 112
+0020 22                RET     
+             ; FUNCTION _ADC_DelSig_1_AMux_FastSelect (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     91    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1       3
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

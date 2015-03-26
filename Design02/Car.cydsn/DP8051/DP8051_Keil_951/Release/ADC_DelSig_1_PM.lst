@@ -1,0 +1,300 @@
+C51 COMPILER V9.51   ADC_DELSIG_1_PM                                                       03/26/2015 15:04:14 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE ADC_DELSIG_1_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\ADC_DelSig_1_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\ADC_DelSig_1_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB
+                    - WL(2) PR(.\DP8051\DP8051_Keil_951\Release/ADC_DelSig_1_PM.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\ADC_De
+                    -lSig_1_PM.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: ADC_DelSig_1_PM.c
+   3          * Version 3.10
+   4          *
+   5          * Description:
+   6          *  This file provides the power manager source code to the API for the
+   7          *  Delta-Sigma ADC Component.
+   8          *
+   9          * Note:
+  10          *
+  11          ********************************************************************************
+  12          * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions,
+  14          * disclaimers, and limitations in the end user license agreement accompanying
+  15          * the software package with which this file was provided.
+  16          *******************************************************************************/
+  17          
+  18          #include "ADC_DelSig_1.h"
+  19          
+  20          static ADC_DelSig_1_BACKUP_STRUCT ADC_DelSig_1_backup =
+  21          {
+  22              ADC_DelSig_1_DISABLED,
+  23              ADC_DelSig_1_CFG1_DEC_CR
+  24          };
+  25          
+  26          
+  27          /*******************************************************************************
+  28          * Function Name: ADC_DelSig_1_SaveConfig
+  29          ********************************************************************************
+  30          *
+  31          * Summary:
+  32          *  Save the register configuration which are not retention.
+  33          *
+  34          * Parameters:
+  35          *  None
+  36          *
+  37          * Return:
+  38          *  None
+  39          *
+  40          * Global variables:
+  41          *  ADC_DelSig_1_backup:  This global structure variable is used to store
+  42          *  configuration registers which are non retention whenever user wants to go
+  43          *  sleep mode by calling Sleep() API.
+  44          *
+  45          *******************************************************************************/
+  46          void ADC_DelSig_1_SaveConfig(void) 
+  47          {
+  48   1          ADC_DelSig_1_backup.deccr = ADC_DelSig_1_DEC_CR_REG;
+  49   1      }
+  50          
+  51          
+C51 COMPILER V9.51   ADC_DELSIG_1_PM                                                       03/26/2015 15:04:14 PAGE 2   
+
+  52          /*******************************************************************************
+  53          * Function Name: ADC_DelSig_1_RestoreConfig
+  54          ********************************************************************************
+  55          *
+  56          * Summary:
+  57          *  Restore the register configurations which are not retention.
+  58          *
+  59          * Parameters:
+  60          *  None
+  61          *
+  62          * Return:
+  63          *  None
+  64          *
+  65          * Global variables:
+  66          *  ADC_DelSig_1_backup:  This global structure variable is used to restore
+  67          *  configuration registers which are non retention whenever user wants to switch
+  68          *  to active power mode by calling Wakeup() API.
+  69          *
+  70          *******************************************************************************/
+  71          void ADC_DelSig_1_RestoreConfig(void) 
+  72          {
+  73   1          ADC_DelSig_1_DEC_CR_REG = ADC_DelSig_1_backup.deccr;
+  74   1      }
+  75          
+  76          
+  77          /*******************************************************************************
+  78          * Function Name: ADC_DelSig_1_Sleep
+  79          ********************************************************************************
+  80          *
+  81          * Summary:
+  82          *  Stops the operation of the block and saves the user configuration.
+  83          *
+  84          * Parameters:
+  85          *  None
+  86          *
+  87          * Return:
+  88          *  None
+  89          *
+  90          * Global variables:
+  91          *  ADC_DelSig_1_backup:  The structure field 'enableState' is modified
+  92          *  depending on the enable state of the block before entering to sleep mode.
+  93          *
+  94          *******************************************************************************/
+  95          void ADC_DelSig_1_Sleep(void) 
+  96          {
+  97   1          /* Save ADC enable state */
+  98   1          if((ADC_DelSig_1_ACT_PWR_DEC_EN == (ADC_DelSig_1_PWRMGR_DEC_REG & ADC_DelSig_1_ACT_PWR_DEC_EN)) &&
+  99   1             (ADC_DelSig_1_ACT_PWR_DSM_EN == (ADC_DelSig_1_PWRMGR_DSM_REG & ADC_DelSig_1_ACT_PWR_DSM_EN)))
+ 100   1          {
+ 101   2              /* Component is enabled */
+ 102   2              ADC_DelSig_1_backup.enableState = ADC_DelSig_1_ENABLED;
+ 103   2              if((ADC_DelSig_1_DEC_CR_REG & ADC_DelSig_1_DEC_START_CONV) != 0u)
+ 104   2              {   
+ 105   3                  /* Conversion is started */
+ 106   3                  ADC_DelSig_1_backup.enableState |= ADC_DelSig_1_STARTED;
+ 107   3              }
+ 108   2                      
+ 109   2              /* Stop the configuration */
+ 110   2              ADC_DelSig_1_Stop();
+ 111   2          }
+ 112   1          else
+ 113   1          {
+C51 COMPILER V9.51   ADC_DELSIG_1_PM                                                       03/26/2015 15:04:14 PAGE 3   
+
+ 114   2              /* Component is disabled */
+ 115   2              ADC_DelSig_1_backup.enableState = ADC_DelSig_1_DISABLED;
+ 116   2          }
+ 117   1      
+ 118   1          /* Save the user configuration */
+ 119   1          ADC_DelSig_1_SaveConfig();
+ 120   1      }
+ 121          
+ 122          
+ 123          /*******************************************************************************
+ 124          * Function Name: ADC_DelSig_1_Wakeup
+ 125          ********************************************************************************
+ 126          *
+ 127          * Summary:
+ 128          *  Restores the user configuration and enables the power to the block.
+ 129          *
+ 130          * Parameters:
+ 131          *  None
+ 132          *
+ 133          * Return:
+ 134          *  None
+ 135          *
+ 136          * Global variables:
+ 137          *  ADC_DelSig_1_backup:  The structure field 'enableState' is used to
+ 138          *  restore the enable state of block after wakeup from sleep mode.
+ 139          *
+ 140          *******************************************************************************/
+ 141          void ADC_DelSig_1_Wakeup(void) 
+ 142          {
+ 143   1          /* Restore the configuration */
+ 144   1          ADC_DelSig_1_RestoreConfig();
+ 145   1      
+ 146   1          /* Enables the component operation */
+ 147   1          if(ADC_DelSig_1_backup.enableState != ADC_DelSig_1_DISABLED)
+ 148   1          {
+ 149   2              ADC_DelSig_1_Enable();
+ 150   2              if((ADC_DelSig_1_backup.enableState & ADC_DelSig_1_STARTED) != 0u)
+ 151   2              {
+ 152   3                  ADC_DelSig_1_StartConvert();
+ 153   3              }
+ 154   2          } /* Do nothing if component was disable before */
+ 155   1      }
+ 156          
+ 157          
+ 158          /* [] END OF FILE */
+C51 COMPILER V9.51   ADC_DELSIG_1_PM                                                       03/26/2015 15:04:14 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION ADC_DelSig_1_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 48
+0000 904E00            MOV     DPTR,#04E00H
+0003 E0                MOVX    A,@DPTR
+0004 900000      R     MOV     DPTR,#ADC_DelSig_1_backup+01H
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 49
+0008 22                RET     
+             ; FUNCTION ADC_DelSig_1_SaveConfig (END)
+
+             ; FUNCTION ADC_DelSig_1_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 71
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 73
+0000 900000      R     MOV     DPTR,#ADC_DelSig_1_backup+01H
+0003 E0                MOVX    A,@DPTR
+0004 904E00            MOV     DPTR,#04E00H
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+0008 22                RET     
+             ; FUNCTION ADC_DelSig_1_RestoreConfig (END)
+
+             ; FUNCTION ADC_DelSig_1_Sleep (BEGIN)
+                                           ; SOURCE LINE # 95
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 99
+0000 9043AA            MOV     DPTR,#043AAH
+0003 E0                MOVX    A,@DPTR
+0004 5401              ANL     A,#01H
+0006 6401              XRL     A,#01H
+0008 7020              JNZ     ?C0003
+000A E0                MOVX    A,@DPTR
+000B 5410              ANL     A,#010H
+000D 6410              XRL     A,#010H
+000F 7019              JNZ     ?C0003
+                                           ; SOURCE LINE # 100
+                                           ; SOURCE LINE # 102
+0011 900000      R     MOV     DPTR,#ADC_DelSig_1_backup
+0014 04                INC     A
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 103
+0016 904E00            MOV     DPTR,#04E00H
+0019 E0                MOVX    A,@DPTR
+001A 5401              ANL     A,#01H
+001C 6007              JZ      ?C0004
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 106
+001E 900000      R     MOV     DPTR,#ADC_DelSig_1_backup
+0021 E0                MOVX    A,@DPTR
+0022 4402              ORL     A,#02H
+0024 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 107
+0025         ?C0004:
+                                           ; SOURCE LINE # 110
+0025 120000      E     LCALL   ADC_DelSig_1_Stop
+                                           ; SOURCE LINE # 111
+0028 8005              SJMP    ?C0005
+C51 COMPILER V9.51   ADC_DELSIG_1_PM                                                       03/26/2015 15:04:14 PAGE 5   
+
+002A         ?C0003:
+                                           ; SOURCE LINE # 113
+                                           ; SOURCE LINE # 115
+002A E4                CLR     A
+002B 900000      R     MOV     DPTR,#ADC_DelSig_1_backup
+002E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 116
+002F         ?C0005:
+                                           ; SOURCE LINE # 119
+002F 120000      R     LCALL   ADC_DelSig_1_SaveConfig
+                                           ; SOURCE LINE # 120
+0032 22                RET     
+             ; FUNCTION ADC_DelSig_1_Sleep (END)
+
+             ; FUNCTION ADC_DelSig_1_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 141
+                                           ; SOURCE LINE # 142
+                                           ; SOURCE LINE # 144
+0000 120000      R     LCALL   ADC_DelSig_1_RestoreConfig
+                                           ; SOURCE LINE # 147
+0003 900000      R     MOV     DPTR,#ADC_DelSig_1_backup
+0006 E0                MOVX    A,@DPTR
+0007 600E              JZ      ?C0009
+                                           ; SOURCE LINE # 148
+                                           ; SOURCE LINE # 149
+0009 120000      E     LCALL   ADC_DelSig_1_Enable
+                                           ; SOURCE LINE # 150
+000C 900000      R     MOV     DPTR,#ADC_DelSig_1_backup
+000F E0                MOVX    A,@DPTR
+0010 5402              ANL     A,#02H
+0012 6003              JZ      ?C0009
+                                           ; SOURCE LINE # 151
+                                           ; SOURCE LINE # 152
+0014 120000      E     LCALL   ADC_DelSig_1_StartConvert
+                                           ; SOURCE LINE # 153
+                                           ; SOURCE LINE # 154
+                                           ; SOURCE LINE # 155
+0017         ?C0009:
+0017 22                RET     
+             ; FUNCTION ADC_DelSig_1_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     93    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

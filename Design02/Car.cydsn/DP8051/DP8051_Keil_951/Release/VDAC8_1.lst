@@ -1,0 +1,528 @@
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE VDAC8_1
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\VDAC8_1.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\VDAC8_1.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB WL(2) P
+                    -R(.\DP8051\DP8051_Keil_951\Release/VDAC8_1.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\VDAC8_1.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: VDAC8_1.c  
+   3          * Version 1.90
+   4          *
+   5          * Description:
+   6          *  This file provides the source code to the API for the 8-bit Voltage DAC 
+   7          *  (VDAC8) User Module.
+   8          *
+   9          * Note:
+  10          *  Any unusual or non-standard behavior should be noted here. Other-
+  11          *  wise, this section should remain blank.
+  12          *
+  13          ********************************************************************************
+  14          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  15          * You may use this file only in accordance with the license, terms, conditions, 
+  16          * disclaimers, and limitations in the end user license agreement accompanying 
+  17          * the software package with which this file was provided.
+  18          *******************************************************************************/
+  19          
+  20          #include "cytypes.h"
+  21          #include "VDAC8_1.h"
+  22          
+  23          #if (CY_PSOC5A)
+              #include <CyLib.h>
+              #endif /* CY_PSOC5A */
+  26          
+  27          uint8 VDAC8_1_initVar = 0u;
+  28          
+  29          #if (CY_PSOC5A)
+                  static uint8 VDAC8_1_restoreVal = 0u;
+              #endif /* CY_PSOC5A */
+  32          
+  33          #if (CY_PSOC5A)
+                  static VDAC8_1_backupStruct VDAC8_1_backup;
+              #endif /* CY_PSOC5A */
+  36          
+  37          
+  38          /*******************************************************************************
+  39          * Function Name: VDAC8_1_Init
+  40          ********************************************************************************
+  41          * Summary:
+  42          *  Initialize to the schematic state.
+  43          * 
+  44          * Parameters:
+  45          *  void:
+  46          *
+  47          * Return:
+  48          *  void
+  49          *
+  50          * Theory:
+  51          *
+  52          * Side Effects:
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 2   
+
+  53          *
+  54          *******************************************************************************/
+  55          void VDAC8_1_Init(void) 
+  56          {
+  57   1          VDAC8_1_CR0 = (VDAC8_1_MODE_V );
+  58   1      
+  59   1          /* Set default data source */
+  60   1          #if(VDAC8_1_DEFAULT_DATA_SRC != 0 )
+                      VDAC8_1_CR1 = (VDAC8_1_DEFAULT_CNTL | VDAC8_1_DACBUS_ENABLE) ;
+                  #else
+  63   1              VDAC8_1_CR1 = (VDAC8_1_DEFAULT_CNTL | VDAC8_1_DACBUS_DISABLE) ;
+  64   1          #endif /* (VDAC8_1_DEFAULT_DATA_SRC != 0 ) */
+  65   1      
+  66   1          /* Set default strobe mode */
+  67   1          #if(VDAC8_1_DEFAULT_STRB != 0)
+                      VDAC8_1_Strobe |= VDAC8_1_STRB_EN ;
+                  #endif/* (VDAC8_1_DEFAULT_STRB != 0) */
+  70   1      
+  71   1          /* Set default range */
+  72   1          VDAC8_1_SetRange(VDAC8_1_DEFAULT_RANGE); 
+  73   1      
+  74   1          /* Set default speed */
+  75   1          VDAC8_1_SetSpeed(VDAC8_1_DEFAULT_SPEED);
+  76   1      }
+  77          
+  78          
+  79          /*******************************************************************************
+  80          * Function Name: VDAC8_1_Enable
+  81          ********************************************************************************
+  82          * Summary:
+  83          *  Enable the VDAC8
+  84          * 
+  85          * Parameters:
+  86          *  void
+  87          *
+  88          * Return:
+  89          *  void
+  90          *
+  91          * Theory:
+  92          *
+  93          * Side Effects:
+  94          *
+  95          *******************************************************************************/
+  96          void VDAC8_1_Enable(void) 
+  97          {
+  98   1          VDAC8_1_PWRMGR |= VDAC8_1_ACT_PWR_EN;
+  99   1          VDAC8_1_STBY_PWRMGR |= VDAC8_1_STBY_PWR_EN;
+ 100   1      
+ 101   1          /*This is to restore the value of register CR0 ,
+ 102   1          which is modified  in Stop API , this prevents misbehaviour of VDAC */
+ 103   1          #if (CY_PSOC5A)
+                      if(VDAC8_1_restoreVal == 1u) 
+                      {
+                           VDAC8_1_CR0 = VDAC8_1_backup.data_value;
+                           VDAC8_1_restoreVal = 0u;
+                      }
+                  #endif /* CY_PSOC5A */
+ 110   1      }
+ 111          
+ 112          
+ 113          /*******************************************************************************
+ 114          * Function Name: VDAC8_1_Start
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 3   
+
+ 115          ********************************************************************************
+ 116          *
+ 117          * Summary:
+ 118          *  The start function initializes the voltage DAC with the default values, 
+ 119          *  and sets the power to the given level.  A power level of 0, is the same as
+ 120          *  executing the stop function.
+ 121          *
+ 122          * Parameters:
+ 123          *  Power: Sets power level between off (0) and (3) high power
+ 124          *
+ 125          * Return:
+ 126          *  void 
+ 127          *
+ 128          * Global variables:
+ 129          *  VDAC8_1_initVar: Is modified when this function is called for the 
+ 130          *  first time. Is used to ensure that initialization happens only once.
+ 131          *
+ 132          *******************************************************************************/
+ 133          void VDAC8_1_Start(void)  
+ 134          {
+ 135   1          /* Hardware initiazation only needs to occure the first time */
+ 136   1          if(VDAC8_1_initVar == 0u)
+ 137   1          { 
+ 138   2              VDAC8_1_Init();
+ 139   2              VDAC8_1_initVar = 1u;
+ 140   2          }
+ 141   1      
+ 142   1          /* Enable power to DAC */
+ 143   1          VDAC8_1_Enable();
+ 144   1      
+ 145   1          /* Set default value */
+ 146   1          VDAC8_1_SetValue(VDAC8_1_DEFAULT_DATA); 
+ 147   1      }
+ 148          
+ 149          
+ 150          /*******************************************************************************
+ 151          * Function Name: VDAC8_1_Stop
+ 152          ********************************************************************************
+ 153          *
+ 154          * Summary:
+ 155          *  Powers down DAC to lowest power state.
+ 156          *
+ 157          * Parameters:
+ 158          *  void
+ 159          *
+ 160          * Return:
+ 161          *  void
+ 162          *
+ 163          * Theory:
+ 164          *
+ 165          * Side Effects:
+ 166          *
+ 167          *******************************************************************************/
+ 168          void VDAC8_1_Stop(void) 
+ 169          {
+ 170   1          /* Disble power to DAC */
+ 171   1          VDAC8_1_PWRMGR &= (uint8)(~VDAC8_1_ACT_PWR_EN);
+ 172   1          VDAC8_1_STBY_PWRMGR &= (uint8)(~VDAC8_1_STBY_PWR_EN);
+ 173   1      
+ 174   1          /* This is a work around for PSoC5A  ,
+ 175   1          this sets VDAC to current mode with output off */
+ 176   1          #if (CY_PSOC5A)
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 4   
+
+                      VDAC8_1_backup.data_value = VDAC8_1_CR0;
+                      VDAC8_1_CR0 = VDAC8_1_CUR_MODE_OUT_OFF;
+                      VDAC8_1_restoreVal = 1u;
+                  #endif /* CY_PSOC5A */
+ 181   1      }
+ 182          
+ 183          
+ 184          /*******************************************************************************
+ 185          * Function Name: VDAC8_1_SetSpeed
+ 186          ********************************************************************************
+ 187          *
+ 188          * Summary:
+ 189          *  Set DAC speed
+ 190          *
+ 191          * Parameters:
+ 192          *  power: Sets speed value
+ 193          *
+ 194          * Return:
+ 195          *  void
+ 196          *
+ 197          * Theory:
+ 198          *
+ 199          * Side Effects:
+ 200          *
+ 201          *******************************************************************************/
+ 202          void VDAC8_1_SetSpeed(uint8 speed) 
+ 203          {
+ 204   1          /* Clear power mask then write in new value */
+ 205   1          VDAC8_1_CR0 &= (uint8)(~VDAC8_1_HS_MASK);
+ 206   1          VDAC8_1_CR0 |=  (speed & VDAC8_1_HS_MASK);
+ 207   1      }
+ 208          
+ 209          
+ 210          /*******************************************************************************
+ 211          * Function Name: VDAC8_1_SetRange
+ 212          ********************************************************************************
+ 213          *
+ 214          * Summary:
+ 215          *  Set one of three current ranges.
+ 216          *
+ 217          * Parameters:
+ 218          *  Range: Sets one of Three valid ranges.
+ 219          *
+ 220          * Return:
+ 221          *  void 
+ 222          *
+ 223          * Theory:
+ 224          *
+ 225          * Side Effects:
+ 226          *
+ 227          *******************************************************************************/
+ 228          void VDAC8_1_SetRange(uint8 range) 
+ 229          {
+ 230   1          VDAC8_1_CR0 &= (uint8)(~VDAC8_1_RANGE_MASK);      /* Clear existing mode */
+ 231   1          VDAC8_1_CR0 |= (range & VDAC8_1_RANGE_MASK);      /*  Set Range  */
+ 232   1          VDAC8_1_DacTrim();
+ 233   1      }
+ 234          
+ 235          
+ 236          /*******************************************************************************
+ 237          * Function Name: VDAC8_1_SetValue
+ 238          ********************************************************************************
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 5   
+
+ 239          *
+ 240          * Summary:
+ 241          *  Set 8-bit DAC value
+ 242          *
+ 243          * Parameters:  
+ 244          *  value:  Sets DAC value between 0 and 255.
+ 245          *
+ 246          * Return: 
+ 247          *  void 
+ 248          *
+ 249          * Theory: 
+ 250          *
+ 251          * Side Effects:
+ 252          *
+ 253          *******************************************************************************/
+ 254          void VDAC8_1_SetValue(uint8 value) 
+ 255          {
+ 256   1          #if (CY_PSOC5A)
+                      uint8 VDAC8_1_intrStatus = CyEnterCriticalSection();
+                  #endif /* CY_PSOC5A */
+ 259   1      
+ 260   1          VDAC8_1_Data = value;                /*  Set Value  */
+ 261   1      
+ 262   1          /* PSOC5A requires a double write */
+ 263   1          /* Exit Critical Section */
+ 264   1          #if (CY_PSOC5A)
+                      VDAC8_1_Data = value;
+                      CyExitCriticalSection(VDAC8_1_intrStatus);
+                  #endif /* CY_PSOC5A */
+ 268   1      }
+ 269          
+ 270          
+ 271          /*******************************************************************************
+ 272          * Function Name: VDAC8_1_DacTrim
+ 273          ********************************************************************************
+ 274          *
+ 275          * Summary:
+ 276          *  Set the trim value for the given range.
+ 277          *
+ 278          * Parameters:
+ 279          *  range:  1V or 4V range.  See constants.
+ 280          *
+ 281          * Return:
+ 282          *  void
+ 283          *
+ 284          * Theory: 
+ 285          *
+ 286          * Side Effects:
+ 287          *
+ 288          *******************************************************************************/
+ 289          void VDAC8_1_DacTrim(void) 
+ 290          {
+ 291   1          uint8 mode;
+ 292   1      
+ 293   1          mode = (uint8)((VDAC8_1_CR0 & VDAC8_1_RANGE_MASK) >> 2) + VDAC8_1_TRIM_M7_1V_RNG_OFFSET;
+ 294   1          VDAC8_1_TR = CY_GET_XTND_REG8((uint8 *)(VDAC8_1_DAC_TRIM_BASE + mode));
+ 295   1      }
+ 296          
+ 297          
+ 298          /* [] END OF FILE */
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 6   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION VDAC8_1_Init (BEGIN)
+                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 56
+                                           ; SOURCE LINE # 57
+0000 905824            MOV     DPTR,#05824H
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 63
+0005 A3                INC     DPTR
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 72
+0007 FF                MOV     R7,A
+0008 120000      R     LCALL   _VDAC8_1_SetRange
+                                           ; SOURCE LINE # 75
+000B E4                CLR     A
+000C FF                MOV     R7,A
+000D 120000      R     LCALL   _VDAC8_1_SetSpeed
+                                           ; SOURCE LINE # 76
+0010 22                RET     
+             ; FUNCTION VDAC8_1_Init (END)
+
+             ; FUNCTION VDAC8_1_Enable (BEGIN)
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 97
+                                           ; SOURCE LINE # 98
+0000 9043A8            MOV     DPTR,#043A8H
+0003 E0                MOVX    A,@DPTR
+0004 4402              ORL     A,#02H
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 99
+0007 9043B8            MOV     DPTR,#043B8H
+000A E0                MOVX    A,@DPTR
+000B 4402              ORL     A,#02H
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 110
+000E 22                RET     
+             ; FUNCTION VDAC8_1_Enable (END)
+
+             ; FUNCTION VDAC8_1_Start (BEGIN)
+                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 134
+                                           ; SOURCE LINE # 136
+0000 900000      R     MOV     DPTR,#VDAC8_1_initVar
+0003 E0                MOVX    A,@DPTR
+0004 7009              JNZ     ?C0003
+                                           ; SOURCE LINE # 137
+                                           ; SOURCE LINE # 138
+0006 120000      R     LCALL   VDAC8_1_Init
+                                           ; SOURCE LINE # 139
+0009 900000      R     MOV     DPTR,#VDAC8_1_initVar
+000C 7401              MOV     A,#01H
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 140
+000F         ?C0003:
+                                           ; SOURCE LINE # 143
+000F 120000      R     LCALL   VDAC8_1_Enable
+                                           ; SOURCE LINE # 146
+0012 7F7D              MOV     R7,#07DH
+0014 120000      R     LCALL   _VDAC8_1_SetValue
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 7   
+
+                                           ; SOURCE LINE # 147
+0017 22                RET     
+             ; FUNCTION VDAC8_1_Start (END)
+
+             ; FUNCTION VDAC8_1_Stop (BEGIN)
+                                           ; SOURCE LINE # 168
+                                           ; SOURCE LINE # 169
+                                           ; SOURCE LINE # 171
+0000 9043A8            MOV     DPTR,#043A8H
+0003 E0                MOVX    A,@DPTR
+0004 54FD              ANL     A,#0FDH
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 172
+0007 9043B8            MOV     DPTR,#043B8H
+000A E0                MOVX    A,@DPTR
+000B 54FD              ANL     A,#0FDH
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 181
+000E 22                RET     
+             ; FUNCTION VDAC8_1_Stop (END)
+
+             ; FUNCTION _VDAC8_1_SetSpeed (BEGIN)
+                                           ; SOURCE LINE # 202
+;---- Variable 'speed' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 203
+                                           ; SOURCE LINE # 205
+0000 905824            MOV     DPTR,#05824H
+0003 E0                MOVX    A,@DPTR
+0004 54FD              ANL     A,#0FDH
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 206
+0007 E0                MOVX    A,@DPTR
+0008 FE                MOV     R6,A
+0009 EF                MOV     A,R7
+000A 5402              ANL     A,#02H
+000C FF                MOV     R7,A
+000D EE                MOV     A,R6
+000E 4F                ORL     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 207
+0010 22                RET     
+             ; FUNCTION _VDAC8_1_SetSpeed (END)
+
+             ; FUNCTION _VDAC8_1_SetRange (BEGIN)
+                                           ; SOURCE LINE # 228
+;---- Variable 'range' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 229
+                                           ; SOURCE LINE # 230
+0000 905824            MOV     DPTR,#05824H
+0003 E0                MOVX    A,@DPTR
+0004 54F3              ANL     A,#0F3H
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 231
+0007 E0                MOVX    A,@DPTR
+0008 FE                MOV     R6,A
+0009 EF                MOV     A,R7
+000A 540C              ANL     A,#0CH
+000C FF                MOV     R7,A
+000D EE                MOV     A,R6
+000E 4F                ORL     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 232
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 8   
+
+0010 120000      R     LCALL   VDAC8_1_DacTrim
+                                           ; SOURCE LINE # 233
+0013 22                RET     
+             ; FUNCTION _VDAC8_1_SetRange (END)
+
+             ; FUNCTION _VDAC8_1_SetValue (BEGIN)
+                                           ; SOURCE LINE # 254
+;---- Variable 'value' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 255
+                                           ; SOURCE LINE # 260
+0000 905B81            MOV     DPTR,#05B81H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 268
+0005 22                RET     
+             ; FUNCTION _VDAC8_1_SetValue (END)
+
+             ; FUNCTION VDAC8_1_DacTrim (BEGIN)
+                                           ; SOURCE LINE # 289
+                                           ; SOURCE LINE # 290
+                                           ; SOURCE LINE # 293
+0000 905824            MOV     DPTR,#05824H
+0003 E0                MOVX    A,@DPTR
+0004 540C              ANL     A,#0CH
+0006 7E00              MOV     R6,#00H
+0008 7802              MOV     R0,#02H
+000A         ?C0010:
+000A CE                XCH     A,R6
+000B C3                CLR     C
+000C 13                RRC     A
+000D CE                XCH     A,R6
+000E 13                RRC     A
+000F D8F9              DJNZ    R0,?C0010
+0011 2406              ADD     A,#06H
+0013 FF                MOV     R7,A
+;---- Variable 'mode' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 294
+0014 E4                CLR     A
+0015 EF                MOV     A,R7
+0016 2430              ADD     A,#030H
+0018 FF                MOV     R7,A
+0019 E4                CLR     A
+001A 3401              ADDC    A,#01H
+001C FE                MOV     R6,A
+001D E4                CLR     A
+001E 340C              ADDC    A,#0CH
+0020 FD                MOV     R5,A
+0021 E4                CLR     A
+0022 33                RLC     A
+0023 A907              MOV     R1,AR7
+0025 AA06              MOV     R2,AR6
+0027 AB05              MOV     R3,AR5
+0029 120000      E     LCALL   _cyread8
+002C 904609            MOV     DPTR,#04609H
+002F EF                MOV     A,R7
+0030 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 295
+0031 22                RET     
+             ; FUNCTION VDAC8_1_DacTrim (END)
+
+
+
+C51 COMPILER V9.51   VDAC8_1                                                               03/26/2015 16:15:12 PAGE 9   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    164    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

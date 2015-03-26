@@ -90,7 +90,7 @@ void VID_VDAC_Wakeup(void)          ;
 /* Default Strobe mode */
 #define VID_VDAC_DEFAULT_STRB     0u
  /* Initial DAC value */
-#define VID_VDAC_DEFAULT_DATA     100u
+#define VID_VDAC_DEFAULT_DATA     255u
  /* Default Data Source */
 #define VID_VDAC_DEFAULT_DATA_SRC 0u
 
