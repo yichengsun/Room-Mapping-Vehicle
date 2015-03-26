@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 1   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VID_COMPARE
@@ -62,7 +62,7 @@ line level    source
   49          *
   50          *******************************************************************************/
   51          void VID_COMPARE_Init(void) 
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 2   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 2   
 
   52          {
   53   1          /* Set default speed/power */
@@ -126,7 +126,7 @@ line level    source
                           /* Clear the flag */
                           VID_COMPARE_restoreReg = 0u;
                       }
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 3   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 3   
 
                   #endif /* CY_PSOC5A */
  115   1      }
@@ -190,7 +190,7 @@ line level    source
                       VID_COMPARE_restoreReg = 1u;
               
                       /* Save the control register before clearing it */
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 4   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 4   
 
                       VID_COMPARE_lowPowerBackup.compCRReg = VID_COMPARE_CR;
                       VID_COMPARE_CR = VID_COMPARE_COMP_REG_CLR;
@@ -254,7 +254,7 @@ line level    source
  235          * Function Name: VID_COMPARE_GetCompare
  236          ********************************************************************************
  237          *
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 5   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 5   
 
  238          * Summary:
  239          *  This function returns the comparator output value.
@@ -318,7 +318,7 @@ line level    source
                               VID_COMPARE_TR |= VID_COMPARE_CMP_TRIM1_DIR;
                           #endif /* CY_PSOC5A */
  299   3                  
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 6   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 6   
 
  300   3                  /* PSoC3, PSoC5LP or later */
  301   3                  #if (CY_PSOC3 || CY_PSOC5LP)
@@ -382,7 +382,7 @@ line level    source
  359   3                  #if (CY_PSOC5A)
                               VID_COMPARE_TR += 0x10u;
                           #endif /* CY_PSOC5A */
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 7   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 7   
 
  362   3                  
  363   3                  /* PSoC3, PSoC5LP or later */
@@ -446,7 +446,7 @@ line level    source
  421          *    second trim value will serve as fine trim (in the opposite direction)to
  422          *    ensure the offset is < 1 mV.
  423          *
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 8   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 8   
 
  424          * Trim Process:   
  425          *  1) User applies a voltage to the negative input.  Voltage should be in the
@@ -510,7 +510,7 @@ line level    source
  483   1              /* Two phase trim - slow modes, one phase trim - for fast */ 
  484   1          if ( (VID_COMPARE_CR & VID_COMPARE_PWR_MODE_MASK) == VID_COMPARE_PWR_MODE_FAST)
  485   1          {
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 9   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 9   
 
  486   2              VID_COMPARE_trimAdjust(0u);
  487   2          }
@@ -574,7 +574,7 @@ line level    source
  545   1      }
  546          
  547          
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 10  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 10  
 
  548          #if (CY_PSOC3 || CY_PSOC5LP)
  549          
@@ -624,7 +624,7 @@ line level    source
  593          
  594          
  595          /* [] END OF FILE */
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 11  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -688,7 +688,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 7009              JNZ     ?C0003
                                            ; SOURCE LINE # 140
                                            ; SOURCE LINE # 141
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 12  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 12  
 
 0006 120000      R     LCALL   VID_COMPARE_Init
                                            ; SOURCE LINE # 143
@@ -752,7 +752,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0024 120000      E     LCALL   _cyread8
 0027 904635            MOV     DPTR,#04635H
 002A EF                MOV     A,R7
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 13  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 13  
 
 002B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 216
@@ -816,7 +816,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 900000      R     MOV     DPTR,#cmpState
 0019 E0                MOVX    A,@DPTR
 001A 6016              JZ      ?C0012
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 14  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 14  
 
                                            ; SOURCE LINE # 294
                                            ; SOURCE LINE # 302
@@ -880,7 +880,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0059 7008              JNZ     ?C0019
                                            ; SOURCE LINE # 345
                                            ; SOURCE LINE # 353
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 15  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 15  
 
 005B 904634            MOV     DPTR,#04634H
 005E E0                MOVX    A,@DPTR
@@ -944,7 +944,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 E0                MOVX    A,@DPTR
 0014 900000      R     MOV     DPTR,#tmpSW3
 0017 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 16  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 16  
 
                                            ; SOURCE LINE # 460
 0018 905AD0            MOV     DPTR,#05AD0H
@@ -1008,7 +1008,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0063 900000      R     MOV     DPTR,#tmpSW0
 0066 E0                MOVX    A,@DPTR
 0067 905AD0            MOV     DPTR,#05AD0H
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 17  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 17  
 
 006A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 499
@@ -1072,7 +1072,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 54FB              ANL     A,#0FBH
 0006 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:49:22 PAGE 18  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 03:13:30 PAGE 18  
 
                                            ; SOURCE LINE # 591
 0007 22                RET     

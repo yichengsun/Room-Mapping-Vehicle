@@ -1,0 +1,269 @@
+C51 COMPILER V9.51   UPDATE_STEERING_TIMER_PM                                              03/26/2015 03:13:32 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE UPDATE_STEERING_TIMER_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\UPDATE_STEERING_TIMER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3)
+                    - FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/UPDATE_STEERING_TIMER_PM.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_
+                    -951\Release\UPDATE_STEERING_TIMER_PM.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: UPDATE_STEERING_TIMER_PM.c
+   3          * Version 2.70
+   4          *
+   5          *  Description:
+   6          *     This file provides the power management source code to API for the
+   7          *     Timer.
+   8          *
+   9          *   Note:
+  10          *     None
+  11          *
+  12          *******************************************************************************
+  13          * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  14          * You may use this file only in accordance with the license, terms, conditions,
+  15          * disclaimers, and limitations in the end user license agreement accompanying
+  16          * the software package with which this file was provided.
+  17          ********************************************************************************/
+  18          
+  19          #include "UPDATE_STEERING_TIMER.h"
+  20          
+  21          static UPDATE_STEERING_TIMER_backupStruct UPDATE_STEERING_TIMER_backup;
+  22          
+  23          
+  24          /*******************************************************************************
+  25          * Function Name: UPDATE_STEERING_TIMER_SaveConfig
+  26          ********************************************************************************
+  27          *
+  28          * Summary:
+  29          *     Save the current user configuration
+  30          *
+  31          * Parameters:
+  32          *  void
+  33          *
+  34          * Return:
+  35          *  void
+  36          *
+  37          * Global variables:
+  38          *  UPDATE_STEERING_TIMER_backup:  Variables of this global structure are modified to
+  39          *  store the values of non retention configuration registers when Sleep() API is
+  40          *  called.
+  41          *
+  42          *******************************************************************************/
+  43          void UPDATE_STEERING_TIMER_SaveConfig(void) 
+  44          {
+  45   1          #if (!UPDATE_STEERING_TIMER_UsingFixedFunction)
+                      UPDATE_STEERING_TIMER_backup.TimerUdb = UPDATE_STEERING_TIMER_ReadCounter();
+                      UPDATE_STEERING_TIMER_backup.InterruptMaskValue = UPDATE_STEERING_TIMER_STATUS_MASK;
+                      #if (UPDATE_STEERING_TIMER_UsingHWCaptureCounter)
+                          UPDATE_STEERING_TIMER_backup.TimerCaptureCounter = UPDATE_STEERING_TIMER_ReadCaptureCount();
+                      #endif /* Back Up capture counter register  */
+              
+C51 COMPILER V9.51   UPDATE_STEERING_TIMER_PM                                              03/26/2015 03:13:32 PAGE 2   
+
+                      #if(!UPDATE_STEERING_TIMER_UDB_CONTROL_REG_REMOVED)
+                          UPDATE_STEERING_TIMER_backup.TimerControlRegister = UPDATE_STEERING_TIMER_ReadControlRegister(
+             -);
+                      #endif /* Backup the enable state of the Timer component */
+                  #endif /* Backup non retention registers in UDB implementation. All fixed function registers are reten
+             -tion */
+  56   1      }
+  57          
+  58          
+  59          /*******************************************************************************
+  60          * Function Name: UPDATE_STEERING_TIMER_RestoreConfig
+  61          ********************************************************************************
+  62          *
+  63          * Summary:
+  64          *  Restores the current user configuration.
+  65          *
+  66          * Parameters:
+  67          *  void
+  68          *
+  69          * Return:
+  70          *  void
+  71          *
+  72          * Global variables:
+  73          *  UPDATE_STEERING_TIMER_backup:  Variables of this global structure are used to
+  74          *  restore the values of non retention registers on wakeup from sleep mode.
+  75          *
+  76          *******************************************************************************/
+  77          void UPDATE_STEERING_TIMER_RestoreConfig(void) 
+  78          {   
+  79   1          #if (!UPDATE_STEERING_TIMER_UsingFixedFunction)
+              
+                      UPDATE_STEERING_TIMER_WriteCounter(UPDATE_STEERING_TIMER_backup.TimerUdb);
+                      UPDATE_STEERING_TIMER_STATUS_MASK =UPDATE_STEERING_TIMER_backup.InterruptMaskValue;
+                      #if (UPDATE_STEERING_TIMER_UsingHWCaptureCounter)
+                          UPDATE_STEERING_TIMER_SetCaptureCount(UPDATE_STEERING_TIMER_backup.TimerCaptureCounter);
+                      #endif /* Restore Capture counter register*/
+              
+                      #if(!UPDATE_STEERING_TIMER_UDB_CONTROL_REG_REMOVED)
+                          UPDATE_STEERING_TIMER_WriteControlRegister(UPDATE_STEERING_TIMER_backup.TimerControlRegister);
+                      #endif /* Restore the enable state of the Timer component */
+                  #endif /* Restore non retention registers in the UDB implementation only */
+  91   1      }
+  92          
+  93          
+  94          /*******************************************************************************
+  95          * Function Name: UPDATE_STEERING_TIMER_Sleep
+  96          ********************************************************************************
+  97          *
+  98          * Summary:
+  99          *     Stop and Save the user configuration
+ 100          *
+ 101          * Parameters:
+ 102          *  void
+ 103          *
+ 104          * Return:
+ 105          *  void
+ 106          *
+ 107          * Global variables:
+ 108          *  UPDATE_STEERING_TIMER_backup.TimerEnableState:  Is modified depending on the
+ 109          *  enable state of the block before entering sleep mode.
+ 110          *
+ 111          *******************************************************************************/
+C51 COMPILER V9.51   UPDATE_STEERING_TIMER_PM                                              03/26/2015 03:13:32 PAGE 3   
+
+ 112          void UPDATE_STEERING_TIMER_Sleep(void) 
+ 113          {
+ 114   1          #if(!UPDATE_STEERING_TIMER_UDB_CONTROL_REG_REMOVED)
+ 115   1              /* Save Counter's enable state */
+ 116   1              if(UPDATE_STEERING_TIMER_CTRL_ENABLE == (UPDATE_STEERING_TIMER_CONTROL & UPDATE_STEERING_TIMER_CTR
+             -L_ENABLE))
+ 117   1              {
+ 118   2                  /* Timer is enabled */
+ 119   2                  UPDATE_STEERING_TIMER_backup.TimerEnableState = 1u;
+ 120   2              }
+ 121   1              else
+ 122   1              {
+ 123   2                  /* Timer is disabled */
+ 124   2                  UPDATE_STEERING_TIMER_backup.TimerEnableState = 0u;
+ 125   2              }
+ 126   1          #endif /* Back up enable state from the Timer control register */
+ 127   1          UPDATE_STEERING_TIMER_Stop();
+ 128   1          UPDATE_STEERING_TIMER_SaveConfig();
+ 129   1      }
+ 130          
+ 131          
+ 132          /*******************************************************************************
+ 133          * Function Name: UPDATE_STEERING_TIMER_Wakeup
+ 134          ********************************************************************************
+ 135          *
+ 136          * Summary:
+ 137          *  Restores and enables the user configuration
+ 138          *
+ 139          * Parameters:
+ 140          *  void
+ 141          *
+ 142          * Return:
+ 143          *  void
+ 144          *
+ 145          * Global variables:
+ 146          *  UPDATE_STEERING_TIMER_backup.enableState:  Is used to restore the enable state of
+ 147          *  block on wakeup from sleep mode.
+ 148          *
+ 149          *******************************************************************************/
+ 150          void UPDATE_STEERING_TIMER_Wakeup(void) 
+ 151          {
+ 152   1          UPDATE_STEERING_TIMER_RestoreConfig();
+ 153   1          #if(!UPDATE_STEERING_TIMER_UDB_CONTROL_REG_REMOVED)
+ 154   1              if(UPDATE_STEERING_TIMER_backup.TimerEnableState == 1u)
+ 155   1              {     /* Enable Timer's operation */
+ 156   2                      UPDATE_STEERING_TIMER_Enable();
+ 157   2              } /* Do nothing if Timer was disabled before */
+ 158   1          #endif /* Remove this code section if Control register is removed */
+ 159   1      }
+ 160          
+ 161          
+ 162          /* [] END OF FILE */
+C51 COMPILER V9.51   UPDATE_STEERING_TIMER_PM                                              03/26/2015 03:13:32 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION UPDATE_STEERING_TIMER_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 44
+                                           ; SOURCE LINE # 56
+0000 22                RET     
+             ; FUNCTION UPDATE_STEERING_TIMER_SaveConfig (END)
+
+             ; FUNCTION UPDATE_STEERING_TIMER_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 77
+                                           ; SOURCE LINE # 78
+                                           ; SOURCE LINE # 91
+0000 22                RET     
+             ; FUNCTION UPDATE_STEERING_TIMER_RestoreConfig (END)
+
+             ; FUNCTION UPDATE_STEERING_TIMER_Sleep (BEGIN)
+                                           ; SOURCE LINE # 112
+                                           ; SOURCE LINE # 113
+                                           ; SOURCE LINE # 116
+0000 904F00            MOV     DPTR,#04F00H
+0003 E0                MOVX    A,@DPTR
+0004 30E008            JNB     ACC.0,?C0003
+                                           ; SOURCE LINE # 117
+                                           ; SOURCE LINE # 119
+0007 900000      R     MOV     DPTR,#UPDATE_STEERING_TIMER_backup
+000A 7401              MOV     A,#01H
+000C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 120
+000D 8005              SJMP    ?C0004
+000F         ?C0003:
+                                           ; SOURCE LINE # 122
+                                           ; SOURCE LINE # 124
+000F E4                CLR     A
+0010 900000      R     MOV     DPTR,#UPDATE_STEERING_TIMER_backup
+0013 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 125
+0014         ?C0004:
+                                           ; SOURCE LINE # 127
+0014 120000      E     LCALL   UPDATE_STEERING_TIMER_Stop
+                                           ; SOURCE LINE # 128
+0017 120000      R     LCALL   UPDATE_STEERING_TIMER_SaveConfig
+                                           ; SOURCE LINE # 129
+001A 22                RET     
+             ; FUNCTION UPDATE_STEERING_TIMER_Sleep (END)
+
+             ; FUNCTION UPDATE_STEERING_TIMER_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 150
+                                           ; SOURCE LINE # 151
+                                           ; SOURCE LINE # 152
+0000 120000      R     LCALL   UPDATE_STEERING_TIMER_RestoreConfig
+                                           ; SOURCE LINE # 154
+0003 900000      R     MOV     DPTR,#UPDATE_STEERING_TIMER_backup
+0006 E0                MOVX    A,@DPTR
+0007 B40103            CJNE    A,#01H,?C0007
+                                           ; SOURCE LINE # 155
+                                           ; SOURCE LINE # 156
+000A 120000      E     LCALL   UPDATE_STEERING_TIMER_Enable
+                                           ; SOURCE LINE # 157
+                                           ; SOURCE LINE # 159
+000D         ?C0007:
+C51 COMPILER V9.51   UPDATE_STEERING_TIMER_PM                                              03/26/2015 03:13:32 PAGE 5   
+
+000D 22                RET     
+             ; FUNCTION UPDATE_STEERING_TIMER_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

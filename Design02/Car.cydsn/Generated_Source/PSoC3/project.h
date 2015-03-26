@@ -33,9 +33,9 @@
 #include <COM_SYNC_OUT_PIN_aliases.h>
 #include <VERT_SYNC_OUT_PIN.h>
 #include <VERT_SYNC_OUT_PIN_aliases.h>
-#include <SECOND_LINE_IN_FRAME_ISR.h>
+#include <COUNTER_N_ISR.h>
 #include <LINE_COUNTER.h>
-#include <FIRST_LINE_IN_FRAME_ISR.h>
+#include <FRAME_ISR.h>
 #include <STEERING_PWM_OUT_PIN.h>
 #include <STEERING_PWM_OUT_PIN_aliases.h>
 #include <STEERING_PWM.h>
@@ -45,10 +45,12 @@
 #include <VID_COMPARE_CLK.h>
 #include <VID_COMPARE.h>
 #include <VID_VDAC.h>
-#include <BLACK_POSITION_TIMER.h>
+#include <SEC_TIL_BLACK_TIMER.h>
 #include <FIRST_BLACK_PIXEL_READ_ISR.h>
 #include <COMPARE_OUT.h>
 #include <COMPARE_OUT_aliases.h>
+#include <UPDATE_STEERING_TIMER.h>
+#include <UPDATE_STEERING_ISR.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

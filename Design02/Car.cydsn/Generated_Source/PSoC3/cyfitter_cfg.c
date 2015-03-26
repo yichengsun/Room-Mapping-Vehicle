@@ -89,16 +89,16 @@ static void CyClockStartupError(uint8 errorCode)
 
 #define cfg_byte_table ((const void CYFAR *)0x080000u)
 /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080474u)
+#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080494u)
 
 /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x0008047Cu)
+#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x0008049Cu)
 
 /* IOPINS0_4 Address: CYREG_PRT4_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080484u)
+#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x000804A4u)
 
 /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
-#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x0008048Cu)
+#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x000804ACu)
 
 
 /*******************************************************************************
@@ -271,6 +271,7 @@ void cyfitter_cfg(void)
 
 		static const cfg_memset_t CYCODE cfg_memset_list [] = {
 			/* address, size */
+			{(void CYFAR *)(CYREG_TMR0_CFG0), 12u},
 			{(void CYFAR *)(CYREG_PRT0_DR), 32u},
 			{(void CYFAR *)(CYREG_PRT5_DR), 32u},
 			{(void CYFAR *)(CYREG_PRT12_DR), 16u},

@@ -956,19 +956,19 @@
 <dependency_info name="4bd5669a-0e4e-4e1c-9625-e982dd945372@Release@DP8051" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
 <file name=".\DP8051\DP8051_Keil_951\Release\main.obj">
-<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARE_OUT.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARE_OUT_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\COM_VID_IN_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\COM_VID_IN_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\COUNTER_N_ISR.h" />
 <dep name=".\Generated_Source\PSoC3\CyDmac.h" />
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC3\CyLib.h" />
 <dep name=".\Generated_Source\PSoC3\CySpc.h" />
 <dep name=".\Generated_Source\PSoC3\FIRST_BLACK_PIXEL_READ_ISR.h" />
-<dep name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\FRAME_ISR.h" />
 <dep name=".\Generated_Source\PSoC3\HE_IN_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\HE_IN_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\HE_ISR.h" />
@@ -983,11 +983,13 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\PWM_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\PWM_OUT_PIN_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.h" />
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM.h" />
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM_CLK.h" />
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\VID_COMPARE.h" />
@@ -1004,19 +1006,19 @@
 <dep name=".\Generated_Source\PSoC3\project.h" />
 <dep name=".\main.c" />
 </file>
-<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
 <file name=".\Generated_Source\PSoC3\COMPARE_OUT.h" />
 <file name=".\Generated_Source\PSoC3\COMPARE_OUT_aliases.h" />
 <file name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\COM_VID_IN_PIN.h" />
 <file name=".\Generated_Source\PSoC3\COM_VID_IN_PIN_aliases.h" />
+<file name=".\Generated_Source\PSoC3\COUNTER_N_ISR.h" />
 <file name=".\Generated_Source\PSoC3\CyDmac.h" />
 <file name=".\Generated_Source\PSoC3\CyFlash.h" />
 <file name=".\Generated_Source\PSoC3\CyLib.h" />
 <file name=".\Generated_Source\PSoC3\CySpc.h" />
 <file name=".\Generated_Source\PSoC3\FIRST_BLACK_PIXEL_READ_ISR.h" />
-<file name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.h" />
+<file name=".\Generated_Source\PSoC3\FRAME_ISR.h" />
 <file name=".\Generated_Source\PSoC3\HE_IN_PIN.h" />
 <file name=".\Generated_Source\PSoC3\HE_IN_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\HE_ISR.h" />
@@ -1031,11 +1033,13 @@
 <file name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <file name=".\Generated_Source\PSoC3\PWM_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\PWM_OUT_PIN_aliases.h" />
-<file name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.h" />
+<file name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.h" />
 <file name=".\Generated_Source\PSoC3\STEERING_PWM.h" />
 <file name=".\Generated_Source\PSoC3\STEERING_PWM_CLK.h" />
 <file name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN_aliases.h" />
+<file name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.h" />
+<file name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.h" />
 <file name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\VID_COMPARE.h" />
@@ -1051,34 +1055,6 @@
 <file name=".\Generated_Source\PSoC3\cytypes.h" />
 <file name=".\Generated_Source\PSoC3\project.h" />
 <file name=".\main.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER.obj">
-<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
-<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC3\CyLib.h" />
-<dep name=".\Generated_Source\PSoC3\CySpc.h" />
-<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
-<dep name=".\Generated_Source\PSoC3\cyPm.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.c" />
-</file>
-<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER_PM.obj">
-<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
-<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC3\CyLib.h" />
-<dep name=".\Generated_Source\PSoC3\CySpc.h" />
-<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
-<dep name=".\Generated_Source\PSoC3\cyPm.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER_PM.c" />
-</file>
-<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER_PM.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\COMPARE_OUT.obj">
 <dep name=".\Generated_Source\PSoC3\COMPARE_OUT.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARE_OUT_aliases.h" />
@@ -1112,6 +1088,20 @@
 <dep name=".\Generated_Source\PSoC3\COM_VID_IN_PIN.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\COM_VID_IN_PIN.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\COUNTER_N_ISR.obj">
+<dep name=".\Generated_Source\PSoC3\COUNTER_N_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\COUNTER_N_ISR.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\COUNTER_N_ISR.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\CyDmac.obj">
 <dep name=".\Generated_Source\PSoC3\CyDmac.h" />
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
@@ -1179,20 +1169,20 @@
 <dep name=".\Generated_Source\PSoC3\FIRST_BLACK_PIXEL_READ_ISR.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\FIRST_BLACK_PIXEL_READ_ISR.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\FIRST_LINE_IN_FRAME_ISR.obj">
+<file name=".\DP8051\DP8051_Keil_951\Release\FRAME_ISR.obj">
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC3\CyLib.h" />
 <dep name=".\Generated_Source\PSoC3\CySpc.h" />
-<dep name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\FRAME_ISR.h" />
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\cyPm.h" />
 <dep name=".\Generated_Source\PSoC3\cydevice.h" />
 <dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC3\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.c" />
+<dep name=".\Generated_Source\PSoC3\FRAME_ISR.c" />
 </file>
-<file name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.c" />
+<file name=".\Generated_Source\PSoC3\FRAME_ISR.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj">
 <dep name=".\Generated_Source\PSoC3\HE_IN_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\HE_IN_PIN_aliases.h" />
@@ -1365,20 +1355,34 @@
 <dep name=".\Generated_Source\PSoC3\PWM_OUT_PIN.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\PWM_OUT_PIN.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\SECOND_LINE_IN_FRAME_ISR.obj">
+<file name=".\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj">
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC3\CyLib.h" />
 <dep name=".\Generated_Source\PSoC3\CySpc.h" />
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
-<dep name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.h" />
 <dep name=".\Generated_Source\PSoC3\cyPm.h" />
 <dep name=".\Generated_Source\PSoC3\cydevice.h" />
 <dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC3\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.c" />
+<dep name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.c" />
 </file>
-<file name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.c" />
+<file name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER_PM.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER_PM.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\STEERING_PWM.obj">
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC3\CyLib.h" />
@@ -1427,6 +1431,48 @@
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM_PM.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\STEERING_PWM_PM.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_ISR.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER_PM.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER_PM.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj">
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
@@ -1557,6 +1603,65 @@
 <dep name=".\Generated_Source\PSoC3\cymem.a51" />
 </file>
 <file name=".\Generated_Source\PSoC3\cymem.a51" />
+<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
+<file name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.h" />
+<file name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.h" />
+<file name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER.obj">
+<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER_PM.obj">
+<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER.h" />
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER_PM.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER_PM.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\FIRST_LINE_IN_FRAME_ISR.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\FIRST_LINE_IN_FRAME_ISR.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\SECOND_LINE_IN_FRAME_ISR.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\SECOND_LINE_IN_FRAME_ISR.c" />
 <file name=".\Generated_Source\PSoC3\BLACK_LINE_TIMER.h" />
 <file name=".\Generated_Source\PSoC3\BOTTOM_LINE_ISR.h" />
 <file name=".\Generated_Source\PSoC3\COMPARATOR_OUT.h" />
@@ -1741,12 +1846,15 @@
 <dep name=".\DP8051\DP8051_Keil_951\Release\VID_COMPARE_PM.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\VID_VDAC.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\VID_VDAC_PM.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\SECOND_LINE_IN_FRAME_ISR.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\FIRST_LINE_IN_FRAME_ISR.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\BLACK_POSITION_TIMER_PM.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\FIRST_BLACK_PIXEL_READ_ISR.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\COMPARE_OUT.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\COUNTER_N_ISR.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\FRAME_ISR.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_ISR.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\Car.lib" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib" />
 </file>
@@ -1882,6 +1990,13 @@
 <name_val_pair name=".\Generated_Source\PSoC3\BLACK_POSITION_TIMER_PM.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 <name_val_pair name=".\Generated_Source\PSoC3\FIRST_BLACK_PIXEL_READ_ISR.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 <name_val_pair name=".\Generated_Source\PSoC3\COMPARE_OUT.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\COUNTER_N_ISR.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\FRAME_ISR.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER_PM.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\UPDATE_STEERING_TIMER_PM.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\UPDATE_STEERING_ISR.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Yicheng\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.cyprj -d CY8C3866AXI-040 -s C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Generated_Source\PSoC3 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=BE" />
@@ -2621,6 +2736,59 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.c</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\API\clk.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\API\clk.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Timer_v2_70.cycdx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Timer_v2_70.cysym</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Timer_v2_70.pdf</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Timer_v2_70.cystate</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\API\Timer.c</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\API\Timer.h</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\API\Timer_PM.c</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\cytimercontrol.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\cytimercontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\CyTimerCustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\TimerParameters.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\Resources.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\cytimercontrol.resx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\Custom\Resources.resx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70\PSoC3\Timer_v2_70.cysch</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Timer_v2_70</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc3_timer_v1_0\cy_psoc3_timer_v1_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc3_timer_v1_0\cy_psoc3_timer_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC3\API\intc.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC3\API\intc.h</v>
 <v>.\Car.cydwr</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_20\PSoC3\API\CyBootAsmKeil.a51</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_20\PSoC3\API\CyDmac.c</v>
@@ -2822,6 +2990,18 @@
 <v>.\Generated_Source\PSoC3\COMPARE_OUT.c</v>
 <v>.\Generated_Source\PSoC3\COMPARE_OUT.h</v>
 <v>.\Generated_Source\PSoC3\COMPARE_OUT_aliases.h</v>
+<v>.\Generated_Source\PSoC3\COUNTER_N_ISR.c</v>
+<v>.\Generated_Source\PSoC3\COUNTER_N_ISR.h</v>
+<v>.\Generated_Source\PSoC3\FRAME_ISR.c</v>
+<v>.\Generated_Source\PSoC3\FRAME_ISR.h</v>
+<v>.\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.c</v>
+<v>.\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.h</v>
+<v>.\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER_PM.c</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.c</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEERING_TIMER.h</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEERING_TIMER_PM.c</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEERING_ISR.c</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEERING_ISR.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2838,14 +3018,14 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="130718189559286684" />
+<deps_time v="130718274016592466" />
 <top_block v="TopDesign" />
-<last_generation v="1" />
+<last_generation v="5" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130718189673568052" />
+<deps_time v="130718276164537122" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">

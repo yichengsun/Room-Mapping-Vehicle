@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 1   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LCD_LCDPORT
@@ -62,7 +62,7 @@ line level    source
   49          * Parameters:  
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 2   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 2   
 
   52          *  LCD_LCDPort_DM_STRONG     Strong Drive 
   53          *  LCD_LCDPort_DM_OD_HI      Open Drain, Drives High 
@@ -126,7 +126,7 @@ line level    source
  111          * Return: 
  112          *  Returns the current value assigned to the Digital Port's data output register
  113          *  
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 3   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 3   
 
  114          *******************************************************************************/
  115          uint8 LCD_LCDPort_ReadDataReg(void) 
@@ -162,7 +162,7 @@ line level    source
  145          
  146          
  147          /* [] END OF FILE */
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 4   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -226,7 +226,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0025 FE                MOV     R6,A
 0026 A3                INC     DPTR
 0027 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 5   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 5   
 
 0028 54F1              ANL     A,#0F1H
 002A 4E                ORL     A,R6
@@ -290,7 +290,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----
-C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:49:19 PAGE 6   
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 03:13:27 PAGE 6   
 
 END OF MODULE INFORMATION.
 

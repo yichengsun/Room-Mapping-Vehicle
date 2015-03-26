@@ -17,5 +17,5 @@ move "%~1\%~2\%~n3.hex" "%~1\%~2\%~n3.ihx"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 CD /D "C:\Keil\UV4"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-IF NOT EXIST "C:\Users\Edgar\OneDrive\2014\Princeton 2014\Second Semester\ele302\ELE302-Carlab\Design02\Car.cydsn\Car.svd" rem "C:\Users\Edgar\OneDrive\2014\Princeton 2014\Second Semester\ele302\ELE302-Carlab\Design02\Car.cydsn\Car.sfr"
+IF NOT EXIST "C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.svd" rem "C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.sfr"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 

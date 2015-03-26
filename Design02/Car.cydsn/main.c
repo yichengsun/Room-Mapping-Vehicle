@@ -24,6 +24,7 @@ double gki_speederror = 0;
 double gki_steererror = 0;
 int glinepos = 0;
 
+int gnum_line_reads = 0;
 double gblack_pos_first_diff = 0;
 double gblack_pos_second_diff = 0;
 int gCounterNReads = 0;
@@ -67,7 +68,7 @@ CY_ISR(COUNTER_N_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("Reading line");
 
-    SEC_TIL_BLACK_TIMER_Start()
+    SEC_TIL_BLACK_TIMER_Start();
     LINE_COUNTER_Stop();
     
     if (gCounterNReads < 2) {
@@ -82,16 +83,17 @@ CY_ISR(FIRST_BLACK_PIXEL_READ_inter) {
     //STORE DATA HERE
     uint32 firstpos;
     uint32 secondpos;
+    
 
     firstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     secondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     SEC_TIL_BLACK_TIMER_STOP();
 
-    if (num_line_reads == 0) {
-        num_line_reads = 1;
+    if (gnum_line_reads == 0) {
+        gnum_line_reads = 1;
         gblack_pos_first_diff = (double)(secondpos - firstpos);
     } else {
-        num_line_reads = 0;
+        gnum_line_reads = 0;
         gblack_pos_second_diff = (double)(secondpos - firstpos);
     }
 }
@@ -166,6 +168,7 @@ CY_ISR(UPDATE_STEERING_inter) {
     double error;   
     double duty_cycle_buffer;
     uint16 duty_cycle;
+    char buffer[15];
     //Calculate the error for feedback 
     error = gblack_pos_first_diff - gblack_pos_second_diff;
         //Accumulate past errors for Ki
@@ -197,7 +200,7 @@ CY_ISR(UPDATE_STEERING_inter) {
 
     STEERING_PWM_WriteCompare(duty_cycle);
 }
-}
+
 
 int main()
 {
@@ -208,7 +211,7 @@ int main()
     HE_ISR_SetVector(HE_inter);
     
     FRAME_ISR_Start();
-    FRAME_ISR_SetVector(FIRST_LINE_IN_FRAME_inter);
+    FRAME_ISR_SetVector(FRAME_inter);
     
     COUNTER_N_ISR_Start();
     COUNTER_N_ISR_SetVector(COUNTER_N_inter);
