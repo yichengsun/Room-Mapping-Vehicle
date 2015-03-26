@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 1   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LINE_COUNTER_PM
@@ -62,7 +62,7 @@ line level    source
                           LINE_COUNTER_backup.CompareValue = LINE_COUNTER_ReadCompare();
                           LINE_COUNTER_backup.InterruptMaskValue = LINE_COUNTER_STATUS_MASK;
                       #endif /* CY_UDB_V0 */
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 2   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 2   
 
   53   1      
   54   1              #if(!LINE_COUNTER_ControlRegRemoved)
@@ -126,7 +126,7 @@ line level    source
  112          * Summary:
  113          *     Stop and Save the user configuration
  114          *
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 3   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 3   
 
  115          * Parameters:  
  116          *  void
@@ -190,7 +190,7 @@ line level    source
  174   1          #if(!LINE_COUNTER_ControlRegRemoved)
  175   1              if(LINE_COUNTER_backup.CounterEnableState == 1u)
  176   1              {
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 4   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 4   
 
  177   2                  /* Enable Counter's operation */
  178   2                  LINE_COUNTER_Enable();
@@ -201,7 +201,7 @@ line level    source
  183          
  184          
  185          /* [] END OF FILE */
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 5   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -265,7 +265,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 139
 0016         ?C0004:
                                            ; SOURCE LINE # 148
-C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:31:55 PAGE 6   
+C51 COMPILER V9.51   LINE_COUNTER_PM                                                       03/26/2015 00:51:35 PAGE 6   
 
 0016 120000      E     LCALL   LINE_COUNTER_Stop
                                            ; SOURCE LINE # 149

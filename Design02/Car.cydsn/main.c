@@ -18,6 +18,8 @@ double speedCounts[5];
 double gki_error = 0;
 int glinepos = 0;
 
+double black_pos_diff = 0;
+
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
     double counter = 0;
@@ -64,6 +66,17 @@ CY_ISR(SECOND_LINE_IN_FRAME_inter) {
 
 CY_ISR(FIRST_BLACK_PIXEL_READ_inter) {
     //STORE DATA HERE
+    uint32 firstpos;
+    uint32 secondpos;
+    if (num_line_reads == 0) {
+        num_line_reads = 1;
+    } else {
+        num_line_reads = 0;
+    }
+    firstpos = BLACK_POSITION_TIMER_ReadCapture();
+    secondpos = BLACK_POSITION_TIMER_ReadCapture();
+    BLACK_POSITION_TIMER_STOP();
+    black_pos_diff = (double)(secondpos - firstpos)
 }
 
 // CY_ISR(CAM_LINE_inter) {
