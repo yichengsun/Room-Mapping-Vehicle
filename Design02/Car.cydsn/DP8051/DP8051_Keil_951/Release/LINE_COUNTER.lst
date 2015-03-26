@@ -1,0 +1,882 @@
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE LINE_COUNTER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\LINE_COUNTER.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\LINE_COUNTER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB WL
+                    -(2) PR(.\DP8051\DP8051_Keil_951\Release/LINE_COUNTER.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER
+                    -.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: LINE_COUNTER.c  
+   3          * Version 2.40
+   4          *
+   5          *  Description:
+   6          *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7          *     a selectable period between 2 and 2^Width - 1.  
+   8          *
+   9          *   Note:
+  10          *     None
+  11          *
+  12          *******************************************************************************
+  13          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14          * You may use this file only in accordance with the license, terms, conditions, 
+  15          * disclaimers, and limitations in the end user license agreement accompanying 
+  16          * the software package with which this file was provided.
+  17          ********************************************************************************/
+  18          
+  19          #include "LINE_COUNTER.h"
+  20          
+  21          uint8 LINE_COUNTER_initVar = 0u;
+  22          
+  23          
+  24          /*******************************************************************************
+  25          * Function Name: LINE_COUNTER_Init
+  26          ********************************************************************************
+  27          * Summary:
+  28          *     Initialize to the schematic state
+  29          * 
+  30          * Parameters:  
+  31          *  void  
+  32          *
+  33          * Return: 
+  34          *  void
+  35          *
+  36          *******************************************************************************/
+  37          void LINE_COUNTER_Init(void) 
+  38          {
+  39   1              #if (!LINE_COUNTER_UsingFixedFunction && !LINE_COUNTER_ControlRegRemoved)
+  40   1                  uint8 ctrl;
+  41   1              #endif /* (!LINE_COUNTER_UsingFixedFunction && !LINE_COUNTER_ControlRegRemoved) */
+  42   1              
+  43   1              #if(!LINE_COUNTER_UsingFixedFunction) 
+  44   1                  /* Interrupt State Backup for Critical Region*/
+  45   1                  uint8 LINE_COUNTER_interruptState;
+  46   1              #endif /* (!LINE_COUNTER_UsingFixedFunction) */
+  47   1              
+  48   1              #if (LINE_COUNTER_UsingFixedFunction)
+                          /* Clear all bits but the enable bit (if it's already set for Timer operation */
+                          LINE_COUNTER_CONTROL &= LINE_COUNTER_CTRL_ENABLE;
+                          
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 2   
+
+                          /* Clear the mode bits for continuous run mode */
+                          #if (CY_PSOC5A)
+                              LINE_COUNTER_CONTROL2 &= ((uint8)(~LINE_COUNTER_CTRL_MODE_MASK));
+                          #endif /* (CY_PSOC5A) */
+                          #if (CY_PSOC3 || CY_PSOC5LP)
+                              LINE_COUNTER_CONTROL3 &= ((uint8)(~LINE_COUNTER_CTRL_MODE_MASK));                
+                          #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+                          /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+                          #if (LINE_COUNTER_RunModeUsed != 0x0u)
+                              /* Set 3rd bit of Control register to enable one shot mode */
+                              LINE_COUNTER_CONTROL |= LINE_COUNTER_ONESHOT;
+                          #endif /* (LINE_COUNTER_RunModeUsed != 0x0u) */
+                          
+                          /* Set the IRQ to use the status register interrupts */
+                          LINE_COUNTER_CONTROL2 |= LINE_COUNTER_CTRL2_IRQ_SEL;
+                          
+                          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+                          LINE_COUNTER_RT1 &= ((uint8)(~LINE_COUNTER_RT1_MASK));
+                          LINE_COUNTER_RT1 |= LINE_COUNTER_SYNC;     
+                                  
+                          /*Enable DSI Sync all all inputs of the Timer*/
+                          LINE_COUNTER_RT1 &= ((uint8)(~LINE_COUNTER_SYNCDSI_MASK));
+                          LINE_COUNTER_RT1 |= LINE_COUNTER_SYNCDSI_EN;
+              
+                      #else
+  77   1                  #if(!LINE_COUNTER_ControlRegRemoved)
+  78   1                  /* Set the default compare mode defined in the parameter */
+  79   1                  ctrl = LINE_COUNTER_CONTROL & ((uint8)(~LINE_COUNTER_CTRL_CMPMODE_MASK));
+  80   1                  LINE_COUNTER_CONTROL = ctrl | LINE_COUNTER_DEFAULT_COMPARE_MODE;
+  81   1                  
+  82   1                  /* Set the default capture mode defined in the parameter */
+  83   1                  ctrl = LINE_COUNTER_CONTROL & ((uint8)(~LINE_COUNTER_CTRL_CAPMODE_MASK));
+  84   1                  
+  85   1                  #if( 0 != LINE_COUNTER_CAPTURE_MODE_CONF)
+                              LINE_COUNTER_CONTROL = ctrl | LINE_COUNTER_DEFAULT_CAPTURE_MODE;
+                          #else
+  88   1                      LINE_COUNTER_CONTROL = ctrl;
+  89   1                  #endif /* 0 != LINE_COUNTER_CAPTURE_MODE */ 
+  90   1                  
+  91   1                  #endif /* (!LINE_COUNTER_ControlRegRemoved) */
+  92   1              #endif /* (LINE_COUNTER_UsingFixedFunction) */
+  93   1              
+  94   1              /* Clear all data in the FIFO's */
+  95   1              #if (!LINE_COUNTER_UsingFixedFunction)
+  96   1                  LINE_COUNTER_ClearFIFO();
+  97   1              #endif /* (!LINE_COUNTER_UsingFixedFunction) */
+  98   1              
+  99   1              /* Set Initial values from Configuration */
+ 100   1              LINE_COUNTER_WritePeriod(LINE_COUNTER_INIT_PERIOD_VALUE);
+ 101   1              #if (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A)))
+ 102   1                  LINE_COUNTER_WriteCounter(LINE_COUNTER_INIT_COUNTER_VALUE);
+ 103   1              #endif /* (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A))) */
+ 104   1              LINE_COUNTER_SetInterruptMode(LINE_COUNTER_INIT_INTERRUPTS_MASK);
+ 105   1              
+ 106   1              #if (!LINE_COUNTER_UsingFixedFunction)
+ 107   1                  /* Read the status register to clear the unwanted interrupts */
+ 108   1                  (void)LINE_COUNTER_ReadStatusRegister();
+ 109   1                  /* Set the compare value (only available to non-fixed function implementation */
+ 110   1                  LINE_COUNTER_WriteCompare(LINE_COUNTER_INIT_COMPARE_VALUE);
+ 111   1                  /* Use the interrupt output of the status register for IRQ output */
+ 112   1                  
+ 113   1                  /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 3   
+
+ 114   1                  /* Enter Critical Region*/
+ 115   1                  LINE_COUNTER_interruptState = CyEnterCriticalSection();
+ 116   1                  
+ 117   1                  LINE_COUNTER_STATUS_AUX_CTRL |= LINE_COUNTER_STATUS_ACTL_INT_EN_MASK;
+ 118   1                  
+ 119   1                  /* Exit Critical Region*/
+ 120   1                  CyExitCriticalSection(LINE_COUNTER_interruptState);
+ 121   1                  
+ 122   1              #endif /* (!LINE_COUNTER_UsingFixedFunction) */
+ 123   1      }
+ 124          
+ 125          
+ 126          /*******************************************************************************
+ 127          * Function Name: LINE_COUNTER_Enable
+ 128          ********************************************************************************
+ 129          * Summary:
+ 130          *     Enable the Counter
+ 131          * 
+ 132          * Parameters:  
+ 133          *  void  
+ 134          *
+ 135          * Return: 
+ 136          *  void
+ 137          *
+ 138          * Side Effects: 
+ 139          *   If the Enable mode is set to Hardware only then this function has no effect 
+ 140          *   on the operation of the counter.
+ 141          *
+ 142          *******************************************************************************/
+ 143          void LINE_COUNTER_Enable(void) 
+ 144          {
+ 145   1          /* Globally Enable the Fixed Function Block chosen */
+ 146   1          #if (LINE_COUNTER_UsingFixedFunction)
+                      LINE_COUNTER_GLOBAL_ENABLE |= LINE_COUNTER_BLOCK_EN_MASK;
+                      LINE_COUNTER_GLOBAL_STBY_ENABLE |= LINE_COUNTER_BLOCK_STBY_EN_MASK;
+                  #endif /* (LINE_COUNTER_UsingFixedFunction) */  
+ 150   1              
+ 151   1          /* Enable the counter from the control register  */
+ 152   1          /* If Fixed Function then make sure Mode is set correctly */
+ 153   1          /* else make sure reset is clear */
+ 154   1          #if(!LINE_COUNTER_ControlRegRemoved || LINE_COUNTER_UsingFixedFunction)
+ 155   1              LINE_COUNTER_CONTROL |= LINE_COUNTER_CTRL_ENABLE;                
+ 156   1          #endif /* (!LINE_COUNTER_ControlRegRemoved || LINE_COUNTER_UsingFixedFunction) */
+ 157   1          
+ 158   1      }
+ 159          
+ 160          
+ 161          /*******************************************************************************
+ 162          * Function Name: LINE_COUNTER_Start
+ 163          ********************************************************************************
+ 164          * Summary:
+ 165          *  Enables the counter for operation 
+ 166          *
+ 167          * Parameters:  
+ 168          *  void  
+ 169          *
+ 170          * Return: 
+ 171          *  void
+ 172          *
+ 173          * Global variables:
+ 174          *  LINE_COUNTER_initVar: Is modified when this function is called for the  
+ 175          *   first time. Is used to ensure that initialization happens only once.
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 4   
+
+ 176          *
+ 177          *******************************************************************************/
+ 178          void LINE_COUNTER_Start(void) 
+ 179          {
+ 180   1          if(LINE_COUNTER_initVar == 0u)
+ 181   1          {
+ 182   2              LINE_COUNTER_Init();
+ 183   2              
+ 184   2              LINE_COUNTER_initVar = 1u; /* Clear this bit for Initialization */        
+ 185   2          }
+ 186   1          
+ 187   1          /* Enable the Counter */
+ 188   1          LINE_COUNTER_Enable();        
+ 189   1      }
+ 190          
+ 191          
+ 192          /*******************************************************************************
+ 193          * Function Name: LINE_COUNTER_Stop
+ 194          ********************************************************************************
+ 195          * Summary:
+ 196          * Halts the counter, but does not change any modes or disable interrupts.
+ 197          *
+ 198          * Parameters:  
+ 199          *  void  
+ 200          *
+ 201          * Return: 
+ 202          *  void
+ 203          *
+ 204          * Side Effects: If the Enable mode is set to Hardware only then this function
+ 205          *               has no effect on the operation of the counter.
+ 206          *
+ 207          *******************************************************************************/
+ 208          void LINE_COUNTER_Stop(void) 
+ 209          {
+ 210   1          /* Disable Counter */
+ 211   1          #if(!LINE_COUNTER_ControlRegRemoved || LINE_COUNTER_UsingFixedFunction)
+ 212   1              LINE_COUNTER_CONTROL &= ((uint8)(~LINE_COUNTER_CTRL_ENABLE));        
+ 213   1          #endif /* (!LINE_COUNTER_ControlRegRemoved || LINE_COUNTER_UsingFixedFunction) */
+ 214   1          
+ 215   1          /* Globally disable the Fixed Function Block chosen */
+ 216   1          #if (LINE_COUNTER_UsingFixedFunction)
+                      LINE_COUNTER_GLOBAL_ENABLE &= ((uint8)(~LINE_COUNTER_BLOCK_EN_MASK));
+                      LINE_COUNTER_GLOBAL_STBY_ENABLE &= ((uint8)(~LINE_COUNTER_BLOCK_STBY_EN_MASK));
+                  #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 220   1      }
+ 221          
+ 222          
+ 223          /*******************************************************************************
+ 224          * Function Name: LINE_COUNTER_SetInterruptMode
+ 225          ********************************************************************************
+ 226          * Summary:
+ 227          * Configures which interrupt sources are enabled to generate the final interrupt
+ 228          *
+ 229          * Parameters:  
+ 230          *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 231          *                   which will be allowed to generate the counters interrupt.   
+ 232          *
+ 233          * Return: 
+ 234          *  void
+ 235          *
+ 236          *******************************************************************************/
+ 237          void LINE_COUNTER_SetInterruptMode(uint8 interruptsMask) 
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 5   
+
+ 238          {
+ 239   1          LINE_COUNTER_STATUS_MASK = interruptsMask;
+ 240   1      }
+ 241          
+ 242          
+ 243          /*******************************************************************************
+ 244          * Function Name: LINE_COUNTER_ReadStatusRegister
+ 245          ********************************************************************************
+ 246          * Summary:
+ 247          *   Reads the status register and returns it's state. This function should use
+ 248          *       defined types for the bit-field information as the bits in this
+ 249          *       register may be permuteable.
+ 250          *
+ 251          * Parameters:  
+ 252          *  void
+ 253          *
+ 254          * Return: 
+ 255          *  (uint8) The contents of the status register
+ 256          *
+ 257          * Side Effects:
+ 258          *   Status register bits may be clear on read. 
+ 259          *
+ 260          *******************************************************************************/
+ 261          uint8   LINE_COUNTER_ReadStatusRegister(void) 
+ 262          {
+ 263   1          return LINE_COUNTER_STATUS;
+ 264   1      }
+ 265          
+ 266          
+ 267          #if(!LINE_COUNTER_ControlRegRemoved)
+ 268          /*******************************************************************************
+ 269          * Function Name: LINE_COUNTER_ReadControlRegister
+ 270          ********************************************************************************
+ 271          * Summary:
+ 272          *   Reads the control register and returns it's state. This function should use
+ 273          *       defined types for the bit-field information as the bits in this
+ 274          *       register may be permuteable.
+ 275          *
+ 276          * Parameters:  
+ 277          *  void
+ 278          *
+ 279          * Return: 
+ 280          *  (uint8) The contents of the control register
+ 281          *
+ 282          *******************************************************************************/
+ 283          uint8   LINE_COUNTER_ReadControlRegister(void) 
+ 284          {
+ 285   1          return LINE_COUNTER_CONTROL;
+ 286   1      }
+ 287          
+ 288          
+ 289          /*******************************************************************************
+ 290          * Function Name: LINE_COUNTER_WriteControlRegister
+ 291          ********************************************************************************
+ 292          * Summary:
+ 293          *   Sets the bit-field of the control register.  This function should use
+ 294          *       defined types for the bit-field information as the bits in this
+ 295          *       register may be permuteable.
+ 296          *
+ 297          * Parameters:  
+ 298          *  void
+ 299          *
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 6   
+
+ 300          * Return: 
+ 301          *  (uint8) The contents of the control register
+ 302          *
+ 303          *******************************************************************************/
+ 304          void    LINE_COUNTER_WriteControlRegister(uint8 control) 
+ 305          {
+ 306   1          LINE_COUNTER_CONTROL = control;
+ 307   1      }
+ 308          
+ 309          #endif  /* (!LINE_COUNTER_ControlRegRemoved) */
+ 310          
+ 311          
+ 312          #if (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A)))
+ 313          /*******************************************************************************
+ 314          * Function Name: LINE_COUNTER_WriteCounter
+ 315          ********************************************************************************
+ 316          * Summary:
+ 317          *   This funtion is used to set the counter to a specific value
+ 318          *
+ 319          * Parameters:  
+ 320          *  counter:  New counter value. 
+ 321          *
+ 322          * Return: 
+ 323          *  void 
+ 324          *
+ 325          *******************************************************************************/
+ 326          void LINE_COUNTER_WriteCounter(uint8 counter) \
+ 327                                             
+ 328          {
+ 329   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      /* assert if block is already enabled */
+                      CYASSERT (0u == (LINE_COUNTER_GLOBAL_ENABLE & LINE_COUNTER_BLOCK_EN_MASK));
+                      /* If block is disabled, enable it and then write the counter */
+                      LINE_COUNTER_GLOBAL_ENABLE |= LINE_COUNTER_BLOCK_EN_MASK;
+                      CY_SET_REG16(LINE_COUNTER_COUNTER_LSB_PTR, (uint16)counter);
+                      LINE_COUNTER_GLOBAL_ENABLE &= ((uint8)(~LINE_COUNTER_BLOCK_EN_MASK));
+                  #else
+ 337   1              CY_SET_REG8(LINE_COUNTER_COUNTER_LSB_PTR, counter);
+ 338   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 339   1      }
+ 340          #endif /* (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A))) */
+ 341          
+ 342          
+ 343          /*******************************************************************************
+ 344          * Function Name: LINE_COUNTER_ReadCounter
+ 345          ********************************************************************************
+ 346          * Summary:
+ 347          * Returns the current value of the counter.  It doesn't matter
+ 348          * if the counter is enabled or running.
+ 349          *
+ 350          * Parameters:  
+ 351          *  void:  
+ 352          *
+ 353          * Return: 
+ 354          *  (uint8) The present value of the counter.
+ 355          *
+ 356          *******************************************************************************/
+ 357          uint8 LINE_COUNTER_ReadCounter(void) 
+ 358          {
+ 359   1          /* Force capture by reading Accumulator */
+ 360   1          /* Must first do a software capture to be able to read the counter */
+ 361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 7   
+
+ 362   1          #if(LINE_COUNTER_UsingFixedFunction)
+                              (void)CY_GET_REG16(LINE_COUNTER_COUNTER_LSB_PTR);
+                      #else
+ 365   1                      (void)CY_GET_REG8(LINE_COUNTER_COUNTER_LSB_PTR_8BIT);
+ 366   1              #endif/* (LINE_COUNTER_UsingFixedFunction) */
+ 367   1          
+ 368   1          /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 369   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      return ((uint8)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+                  #else
+ 372   1              return (CY_GET_REG8(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+ 373   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 374   1      }
+ 375          
+ 376          
+ 377          /*******************************************************************************
+ 378          * Function Name: LINE_COUNTER_ReadCapture
+ 379          ********************************************************************************
+ 380          * Summary:
+ 381          *   This function returns the last value captured.
+ 382          *
+ 383          * Parameters:  
+ 384          *  void
+ 385          *
+ 386          * Return: 
+ 387          *  (uint8) Present Capture value.
+ 388          *
+ 389          *******************************************************************************/
+ 390          uint8 LINE_COUNTER_ReadCapture(void) 
+ 391          {
+ 392   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      return ((uint8)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+                  #else
+ 395   1              return (CY_GET_REG8(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+ 396   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 397   1      }
+ 398          
+ 399          
+ 400          /*******************************************************************************
+ 401          * Function Name: LINE_COUNTER_WritePeriod
+ 402          ********************************************************************************
+ 403          * Summary:
+ 404          * Changes the period of the counter.  The new period 
+ 405          * will be loaded the next time terminal count is detected.
+ 406          *
+ 407          * Parameters:  
+ 408          *  period: (uint8) A value of 0 will result in
+ 409          *         the counter remaining at zero.  
+ 410          *
+ 411          * Return: 
+ 412          *  void
+ 413          *
+ 414          *******************************************************************************/
+ 415          void LINE_COUNTER_WritePeriod(uint8 period) 
+ 416          {
+ 417   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      CY_SET_REG16(LINE_COUNTER_PERIOD_LSB_PTR,(uint16)period);
+                  #else
+ 420   1              CY_SET_REG8(LINE_COUNTER_PERIOD_LSB_PTR, period);
+ 421   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 422   1      }
+ 423          
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 8   
+
+ 424          
+ 425          /*******************************************************************************
+ 426          * Function Name: LINE_COUNTER_ReadPeriod
+ 427          ********************************************************************************
+ 428          * Summary:
+ 429          * Reads the current period value without affecting counter operation.
+ 430          *
+ 431          * Parameters:  
+ 432          *  void:  
+ 433          *
+ 434          * Return: 
+ 435          *  (uint8) Present period value.
+ 436          *
+ 437          *******************************************************************************/
+ 438          uint8 LINE_COUNTER_ReadPeriod(void) 
+ 439          {
+ 440   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      return ((uint8)CY_GET_REG16(LINE_COUNTER_PERIOD_LSB_PTR));
+                  #else
+ 443   1              return (CY_GET_REG8(LINE_COUNTER_PERIOD_LSB_PTR));
+ 444   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 445   1      }
+ 446          
+ 447          
+ 448          #if (!LINE_COUNTER_UsingFixedFunction)
+ 449          /*******************************************************************************
+ 450          * Function Name: LINE_COUNTER_WriteCompare
+ 451          ********************************************************************************
+ 452          * Summary:
+ 453          * Changes the compare value.  The compare output will 
+ 454          * reflect the new value on the next UDB clock.  The compare output will be 
+ 455          * driven high when the present counter value compares true based on the 
+ 456          * configured compare mode setting. 
+ 457          *
+ 458          * Parameters:  
+ 459          *  Compare:  New compare value. 
+ 460          *
+ 461          * Return: 
+ 462          *  void
+ 463          *
+ 464          *******************************************************************************/
+ 465          void LINE_COUNTER_WriteCompare(uint8 compare) \
+ 466                                             
+ 467          {
+ 468   1          #if(LINE_COUNTER_UsingFixedFunction)
+                      CY_SET_REG16(LINE_COUNTER_COMPARE_LSB_PTR, (uint16)compare);
+                  #else
+ 471   1              CY_SET_REG8(LINE_COUNTER_COMPARE_LSB_PTR, compare);
+ 472   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
+ 473   1      }
+ 474          
+ 475          
+ 476          /*******************************************************************************
+ 477          * Function Name: LINE_COUNTER_ReadCompare
+ 478          ********************************************************************************
+ 479          * Summary:
+ 480          * Returns the compare value.
+ 481          *
+ 482          * Parameters:  
+ 483          *  void:
+ 484          *
+ 485          * Return: 
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 9   
+
+ 486          *  (uint8) Present compare value.
+ 487          *
+ 488          *******************************************************************************/
+ 489          uint8 LINE_COUNTER_ReadCompare(void) 
+ 490          {
+ 491   1          return (CY_GET_REG8(LINE_COUNTER_COMPARE_LSB_PTR));
+ 492   1      }
+ 493          
+ 494          
+ 495          #if (LINE_COUNTER_COMPARE_MODE_SOFTWARE)
+              /*******************************************************************************
+              * Function Name: LINE_COUNTER_SetCompareMode
+              ********************************************************************************
+              * Summary:
+              *  Sets the software controlled Compare Mode.
+              *
+              * Parameters:
+              *  compareMode:  Compare Mode Enumerated Type.
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void LINE_COUNTER_SetCompareMode(uint8 compareMode) 
+              {
+                  /* Clear the compare mode bits in the control register */
+                  LINE_COUNTER_CONTROL &= ((uint8)(~LINE_COUNTER_CTRL_CMPMODE_MASK));
+                  
+                  /* Write the new setting */
+                  LINE_COUNTER_CONTROL |= compareMode;
+              }
+              #endif  /* (LINE_COUNTER_COMPARE_MODE_SOFTWARE) */
+ 518          
+ 519          
+ 520          #if (LINE_COUNTER_CAPTURE_MODE_SOFTWARE)
+              /*******************************************************************************
+              * Function Name: LINE_COUNTER_SetCaptureMode
+              ********************************************************************************
+              * Summary:
+              *  Sets the software controlled Capture Mode.
+              *
+              * Parameters:
+              *  captureMode:  Capture Mode Enumerated Type.
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void LINE_COUNTER_SetCaptureMode(uint8 captureMode) 
+              {
+                  /* Clear the capture mode bits in the control register */
+                  LINE_COUNTER_CONTROL &= ((uint8)(~LINE_COUNTER_CTRL_CAPMODE_MASK));
+                  
+                  /* Write the new setting */
+                  LINE_COUNTER_CONTROL |= ((uint8)((uint8)captureMode << LINE_COUNTER_CTRL_CAPMODE0_SHIFT));
+              }
+              #endif  /* (LINE_COUNTER_CAPTURE_MODE_SOFTWARE) */
+ 543          
+ 544          
+ 545          /*******************************************************************************
+ 546          * Function Name: LINE_COUNTER_ClearFIFO
+ 547          ********************************************************************************
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 10  
+
+ 548          * Summary:
+ 549          *   This function clears all capture data from the capture FIFO
+ 550          *
+ 551          * Parameters:  
+ 552          *  void:
+ 553          *
+ 554          * Return: 
+ 555          *  None
+ 556          *
+ 557          *******************************************************************************/
+ 558          void LINE_COUNTER_ClearFIFO(void) 
+ 559          {
+ 560   1      
+ 561   1          while(0u != (LINE_COUNTER_ReadStatusRegister() & LINE_COUNTER_STATUS_FIFONEMP))
+ 562   1          {
+ 563   2              (void)LINE_COUNTER_ReadCapture();
+ 564   2          }
+ 565   1      
+ 566   1      }
+ 567          #endif  /* (!LINE_COUNTER_UsingFixedFunction) */
+ 568          
+ 569          
+ 570          /* [] END OF FILE */
+ 571          
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 11  
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION LINE_COUNTER_Init (BEGIN)
+                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 79
+0000 906471            MOV     DPTR,#06471H
+0003 E0                MOVX    A,@DPTR
+0004 54F8              ANL     A,#0F8H
+0006 FF                MOV     R7,A
+;---- Variable 'ctrl' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 80
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 83
+0008 E0                MOVX    A,@DPTR
+0009 54FC              ANL     A,#0FCH
+000B FF                MOV     R7,A
+                                           ; SOURCE LINE # 88
+000C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 96
+000D 120000      R     LCALL   LINE_COUNTER_ClearFIFO
+                                           ; SOURCE LINE # 100
+0010 7FFF              MOV     R7,#0FFH
+0012 120000      R     LCALL   _LINE_COUNTER_WritePeriod
+                                           ; SOURCE LINE # 102
+0015 E4                CLR     A
+0016 FF                MOV     R7,A
+0017 120000      R     LCALL   _LINE_COUNTER_WriteCounter
+                                           ; SOURCE LINE # 104
+001A E4                CLR     A
+001B FF                MOV     R7,A
+001C 120000      R     LCALL   _LINE_COUNTER_SetInterruptMode
+                                           ; SOURCE LINE # 108
+001F 120000      R     LCALL   LINE_COUNTER_ReadStatusRegister
+                                           ; SOURCE LINE # 110
+0022 7F64              MOV     R7,#064H
+0024 120000      R     LCALL   _LINE_COUNTER_WriteCompare
+                                           ; SOURCE LINE # 115
+0027 120000      E     LCALL   CyEnterCriticalSection
+;---- Variable 'LINE_COUNTER_interruptState' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 117
+002A 906491            MOV     DPTR,#06491H
+002D E0                MOVX    A,@DPTR
+002E 4410              ORL     A,#010H
+0030 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 120
+0031 120000      E     LCALL   _CyExitCriticalSection
+                                           ; SOURCE LINE # 123
+0034 22                RET     
+             ; FUNCTION LINE_COUNTER_Init (END)
+
+             ; FUNCTION LINE_COUNTER_Enable (BEGIN)
+                                           ; SOURCE LINE # 143
+                                           ; SOURCE LINE # 144
+                                           ; SOURCE LINE # 155
+0000 906471            MOV     DPTR,#06471H
+0003 E0                MOVX    A,@DPTR
+0004 4480              ORL     A,#080H
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 158
+0007 22                RET     
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 12  
+
+             ; FUNCTION LINE_COUNTER_Enable (END)
+
+             ; FUNCTION LINE_COUNTER_Start (BEGIN)
+                                           ; SOURCE LINE # 178
+                                           ; SOURCE LINE # 179
+                                           ; SOURCE LINE # 180
+0000 900000      R     MOV     DPTR,#LINE_COUNTER_initVar
+0003 E0                MOVX    A,@DPTR
+0004 7009              JNZ     ?C0003
+                                           ; SOURCE LINE # 181
+                                           ; SOURCE LINE # 182
+0006 120000      R     LCALL   LINE_COUNTER_Init
+                                           ; SOURCE LINE # 184
+0009 900000      R     MOV     DPTR,#LINE_COUNTER_initVar
+000C 7401              MOV     A,#01H
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 185
+000F         ?C0003:
+                                           ; SOURCE LINE # 188
+000F 120000      R     LCALL   LINE_COUNTER_Enable
+                                           ; SOURCE LINE # 189
+0012 22                RET     
+             ; FUNCTION LINE_COUNTER_Start (END)
+
+             ; FUNCTION LINE_COUNTER_Stop (BEGIN)
+                                           ; SOURCE LINE # 208
+                                           ; SOURCE LINE # 209
+                                           ; SOURCE LINE # 212
+0000 906471            MOV     DPTR,#06471H
+0003 E0                MOVX    A,@DPTR
+0004 547F              ANL     A,#07FH
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 220
+0007 22                RET     
+             ; FUNCTION LINE_COUNTER_Stop (END)
+
+             ; FUNCTION _LINE_COUNTER_SetInterruptMode (BEGIN)
+                                           ; SOURCE LINE # 237
+;---- Variable 'interruptsMask' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 238
+                                           ; SOURCE LINE # 239
+0000 906481            MOV     DPTR,#06481H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 240
+0005 22                RET     
+             ; FUNCTION _LINE_COUNTER_SetInterruptMode (END)
+
+             ; FUNCTION LINE_COUNTER_ReadStatusRegister (BEGIN)
+                                           ; SOURCE LINE # 261
+                                           ; SOURCE LINE # 262
+                                           ; SOURCE LINE # 263
+0000 906461            MOV     DPTR,#06461H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 264
+0005         ?C0007:
+0005 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadStatusRegister (END)
+
+             ; FUNCTION LINE_COUNTER_ReadControlRegister (BEGIN)
+                                           ; SOURCE LINE # 283
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 13  
+
+                                           ; SOURCE LINE # 284
+                                           ; SOURCE LINE # 285
+0000 906471            MOV     DPTR,#06471H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 286
+0005         ?C0008:
+0005 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadControlRegister (END)
+
+             ; FUNCTION _LINE_COUNTER_WriteControlRegister (BEGIN)
+                                           ; SOURCE LINE # 304
+;---- Variable 'control' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 305
+                                           ; SOURCE LINE # 306
+0000 906471            MOV     DPTR,#06471H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 307
+0005 22                RET     
+             ; FUNCTION _LINE_COUNTER_WriteControlRegister (END)
+
+             ; FUNCTION _LINE_COUNTER_WriteCounter (BEGIN)
+                                           ; SOURCE LINE # 326
+;---- Variable 'counter' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 328
+                                           ; SOURCE LINE # 337
+0000 906401            MOV     DPTR,#06401H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 339
+0005 22                RET     
+             ; FUNCTION _LINE_COUNTER_WriteCounter (END)
+
+             ; FUNCTION LINE_COUNTER_ReadCounter (BEGIN)
+                                           ; SOURCE LINE # 357
+                                           ; SOURCE LINE # 358
+                                           ; SOURCE LINE # 365
+0000 906401            MOV     DPTR,#06401H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 372
+0005 906441            MOV     DPTR,#06441H
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+                                           ; SOURCE LINE # 374
+000A         ?C0011:
+000A 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadCounter (END)
+
+             ; FUNCTION LINE_COUNTER_ReadCapture (BEGIN)
+                                           ; SOURCE LINE # 390
+                                           ; SOURCE LINE # 391
+                                           ; SOURCE LINE # 395
+0000 906441            MOV     DPTR,#06441H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 397
+0005         ?C0012:
+0005 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadCapture (END)
+
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 14  
+
+             ; FUNCTION _LINE_COUNTER_WritePeriod (BEGIN)
+                                           ; SOURCE LINE # 415
+;---- Variable 'period' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 416
+                                           ; SOURCE LINE # 420
+0000 906421            MOV     DPTR,#06421H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 422
+0005 22                RET     
+             ; FUNCTION _LINE_COUNTER_WritePeriod (END)
+
+             ; FUNCTION LINE_COUNTER_ReadPeriod (BEGIN)
+                                           ; SOURCE LINE # 438
+                                           ; SOURCE LINE # 439
+                                           ; SOURCE LINE # 443
+0000 906421            MOV     DPTR,#06421H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 445
+0005         ?C0014:
+0005 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadPeriod (END)
+
+             ; FUNCTION _LINE_COUNTER_WriteCompare (BEGIN)
+                                           ; SOURCE LINE # 465
+;---- Variable 'compare' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 467
+                                           ; SOURCE LINE # 471
+0000 906431            MOV     DPTR,#06431H
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 473
+0005 22                RET     
+             ; FUNCTION _LINE_COUNTER_WriteCompare (END)
+
+             ; FUNCTION LINE_COUNTER_ReadCompare (BEGIN)
+                                           ; SOURCE LINE # 489
+                                           ; SOURCE LINE # 490
+                                           ; SOURCE LINE # 491
+0000 906431            MOV     DPTR,#06431H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 492
+0005         ?C0016:
+0005 22                RET     
+             ; FUNCTION LINE_COUNTER_ReadCompare (END)
+
+             ; FUNCTION LINE_COUNTER_ClearFIFO (BEGIN)
+                                           ; SOURCE LINE # 558
+                                           ; SOURCE LINE # 559
+0000         ?C0017:
+                                           ; SOURCE LINE # 561
+0000 120000      R     LCALL   LINE_COUNTER_ReadStatusRegister
+0003 EF                MOV     A,R7
+0004 30E605            JNB     ACC.6,?C0019
+                                           ; SOURCE LINE # 562
+                                           ; SOURCE LINE # 563
+0007 120000      R     LCALL   LINE_COUNTER_ReadCapture
+                                           ; SOURCE LINE # 564
+000A 80F4              SJMP    ?C0017
+                                           ; SOURCE LINE # 566
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/26/2015 00:33:52 PAGE 15  
+
+000C         ?C0019:
+000C 22                RET     
+             ; FUNCTION LINE_COUNTER_ClearFIFO (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    172    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

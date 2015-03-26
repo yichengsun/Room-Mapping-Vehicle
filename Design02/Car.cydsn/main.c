@@ -45,22 +45,25 @@ double getCurSpeed(){
     return current_Speed;
 }
 
-double readLine() {
-    return VIDEO_OUT_COMPARE_GetCompare();
+CY_ISR(TOP_LINE_inter) {
+    LCD_ClearDisplay();
+    LCD_PrintString("Frame start");
+    LINE_COUNTER_Start();
+    LCD_PrintString("Read top line");
+    //read top line
+    BLACK_LINE_TIMER_Start();
 }
 
-CY_ISR(CAM_READ_inter) {
+CY_ISR(BOTTOM_LINE_inter) {
     LCD_ClearDisplay();
-    LCD_PrintString("read 100");
-    CAM_LINEREAD_COUNTER_Stop();
-    //CAM_LINE_CLK_Start();    
+    LCD_PrintString("Read bottom line");
+    LINE_COUNTER_Stop();
+    //read bottom line
+    BLACK_LINE_TIMER_Start();
 }
 
-CY_ISR(VSYNC_inter) {
-    LCD_ClearDisplay();
-    LCD_PrintString("start one");
-    CAM_LINEREAD_COUNTER_Start();
-    //CAM_LINE_Counter_Start();
+CY_ISR(LINE_READ_inter) {
+    //STORE DATA HERE
 }
 
 // CY_ISR(CAM_LINE_inter) {
@@ -154,17 +157,18 @@ int main()
     HE_ISR_Start();
     HE_ISR_SetVector(HE_inter);
     
-    VSYNC_ISR_Start();
-    VSYNC_ISR_SetVector(VSYNC_inter);
+    TOP_LINE_ISR_Start();
+    TOP_LINE_ISR_SetVector(TOP_LINE_inter);
     
-    CAM_LINECOUNTER_ISR_Start();
-    CAM_LINECOUNTER_ISR_SetVector(CAM_READ_inter);
+    BOTTOM_LINE_ISR_Start();
+    BOTTOM_LINE_ISR_SetVector(BOTTOM_LINE_inter);
     
-    // CAM_LINE_ISR_Start();
-    // CAM_LINE_ISR_SetVector(CAM_LINE_inter);
+    LINE_READ_ISR_Start();
+    LINE_READ_ISR_SetVector(LINE_READ_inter);
     
-    VIDEO_OUT_COMPARE_Start();
-    VDAC8_1_Start();
+    VID_VDAC_Start();
+    VID_COMPARE_Start();
+    VID_COMPARE_CLK_Start();
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();

@@ -1,0 +1,1253 @@
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE VID_COMPARE
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\VID_COMPARE.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\VID_COMPARE.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB DF(
+                    -DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VID_COMPARE.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_951\Debug\VID_COMP
+                    -ARE.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: VID_COMPARE.c
+   3          * Version 2.0
+   4          *
+   5          * Description:
+   6          *  This file provides the source code to the API for the Comparator component
+   7          *
+   8          * Note:
+   9          *  None
+  10          *
+  11          ********************************************************************************
+  12          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions, 
+  14          * disclaimers, and limitations in the end user license agreement accompanying 
+  15          * the software package with which this file was provided.
+  16          *******************************************************************************/
+  17          
+  18          #include "VID_COMPARE.h"
+  19          
+  20          uint8 VID_COMPARE_initVar = 0u;
+  21          
+  22          /* Internal functions definitoin */
+  23          static void VID_COMPARE_trimAdjust(uint8 nibble) ;
+  24          
+  25          /* static VID_COMPARE_backupStruct  VID_COMPARE_backup; */
+  26          #if (CY_PSOC5A)
+                  static VID_COMPARE_LOWPOWER_BACKUP_STRUCT  VID_COMPARE_lowPowerBackup;
+              #endif /* CY_PSOC5A */
+  29          
+  30          /* variable to decide whether or not to restore the control register in 
+  31             Enable() API for PSoC5A only */
+  32          #if (CY_PSOC5A)
+                  static uint8 VID_COMPARE_restoreReg = 0u;
+              #endif /* CY_PSOC5A */
+  35          
+  36          
+  37          /*******************************************************************************
+  38          * Function Name: VID_COMPARE_Init
+  39          ********************************************************************************
+  40          *
+  41          * Summary:
+  42          *  Initialize to the schematic state
+  43          * 
+  44          * Parameters:
+  45          *  void
+  46          *
+  47          * Return:
+  48          *  void
+  49          *
+  50          *******************************************************************************/
+  51          void VID_COMPARE_Init(void) 
+  52          {
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 2   
+
+  53   1          /* Set default speed/power */
+  54   1          VID_COMPARE_SetSpeed(VID_COMPARE_DEFAULT_SPEED);
+  55   1      
+  56   1          /* Set default Hysteresis */
+  57   1          #if ( VID_COMPARE_DEFAULT_HYSTERESIS == 0u )
+  58   1              VID_COMPARE_CR |= VID_COMPARE_HYST_OFF;
+  59   1          #else
+                      VID_COMPARE_CR &= (uint8)(~VID_COMPARE_HYST_OFF);
+                  #endif /* VID_COMPARE_DEFAULT_HYSTERESIS == 0u */
+  62   1          /* Power down override feature is not supported for PSoC5A. */
+  63   1          #if (CY_PSOC3 || CY_PSOC5LP)
+  64   1              /* Set default Power Down Override */
+  65   1              #if ( VID_COMPARE_DEFAULT_PWRDWN_OVRD == 0u )
+  66   1                  VID_COMPARE_CR &= (uint8)(~VID_COMPARE_PWRDWN_OVRD);
+  67   1              #else 
+                          VID_COMPARE_CR |= VID_COMPARE_PWRDWN_OVRD;
+                      #endif /* VID_COMPARE_DEFAULT_PWRDWN_OVRD == 0u */
+  70   1          #endif /* CY_PSOC3 || CY_PSOC5LP */
+  71   1          
+  72   1          /* Set mux always on logic */
+  73   1          VID_COMPARE_CR |= VID_COMPARE_MX_AO;
+  74   1      
+  75   1          /* Set default sync */
+  76   1          VID_COMPARE_CLK &= (uint8)(~VID_COMPARE_SYNCCLK_MASK);
+  77   1          #if ( VID_COMPARE_DEFAULT_BYPASS_SYNC == 0u )
+  78   1              VID_COMPARE_CLK |= VID_COMPARE_SYNC_CLK_EN;
+  79   1          #else
+                      VID_COMPARE_CLK |= VID_COMPARE_BYPASS_SYNC;
+                  #endif /* VID_COMPARE_DEFAULT_BYPASS_SYNC == 0u */
+  82   1      }
+  83          
+  84          
+  85          /*******************************************************************************
+  86          * Function Name: VID_COMPARE_Enable
+  87          ********************************************************************************
+  88          *
+  89          * Summary:
+  90          *  Enable the Comparator
+  91          * 
+  92          * Parameters:
+  93          *  void
+  94          *
+  95          * Return:
+  96          *  void
+  97          *
+  98          *******************************************************************************/
+  99          void VID_COMPARE_Enable(void) 
+ 100          {
+ 101   1          VID_COMPARE_PWRMGR |= VID_COMPARE_ACT_PWR_EN;
+ 102   1          VID_COMPARE_STBY_PWRMGR |= VID_COMPARE_STBY_PWR_EN;
+ 103   1           
+ 104   1           /* This is to restore the value of register CR which is saved 
+ 105   1          in prior to the modification in stop() API */
+ 106   1          #if (CY_PSOC5A)
+                      if(VID_COMPARE_restoreReg == 1u)
+                      {
+                          VID_COMPARE_CR = VID_COMPARE_lowPowerBackup.compCRReg;
+              
+                          /* Clear the flag */
+                          VID_COMPARE_restoreReg = 0u;
+                      }
+                  #endif /* CY_PSOC5A */
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 3   
+
+ 115   1      }
+ 116          
+ 117          
+ 118          /*******************************************************************************
+ 119          * Function Name: VID_COMPARE_Start
+ 120          ********************************************************************************
+ 121          *
+ 122          * Summary:
+ 123          *  The start function initializes the Analog Comparator with the default values.
+ 124          *
+ 125          * Parameters:
+ 126          *  void
+ 127          *
+ 128          * Return:
+ 129          *  void 
+ 130          *
+ 131          * Global variables:
+ 132          *  VID_COMPARE_initVar: Is modified when this function is called for the 
+ 133          *   first time. Is used to ensure that initialization happens only once.
+ 134          *  
+ 135          *******************************************************************************/
+ 136          void VID_COMPARE_Start(void) 
+ 137          {
+ 138   1      
+ 139   1          if ( VID_COMPARE_initVar == 0u )
+ 140   1          {
+ 141   2              VID_COMPARE_Init();
+ 142   2              
+ 143   2              VID_COMPARE_initVar = 1u;
+ 144   2          }   
+ 145   1      
+ 146   1          /* Enable power to comparator */
+ 147   1          VID_COMPARE_Enable();    
+ 148   1      }
+ 149          
+ 150          
+ 151          /*******************************************************************************
+ 152          * Function Name: VID_COMPARE_Stop
+ 153          ********************************************************************************
+ 154          *
+ 155          * Summary:
+ 156          *  Powers down amplifier to lowest power state.
+ 157          *
+ 158          * Parameters:
+ 159          *  void
+ 160          *
+ 161          * Return:
+ 162          *  void
+ 163          *
+ 164          *******************************************************************************/
+ 165          void VID_COMPARE_Stop(void) 
+ 166          {
+ 167   1          /* Disable power to comparator */
+ 168   1          VID_COMPARE_PWRMGR &= (uint8)(~VID_COMPARE_ACT_PWR_EN);
+ 169   1          VID_COMPARE_STBY_PWRMGR &= (uint8)(~VID_COMPARE_STBY_PWR_EN);
+ 170   1          
+ 171   1          #if (CY_PSOC5A)
+                      /* Enable the variable */
+                      VID_COMPARE_restoreReg = 1u;
+              
+                      /* Save the control register before clearing it */
+                      VID_COMPARE_lowPowerBackup.compCRReg = VID_COMPARE_CR;
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 4   
+
+                      VID_COMPARE_CR = VID_COMPARE_COMP_REG_CLR;
+                  #endif /* CY_PSOC5A */
+ 179   1      }
+ 180          
+ 181          
+ 182          /*******************************************************************************
+ 183          * Function Name: VID_COMPARE_SetSpeed
+ 184          ********************************************************************************
+ 185          *
+ 186          * Summary:
+ 187          *  This function sets the speed of the Analog Comparator. The faster the speed
+ 188          *  the more power that is used.
+ 189          *
+ 190          * Parameters:
+ 191          *  speed: (uint8) Sets operation mode of Comparator
+ 192          *
+ 193          * Return:
+ 194          *  void
+ 195          *
+ 196          *******************************************************************************/
+ 197          void VID_COMPARE_SetSpeed(uint8 speed) 
+ 198          {
+ 199   1          /* Clear and Set power level */    
+ 200   1          VID_COMPARE_CR = (VID_COMPARE_CR & (uint8)(~VID_COMPARE_PWR_MODE_MASK)) |
+ 201   1                                 (speed & VID_COMPARE_PWR_MODE_MASK);
+ 202   1      
+ 203   1          /* Set trim value for high speed comparator */
+ 204   1          if(speed == VID_COMPARE_HIGHSPEED)
+ 205   1          {
+ 206   2              /* PSoC5A */
+ 207   2              #if (CY_PSOC5A)
+                          VID_COMPARE_TR = VID_COMPARE_HS_TRIM_TR0;
+                      #endif /* CY_PSOC5A */
+ 210   2              
+ 211   2              /* PSoC3, PSoC5LP or later */
+ 212   2              #if (CY_PSOC3 || CY_PSOC5LP) 
+ 213   2                  VID_COMPARE_TR0 = VID_COMPARE_HS_TRIM_TR0;
+ 214   2                  VID_COMPARE_TR1 = VID_COMPARE_HS_TRIM_TR1;
+ 215   2              #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 216   2          }
+ 217   1          else
+ 218   1          {
+ 219   2          /* PSoC5A */
+ 220   2              #if (CY_PSOC5A)
+                          VID_COMPARE_TR = VID_COMPARE_LS_TRIM_TR0;
+                      #endif /* CY_PSOC5A */
+ 223   2              
+ 224   2              /* PSoC3, PSoC5LP or later */
+ 225   2              #if (CY_PSOC3 || CY_PSOC5LP) 
+ 226   2                  VID_COMPARE_TR0 = VID_COMPARE_LS_TRIM_TR0;
+ 227   2                  VID_COMPARE_TR1 = VID_COMPARE_LS_TRIM_TR1;
+ 228   2              #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 229   2          }
+ 230   1      
+ 231   1      }
+ 232          
+ 233          
+ 234          /*******************************************************************************
+ 235          * Function Name: VID_COMPARE_GetCompare
+ 236          ********************************************************************************
+ 237          *
+ 238          * Summary:
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 5   
+
+ 239          *  This function returns the comparator output value.
+ 240          *  This value is not affected by the Polarity parameter.
+ 241          *  This valuea lways reflects a noninverted state.
+ 242          *
+ 243          * Parameters:
+ 244          *   None
+ 245          *
+ 246          * Return:
+ 247          *  (uint8)  0     - if Pos_Input less than Neg_input
+ 248          *           non 0 - if Pos_Input greater than Neg_input.
+ 249          *
+ 250          *******************************************************************************/
+ 251          uint8 VID_COMPARE_GetCompare(void) 
+ 252          {
+ 253   1          return( VID_COMPARE_WRK & VID_COMPARE_CMP_OUT_MASK);
+ 254   1      }
+ 255          
+ 256          
+ 257          /*******************************************************************************
+ 258          * Function Name: VID_COMPARE_trimAdjust
+ 259          ********************************************************************************
+ 260          *
+ 261          * Summary:
+ 262          *  This function adjusts the value in the low nibble/high nibble of the Analog 
+ 263          *  Comparator trim register
+ 264          *
+ 265          * Parameters:  
+ 266          *  nibble:
+ 267          *      0 -- adjusts the value in the low nibble
+ 268          *      1 -- adjusts the value in the high nibble
+ 269          *
+ 270          * Return:
+ 271          *  None
+ 272          *
+ 273          * Theory: 
+ 274          *  Function assumes comparator block is setup for trim adjust.
+ 275          *  Intended to be called from Comp_ZeroCal()
+ 276          * 
+ 277          * Side Effects:
+ 278          *  Routine uses a course 1ms delay following each trim adjustment to allow 
+ 279          *  the comparator output to respond.
+ 280          *
+ 281          *******************************************************************************/
+ 282          static void VID_COMPARE_trimAdjust(uint8 nibble) 
+ 283          {
+ 284   1          uint8 trimCnt, trimCntMax;
+ 285   1          uint8 cmpState;   
+ 286   1      
+ 287   1          /* get current state of comparator output */
+ 288   1          cmpState = VID_COMPARE_WRK & VID_COMPARE_CMP_OUT_MASK;
+ 289   1          
+ 290   1          if (nibble == 0u)
+ 291   1          {    
+ 292   2              /* if comparator output is high, negative offset adjust is required */
+ 293   2              if ( cmpState != 0u )
+ 294   2              {
+ 295   3                  /* PSoC5A */
+ 296   3                  #if (CY_PSOC5A)
+                              VID_COMPARE_TR |= VID_COMPARE_CMP_TRIM1_DIR;
+                          #endif /* CY_PSOC5A */
+ 299   3                  
+ 300   3                  /* PSoC3, PSoC5LP or later */
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 6   
+
+ 301   3                  #if (CY_PSOC3 || CY_PSOC5LP)
+ 302   3                      VID_COMPARE_TR0 |= VID_COMPARE_CMP_TR0_DIR;
+ 303   3                  #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 304   3              }
+ 305   2          }
+ 306   1          else
+ 307   1          {
+ 308   2              /* if comparator output is low, positive offset adjust is required */
+ 309   2              if ( cmpState == 0u )
+ 310   2              {
+ 311   3                  /* PSoC5A */
+ 312   3                  #if (CY_PSOC5A)
+                              VID_COMPARE_TR |= VID_COMPARE_CMP_TRIM2_DIR; 
+                          #endif /* CY_PSOC5A */
+ 315   3                  
+ 316   3                  /* PSoC3, PSoC5LP or later */
+ 317   3                  #if (CY_PSOC3 || CY_PSOC5LP)
+ 318   3                      VID_COMPARE_TR1 |= VID_COMPARE_CMP_TR1_DIR;
+ 319   3                  #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 320   3              }
+ 321   2          }
+ 322   1      
+ 323   1          /* Increment trim value until compare output changes state */
+ 324   1              
+ 325   1          /* PSoC5A */
+ 326   1              #if (CY_PSOC5A)
+                          trimCntMax = 7u;
+                  #endif
+ 329   1              
+ 330   1              /* PSoC3, PSoC5LP or later */
+ 331   1              #if (CY_PSOC3 || CY_PSOC5LP)
+ 332   1              if(nibble == 0u)
+ 333   1              {
+ 334   2                      trimCntMax = 15u;
+ 335   2              }
+ 336   1              else
+ 337   1              {
+ 338   2                      trimCntMax = 7u;
+ 339   2              }
+ 340   1              #endif
+ 341   1              
+ 342   1          for ( trimCnt = 0u; trimCnt < trimCntMax; trimCnt++ )
+ 343   1              {
+ 344   2              if (nibble == 0u)
+ 345   2              {
+ 346   3                  /* PSoC5A */
+ 347   3                  #if (CY_PSOC5A)
+                              VID_COMPARE_TR += 1u;
+                          #endif /* CY_PSOC5A */
+ 350   3                  
+ 351   3                  /* PSoC3, PSoC5LP or later */
+ 352   3                  #if (CY_PSOC3 || CY_PSOC5LP)
+ 353   3                      VID_COMPARE_TR0 += 1u;
+ 354   3                  #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 355   3              }
+ 356   2              else
+ 357   2              {
+ 358   3                  /* PSoC5A */
+ 359   3                  #if (CY_PSOC5A)
+                              VID_COMPARE_TR += 0x10u;
+                          #endif /* CY_PSOC5A */
+ 362   3                  
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 7   
+
+ 363   3                  /* PSoC3, PSoC5LP or later */
+ 364   3                  #if (CY_PSOC3 || CY_PSOC5LP)
+ 365   3                      VID_COMPARE_TR1 += 1u;
+ 366   3                  #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 367   3              }
+ 368   2              
+ 369   2              CyDelayUs(10u);
+ 370   2              
+ 371   2              /* Check for change in comparator output */
+ 372   2              if ((VID_COMPARE_WRK & VID_COMPARE_CMP_OUT_MASK) != cmpState)
+ 373   2              {
+ 374   3                  break;      /* output changed state, trim phase is complete */
+ 375   3              }        
+ 376   2          }    
+ 377   1      }
+ 378          
+ 379          
+ 380          /*******************************************************************************
+ 381          * Function Name: VID_COMPARE_ZeroCal
+ 382          ********************************************************************************
+ 383          *
+ 384          * Summary:
+ 385          *  This function calibrates the offset of the Analog Comparator.
+ 386          *
+ 387          * Parameters:
+ 388          *  None
+ 389          *
+ 390          * Return:
+ 391          *  (uint16)  value written in trim register when calibration complete.
+ 392          *
+ 393          * Theory: 
+ 394          *  This function is used to optimize the calibration for user specific voltage
+ 395          *  range.  The comparator trim is adjusted to counter transistor offsets
+ 396          *   - offset is defined as positive if the output transitions to high before inP
+ 397          *     is greater than inN
+ 398          *   - offset is defined as negative if the output transitions to high after inP
+ 399          *     is greater than inP
+ 400          *
+ 401          *  PSoC5A
+ 402          *  The Analog Comparator provides 1 byte for offset trim.  The byte contains two
+ 403          *  4 bit trim fields - one is a course trim and the other allows smaller
+ 404          *  offset adjustments only for slow modes.
+ 405          *  - low nibble - fine trim
+ 406          *  - high nibble - course trim
+ 407          *  PSoC3, PSoC5LP or later
+ 408          *  The Analog Comparator provides 2 bytes for offset trim.  The bytes contain two
+ 409          *  5 bit trim fields - one is a course trim and the other allows smaller
+ 410          *  offset adjustments only for slow modes.
+ 411          *  - TR0 - fine trim
+ 412          *  - TR1 - course trim
+ 413          *
+ 414          *  Trim algorithm is a two phase process
+ 415          *  The first phase performs course offset adjustment
+ 416          *  The second phase serves one of two purposes depending on the outcome of the
+ 417          *  first phase
+ 418          *  - if the first trim value was maxed out without a comparator output 
+ 419          *    transition, more offset will be added by adjusting the second trim value.
+ 420          *  - if the first trim phase resulted in a comparator output transition, the
+ 421          *    second trim value will serve as fine trim (in the opposite direction)to
+ 422          *    ensure the offset is < 1 mV.
+ 423          *
+ 424          * Trim Process:   
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 8   
+
+ 425          *  1) User applies a voltage to the negative input.  Voltage should be in the
+ 426          *     comparator operating range or an average of the operating voltage range.
+ 427          *  2) Clear registers associated with analog routing to the positive input.
+ 428          *  3) Disable Hysteresis
+ 429          *  4) Set the calibration bit to short the negative and positive inputs to
+ 430          *     the users calibration voltage.
+ 431          *  5) Clear the TR register  ( TR = 0x00 )
+ 432          *  ** LOW MODES
+ 433          *  6) Check if compare output is high, if so, set the MSb of course trim field 
+ 434          *     to a 1.
+ 435          *  7) Increment the course trim field until the compare output changes
+ 436          *  8) Check if compare output is low, if so, set the MSb of fine trim field
+ 437          *     to a 1.
+ 438          *  9) Increment the fine trim field until the compare output changes
+ 439          *  ** FAST MODE - skip the steps 8,9
+ 440          *
+ 441          * Side Effects:
+ 442          *  Routine clears analog routing associated with the comparator positive input.  
+ 443          *  This may affect routing of signals from other components that are connected
+ 444          *  to the positive input of the comparator.
+ 445          *
+ 446          *******************************************************************************/
+ 447          uint16 VID_COMPARE_ZeroCal(void) 
+ 448          {
+ 449   1          uint8 tmpSW0;
+ 450   1          uint8 tmpSW2;
+ 451   1          uint8 tmpSW3;
+ 452   1          uint8 tmpCR;
+ 453   1      
+ 454   1          /* Save a copy of routing registers associated with inP */
+ 455   1          tmpSW0 = VID_COMPARE_SW0;
+ 456   1          tmpSW2 = VID_COMPARE_SW2;
+ 457   1          tmpSW3 = VID_COMPARE_SW3;
+ 458   1      
+ 459   1           /* Clear routing for inP, retain routing for inN */
+ 460   1          VID_COMPARE_SW0 = 0x00u;
+ 461   1          VID_COMPARE_SW2 = 0x00u;
+ 462   1          VID_COMPARE_SW3 = tmpSW3 & (uint8)(~VID_COMPARE_CMP_SW3_INPCTL_MASK);
+ 463   1      
+ 464   1          /* Preserve original configuration
+ 465   1           * - turn off Hysteresis
+ 466   1           * - set calibration bit - shorts inN to inP
+ 467   1          */
+ 468   1          tmpCR = VID_COMPARE_CR;
+ 469   1          VID_COMPARE_CR |= (VID_COMPARE_CAL_ON | VID_COMPARE_HYST_OFF);
+ 470   1          
+ 471   1          /* Write default low values to trim register - no offset adjust */
+ 472   1          /* PSoC5A */
+ 473   1          #if (CY_PSOC5A)
+                      VID_COMPARE_TR = VID_COMPARE_DEFAULT_CMP_TRIM;
+                  #endif /* CY_PSOC5A */
+ 476   1          
+ 477   1          /* PSoC3, PSoC5LP or later */
+ 478   1          #if (CY_PSOC3 || CY_PSOC5LP)
+ 479   1              VID_COMPARE_TR0 = VID_COMPARE_DEFAULT_CMP_TRIM;
+ 480   1              VID_COMPARE_TR1 = VID_COMPARE_DEFAULT_CMP_TRIM;
+ 481   1          #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 482   1              
+ 483   1              /* Two phase trim - slow modes, one phase trim - for fast */ 
+ 484   1          if ( (VID_COMPARE_CR & VID_COMPARE_PWR_MODE_MASK) == VID_COMPARE_PWR_MODE_FAST)
+ 485   1          {
+ 486   2              VID_COMPARE_trimAdjust(0u);
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 9   
+
+ 487   2          }
+ 488   1          else /* default to trim for fast modes */
+ 489   1          {
+ 490   2              VID_COMPARE_trimAdjust(1u);
+ 491   2                      VID_COMPARE_trimAdjust(0u);
+ 492   2          }
+ 493   1         
+ 494   1          /* Restore Config Register */
+ 495   1          VID_COMPARE_CR = tmpCR;
+ 496   1          
+ 497   1          /* Restore routing registers for inP */
+ 498   1          VID_COMPARE_SW0 = tmpSW0;
+ 499   1          VID_COMPARE_SW2 = tmpSW2;
+ 500   1          VID_COMPARE_SW3 = tmpSW3;
+ 501   1          
+ 502   1          /* PSoC5A */
+ 503   1          #if (CY_PSOC5A)
+                      return (uint16) VID_COMPARE_TR;
+                  #endif /* CY_PSOC5A */
+ 506   1          
+ 507   1          /* PSoC3, PSoC5LP or later */
+ 508   1          #if (CY_PSOC3 || CY_PSOC5LP)
+ 509   1              return ((uint16)((uint16)VID_COMPARE_TR1 << 8u) | (VID_COMPARE_TR0));        
+ 510   1          #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 511   1      }
+ 512          
+ 513          
+ 514          /*******************************************************************************
+ 515          * Function Name: VID_COMPARE_LoadTrim
+ 516          ********************************************************************************
+ 517          *
+ 518          * Summary:
+ 519          *  This function stores a value in the Analog Comparator trim register.
+ 520          *
+ 521          * Parameters:  
+ 522          *  uint8 trimVal - trim value.  This value is the same format as the value 
+ 523          *  returned by the _ZeroCal routine.
+ 524          *
+ 525          * Return:
+ 526          *  None
+ 527          *
+ 528          *******************************************************************************/
+ 529          void VID_COMPARE_LoadTrim(uint16 trimVal) 
+ 530          {
+ 531   1          /* Stores value in the Analog Comparator trim register */
+ 532   1          /* PSoC5A */
+ 533   1          #if (CY_PSOC5A)
+                      VID_COMPARE_TR = (uint8) trimVal;
+                  #endif /* CY_PSOC5A */
+ 536   1          
+ 537   1          /* PSoC3, PSoC5LP or later */
+ 538   1          #if (CY_PSOC3 || CY_PSOC5LP)
+ 539   1              /* Stores value in the Analog Comparator trim register for P-type load */
+ 540   1              VID_COMPARE_TR0 = (uint8) trimVal;
+ 541   1              
+ 542   1              /* Stores value in the Analog Comparator trim register for N-type load */
+ 543   1              VID_COMPARE_TR1 = (uint8) (trimVal >> 8); 
+ 544   1          #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 545   1      }
+ 546          
+ 547          
+ 548          #if (CY_PSOC3 || CY_PSOC5LP)
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 10  
+
+ 549          
+ 550              /*******************************************************************************
+ 551              * Function Name: VID_COMPARE_PwrDwnOverrideEnable
+ 552              ********************************************************************************
+ 553              *
+ 554              * Summary:
+ 555              *  This is the power down over-ride feature. This function ignores sleep 
+ 556              *  parameter and allows the component to stay active during sleep mode.
+ 557              *
+ 558              * Parameters:
+ 559              *  None
+ 560              *
+ 561              * Return:
+ 562              *  None
+ 563              *
+ 564              *******************************************************************************/
+ 565              void VID_COMPARE_PwrDwnOverrideEnable(void) 
+ 566              {
+ 567   1              /* Set the pd_override bit in CMP_CR register */
+ 568   1              VID_COMPARE_CR |= VID_COMPARE_PWRDWN_OVRD;
+ 569   1          }
+ 570          
+ 571          
+ 572              /*******************************************************************************
+ 573              * Function Name: VID_COMPARE_PwrDwnOverrideDisable
+ 574              ********************************************************************************
+ 575              *
+ 576              * Summary:
+ 577              *  This is the power down over-ride feature. This allows the component to stay
+ 578              *  inactive during sleep.
+ 579              *
+ 580              * Parameters:
+ 581              *  None
+ 582              *
+ 583              * Return:
+ 584              *  None
+ 585              *
+ 586              *******************************************************************************/
+ 587              void VID_COMPARE_PwrDwnOverrideDisable(void) 
+ 588              {
+ 589   1              /* Reset the pd_override bit in CMP_CR register */
+ 590   1              VID_COMPARE_CR &= (uint8)(~VID_COMPARE_PWRDWN_OVRD);
+ 591   1          }
+ 592          #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ 593          
+ 594          
+ 595          /* [] END OF FILE */
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 11  
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION VID_COMPARE_Init (BEGIN)
+                                           ; SOURCE LINE # 51
+                                           ; SOURCE LINE # 52
+                                           ; SOURCE LINE # 54
+0000 7F00              MOV     R7,#00H
+0002 120000      R     LCALL   _VID_COMPARE_SetSpeed
+                                           ; SOURCE LINE # 58
+0005 905842            MOV     DPTR,#05842H
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B 4420              ORL     A,#020H
+000D FF                MOV     R7,A
+000E EF                MOV     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 66
+0010 905842            MOV     DPTR,#05842H
+0013 E0                MOVX    A,@DPTR
+0014 FF                MOV     R7,A
+0015 EF                MOV     A,R7
+0016 54FB              ANL     A,#0FBH
+0018 FF                MOV     R7,A
+0019 EF                MOV     A,R7
+001A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 73
+001B 905842            MOV     DPTR,#05842H
+001E E0                MOVX    A,@DPTR
+001F FF                MOV     R7,A
+0020 EF                MOV     A,R7
+0021 4408              ORL     A,#08H
+0023 FF                MOV     R7,A
+0024 EF                MOV     A,R7
+0025 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 76
+0026 905AD7            MOV     DPTR,#05AD7H
+0029 E0                MOVX    A,@DPTR
+002A FF                MOV     R7,A
+002B EF                MOV     A,R7
+002C 54E7              ANL     A,#0E7H
+002E FF                MOV     R7,A
+002F EF                MOV     A,R7
+0030 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 78
+0031 905AD7            MOV     DPTR,#05AD7H
+0034 E0                MOVX    A,@DPTR
+0035 FF                MOV     R7,A
+0036 EF                MOV     A,R7
+0037 4408              ORL     A,#08H
+0039 FF                MOV     R7,A
+003A EF                MOV     A,R7
+003B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 82
+003C 22                RET     
+             ; FUNCTION VID_COMPARE_Init (END)
+
+             ; FUNCTION VID_COMPARE_Enable (BEGIN)
+                                           ; SOURCE LINE # 99
+                                           ; SOURCE LINE # 100
+                                           ; SOURCE LINE # 101
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 12  
+
+0000 9043A7            MOV     DPTR,#043A7H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 4404              ORL     A,#04H
+0008 FF                MOV     R7,A
+0009 EF                MOV     A,R7
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 102
+000B 9043B7            MOV     DPTR,#043B7H
+000E E0                MOVX    A,@DPTR
+000F FF                MOV     R7,A
+0010 EF                MOV     A,R7
+0011 4404              ORL     A,#04H
+0013 FF                MOV     R7,A
+0014 EF                MOV     A,R7
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 115
+0016 22                RET     
+             ; FUNCTION VID_COMPARE_Enable (END)
+
+             ; FUNCTION VID_COMPARE_Start (BEGIN)
+                                           ; SOURCE LINE # 136
+                                           ; SOURCE LINE # 137
+                                           ; SOURCE LINE # 139
+0000 900000      R     MOV     DPTR,#VID_COMPARE_initVar
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 7009              JNZ     ?C0003
+                                           ; SOURCE LINE # 140
+                                           ; SOURCE LINE # 141
+0008 120000      R     LCALL   VID_COMPARE_Init
+                                           ; SOURCE LINE # 143
+000B 900000      R     MOV     DPTR,#VID_COMPARE_initVar
+000E 7401              MOV     A,#01H
+0010 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 144
+0011         ?C0003:
+                                           ; SOURCE LINE # 147
+0011 120000      R     LCALL   VID_COMPARE_Enable
+                                           ; SOURCE LINE # 148
+0014 22                RET     
+             ; FUNCTION VID_COMPARE_Start (END)
+
+             ; FUNCTION VID_COMPARE_Stop (BEGIN)
+                                           ; SOURCE LINE # 165
+                                           ; SOURCE LINE # 166
+                                           ; SOURCE LINE # 168
+0000 9043A7            MOV     DPTR,#043A7H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 54FB              ANL     A,#0FBH
+0008 FF                MOV     R7,A
+0009 EF                MOV     A,R7
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 169
+000B 9043B7            MOV     DPTR,#043B7H
+000E E0                MOVX    A,@DPTR
+000F FF                MOV     R7,A
+0010 EF                MOV     A,R7
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 13  
+
+0011 54FB              ANL     A,#0FBH
+0013 FF                MOV     R7,A
+0014 EF                MOV     A,R7
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 179
+0016 22                RET     
+             ; FUNCTION VID_COMPARE_Stop (END)
+
+             ; FUNCTION _VID_COMPARE_SetSpeed (BEGIN)
+                                           ; SOURCE LINE # 197
+0000 900000      R     MOV     DPTR,#speed
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 198
+                                           ; SOURCE LINE # 201
+0005 900000      R     MOV     DPTR,#speed
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B 5403              ANL     A,#03H
+000D FF                MOV     R7,A
+000E 905842            MOV     DPTR,#05842H
+0011 E0                MOVX    A,@DPTR
+0012 FE                MOV     R6,A
+0013 EE                MOV     A,R6
+0014 54FC              ANL     A,#0FCH
+0016 FE                MOV     R6,A
+0017 EE                MOV     A,R6
+0018 4F                ORL     A,R7
+0019 FF                MOV     R7,A
+001A 905842            MOV     DPTR,#05842H
+001D EF                MOV     A,R7
+001E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 204
+001F 900000      R     MOV     DPTR,#speed
+0022 E0                MOVX    A,@DPTR
+0023 FF                MOV     R7,A
+0024 EF                MOV     A,R7
+0025 B4011D            CJNE    A,#01H,?C0006
+                                           ; SOURCE LINE # 205
+                                           ; SOURCE LINE # 213
+0028 7B0C              MOV     R3,#0CH
+002A 7A01              MOV     R2,#01H
+002C 7912              MOV     R1,#012H
+002E 120000      E     LCALL   _cyread8
+0031 904634            MOV     DPTR,#04634H
+0034 EF                MOV     A,R7
+0035 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 214
+0036 7B0C              MOV     R3,#0CH
+0038 7A01              MOV     R2,#01H
+003A 7916              MOV     R1,#016H
+003C 120000      E     LCALL   _cyread8
+003F 904635            MOV     DPTR,#04635H
+0042 EF                MOV     A,R7
+0043 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 216
+0044 22                RET     
+0045         ?C0006:
+                                           ; SOURCE LINE # 218
+                                           ; SOURCE LINE # 226
+0045 7B0C              MOV     R3,#0CH
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 14  
+
+0047 7A01              MOV     R2,#01H
+0049 79B1              MOV     R1,#0B1H
+004B 120000      E     LCALL   _cyread8
+004E 904634            MOV     DPTR,#04634H
+0051 EF                MOV     A,R7
+0052 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 227
+0053 7B0C              MOV     R3,#0CH
+0055 7A01              MOV     R2,#01H
+0057 79B9              MOV     R1,#0B9H
+0059 120000      E     LCALL   _cyread8
+005C 904635            MOV     DPTR,#04635H
+005F EF                MOV     A,R7
+0060 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 229
+                                           ; SOURCE LINE # 231
+0061         ?C0008:
+0061 22                RET     
+             ; FUNCTION _VID_COMPARE_SetSpeed (END)
+
+             ; FUNCTION VID_COMPARE_GetCompare (BEGIN)
+                                           ; SOURCE LINE # 251
+                                           ; SOURCE LINE # 252
+                                           ; SOURCE LINE # 253
+0000 905B96            MOV     DPTR,#05B96H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 5404              ANL     A,#04H
+0008 FF                MOV     R7,A
+                                           ; SOURCE LINE # 254
+0009         ?C0009:
+0009 22                RET     
+             ; FUNCTION VID_COMPARE_GetCompare (END)
+
+             ; FUNCTION _VID_COMPARE_trimAdjust (BEGIN)
+                                           ; SOURCE LINE # 282
+0000 900000      R     MOV     DPTR,#nibble
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 283
+                                           ; SOURCE LINE # 288
+0005 905B96            MOV     DPTR,#05B96H
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B 5404              ANL     A,#04H
+000D FF                MOV     R7,A
+000E 900000      R     MOV     DPTR,#cmpState
+0011 EF                MOV     A,R7
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 290
+0013 900000      R     MOV     DPTR,#nibble
+0016 E0                MOVX    A,@DPTR
+0017 FF                MOV     R7,A
+0018 EF                MOV     A,R7
+0019 7015              JNZ     ?C0010
+                                           ; SOURCE LINE # 291
+                                           ; SOURCE LINE # 293
+001B 900000      R     MOV     DPTR,#cmpState
+001E E0                MOVX    A,@DPTR
+001F FF                MOV     R7,A
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 15  
+
+0020 EF                MOV     A,R7
+0021 6020              JZ      ?C0012
+                                           ; SOURCE LINE # 294
+                                           ; SOURCE LINE # 302
+0023 904634            MOV     DPTR,#04634H
+0026 E0                MOVX    A,@DPTR
+0027 FF                MOV     R7,A
+0028 EF                MOV     A,R7
+0029 4410              ORL     A,#010H
+002B FF                MOV     R7,A
+002C EF                MOV     A,R7
+002D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 304
+                                           ; SOURCE LINE # 305
+002E 8013              SJMP    ?C0012
+0030         ?C0010:
+                                           ; SOURCE LINE # 307
+                                           ; SOURCE LINE # 309
+0030 900000      R     MOV     DPTR,#cmpState
+0033 E0                MOVX    A,@DPTR
+0034 FF                MOV     R7,A
+0035 EF                MOV     A,R7
+0036 700B              JNZ     ?C0012
+                                           ; SOURCE LINE # 310
+                                           ; SOURCE LINE # 318
+0038 904635            MOV     DPTR,#04635H
+003B E0                MOVX    A,@DPTR
+003C FF                MOV     R7,A
+003D EF                MOV     A,R7
+003E 4410              ORL     A,#010H
+0040 FF                MOV     R7,A
+0041 EF                MOV     A,R7
+0042 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 320
+                                           ; SOURCE LINE # 321
+0043         ?C0012:
+                                           ; SOURCE LINE # 332
+0043 900000      R     MOV     DPTR,#nibble
+0046 E0                MOVX    A,@DPTR
+0047 FF                MOV     R7,A
+0048 EF                MOV     A,R7
+0049 7008              JNZ     ?C0014
+                                           ; SOURCE LINE # 333
+                                           ; SOURCE LINE # 334
+004B 900000      R     MOV     DPTR,#trimCntMax
+004E 740F              MOV     A,#0FH
+0050 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 335
+0051 8006              SJMP    ?C0015
+0053         ?C0014:
+                                           ; SOURCE LINE # 337
+                                           ; SOURCE LINE # 338
+0053 900000      R     MOV     DPTR,#trimCntMax
+0056 7407              MOV     A,#07H
+0058 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 339
+0059         ?C0015:
+                                           ; SOURCE LINE # 342
+0059 900000      R     MOV     DPTR,#trimCnt
+005C E4                CLR     A
+005D F0                MOVX    @DPTR,A
+005E         ?C0016:
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 16  
+
+005E 900000      R     MOV     DPTR,#trimCntMax
+0061 E0                MOVX    A,@DPTR
+0062 FF                MOV     R7,A
+0063 900000      R     MOV     DPTR,#trimCnt
+0066 E0                MOVX    A,@DPTR
+0067 FE                MOV     R6,A
+0068 EE                MOV     A,R6
+0069 C3                CLR     C
+006A 9F                SUBB    A,R7
+006B 503F              JNC     ?C0022
+                                           ; SOURCE LINE # 343
+                                           ; SOURCE LINE # 344
+006D 900000      R     MOV     DPTR,#nibble
+0070 E0                MOVX    A,@DPTR
+0071 FF                MOV     R7,A
+0072 EF                MOV     A,R7
+0073 7008              JNZ     ?C0019
+                                           ; SOURCE LINE # 345
+                                           ; SOURCE LINE # 353
+0075 904634            MOV     DPTR,#04634H
+0078 E0                MOVX    A,@DPTR
+0079 04                INC     A
+007A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 355
+007B 8006              SJMP    ?C0020
+007D         ?C0019:
+                                           ; SOURCE LINE # 357
+                                           ; SOURCE LINE # 365
+007D 904635            MOV     DPTR,#04635H
+0080 E0                MOVX    A,@DPTR
+0081 04                INC     A
+0082 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 367
+0083         ?C0020:
+                                           ; SOURCE LINE # 369
+0083 7F0A              MOV     R7,#0AH
+0085 7E00              MOV     R6,#00H
+0087 120000      E     LCALL   _CyDelayUs
+                                           ; SOURCE LINE # 372
+008A 905B96            MOV     DPTR,#05B96H
+008D E0                MOVX    A,@DPTR
+008E FF                MOV     R7,A
+008F EF                MOV     A,R7
+0090 5404              ANL     A,#04H
+0092 FF                MOV     R7,A
+0093 7E00              MOV     R6,#00H
+0095 900000      R     MOV     DPTR,#cmpState
+0098 E0                MOVX    A,@DPTR
+0099 FD                MOV     R5,A
+009A 7C00              MOV     R4,#00H
+009C EF                MOV     A,R7
+009D B5050C            CJNE    A,AR5,?C0022
+00A0 EE                MOV     A,R6
+00A1 B50408            CJNE    A,AR4,?C0022
+                                           ; SOURCE LINE # 373
+                                           ; SOURCE LINE # 374
+                                           ; SOURCE LINE # 375
+00A4         ?C0021:
+                                           ; SOURCE LINE # 376
+00A4         ?C0018:
+00A4 900000      R     MOV     DPTR,#trimCnt
+00A7 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 17  
+
+00A8 04                INC     A
+00A9 F0                MOVX    @DPTR,A
+00AA 80B2              SJMP    ?C0016
+                                           ; SOURCE LINE # 377
+00AC         ?C0022:
+00AC 22                RET     
+             ; FUNCTION _VID_COMPARE_trimAdjust (END)
+
+             ; FUNCTION VID_COMPARE_ZeroCal (BEGIN)
+                                           ; SOURCE LINE # 447
+                                           ; SOURCE LINE # 448
+                                           ; SOURCE LINE # 455
+0000 905AD0            MOV     DPTR,#05AD0H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 900000      R     MOV     DPTR,#tmpSW0
+0008 EF                MOV     A,R7
+0009 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 456
+000A 905AD2            MOV     DPTR,#05AD2H
+000D E0                MOVX    A,@DPTR
+000E FF                MOV     R7,A
+000F 900000      R     MOV     DPTR,#tmpSW2
+0012 EF                MOV     A,R7
+0013 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 457
+0014 905AD3            MOV     DPTR,#05AD3H
+0017 E0                MOVX    A,@DPTR
+0018 FF                MOV     R7,A
+0019 900000      R     MOV     DPTR,#tmpSW3
+001C EF                MOV     A,R7
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 460
+001E 905AD0            MOV     DPTR,#05AD0H
+0021 E4                CLR     A
+0022 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 461
+0023 905AD2            MOV     DPTR,#05AD2H
+0026 E4                CLR     A
+0027 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 462
+0028 900000      R     MOV     DPTR,#tmpSW3
+002B E0                MOVX    A,@DPTR
+002C FF                MOV     R7,A
+002D EF                MOV     A,R7
+002E 54F6              ANL     A,#0F6H
+0030 FF                MOV     R7,A
+0031 905AD3            MOV     DPTR,#05AD3H
+0034 EF                MOV     A,R7
+0035 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 468
+0036 905842            MOV     DPTR,#05842H
+0039 E0                MOVX    A,@DPTR
+003A FF                MOV     R7,A
+003B 900000      R     MOV     DPTR,#tmpCR
+003E EF                MOV     A,R7
+003F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 469
+0040 905842            MOV     DPTR,#05842H
+0043 E0                MOVX    A,@DPTR
+0044 FF                MOV     R7,A
+0045 EF                MOV     A,R7
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 18  
+
+0046 4430              ORL     A,#030H
+0048 FF                MOV     R7,A
+0049 EF                MOV     A,R7
+004A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 479
+004B 904634            MOV     DPTR,#04634H
+004E E4                CLR     A
+004F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 480
+0050 904635            MOV     DPTR,#04635H
+0053 E4                CLR     A
+0054 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 484
+0055 905842            MOV     DPTR,#05842H
+0058 E0                MOVX    A,@DPTR
+0059 FF                MOV     R7,A
+005A EF                MOV     A,R7
+005B 5403              ANL     A,#03H
+005D FF                MOV     R7,A
+005E EF                MOV     A,R7
+005F B40107            CJNE    A,#01H,?C0023
+                                           ; SOURCE LINE # 485
+                                           ; SOURCE LINE # 486
+0062 7F00              MOV     R7,#00H
+0064 120000      R     LCALL   _VID_COMPARE_trimAdjust
+                                           ; SOURCE LINE # 487
+0067 800A              SJMP    ?C0024
+0069         ?C0023:
+                                           ; SOURCE LINE # 489
+                                           ; SOURCE LINE # 490
+0069 7F01              MOV     R7,#01H
+006B 120000      R     LCALL   _VID_COMPARE_trimAdjust
+                                           ; SOURCE LINE # 491
+006E 7F00              MOV     R7,#00H
+0070 120000      R     LCALL   _VID_COMPARE_trimAdjust
+                                           ; SOURCE LINE # 492
+0073         ?C0024:
+                                           ; SOURCE LINE # 495
+0073 900000      R     MOV     DPTR,#tmpCR
+0076 E0                MOVX    A,@DPTR
+0077 FF                MOV     R7,A
+0078 905842            MOV     DPTR,#05842H
+007B EF                MOV     A,R7
+007C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 498
+007D 900000      R     MOV     DPTR,#tmpSW0
+0080 E0                MOVX    A,@DPTR
+0081 FF                MOV     R7,A
+0082 905AD0            MOV     DPTR,#05AD0H
+0085 EF                MOV     A,R7
+0086 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 499
+0087 900000      R     MOV     DPTR,#tmpSW2
+008A E0                MOVX    A,@DPTR
+008B FF                MOV     R7,A
+008C 905AD2            MOV     DPTR,#05AD2H
+008F EF                MOV     A,R7
+0090 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 500
+0091 900000      R     MOV     DPTR,#tmpSW3
+0094 E0                MOVX    A,@DPTR
+0095 FF                MOV     R7,A
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 19  
+
+0096 905AD3            MOV     DPTR,#05AD3H
+0099 EF                MOV     A,R7
+009A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 509
+009B 904635            MOV     DPTR,#04635H
+009E E0                MOVX    A,@DPTR
+009F FF                MOV     R7,A
+00A0 7E00              MOV     R6,#00H
+00A2 EF                MOV     A,R7
+00A3 7F00              MOV     R7,#00H
+00A5 FE                MOV     R6,A
+00A6 904634            MOV     DPTR,#04634H
+00A9 E0                MOVX    A,@DPTR
+00AA FD                MOV     R5,A
+00AB 7C00              MOV     R4,#00H
+00AD EE                MOV     A,R6
+00AE 4C                ORL     A,R4
+00AF FE                MOV     R6,A
+00B0 EF                MOV     A,R7
+00B1 4D                ORL     A,R5
+00B2 FF                MOV     R7,A
+                                           ; SOURCE LINE # 511
+00B3         ?C0025:
+00B3 22                RET     
+             ; FUNCTION VID_COMPARE_ZeroCal (END)
+
+             ; FUNCTION _VID_COMPARE_LoadTrim (BEGIN)
+                                           ; SOURCE LINE # 529
+0000 900000      R     MOV     DPTR,#trimVal
+0003 EE                MOV     A,R6
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EF                MOV     A,R7
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 530
+                                           ; SOURCE LINE # 540
+0008 900000      R     MOV     DPTR,#trimVal
+000B E0                MOVX    A,@DPTR
+000C FE                MOV     R6,A
+000D A3                INC     DPTR
+000E E0                MOVX    A,@DPTR
+000F FF                MOV     R7,A
+0010 904634            MOV     DPTR,#04634H
+0013 EF                MOV     A,R7
+0014 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 543
+0015 900000      R     MOV     DPTR,#trimVal
+0018 E0                MOVX    A,@DPTR
+0019 FE                MOV     R6,A
+001A A3                INC     DPTR
+001B E0                MOVX    A,@DPTR
+001C FF                MOV     R7,A
+001D EE                MOV     A,R6
+001E FF                MOV     R7,A
+001F 7E00              MOV     R6,#00H
+0021 904635            MOV     DPTR,#04635H
+0024 EF                MOV     A,R7
+0025 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 545
+0026 22                RET     
+             ; FUNCTION _VID_COMPARE_LoadTrim (END)
+
+C51 COMPILER V9.51   VID_COMPARE                                                           03/26/2015 00:31:55 PAGE 20  
+
+             ; FUNCTION VID_COMPARE_PwrDwnOverrideEnable (BEGIN)
+                                           ; SOURCE LINE # 565
+                                           ; SOURCE LINE # 566
+                                           ; SOURCE LINE # 568
+0000 905842            MOV     DPTR,#05842H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 4404              ORL     A,#04H
+0008 FF                MOV     R7,A
+0009 EF                MOV     A,R7
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 569
+000B 22                RET     
+             ; FUNCTION VID_COMPARE_PwrDwnOverrideEnable (END)
+
+             ; FUNCTION VID_COMPARE_PwrDwnOverrideDisable (BEGIN)
+                                           ; SOURCE LINE # 587
+                                           ; SOURCE LINE # 588
+                                           ; SOURCE LINE # 590
+0000 905842            MOV     DPTR,#05842H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 54FB              ANL     A,#0FBH
+0008 FF                MOV     R7,A
+0009 EF                MOV     A,R7
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 591
+000B 22                RET     
+             ; FUNCTION VID_COMPARE_PwrDwnOverrideDisable (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    652    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1      11
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

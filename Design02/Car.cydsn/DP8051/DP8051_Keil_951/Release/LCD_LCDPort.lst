@@ -1,0 +1,298 @@
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE LCD_LCDPORT
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\LCD_LCDPort.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB WL(
+                    -2) PR(.\DP8051\DP8051_Keil_951\Release/LCD_LCDPort.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.ob
+                    -j)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: LCD_LCDPort.c  
+   3          * Version 2.10
+   4          *
+   5          * Description:
+   6          *  This file contains API to enable firmware control of a Pins component.
+   7          *
+   8          * Note:
+   9          *
+  10          ********************************************************************************
+  11          * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12          * You may use this file only in accordance with the license, terms, conditions, 
+  13          * disclaimers, and limitations in the end user license agreement accompanying 
+  14          * the software package with which this file was provided.
+  15          *******************************************************************************/
+  16          
+  17          #include "cytypes.h"
+  18          #include "LCD_LCDPort.h"
+  19          
+  20          
+  21          /*******************************************************************************
+  22          * Function Name: LCD_LCDPort_Write
+  23          ********************************************************************************
+  24          *
+  25          * Summary:
+  26          *  Assign a new value to the digital port's data output register.  
+  27          *
+  28          * Parameters:  
+  29          *  prtValue:  The value to be assigned to the Digital Port. 
+  30          *
+  31          * Return: 
+  32          *  None 
+  33          *  
+  34          *******************************************************************************/
+  35          void LCD_LCDPort_Write(uint8 value) 
+  36          {
+  37   1          uint8 staticBits = (LCD_LCDPort_DR & (uint8)(~LCD_LCDPort_MASK));
+  38   1          LCD_LCDPort_DR = staticBits | ((uint8)(value << LCD_LCDPort_SHIFT) & LCD_LCDPort_MASK);
+  39   1      }
+  40          
+  41          
+  42          /*******************************************************************************
+  43          * Function Name: LCD_LCDPort_SetDriveMode
+  44          ********************************************************************************
+  45          *
+  46          * Summary:
+  47          *  Change the drive mode on the pins of the port.
+  48          * 
+  49          * Parameters:  
+  50          *  mode:  Change the pins to one of the following drive modes.
+  51          *
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 2   
+
+  52          *  LCD_LCDPort_DM_STRONG     Strong Drive 
+  53          *  LCD_LCDPort_DM_OD_HI      Open Drain, Drives High 
+  54          *  LCD_LCDPort_DM_OD_LO      Open Drain, Drives Low 
+  55          *  LCD_LCDPort_DM_RES_UP     Resistive Pull Up 
+  56          *  LCD_LCDPort_DM_RES_DWN    Resistive Pull Down 
+  57          *  LCD_LCDPort_DM_RES_UPDWN  Resistive Pull Up/Down 
+  58          *  LCD_LCDPort_DM_DIG_HIZ    High Impedance Digital 
+  59          *  LCD_LCDPort_DM_ALG_HIZ    High Impedance Analog 
+  60          *
+  61          * Return: 
+  62          *  None
+  63          *
+  64          *******************************************************************************/
+  65          void LCD_LCDPort_SetDriveMode(uint8 mode) 
+  66          {
+  67   1              CyPins_SetPinDriveMode(LCD_LCDPort_0, mode);
+  68   1              CyPins_SetPinDriveMode(LCD_LCDPort_1, mode);
+  69   1              CyPins_SetPinDriveMode(LCD_LCDPort_2, mode);
+  70   1              CyPins_SetPinDriveMode(LCD_LCDPort_3, mode);
+  71   1              CyPins_SetPinDriveMode(LCD_LCDPort_4, mode);
+  72   1              CyPins_SetPinDriveMode(LCD_LCDPort_5, mode);
+  73   1              CyPins_SetPinDriveMode(LCD_LCDPort_6, mode);
+  74   1      }
+  75          
+  76          
+  77          /*******************************************************************************
+  78          * Function Name: LCD_LCDPort_Read
+  79          ********************************************************************************
+  80          *
+  81          * Summary:
+  82          *  Read the current value on the pins of the Digital Port in right justified 
+  83          *  form.
+  84          *
+  85          * Parameters:  
+  86          *  None 
+  87          *
+  88          * Return: 
+  89          *  Returns the current value of the Digital Port as a right justified number
+  90          *  
+  91          * Note:
+  92          *  Macro LCD_LCDPort_ReadPS calls this function. 
+  93          *  
+  94          *******************************************************************************/
+  95          uint8 LCD_LCDPort_Read(void) 
+  96          {
+  97   1          return (LCD_LCDPort_PS & LCD_LCDPort_MASK) >> LCD_LCDPort_SHIFT;
+  98   1      }
+  99          
+ 100          
+ 101          /*******************************************************************************
+ 102          * Function Name: LCD_LCDPort_ReadDataReg
+ 103          ********************************************************************************
+ 104          *
+ 105          * Summary:
+ 106          *  Read the current value assigned to a Digital Port's data output register
+ 107          *
+ 108          * Parameters:  
+ 109          *  None 
+ 110          *
+ 111          * Return: 
+ 112          *  Returns the current value assigned to the Digital Port's data output register
+ 113          *  
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 3   
+
+ 114          *******************************************************************************/
+ 115          uint8 LCD_LCDPort_ReadDataReg(void) 
+ 116          {
+ 117   1          return (LCD_LCDPort_DR & LCD_LCDPort_MASK) >> LCD_LCDPort_SHIFT;
+ 118   1      }
+ 119          
+ 120          
+ 121          /* If Interrupts Are Enabled for this Pins component */ 
+ 122          #if defined(LCD_LCDPort_INTSTAT) 
+              
+                  /*******************************************************************************
+                  * Function Name: LCD_LCDPort_ClearInterrupt
+                  ********************************************************************************
+                  *
+                  * Summary:
+                  *  Clears any active interrupts attached to port and returns the value of the 
+                  *  interrupt status register.
+                  *
+                  * Parameters:  
+                  *  None 
+                  *
+                  * Return: 
+                  *  Returns the value of the interrupt status register
+                  *  
+                  *******************************************************************************/
+                  uint8 LCD_LCDPort_ClearInterrupt(void) 
+                  {
+                      return (LCD_LCDPort_INTSTAT & LCD_LCDPort_MASK) >> LCD_LCDPort_SHIFT;
+                  }
+              
+              #endif /* If Interrupts Are Enabled for this Pins component */ 
+ 145          
+ 146          
+ 147          /* [] END OF FILE */
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _LCD_LCDPort_Write (BEGIN)
+                                           ; SOURCE LINE # 35
+;---- Variable 'value' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 37
+0000 905120            MOV     DPTR,#05120H
+0003 E0                MOVX    A,@DPTR
+0004 5480              ANL     A,#080H
+0006 FE                MOV     R6,A
+;---- Variable 'staticBits' assigned to Register 'R6' ----
+                                           ; SOURCE LINE # 38
+0007 EF                MOV     A,R7
+0008 547F              ANL     A,#07FH
+000A 4E                ORL     A,R6
+000B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 39
+000C 22                RET     
+             ; FUNCTION _LCD_LCDPort_Write (END)
+
+             ; FUNCTION _LCD_LCDPort_SetDriveMode (BEGIN)
+                                           ; SOURCE LINE # 65
+;---- Variable 'mode' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 66
+                                           ; SOURCE LINE # 67
+0000 EF                MOV     A,R7
+0001 540E              ANL     A,#0EH
+0003 FE                MOV     R6,A
+0004 905010            MOV     DPTR,#05010H
+0007 E0                MOVX    A,@DPTR
+0008 54F1              ANL     A,#0F1H
+000A 4E                ORL     A,R6
+000B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 68
+000C A3                INC     DPTR
+000D E0                MOVX    A,@DPTR
+000E 54F1              ANL     A,#0F1H
+0010 4E                ORL     A,R6
+0011 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 69
+0012 EF                MOV     A,R7
+0013 540E              ANL     A,#0EH
+0015 FE                MOV     R6,A
+0016 A3                INC     DPTR
+0017 E0                MOVX    A,@DPTR
+0018 54F1              ANL     A,#0F1H
+001A 4E                ORL     A,R6
+001B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 70
+001C A3                INC     DPTR
+001D E0                MOVX    A,@DPTR
+001E 54F1              ANL     A,#0F1H
+0020 4E                ORL     A,R6
+0021 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 71
+0022 EF                MOV     A,R7
+0023 540E              ANL     A,#0EH
+0025 FE                MOV     R6,A
+0026 A3                INC     DPTR
+0027 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 5   
+
+0028 54F1              ANL     A,#0F1H
+002A 4E                ORL     A,R6
+002B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 72
+002C A3                INC     DPTR
+002D E0                MOVX    A,@DPTR
+002E 54F1              ANL     A,#0F1H
+0030 4E                ORL     A,R6
+0031 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 73
+0032 EF                MOV     A,R7
+0033 540E              ANL     A,#0EH
+0035 FF                MOV     R7,A
+0036 A3                INC     DPTR
+0037 E0                MOVX    A,@DPTR
+0038 54F1              ANL     A,#0F1H
+003A 4F                ORL     A,R7
+003B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+003C 22                RET     
+             ; FUNCTION _LCD_LCDPort_SetDriveMode (END)
+
+             ; FUNCTION LCD_LCDPort_Read (BEGIN)
+                                           ; SOURCE LINE # 95
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 97
+0000 905121            MOV     DPTR,#05121H
+0003 E0                MOVX    A,@DPTR
+0004 547F              ANL     A,#07FH
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 98
+0007         ?C0003:
+0007 22                RET     
+             ; FUNCTION LCD_LCDPort_Read (END)
+
+             ; FUNCTION LCD_LCDPort_ReadDataReg (BEGIN)
+                                           ; SOURCE LINE # 115
+                                           ; SOURCE LINE # 116
+                                           ; SOURCE LINE # 117
+0000 905120            MOV     DPTR,#05120H
+0003 E0                MOVX    A,@DPTR
+0004 547F              ANL     A,#07FH
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 118
+0007         ?C0004:
+0007 22                RET     
+             ; FUNCTION LCD_LCDPort_ReadDataReg (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     90    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+C51 COMPILER V9.51   LCD_LCDPORT                                                           03/26/2015 00:33:49 PAGE 6   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

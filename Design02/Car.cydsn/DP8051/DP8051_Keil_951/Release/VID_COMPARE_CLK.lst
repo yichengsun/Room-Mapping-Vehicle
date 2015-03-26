@@ -1,0 +1,1179 @@
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE VID_COMPARE_CLK
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\VID_COMPARE_CLK.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\VID_COMPARE_CLK.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB
+                    - WL(2) PR(.\DP8051\DP8051_Keil_951\Release/VID_COMPARE_CLK.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\VID_CO
+                    -MPARE_CLK.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: VID_COMPARE_CLK.c
+   3          * Version 2.20
+   4          *
+   5          *  Description:
+   6          *   This file provides the source code to the API for the clock component.
+   7          *
+   8          *  Note:
+   9          *
+  10          ********************************************************************************
+  11          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12          * You may use this file only in accordance with the license, terms, conditions, 
+  13          * disclaimers, and limitations in the end user license agreement accompanying 
+  14          * the software package with which this file was provided.
+  15          *******************************************************************************/
+  16          
+  17          #include <cydevice_trm.h>
+  18          #include "VID_COMPARE_CLK.h"
+  19          
+  20          /* Clock Distribution registers. */
+  21          #define CLK_DIST_LD              (* (reg8 *) CYREG_CLKDIST_LD)
+  22          #define CLK_DIST_BCFG2           (* (reg8 *) CYREG_CLKDIST_BCFG2)
+  23          #define BCFG2_MASK               (0x80u)
+  24          #define CLK_DIST_DMASK           (* (reg8 *) CYREG_CLKDIST_DMASK)
+  25          #define CLK_DIST_AMASK           (* (reg8 *) CYREG_CLKDIST_AMASK)
+  26          
+  27          #define HAS_CLKDIST_LD_DISABLE   (CY_PSOC3 || CY_PSOC5LP)
+  28          
+  29          
+  30          /*******************************************************************************
+  31          * Function Name: VID_COMPARE_CLK_Start
+  32          ********************************************************************************
+  33          *
+  34          * Summary:
+  35          *  Starts the clock. Note that on startup, clocks may be already running if the
+  36          *  "Start on Reset" option is enabled in the DWR.
+  37          *
+  38          * Parameters:
+  39          *  None
+  40          *
+  41          * Returns:
+  42          *  None
+  43          *
+  44          *******************************************************************************/
+  45          void VID_COMPARE_CLK_Start(void) 
+  46          {
+  47   1          /* Set the bit to enable the clock. */
+  48   1          VID_COMPARE_CLK_CLKEN |= VID_COMPARE_CLK_CLKEN_MASK;
+  49   1              VID_COMPARE_CLK_CLKSTBY |= VID_COMPARE_CLK_CLKSTBY_MASK;
+  50   1      }
+  51          
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 2   
+
+  52          
+  53          /*******************************************************************************
+  54          * Function Name: VID_COMPARE_CLK_Stop
+  55          ********************************************************************************
+  56          *
+  57          * Summary:
+  58          *  Stops the clock and returns immediately. This API does not require the
+  59          *  source clock to be running but may return before the hardware is actually
+  60          *  disabled. If the settings of the clock are changed after calling this
+  61          *  function, the clock may glitch when it is started. To avoid the clock
+  62          *  glitch, use the StopBlock function.
+  63          *
+  64          * Parameters:
+  65          *  None
+  66          *
+  67          * Returns:
+  68          *  None
+  69          *
+  70          *******************************************************************************/
+  71          void VID_COMPARE_CLK_Stop(void) 
+  72          {
+  73   1          /* Clear the bit to disable the clock. */
+  74   1          VID_COMPARE_CLK_CLKEN &= (uint8)(~VID_COMPARE_CLK_CLKEN_MASK);
+  75   1              VID_COMPARE_CLK_CLKSTBY &= (uint8)(~VID_COMPARE_CLK_CLKSTBY_MASK);
+  76   1      }
+  77          
+  78          
+  79          #if(CY_PSOC3 || CY_PSOC5LP)
+  80          
+  81          
+  82          /*******************************************************************************
+  83          * Function Name: VID_COMPARE_CLK_StopBlock
+  84          ********************************************************************************
+  85          *
+  86          * Summary:
+  87          *  Stops the clock and waits for the hardware to actually be disabled before
+  88          *  returning. This ensures that the clock is never truncated (high part of the
+  89          *  cycle will terminate before the clock is disabled and the API returns).
+  90          *  Note that the source clock must be running or this API will never return as
+  91          *  a stopped clock cannot be disabled.
+  92          *
+  93          * Parameters:
+  94          *  None
+  95          *
+  96          * Returns:
+  97          *  None
+  98          *
+  99          *******************************************************************************/
+ 100          void VID_COMPARE_CLK_StopBlock(void) 
+ 101          {
+ 102   1          if ((VID_COMPARE_CLK_CLKEN & VID_COMPARE_CLK_CLKEN_MASK) != 0u)
+ 103   1          {
+ 104   2      #if HAS_CLKDIST_LD_DISABLE
+ 105   2              uint16 oldDivider;
+ 106   2      
+ 107   2              CLK_DIST_LD = 0u;
+ 108   2      
+ 109   2              /* Clear all the mask bits except ours. */
+ 110   2      #if defined(VID_COMPARE_CLK__CFG3)
+ 111   2              CLK_DIST_AMASK = VID_COMPARE_CLK_CLKEN_MASK;
+ 112   2              CLK_DIST_DMASK = 0x00u;
+ 113   2      #else
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 3   
+
+                      CLK_DIST_DMASK = VID_COMPARE_CLK_CLKEN_MASK;
+                      CLK_DIST_AMASK = 0x00u;
+              #endif /* VID_COMPARE_CLK__CFG3 */
+ 117   2      
+ 118   2              /* Clear mask of bus clock. */
+ 119   2              CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
+ 120   2      
+ 121   2              oldDivider = CY_GET_REG16(VID_COMPARE_CLK_DIV_PTR);
+ 122   2              CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
+ 123   2              CLK_DIST_LD = CYCLK_LD_DISABLE | CYCLK_LD_SYNC_EN | CYCLK_LD_LOAD;
+ 124   2      
+ 125   2              /* Wait for clock to be disabled */
+ 126   2              while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
+ 127   2      #endif /* HAS_CLKDIST_LD_DISABLE */
+ 128   2      
+ 129   2              /* Clear the bit to disable the clock. */
+ 130   2              VID_COMPARE_CLK_CLKEN &= (uint8)(~VID_COMPARE_CLK_CLKEN_MASK);
+ 131   2              VID_COMPARE_CLK_CLKSTBY &= (uint8)(~VID_COMPARE_CLK_CLKSTBY_MASK);
+ 132   2      
+ 133   2      #if HAS_CLKDIST_LD_DISABLE
+ 134   2              /* Clear the disable bit */
+ 135   2              CLK_DIST_LD = 0x00u;
+ 136   2              CY_SET_REG16(VID_COMPARE_CLK_DIV_PTR, oldDivider);
+ 137   2      #endif /* HAS_CLKDIST_LD_DISABLE */
+ 138   2          }
+ 139   1      }
+ 140          #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ 141          
+ 142          
+ 143          /*******************************************************************************
+ 144          * Function Name: VID_COMPARE_CLK_StandbyPower
+ 145          ********************************************************************************
+ 146          *
+ 147          * Summary:
+ 148          *  Sets whether the clock is active in standby mode.
+ 149          *
+ 150          * Parameters:
+ 151          *  state:  0 to disable clock during standby, nonzero to enable.
+ 152          *
+ 153          * Returns:
+ 154          *  None
+ 155          *
+ 156          *******************************************************************************/
+ 157          void VID_COMPARE_CLK_StandbyPower(uint8 state) 
+ 158          {
+ 159   1          if(state == 0u)
+ 160   1          {
+ 161   2              VID_COMPARE_CLK_CLKSTBY &= (uint8)(~VID_COMPARE_CLK_CLKSTBY_MASK);
+ 162   2          }
+ 163   1          else
+ 164   1          {
+ 165   2              VID_COMPARE_CLK_CLKSTBY |= VID_COMPARE_CLK_CLKSTBY_MASK;
+ 166   2          }
+ 167   1      }
+ 168          
+ 169          
+ 170          /*******************************************************************************
+ 171          * Function Name: VID_COMPARE_CLK_SetDividerRegister
+ 172          ********************************************************************************
+ 173          *
+ 174          * Summary:
+ 175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 4   
+
+ 176          *  register is set to zero or changed from zero, the clock will be temporarily
+ 177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
+ 178          *  SetDividerRegister is called, then the source clock must be running.
+ 179          *
+ 180          * Parameters:
+ 181          *  clkDivider:  Divider register value (0-65,535). This value is NOT the
+ 182          *    divider; the clock hardware divides by clkDivider plus one. For example,
+ 183          *    to divide the clock by 2, this parameter should be set to 1.
+ 184          *  restart:  If nonzero, restarts the clock divider: the current clock cycle
+ 185          *   will be truncated and the new divide value will take effect immediately. If
+ 186          *   zero, the new divide value will take effect at the end of the current clock
+ 187          *   cycle.
+ 188          *
+ 189          * Returns:
+ 190          *  None
+ 191          *
+ 192          *******************************************************************************/
+ 193          void VID_COMPARE_CLK_SetDividerRegister(uint16 clkDivider, uint8 restart)
+ 194                                          
+ 195          {
+ 196   1          uint8 enabled;
+ 197   1      
+ 198   1          uint8 currSrc = VID_COMPARE_CLK_GetSourceRegister();
+ 199   1          uint16 oldDivider = VID_COMPARE_CLK_GetDividerRegister();
+ 200   1      
+ 201   1          if (clkDivider != oldDivider)
+ 202   1          {
+ 203   2              enabled = VID_COMPARE_CLK_CLKEN & VID_COMPARE_CLK_CLKEN_MASK;
+ 204   2      
+ 205   2              if ((currSrc == (uint8)CYCLK_SRC_SEL_CLK_SYNC_D) && ((oldDivider == 0u) || (clkDivider == 0u)))
+ 206   2              {
+ 207   3                  /* Moving to/from SSS requires correct ordering to prevent halting the clock    */
+ 208   3                  if (oldDivider == 0u)
+ 209   3                  {
+ 210   4                      /* Moving away from SSS, set the divider first so when SSS is cleared we    */
+ 211   4                      /* don't halt the clock.  Using the shadow load isn't required as the       */
+ 212   4                      /* divider is ignored while SSS is set.                                     */
+ 213   4                      CY_SET_REG16(VID_COMPARE_CLK_DIV_PTR, clkDivider);
+ 214   4                      VID_COMPARE_CLK_MOD_SRC &= (uint8)(~CYCLK_SSS);
+ 215   4                  }
+ 216   3                  else
+ 217   3                  {
+ 218   4                      /* Moving to SSS, set SSS which then ignores the divider and we can set     */
+ 219   4                      /* it without bothering with the shadow load.                               */
+ 220   4                      VID_COMPARE_CLK_MOD_SRC |= CYCLK_SSS;
+ 221   4                      CY_SET_REG16(VID_COMPARE_CLK_DIV_PTR, clkDivider);
+ 222   4                  }
+ 223   3              }
+ 224   2              else
+ 225   2              {
+ 226   3                              
+ 227   3                  if (enabled != 0u)
+ 228   3                  {
+ 229   4                      CLK_DIST_LD = 0x00u;
+ 230   4      
+ 231   4                      /* Clear all the mask bits except ours. */
+ 232   4      #if defined(VID_COMPARE_CLK__CFG3)
+ 233   4                      CLK_DIST_AMASK = VID_COMPARE_CLK_CLKEN_MASK;
+ 234   4                      CLK_DIST_DMASK = 0x00u;
+ 235   4      #else
+                              CLK_DIST_DMASK = VID_COMPARE_CLK_CLKEN_MASK;
+                              CLK_DIST_AMASK = 0x00u;
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 5   
+
+              #endif /* VID_COMPARE_CLK__CFG3 */
+ 239   4                      /* Clear mask of bus clock. */
+ 240   4                      CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
+ 241   4      
+ 242   4                      /* If clock is currently enabled, disable it if async or going from N-to-1*/
+ 243   4                      if (((VID_COMPARE_CLK_MOD_SRC & CYCLK_SYNC) == 0u) || (clkDivider == 0u))
+ 244   4                      {
+ 245   5      #if HAS_CLKDIST_LD_DISABLE
+ 246   5                          CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
+ 247   5                          CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
+ 248   5      
+ 249   5                          /* Wait for clock to be disabled */
+ 250   5                          while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
+ 251   5      #endif /* HAS_CLKDIST_LD_DISABLE */
+ 252   5      
+ 253   5                          VID_COMPARE_CLK_CLKEN &= (uint8)(~VID_COMPARE_CLK_CLKEN_MASK);
+ 254   5      
+ 255   5      #if HAS_CLKDIST_LD_DISABLE
+ 256   5                          /* Clear the disable bit */
+ 257   5                          CLK_DIST_LD = 0x00u;
+ 258   5      #endif /* HAS_CLKDIST_LD_DISABLE */
+ 259   5                      }
+ 260   4                  }
+ 261   3      
+ 262   3                  /* Load divide value. */
+ 263   3                  if ((VID_COMPARE_CLK_CLKEN & VID_COMPARE_CLK_CLKEN_MASK) != 0u)
+ 264   3                  {
+ 265   4                      /* If the clock is still enabled, use the shadow registers */
+ 266   4                      CY_SET_REG16(CYREG_CLKDIST_WRK0, clkDivider);
+ 267   4      
+ 268   4                      CLK_DIST_LD = (CYCLK_LD_LOAD | ((restart != 0u) ? CYCLK_LD_SYNC_EN : 0x00u));
+ 269   4                      while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
+ 270   4                  }
+ 271   3                  else
+ 272   3                  {
+ 273   4                      /* If the clock is disabled, set the divider directly */
+ 274   4                      CY_SET_REG16(VID_COMPARE_CLK_DIV_PTR, clkDivider);
+ 275   4                                      VID_COMPARE_CLK_CLKEN |= enabled;
+ 276   4                  }
+ 277   3              }
+ 278   2          }
+ 279   1      }
+ 280          
+ 281          
+ 282          /*******************************************************************************
+ 283          * Function Name: VID_COMPARE_CLK_GetDividerRegister
+ 284          ********************************************************************************
+ 285          *
+ 286          * Summary:
+ 287          *  Gets the clock divider register value.
+ 288          *
+ 289          * Parameters:
+ 290          *  None
+ 291          *
+ 292          * Returns:
+ 293          *  Divide value of the clock minus 1. For example, if the clock is set to
+ 294          *  divide by 2, the return value will be 1.
+ 295          *
+ 296          *******************************************************************************/
+ 297          uint16 VID_COMPARE_CLK_GetDividerRegister(void) 
+ 298          {
+ 299   1          return CY_GET_REG16(VID_COMPARE_CLK_DIV_PTR);
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 6   
+
+ 300   1      }
+ 301          
+ 302          
+ 303          /*******************************************************************************
+ 304          * Function Name: VID_COMPARE_CLK_SetModeRegister
+ 305          ********************************************************************************
+ 306          *
+ 307          * Summary:
+ 308          *  Sets flags that control the operating mode of the clock. This function only
+ 309          *  changes flags from 0 to 1; flags that are already 1 will remain unchanged.
+ 310          *  To clear flags, use the ClearModeRegister function. The clock must be
+ 311          *  disabled before changing the mode.
+ 312          *
+ 313          * Parameters:
+ 314          *  clkMode: Bit mask containing the bits to set. For PSoC 3 and PSoC 5,
+ 315          *   clkMode should be a set of the following optional bits or'ed together.
+ 316          *   - CYCLK_EARLY Enable early phase mode. Rising edge of output clock will
+ 317          *                 occur when the divider count reaches half of the divide
+ 318          *                 value.
+ 319          *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
+ 320          *                 is asserted for approximately half of its period. When
+ 321          *                 disabled, the output clock is asserted for one period of the
+ 322          *                 source clock.
+ 323          *   - CYCLK_SYNC  Enable output synchronization to master clock. This should
+ 324          *                 be enabled for all synchronous clocks.
+ 325          *   See the Technical Reference Manual for details about setting the mode of
+ 326          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
+ 327          *
+ 328          * Returns:
+ 329          *  None
+ 330          *
+ 331          *******************************************************************************/
+ 332          void VID_COMPARE_CLK_SetModeRegister(uint8 modeBitMask) 
+ 333          {
+ 334   1          VID_COMPARE_CLK_MOD_SRC |= modeBitMask & (uint8)VID_COMPARE_CLK_MODE_MASK;
+ 335   1      }
+ 336          
+ 337          
+ 338          /*******************************************************************************
+ 339          * Function Name: VID_COMPARE_CLK_ClearModeRegister
+ 340          ********************************************************************************
+ 341          *
+ 342          * Summary:
+ 343          *  Clears flags that control the operating mode of the clock. This function
+ 344          *  only changes flags from 1 to 0; flags that are already 0 will remain
+ 345          *  unchanged. To set flags, use the SetModeRegister function. The clock must be
+ 346          *  disabled before changing the mode.
+ 347          *
+ 348          * Parameters:
+ 349          *  clkMode: Bit mask containing the bits to clear. For PSoC 3 and PSoC 5,
+ 350          *   clkMode should be a set of the following optional bits or'ed together.
+ 351          *   - CYCLK_EARLY Enable early phase mode. Rising edge of output clock will
+ 352          *                 occur when the divider count reaches half of the divide
+ 353          *                 value.
+ 354          *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
+ 355          *                 is asserted for approximately half of its period. When
+ 356          *                 disabled, the output clock is asserted for one period of the
+ 357          *                 source clock.
+ 358          *   - CYCLK_SYNC  Enable output synchronization to master clock. This should
+ 359          *                 be enabled for all synchronous clocks.
+ 360          *   See the Technical Reference Manual for details about setting the mode of
+ 361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 7   
+
+ 362          *
+ 363          * Returns:
+ 364          *  None
+ 365          *
+ 366          *******************************************************************************/
+ 367          void VID_COMPARE_CLK_ClearModeRegister(uint8 modeBitMask) 
+ 368          {
+ 369   1          VID_COMPARE_CLK_MOD_SRC &= (uint8)(~modeBitMask) | (uint8)(~(uint8)(VID_COMPARE_CLK_MODE_MASK));
+ 370   1      }
+ 371          
+ 372          
+ 373          /*******************************************************************************
+ 374          * Function Name: VID_COMPARE_CLK_GetModeRegister
+ 375          ********************************************************************************
+ 376          *
+ 377          * Summary:
+ 378          *  Gets the clock mode register value.
+ 379          *
+ 380          * Parameters:
+ 381          *  None
+ 382          *
+ 383          * Returns:
+ 384          *  Bit mask representing the enabled mode bits. See the SetModeRegister and
+ 385          *  ClearModeRegister descriptions for details about the mode bits.
+ 386          *
+ 387          *******************************************************************************/
+ 388          uint8 VID_COMPARE_CLK_GetModeRegister(void) 
+ 389          {
+ 390   1          return VID_COMPARE_CLK_MOD_SRC & (uint8)(VID_COMPARE_CLK_MODE_MASK);
+ 391   1      }
+ 392          
+ 393          
+ 394          /*******************************************************************************
+ 395          * Function Name: VID_COMPARE_CLK_SetSourceRegister
+ 396          ********************************************************************************
+ 397          *
+ 398          * Summary:
+ 399          *  Sets the input source of the clock. The clock must be disabled before
+ 400          *  changing the source. The old and new clock sources must be running.
+ 401          *
+ 402          * Parameters:
+ 403          *  clkSource:  For PSoC 3 and PSoC 5 devices, clkSource should be one of the
+ 404          *   following input sources:
+ 405          *   - CYCLK_SRC_SEL_SYNC_DIG
+ 406          *   - CYCLK_SRC_SEL_IMO
+ 407          *   - CYCLK_SRC_SEL_XTALM
+ 408          *   - CYCLK_SRC_SEL_ILO
+ 409          *   - CYCLK_SRC_SEL_PLL
+ 410          *   - CYCLK_SRC_SEL_XTALK
+ 411          *   - CYCLK_SRC_SEL_DSI_G
+ 412          *   - CYCLK_SRC_SEL_DSI_D/CYCLK_SRC_SEL_DSI_A
+ 413          *   See the Technical Reference Manual for details on clock sources.
+ 414          *
+ 415          * Returns:
+ 416          *  None
+ 417          *
+ 418          *******************************************************************************/
+ 419          void VID_COMPARE_CLK_SetSourceRegister(uint8 clkSource) 
+ 420          {
+ 421   1          uint16 currDiv = VID_COMPARE_CLK_GetDividerRegister();
+ 422   1          uint8 oldSrc = VID_COMPARE_CLK_GetSourceRegister();
+ 423   1      
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 8   
+
+ 424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
+ 425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
+ 426   1          {
+ 427   2              /* Switching to Master and divider is 1, set SSS, which will output master, */
+ 428   2              /* then set the source so we are consistent.                                */
+ 429   2              VID_COMPARE_CLK_MOD_SRC |= CYCLK_SSS;
+ 430   2              VID_COMPARE_CLK_MOD_SRC =
+ 431   2                  (VID_COMPARE_CLK_MOD_SRC & (uint8)(~VID_COMPARE_CLK_SRC_SEL_MSK)) | clkSource;
+ 432   2          }
+ 433   1          else if (((oldSrc == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
+ 434   1                  (clkSource != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
+ 435   1          {
+ 436   2              /* Switching from Master to not and divider is 1, set source, so we don't   */
+ 437   2              /* lock when we clear SSS.                                                  */
+ 438   2              VID_COMPARE_CLK_MOD_SRC =
+ 439   2                  (VID_COMPARE_CLK_MOD_SRC & (uint8)(~VID_COMPARE_CLK_SRC_SEL_MSK)) | clkSource;
+ 440   2              VID_COMPARE_CLK_MOD_SRC &= (uint8)(~CYCLK_SSS);
+ 441   2          }
+ 442   1          else
+ 443   1          {
+ 444   2              VID_COMPARE_CLK_MOD_SRC =
+ 445   2                  (VID_COMPARE_CLK_MOD_SRC & (uint8)(~VID_COMPARE_CLK_SRC_SEL_MSK)) | clkSource;
+ 446   2          }
+ 447   1      }
+ 448          
+ 449          
+ 450          /*******************************************************************************
+ 451          * Function Name: VID_COMPARE_CLK_GetSourceRegister
+ 452          ********************************************************************************
+ 453          *
+ 454          * Summary:
+ 455          *  Gets the input source of the clock.
+ 456          *
+ 457          * Parameters:
+ 458          *  None
+ 459          *
+ 460          * Returns:
+ 461          *  The input source of the clock. See SetSourceRegister for details.
+ 462          *
+ 463          *******************************************************************************/
+ 464          uint8 VID_COMPARE_CLK_GetSourceRegister(void) 
+ 465          {
+ 466   1          return VID_COMPARE_CLK_MOD_SRC & VID_COMPARE_CLK_SRC_SEL_MSK;
+ 467   1      }
+ 468          
+ 469          
+ 470          #if defined(VID_COMPARE_CLK__CFG3)
+ 471          
+ 472          
+ 473          /*******************************************************************************
+ 474          * Function Name: VID_COMPARE_CLK_SetPhaseRegister
+ 475          ********************************************************************************
+ 476          *
+ 477          * Summary:
+ 478          *  Sets the phase delay of the analog clock. This function is only available
+ 479          *  for analog clocks. The clock must be disabled before changing the phase
+ 480          *  delay to avoid glitches.
+ 481          *
+ 482          * Parameters:
+ 483          *  clkPhase: Amount to delay the phase of the clock, in 1.0ns increments.
+ 484          *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
+ 485          *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 9   
+
+ 486          *   produces a 10ns delay.
+ 487          *
+ 488          * Returns:
+ 489          *  None
+ 490          *
+ 491          *******************************************************************************/
+ 492          void VID_COMPARE_CLK_SetPhaseRegister(uint8 clkPhase) 
+ 493          {
+ 494   1          VID_COMPARE_CLK_PHASE = clkPhase & VID_COMPARE_CLK_PHASE_MASK;
+ 495   1      }
+ 496          
+ 497          
+ 498          /*******************************************************************************
+ 499          * Function Name: VID_COMPARE_CLK_GetPhase
+ 500          ********************************************************************************
+ 501          *
+ 502          * Summary:
+ 503          *  Gets the phase delay of the analog clock. This function is only available
+ 504          *  for analog clocks.
+ 505          *
+ 506          * Parameters:
+ 507          *  None
+ 508          *
+ 509          * Returns:
+ 510          *  Phase of the analog clock. See SetPhaseRegister for details.
+ 511          *
+ 512          *******************************************************************************/
+ 513          uint8 VID_COMPARE_CLK_GetPhaseRegister(void) 
+ 514          {
+ 515   1          return VID_COMPARE_CLK_PHASE & VID_COMPARE_CLK_PHASE_MASK;
+ 516   1      }
+ 517          
+ 518          #endif /* VID_COMPARE_CLK__CFG3 */
+ 519          
+ 520          
+ 521          /* [] END OF FILE */
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 10  
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION VID_COMPARE_CLK_Start (BEGIN)
+                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 48
+0000 9043A1            MOV     DPTR,#043A1H
+0003 E0                MOVX    A,@DPTR
+0004 4401              ORL     A,#01H
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 49
+0007 9043B1            MOV     DPTR,#043B1H
+000A E0                MOVX    A,@DPTR
+000B 4401              ORL     A,#01H
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 50
+000E 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_Start (END)
+
+             ; FUNCTION VID_COMPARE_CLK_Stop (BEGIN)
+                                           ; SOURCE LINE # 71
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 74
+0000 9043A1            MOV     DPTR,#043A1H
+0003 E0                MOVX    A,@DPTR
+0004 54FE              ANL     A,#0FEH
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 75
+0007 9043B1            MOV     DPTR,#043B1H
+000A E0                MOVX    A,@DPTR
+000B 54FE              ANL     A,#0FEH
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 76
+000E 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_Stop (END)
+
+             ; FUNCTION VID_COMPARE_CLK_StopBlock (BEGIN)
+                                           ; SOURCE LINE # 100
+                                           ; SOURCE LINE # 101
+                                           ; SOURCE LINE # 102
+0000 9043A1            MOV     DPTR,#043A1H
+0003 E0                MOVX    A,@DPTR
+0004 5401              ANL     A,#01H
+0006 6063              JZ      ?C0006
+                                           ; SOURCE LINE # 103
+                                           ; SOURCE LINE # 107
+0008 904001            MOV     DPTR,#04001H
+000B E4                CLR     A
+000C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 111
+000D 904014            MOV     DPTR,#04014H
+0010 04                INC     A
+0011 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 112
+0012 904010            MOV     DPTR,#04010H
+0015 E4                CLR     A
+0016 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 119
+0017 904008            MOV     DPTR,#04008H
+001A E0                MOVX    A,@DPTR
+001B 547F              ANL     A,#07FH
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 11  
+
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 121
+001E 7B02              MOV     R3,#02H
+0020 7A41              MOV     R2,#041H
+0022 7900              MOV     R1,#00H
+0024 120000      E     LCALL   _cyread16_nodpx
+0027 900000      R     MOV     DPTR,#oldDivider
+002A EE                MOV     A,R6
+002B F0                MOVX    @DPTR,A
+002C FC                MOV     R4,A
+002D A3                INC     DPTR
+002E EF                MOV     A,R7
+002F F0                MOVX    @DPTR,A
+0030 FD                MOV     R5,A
+                                           ; SOURCE LINE # 122
+0031 7B02              MOV     R3,#02H
+0033 7A40              MOV     R2,#040H
+0035 7902              MOV     R1,#02H
+0037 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 123
+003A 904001            MOV     DPTR,#04001H
+003D 7407              MOV     A,#07H
+003F F0                MOVX    @DPTR,A
+0040         ?C0004:
+                                           ; SOURCE LINE # 126
+0040 904001            MOV     DPTR,#04001H
+0043 E0                MOVX    A,@DPTR
+0044 5401              ANL     A,#01H
+0046 70F8              JNZ     ?C0004
+0048         ?C0005:
+                                           ; SOURCE LINE # 130
+0048 9043A1            MOV     DPTR,#043A1H
+004B E0                MOVX    A,@DPTR
+004C 54FE              ANL     A,#0FEH
+004E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 131
+004F 9043B1            MOV     DPTR,#043B1H
+0052 E0                MOVX    A,@DPTR
+0053 54FE              ANL     A,#0FEH
+0055 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 135
+0056 904001            MOV     DPTR,#04001H
+0059 E4                CLR     A
+005A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 136
+005B 7B02              MOV     R3,#02H
+005D 7A41              MOV     R2,#041H
+005F F9                MOV     R1,A
+0060 900000      R     MOV     DPTR,#oldDivider
+0063 E0                MOVX    A,@DPTR
+0064 FC                MOV     R4,A
+0065 A3                INC     DPTR
+0066 E0                MOVX    A,@DPTR
+0067 FD                MOV     R5,A
+0068 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 138
+                                           ; SOURCE LINE # 139
+006B         ?C0006:
+006B 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_StopBlock (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_StandbyPower (BEGIN)
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 12  
+
+                                           ; SOURCE LINE # 157
+;---- Variable 'state' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 158
+                                           ; SOURCE LINE # 159
+0000 EF                MOV     A,R7
+0001 7008              JNZ     ?C0007
+                                           ; SOURCE LINE # 160
+                                           ; SOURCE LINE # 161
+0003 9043B1            MOV     DPTR,#043B1H
+0006 E0                MOVX    A,@DPTR
+0007 54FE              ANL     A,#0FEH
+0009 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 162
+000A 22                RET     
+000B         ?C0007:
+                                           ; SOURCE LINE # 164
+                                           ; SOURCE LINE # 165
+000B 9043B1            MOV     DPTR,#043B1H
+000E E0                MOVX    A,@DPTR
+000F 4401              ORL     A,#01H
+0011 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 166
+                                           ; SOURCE LINE # 167
+0012         ?C0009:
+0012 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_StandbyPower (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_SetDividerRegister (BEGIN)
+                                           ; SOURCE LINE # 193
+0000 900000      R     MOV     DPTR,#clkDivider
+0003 EE                MOV     A,R6
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EF                MOV     A,R7
+0007 F0                MOVX    @DPTR,A
+0008 A3                INC     DPTR
+0009 ED                MOV     A,R5
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 195
+                                           ; SOURCE LINE # 198
+000B 120000      R     LCALL   VID_COMPARE_CLK_GetSourceRegister
+000E 900000      R     MOV     DPTR,#currSrc
+0011 EF                MOV     A,R7
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 199
+0013 120000      R     LCALL   VID_COMPARE_CLK_GetDividerRegister
+0016 900000      R     MOV     DPTR,#oldDivider
+0019 EE                MOV     A,R6
+001A F0                MOVX    @DPTR,A
+001B A3                INC     DPTR
+001C EF                MOV     A,R7
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 201
+001E 900000      R     MOV     DPTR,#clkDivider
+0021 E0                MOVX    A,@DPTR
+0022 FC                MOV     R4,A
+0023 A3                INC     DPTR
+0024 E0                MOVX    A,@DPTR
+0025 FD                MOV     R5,A
+0026 6F                XRL     A,R7
+0027 7002              JNZ     ?C0040
+0029 EC                MOV     A,R4
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 13  
+
+002A 6E                XRL     A,R6
+002B         ?C0040:
+002B 7003              JNZ     $ + 5H
+002D 020000      R     LJMP    ?C0027
+                                           ; SOURCE LINE # 202
+                                           ; SOURCE LINE # 203
+0030 9043A1            MOV     DPTR,#043A1H
+0033 E0                MOVX    A,@DPTR
+0034 5401              ANL     A,#01H
+0036 900000      R     MOV     DPTR,#enabled
+0039 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 205
+003A A3                INC     DPTR
+003B E0                MOVX    A,@DPTR
+003C 703A              JNZ     ?C0011
+003E A3                INC     DPTR
+003F E0                MOVX    A,@DPTR
+0040 FE                MOV     R6,A
+0041 A3                INC     DPTR
+0042 E0                MOVX    A,@DPTR
+0043 FF                MOV     R7,A
+0044 4E                ORL     A,R6
+0045 6004              JZ      ?C0012
+0047 ED                MOV     A,R5
+0048 4C                ORL     A,R4
+0049 702D              JNZ     ?C0011
+004B         ?C0012:
+                                           ; SOURCE LINE # 206
+                                           ; SOURCE LINE # 208
+004B EF                MOV     A,R7
+004C 4E                ORL     A,R6
+004D 7010              JNZ     ?C0013
+                                           ; SOURCE LINE # 209
+                                           ; SOURCE LINE # 213
+004F 7B02              MOV     R3,#02H
+0051 7A41              MOV     R2,#041H
+0053 F9                MOV     R1,A
+0054 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 214
+0057 904102            MOV     DPTR,#04102H
+005A E0                MOVX    A,@DPTR
+005B 54BF              ANL     A,#0BFH
+005D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 215
+005E 22                RET     
+005F         ?C0013:
+                                           ; SOURCE LINE # 217
+                                           ; SOURCE LINE # 220
+005F 904102            MOV     DPTR,#04102H
+0062 E0                MOVX    A,@DPTR
+0063 4440              ORL     A,#040H
+0065 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 221
+0066 7B02              MOV     R3,#02H
+0068 7A41              MOV     R2,#041H
+006A 7900              MOV     R1,#00H
+006C 900000      R     MOV     DPTR,#clkDivider
+006F E0                MOVX    A,@DPTR
+0070 FC                MOV     R4,A
+0071 A3                INC     DPTR
+0072 E0                MOVX    A,@DPTR
+0073 FD                MOV     R5,A
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 14  
+
+0074 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 222
+                                           ; SOURCE LINE # 223
+0077 22                RET     
+0078         ?C0011:
+                                           ; SOURCE LINE # 225
+                                           ; SOURCE LINE # 227
+0078 900000      R     MOV     DPTR,#enabled
+007B E0                MOVX    A,@DPTR
+007C 6053              JZ      ?C0016
+                                           ; SOURCE LINE # 228
+                                           ; SOURCE LINE # 229
+007E 904001            MOV     DPTR,#04001H
+0081 E4                CLR     A
+0082 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 233
+0083 904014            MOV     DPTR,#04014H
+0086 04                INC     A
+0087 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 234
+0088 904010            MOV     DPTR,#04010H
+008B E4                CLR     A
+008C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 240
+008D 904008            MOV     DPTR,#04008H
+0090 E0                MOVX    A,@DPTR
+0091 547F              ANL     A,#07FH
+0093 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 243
+0094 904102            MOV     DPTR,#04102H
+0097 E0                MOVX    A,@DPTR
+0098 5408              ANL     A,#08H
+009A 600A              JZ      ?C0018
+009C 900000      R     MOV     DPTR,#clkDivider
+009F E0                MOVX    A,@DPTR
+00A0 7002              JNZ     ?C0041
+00A2 A3                INC     DPTR
+00A3 E0                MOVX    A,@DPTR
+00A4         ?C0041:
+00A4 702B              JNZ     ?C0016
+00A6         ?C0018:
+                                           ; SOURCE LINE # 244
+                                           ; SOURCE LINE # 246
+00A6 7B02              MOV     R3,#02H
+00A8 7A40              MOV     R2,#040H
+00AA 7902              MOV     R1,#02H
+00AC 900000      R     MOV     DPTR,#oldDivider
+00AF E0                MOVX    A,@DPTR
+00B0 FC                MOV     R4,A
+00B1 A3                INC     DPTR
+00B2 E0                MOVX    A,@DPTR
+00B3 FD                MOV     R5,A
+00B4 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 247
+00B7 904001            MOV     DPTR,#04001H
+00BA 7407              MOV     A,#07H
+00BC F0                MOVX    @DPTR,A
+00BD         ?C0019:
+                                           ; SOURCE LINE # 250
+00BD 904001            MOV     DPTR,#04001H
+00C0 E0                MOVX    A,@DPTR
+00C1 5401              ANL     A,#01H
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 15  
+
+00C3 70F8              JNZ     ?C0019
+00C5         ?C0020:
+                                           ; SOURCE LINE # 253
+00C5 9043A1            MOV     DPTR,#043A1H
+00C8 E0                MOVX    A,@DPTR
+00C9 54FE              ANL     A,#0FEH
+00CB F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 257
+00CC 904001            MOV     DPTR,#04001H
+00CF E4                CLR     A
+00D0 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 259
+                                           ; SOURCE LINE # 260
+00D1         ?C0016:
+                                           ; SOURCE LINE # 263
+00D1 9043A1            MOV     DPTR,#043A1H
+00D4 E0                MOVX    A,@DPTR
+00D5 5401              ANL     A,#01H
+00D7 602F              JZ      ?C0021
+                                           ; SOURCE LINE # 264
+                                           ; SOURCE LINE # 266
+00D9 7B02              MOV     R3,#02H
+00DB 7A40              MOV     R2,#040H
+00DD 7902              MOV     R1,#02H
+00DF 900000      R     MOV     DPTR,#clkDivider
+00E2 E0                MOVX    A,@DPTR
+00E3 FC                MOV     R4,A
+00E4 A3                INC     DPTR
+00E5 E0                MOVX    A,@DPTR
+00E6 FD                MOV     R5,A
+00E7 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 268
+00EA 900000      R     MOV     DPTR,#restart
+00ED E0                MOVX    A,@DPTR
+00EE 6004              JZ      ?C0022
+00F0 7F02              MOV     R7,#02H
+00F2 8002              SJMP    ?C0023
+00F4         ?C0022:
+00F4 7F00              MOV     R7,#00H
+00F6         ?C0023:
+00F6 EF                MOV     A,R7
+00F7 4401              ORL     A,#01H
+00F9 904001            MOV     DPTR,#04001H
+00FC F0                MOVX    @DPTR,A
+00FD         ?C0024:
+                                           ; SOURCE LINE # 269
+00FD 904001            MOV     DPTR,#04001H
+0100 E0                MOVX    A,@DPTR
+0101 5401              ANL     A,#01H
+0103 6029              JZ      ?C0027
+0105 80F6              SJMP    ?C0024
+0107         ?C0025:
+                                           ; SOURCE LINE # 270
+0107 22                RET     
+0108         ?C0021:
+                                           ; SOURCE LINE # 272
+                                           ; SOURCE LINE # 274
+0108 7B02              MOV     R3,#02H
+010A 7A41              MOV     R2,#041H
+010C 7900              MOV     R1,#00H
+010E 900000      R     MOV     DPTR,#clkDivider
+0111 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 16  
+
+0112 FC                MOV     R4,A
+0113 A3                INC     DPTR
+0114 E0                MOVX    A,@DPTR
+0115 FD                MOV     R5,A
+0116 120000      E     LCALL   _cywrite16_nodpx
+                                           ; SOURCE LINE # 275
+0119 9043A1            MOV     DPTR,#043A1H
+011C C083              PUSH    DPH
+011E C082              PUSH    DPL
+0120 E0                MOVX    A,@DPTR
+0121 FF                MOV     R7,A
+0122 900000      R     MOV     DPTR,#enabled
+0125 E0                MOVX    A,@DPTR
+0126 FE                MOV     R6,A
+0127 EF                MOV     A,R7
+0128 4E                ORL     A,R6
+0129 D082              POP     DPL
+012B D083              POP     DPH
+012D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 276
+                                           ; SOURCE LINE # 277
+                                           ; SOURCE LINE # 278
+                                           ; SOURCE LINE # 279
+012E         ?C0027:
+012E 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_SetDividerRegister (END)
+
+             ; FUNCTION VID_COMPARE_CLK_GetDividerRegister (BEGIN)
+                                           ; SOURCE LINE # 297
+                                           ; SOURCE LINE # 298
+                                           ; SOURCE LINE # 299
+0000 7B02              MOV     R3,#02H
+0002 7A41              MOV     R2,#041H
+0004 7900              MOV     R1,#00H
+0006 120000      E     LCALL   _cyread16_nodpx
+                                           ; SOURCE LINE # 300
+0009         ?C0028:
+0009 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_GetDividerRegister (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_SetModeRegister (BEGIN)
+                                           ; SOURCE LINE # 332
+;---- Variable 'modeBitMask' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 333
+                                           ; SOURCE LINE # 334
+0000 904102            MOV     DPTR,#04102H
+0003 E0                MOVX    A,@DPTR
+0004 FE                MOV     R6,A
+0005 EF                MOV     A,R7
+0006 54F8              ANL     A,#0F8H
+0008 FF                MOV     R7,A
+0009 EE                MOV     A,R6
+000A 4F                ORL     A,R7
+000B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 335
+000C 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_SetModeRegister (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_ClearModeRegister (BEGIN)
+                                           ; SOURCE LINE # 367
+;---- Variable 'modeBitMask' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 368
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 17  
+
+                                           ; SOURCE LINE # 369
+0000 904102            MOV     DPTR,#04102H
+0003 E0                MOVX    A,@DPTR
+0004 FE                MOV     R6,A
+0005 EF                MOV     A,R7
+0006 F4                CPL     A
+0007 4407              ORL     A,#07H
+0009 FF                MOV     R7,A
+000A EE                MOV     A,R6
+000B 5F                ANL     A,R7
+000C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 370
+000D 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_ClearModeRegister (END)
+
+             ; FUNCTION VID_COMPARE_CLK_GetModeRegister (BEGIN)
+                                           ; SOURCE LINE # 388
+                                           ; SOURCE LINE # 389
+                                           ; SOURCE LINE # 390
+0000 904102            MOV     DPTR,#04102H
+0003 E0                MOVX    A,@DPTR
+0004 54F8              ANL     A,#0F8H
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 391
+0007         ?C0031:
+0007 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_GetModeRegister (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_SetSourceRegister (BEGIN)
+                                           ; SOURCE LINE # 419
+0000 900000      R     MOV     DPTR,#clkSource
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 420
+                                           ; SOURCE LINE # 421
+0005 120000      R     LCALL   VID_COMPARE_CLK_GetDividerRegister
+0008 900000      R     MOV     DPTR,#currDiv
+000B EE                MOV     A,R6
+000C F0                MOVX    @DPTR,A
+000D A3                INC     DPTR
+000E EF                MOV     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 422
+0010 120000      R     LCALL   VID_COMPARE_CLK_GetSourceRegister
+;---- Variable 'oldSrc' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 425
+0013 EF                MOV     A,R7
+0014 601C              JZ      ?C0032
+0016 900000      R     MOV     DPTR,#clkSource
+0019 E0                MOVX    A,@DPTR
+001A FE                MOV     R6,A
+001B 7015              JNZ     ?C0032
+001D A3                INC     DPTR
+001E E0                MOVX    A,@DPTR
+001F 7002              JNZ     ?C0042
+0021 A3                INC     DPTR
+0022 E0                MOVX    A,@DPTR
+0023         ?C0042:
+0023 700D              JNZ     ?C0032
+                                           ; SOURCE LINE # 426
+                                           ; SOURCE LINE # 429
+0025 904102            MOV     DPTR,#04102H
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 18  
+
+0028 E0                MOVX    A,@DPTR
+0029 4440              ORL     A,#040H
+002B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 431
+002C E0                MOVX    A,@DPTR
+002D 54F8              ANL     A,#0F8H
+002F 4E                ORL     A,R6
+0030 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 432
+0031 22                RET     
+0032         ?C0032:
+                                           ; SOURCE LINE # 434
+0032 EF                MOV     A,R7
+0033 701C              JNZ     ?C0034
+0035 900000      R     MOV     DPTR,#clkSource
+0038 E0                MOVX    A,@DPTR
+0039 FF                MOV     R7,A
+003A 6015              JZ      ?C0034
+003C A3                INC     DPTR
+003D E0                MOVX    A,@DPTR
+003E 7002              JNZ     ?C0043
+0040 A3                INC     DPTR
+0041 E0                MOVX    A,@DPTR
+0042         ?C0043:
+0042 700D              JNZ     ?C0034
+                                           ; SOURCE LINE # 435
+                                           ; SOURCE LINE # 439
+0044 904102            MOV     DPTR,#04102H
+0047 E0                MOVX    A,@DPTR
+0048 54F8              ANL     A,#0F8H
+004A 4F                ORL     A,R7
+004B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 440
+004C E0                MOVX    A,@DPTR
+004D 54BF              ANL     A,#0BFH
+004F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 441
+0050 22                RET     
+0051         ?C0034:
+                                           ; SOURCE LINE # 443
+                                           ; SOURCE LINE # 445
+0051 904102            MOV     DPTR,#04102H
+0054 E0                MOVX    A,@DPTR
+0055 54F8              ANL     A,#0F8H
+0057 FF                MOV     R7,A
+0058 900000      R     MOV     DPTR,#clkSource
+005B E0                MOVX    A,@DPTR
+005C 4F                ORL     A,R7
+005D 904102            MOV     DPTR,#04102H
+0060 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 446
+                                           ; SOURCE LINE # 447
+0061         ?C0036:
+0061 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_SetSourceRegister (END)
+
+             ; FUNCTION VID_COMPARE_CLK_GetSourceRegister (BEGIN)
+                                           ; SOURCE LINE # 464
+                                           ; SOURCE LINE # 465
+                                           ; SOURCE LINE # 466
+0000 904102            MOV     DPTR,#04102H
+0003 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   VID_COMPARE_CLK                                                       03/26/2015 00:33:52 PAGE 19  
+
+0004 5407              ANL     A,#07H
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 467
+0007         ?C0037:
+0007 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_GetSourceRegister (END)
+
+             ; FUNCTION _VID_COMPARE_CLK_SetPhaseRegister (BEGIN)
+                                           ; SOURCE LINE # 492
+;---- Variable 'clkPhase' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 493
+                                           ; SOURCE LINE # 494
+0000 EF                MOV     A,R7
+0001 540F              ANL     A,#0FH
+0003 904103            MOV     DPTR,#04103H
+0006 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 495
+0007 22                RET     
+             ; FUNCTION _VID_COMPARE_CLK_SetPhaseRegister (END)
+
+             ; FUNCTION VID_COMPARE_CLK_GetPhaseRegister (BEGIN)
+                                           ; SOURCE LINE # 513
+                                           ; SOURCE LINE # 514
+                                           ; SOURCE LINE # 515
+0000 904103            MOV     DPTR,#04103H
+0003 E0                MOVX    A,@DPTR
+0004 540F              ANL     A,#0FH
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 516
+0007         ?C0039:
+0007 22                RET     
+             ; FUNCTION VID_COMPARE_CLK_GetPhaseRegister (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    627    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----      12
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

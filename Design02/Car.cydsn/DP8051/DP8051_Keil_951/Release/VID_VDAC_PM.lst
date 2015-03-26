@@ -1,0 +1,326 @@
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE VID_VDAC_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\VID_VDAC_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\VID_VDAC_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB WL(
+                    -2) PR(.\DP8051\DP8051_Keil_951\Release/VID_VDAC_PM.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\VID_VDAC_PM.ob
+                    -j)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: VID_VDAC_PM.c  
+   3          * Version 1.90
+   4          *
+   5          * Description:
+   6          *  This file provides the power management source code to API for the
+   7          *  VDAC8.  
+   8          *
+   9          * Note:
+  10          *  None
+  11          *
+  12          ********************************************************************************
+  13          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14          * You may use this file only in accordance with the license, terms, conditions, 
+  15          * disclaimers, and limitations in the end user license agreement accompanying 
+  16          * the software package with which this file was provided.
+  17          *******************************************************************************/
+  18          
+  19          #include "VID_VDAC.h"
+  20          
+  21          static VID_VDAC_backupStruct VID_VDAC_backup;
+  22          
+  23          
+  24          /*******************************************************************************
+  25          * Function Name: VID_VDAC_SaveConfig
+  26          ********************************************************************************
+  27          * Summary:
+  28          *  Save the current user configuration
+  29          *
+  30          * Parameters:  
+  31          *  void  
+  32          *
+  33          * Return: 
+  34          *  void
+  35          *
+  36          *******************************************************************************/
+  37          void VID_VDAC_SaveConfig(void) 
+  38          {
+  39   1          if (!((VID_VDAC_CR1 & VID_VDAC_SRC_MASK) == VID_VDAC_SRC_UDB))
+  40   1          {
+  41   2              VID_VDAC_backup.data_value = VID_VDAC_Data;
+  42   2          }
+  43   1      }
+  44          
+  45          
+  46          /*******************************************************************************
+  47          * Function Name: VID_VDAC_RestoreConfig
+  48          ********************************************************************************
+  49          *
+  50          * Summary:
+  51          *  Restores the current user configuration.
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 2   
+
+  52          *
+  53          * Parameters:  
+  54          *  void
+  55          *
+  56          * Return: 
+  57          *  void
+  58          *
+  59          *******************************************************************************/
+  60          void VID_VDAC_RestoreConfig(void) 
+  61          {
+  62   1          if (!((VID_VDAC_CR1 & VID_VDAC_SRC_MASK) == VID_VDAC_SRC_UDB))
+  63   1          {
+  64   2              if((VID_VDAC_Strobe & VID_VDAC_STRB_MASK) == VID_VDAC_STRB_EN)
+  65   2              {
+  66   3                  VID_VDAC_Strobe &= (uint8)(~VID_VDAC_STRB_MASK);
+  67   3                  VID_VDAC_Data = VID_VDAC_backup.data_value;
+  68   3                  VID_VDAC_Strobe |= VID_VDAC_STRB_EN;
+  69   3              }
+  70   2              else
+  71   2              {
+  72   3                  VID_VDAC_Data = VID_VDAC_backup.data_value;
+  73   3              }
+  74   2          }
+  75   1      }
+  76          
+  77          
+  78          /*******************************************************************************
+  79          * Function Name: VID_VDAC_Sleep
+  80          ********************************************************************************
+  81          * Summary:
+  82          *  Stop and Save the user configuration
+  83          *
+  84          * Parameters:  
+  85          *  void:  
+  86          *
+  87          * Return: 
+  88          *  void
+  89          *
+  90          * Global variables:
+  91          *  VID_VDAC_backup.enableState:  Is modified depending on the enable 
+  92          *  state  of the block before entering sleep mode.
+  93          *
+  94          *******************************************************************************/
+  95          void VID_VDAC_Sleep(void) 
+  96          {
+  97   1          /* Save VDAC8's enable state */    
+  98   1          if(VID_VDAC_ACT_PWR_EN == (VID_VDAC_PWRMGR & VID_VDAC_ACT_PWR_EN))
+  99   1          {
+ 100   2              /* VDAC8 is enabled */
+ 101   2              VID_VDAC_backup.enableState = 1u;
+ 102   2          }
+ 103   1          else
+ 104   1          {
+ 105   2              /* VDAC8 is disabled */
+ 106   2              VID_VDAC_backup.enableState = 0u;
+ 107   2          }
+ 108   1          
+ 109   1          VID_VDAC_Stop();
+ 110   1          VID_VDAC_SaveConfig();
+ 111   1      }
+ 112          
+ 113          
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 3   
+
+ 114          /*******************************************************************************
+ 115          * Function Name: VID_VDAC_Wakeup
+ 116          ********************************************************************************
+ 117          *
+ 118          * Summary:
+ 119          *  Restores and enables the user configuration
+ 120          *  
+ 121          * Parameters:  
+ 122          *  void
+ 123          *
+ 124          * Return: 
+ 125          *  void
+ 126          *
+ 127          * Global variables:
+ 128          *  VID_VDAC_backup.enableState:  Is used to restore the enable state of 
+ 129          *  block on wakeup from sleep mode.
+ 130          *
+ 131          *******************************************************************************/
+ 132          void VID_VDAC_Wakeup(void) 
+ 133          {
+ 134   1          VID_VDAC_RestoreConfig();
+ 135   1          
+ 136   1          if(VID_VDAC_backup.enableState == 1u)
+ 137   1          {
+ 138   2              /* Enable VDAC8's operation */
+ 139   2              VID_VDAC_Enable();
+ 140   2      
+ 141   2              /* Restore the data register */
+ 142   2              VID_VDAC_SetValue(VID_VDAC_Data);
+ 143   2          } /* Do nothing if VDAC8 was disabled before */    
+ 144   1      }
+ 145          
+ 146          
+ 147          /* [] END OF FILE */
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION VID_VDAC_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 39
+0000 905829            MOV     DPTR,#05829H
+0003 E0                MOVX    A,@DPTR
+0004 5420              ANL     A,#020H
+0006 6420              XRL     A,#020H
+0008 7003              JNZ     ?C0002
+000A D3                SETB    C
+000B 8001              SJMP    ?C0003
+000D         ?C0002:
+000D C3                CLR     C
+000E         ?C0003:
+000E 4008              JC      ?C0004
+                                           ; SOURCE LINE # 40
+                                           ; SOURCE LINE # 41
+0010 905B82            MOV     DPTR,#05B82H
+0013 E0                MOVX    A,@DPTR
+0014 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
+0017 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 42
+                                           ; SOURCE LINE # 43
+0018         ?C0004:
+0018 22                RET     
+             ; FUNCTION VID_VDAC_SaveConfig (END)
+
+             ; FUNCTION VID_VDAC_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 60
+                                           ; SOURCE LINE # 61
+                                           ; SOURCE LINE # 62
+0000 905829            MOV     DPTR,#05829H
+0003 E0                MOVX    A,@DPTR
+0004 5420              ANL     A,#020H
+0006 6420              XRL     A,#020H
+0008 7003              JNZ     ?C0006
+000A D3                SETB    C
+000B 8001              SJMP    ?C0007
+000D         ?C0006:
+000D C3                CLR     C
+000E         ?C0007:
+000E 4026              JC      ?C0010
+                                           ; SOURCE LINE # 63
+                                           ; SOURCE LINE # 64
+0010 905A97            MOV     DPTR,#05A97H
+0013 E0                MOVX    A,@DPTR
+0014 5408              ANL     A,#08H
+0016 6408              XRL     A,#08H
+0018 7014              JNZ     ?C0008
+                                           ; SOURCE LINE # 65
+                                           ; SOURCE LINE # 66
+001A E0                MOVX    A,@DPTR
+001B 54F7              ANL     A,#0F7H
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 67
+001E 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
+0021 E0                MOVX    A,@DPTR
+0022 905B82            MOV     DPTR,#05B82H
+0025 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 5   
+
+                                           ; SOURCE LINE # 68
+0026 905A97            MOV     DPTR,#05A97H
+0029 E0                MOVX    A,@DPTR
+002A 4408              ORL     A,#08H
+002C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 69
+002D 22                RET     
+002E         ?C0008:
+                                           ; SOURCE LINE # 71
+                                           ; SOURCE LINE # 72
+002E 900000      R     MOV     DPTR,#VID_VDAC_backup+01H
+0031 E0                MOVX    A,@DPTR
+0032 905B82            MOV     DPTR,#05B82H
+0035 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 73
+                                           ; SOURCE LINE # 74
+                                           ; SOURCE LINE # 75
+0036         ?C0010:
+0036 22                RET     
+             ; FUNCTION VID_VDAC_RestoreConfig (END)
+
+             ; FUNCTION VID_VDAC_Sleep (BEGIN)
+                                           ; SOURCE LINE # 95
+                                           ; SOURCE LINE # 96
+                                           ; SOURCE LINE # 98
+0000 9043A8            MOV     DPTR,#043A8H
+0003 E0                MOVX    A,@DPTR
+0004 5404              ANL     A,#04H
+0006 6404              XRL     A,#04H
+0008 7007              JNZ     ?C0011
+                                           ; SOURCE LINE # 99
+                                           ; SOURCE LINE # 101
+000A 900000      R     MOV     DPTR,#VID_VDAC_backup
+000D 04                INC     A
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 102
+000F 8005              SJMP    ?C0012
+0011         ?C0011:
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 106
+0011 E4                CLR     A
+0012 900000      R     MOV     DPTR,#VID_VDAC_backup
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 107
+0016         ?C0012:
+                                           ; SOURCE LINE # 109
+0016 120000      E     LCALL   VID_VDAC_Stop
+                                           ; SOURCE LINE # 110
+0019 120000      R     LCALL   VID_VDAC_SaveConfig
+                                           ; SOURCE LINE # 111
+001C 22                RET     
+             ; FUNCTION VID_VDAC_Sleep (END)
+
+             ; FUNCTION VID_VDAC_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 132
+                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 134
+0000 120000      R     LCALL   VID_VDAC_RestoreConfig
+                                           ; SOURCE LINE # 136
+0003 900000      R     MOV     DPTR,#VID_VDAC_backup
+0006 E0                MOVX    A,@DPTR
+0007 B4010B            CJNE    A,#01H,?C0015
+C51 COMPILER V9.51   VID_VDAC_PM                                                           03/26/2015 00:33:53 PAGE 6   
+
+                                           ; SOURCE LINE # 137
+                                           ; SOURCE LINE # 139
+000A 120000      E     LCALL   VID_VDAC_Enable
+                                           ; SOURCE LINE # 142
+000D 905B82            MOV     DPTR,#05B82H
+0010 E0                MOVX    A,@DPTR
+0011 FF                MOV     R7,A
+0012 120000      E     LCALL   _VID_VDAC_SetValue
+                                           ; SOURCE LINE # 143
+                                           ; SOURCE LINE # 144
+0015         ?C0015:
+0015 22                RET     
+             ; FUNCTION VID_VDAC_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    131    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

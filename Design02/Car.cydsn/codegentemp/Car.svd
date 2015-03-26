@@ -310,7 +310,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>VIDEO_OUT_TIMER</name>
+      <name>BLACK_LINE_TIMER</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -320,7 +320,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>VIDEO_OUT_TIMER_COUNTER</name>
+          <name>BLACK_LINE_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
           <addressOffset>0x6406</addressOffset>
           <size>16</size>
@@ -329,7 +329,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>VIDEO_OUT_TIMER_PERIOD</name>
+          <name>BLACK_LINE_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
           <addressOffset>0x6426</addressOffset>
           <size>16</size>
@@ -338,7 +338,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>VIDEO_OUT_TIMER_Control_Reg</name>
+          <name>BLACK_LINE_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
           <addressOffset>0x6477</addressOffset>
           <size>8</size>
@@ -384,7 +384,7 @@
           </fields>
         </register>
         <register>
-          <name>VIDEO_OUT_TIMER_STATUS_MASK</name>
+          <name>BLACK_LINE_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
           <addressOffset>0x6487</addressOffset>
           <size>8</size>
@@ -423,7 +423,7 @@
           </fields>
         </register>
         <register>
-          <name>VIDEO_OUT_TIMER_STATUS_AUX_CTRL</name>
+          <name>BLACK_LINE_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x6497</addressOffset>
           <size>8</size>
@@ -550,7 +550,1001 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>VDAC8_1</name>
+      <name>VID_COMPARE</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>VID_COMPARE_Comp_PM_ACT_CFG</name>
+          <description>Active Power Mode Configuration Register 7</description>
+          <addressOffset>0x43A7</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>en_cmp</name>
+              <description>Enable comparator. Populated subsystems are counted from the LSB, for example bit 0 corresponds to comparator 0</description>
+              <lsb>0</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_PM_STBY_CFG</name>
+          <description>Standby Power Mode Configuration Register 7</description>
+          <addressOffset>0x43B7</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>en_cmp</name>
+              <description>Enable comparator. Populated subsystems are counted from the LSB, for example bit 0 corresponds to comparator 0</description>
+              <lsb>0</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_TR0</name>
+          <description>Comparator Trim Register_TR0</description>
+          <addressOffset>0x4634</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>trimA_4_0_</name>
+              <description>Sets the trim value to be added to the P-type load for offset calibration</description>
+              <lsb>0</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>TRIMA_0</name>
+                  <description>Does not add any offset</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_1</name>
+                  <description>Adds offset of ~1mV to the positive side</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_2</name>
+                  <description>Adds offset of ~2mV to the positive side</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_3</name>
+                  <description>Adds offset of ~3mV to the positive side</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_4</name>
+                  <description>Adds offset of ~4mV to the positive side</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_5</name>
+                  <description>Adds offset of ~5mV to the positive side</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_6</name>
+                  <description>Adds offset of ~6mV to the positive side</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_7</name>
+                  <description>Adds offset of ~7mV to the positive side</description>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_POS_SIDE_8</name>
+                  <description>Adds offset of ~8mV to the positive side</description>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_1</name>
+                  <description>Adds offset of ~0mV to the negative side</description>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_2</name>
+                  <description>Adds offset of ~1mV to the negative side</description>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_3</name>
+                  <description>Adds offset of ~2mV to the negative side</description>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_4</name>
+                  <description>Adds offset of ~3mV to the negative side</description>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_5</name>
+                  <description>Adds offset of ~4mV to the negative side</description>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_6</name>
+                  <description>Adds offset of ~5mV to the negative side</description>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_7</name>
+                  <description>Adds offset of ~6mV to the negative side</description>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_8</name>
+                  <description>Adds offset of ~7mV to the negative side</description>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMA_NEG_SIDE_9</name>
+                  <description>Adds offset of ~8mV to the negative side</description>
+                  <value>18</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_TR1</name>
+          <description>Comparator Trim Register_TR1</description>
+          <addressOffset>0x4635</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>trimB_4_0_</name>
+              <description>Sets the trim value to be added to the N-type load for offset calibration</description>
+              <lsb>0</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>TRIMB_0</name>
+                  <description>Does not add any offset</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_1</name>
+                  <description>Adds offset of ~1mV to the negative side</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_2</name>
+                  <description>Adds offset of ~2mV to the negative side</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_3</name>
+                  <description>Adds offset of ~3mV to the negative side</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_4</name>
+                  <description>Adds offset of ~4mV to the negative side</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_5</name>
+                  <description>Adds offset of ~5mV to the negative side</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_6</name>
+                  <description>Adds offset of ~6mV to the negative side</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_7</name>
+                  <description>Adds offset of ~7mV to the negative side</description>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_NEG_SIDE_8</name>
+                  <description>Adds offset of ~8mV to the negative side</description>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_9</name>
+                  <description>Does not add any offset</description>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_1</name>
+                  <description>Adds offset of ~1mV to the positive side</description>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_2</name>
+                  <description>Adds offset of ~2mV to the positive side</description>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_3</name>
+                  <description>Adds offset of ~3mV to the positive side</description>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_4</name>
+                  <description>Adds offset of ~4mV to the positive side</description>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_5</name>
+                  <description>Adds offset of ~5mV to the positive side</description>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_6</name>
+                  <description>Adds offset of ~6mV to the positive side</description>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_7</name>
+                  <description>Adds offset of ~7mV to the positive side</description>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TRIMB_POS_SIDE_8</name>
+                  <description>Adds offset of ~8mV to the positive side</description>
+                  <value>18</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_CR</name>
+          <description>Comparator Control Register</description>
+          <addressOffset>0x5842</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>filt</name>
+              <description>enables a glitch filter at the output of the comparator</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>FILT_DISABLE</name>
+                  <description>Disable glitch filter</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>FILT_ENABLE</name>
+                  <description>Enable glitch filter</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>hyst</name>
+              <description>enables a hysteresis of 10mV typ</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>HYST_DISABLE</name>
+                  <description>Disable hysteresis</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>HYST_ENABLE</name>
+                  <description>Enable hysteresis</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>cal_en</name>
+              <description>enables shorting of the two comparator inputs for trim calibration purposes</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>CAL_EN_DISABLE</name>
+                  <description>Disable calibration</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CAL_EN_ENABLE</name>
+                  <description>Enable calibration</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>mx_ao</name>
+              <description>comparator sleep always-on logic mux control</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>MX_AO_BYPASS</name>
+                  <description>Bypass comparator sleep always-on logic</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_AO_ENABLE</name>
+                  <description>Enable comparator sleep always-on logic</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>pd_override</name>
+              <description>Power down override to allow comparator to continue operating during sleep</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>PD_OVERRIDE_DISABLE</name>
+                  <description>Don't override power down</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PD_OVERRIDE_ENABLE</name>
+                  <description>Override power down</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>sel</name>
+              <description>Selects the mode of operation of the comparator</description>
+              <lsb>0</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>SEL_SLOW</name>
+                  <description>slow mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SEL_FAST</name>
+                  <description>fast mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SEL_LP</name>
+                  <description>ultra low power mode</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SEL_ILLEGAL</name>
+                  <description>Illegal Mode</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_SW0</name>
+          <description>Comparator Analog Routing Register 0</description>
+          <addressOffset>0x5AD0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>vp_ag7</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag6</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag5</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag4</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag3</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag2</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag1</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_ag0</name>
+              <description>Connect positive voltage input to analog global of same side </description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_SW2</name>
+          <description>Comparator Analog Routing Register 2</description>
+          <addressOffset>0x5AD2</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>vp_abus1</name>
+              <description>Connect positive voltage input to analog (local) bus of the same side</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ABUS_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>ABUS_CONNECTED</name>
+                  <description>Connect to Analog (local) Bus</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_abus0</name>
+              <description>Connect positive voltage input to analog (local) bus of the same side</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ABUS_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>ABUS_CONNECTED</name>
+                  <description>Connect to Analog (local) Bus</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_SW3</name>
+          <description>Comparator Analog Routing Register 3</description>
+          <addressOffset>0x5AD3</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>vn_vref1</name>
+              <description>Connect negative voltage input to Voltage Reference 1</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>VREF_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VREF_CONNECTED</name>
+                  <description>Connect to Voltage Reference</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_vref0</name>
+              <description>Connect negative voltage input to Voltage Reference 0</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>VREF_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VREF_CONNECTED</name>
+                  <description>Connect to Voltage Reference</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_amx</name>
+              <description>Connect negative voltage input to Analog Mux Bus</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AMX_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AMX_CONNECTED</name>
+                  <description>Connect to AMUXBUS</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_refbuf</name>
+              <description>Connect positive voltage input to CapSense reference buffer channel</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>VP_REFBUF_ENABLED</name>
+                  <description>disable</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VP_REFBUF_DISABLED</name>
+                  <description>enable</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vp_amx</name>
+              <description>Connect positive voltage input to Analog Mux Bus</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AMX_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AMX_CONNECTED</name>
+                  <description>Connect to AMUXBUS</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_SW4</name>
+          <description>Comparator Analog Routing Register 4</description>
+          <addressOffset>0x5AD4</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>vn_ag6</name>
+              <description>Connect negative voltage input to analog global of same side</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_ag4</name>
+              <description>Connect negative voltage input to analog global of same side</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_ag2</name>
+              <description>Connect negative voltage input to analog global of same side</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_ag0</name>
+              <description>Connect negative voltage input to analog global of same side</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>AG_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>AG_CONNECTED</name>
+                  <description>Connect to Analog Global</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_SW6</name>
+          <description>Comparator Analog Routing Register 6</description>
+          <addressOffset>0x5AD6</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>vn_abus3</name>
+              <description>Connect negative voltage input to analog (local) bus of the same side</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ABUS_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>ABUS_CONNECTED</name>
+                  <description>Connect to Analog (local) Bus</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>vn_abus2</name>
+              <description>Connect negative voltage input to analog (local) bus of the same side</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ABUS_NC</name>
+                  <description>not connected</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>ABUS_CONNECTED</name>
+                  <description>Connect to Analog (local) Bus</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_CLK</name>
+          <description>Comparator Clock Control Register</description>
+          <addressOffset>0x5AD7</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>bypass_sync</name>
+              <description>Bypass Synchronization</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>BYPASS_SYNC_0</name>
+                  <description>Synchronization not bypassed (Synchronization enabled)</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>BYPASS_SYNC_1</name>
+                  <description>Synchronization bypassed (Synchronization disabled)</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>clk_en</name>
+              <description>Clock gating control</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>CLK_EN_0</name>
+                  <description>disable clock</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CLK_EN_1</name>
+                  <description>enable clock</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>mx_clk</name>
+              <description>Clock Selection</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>MX_CLK_0</name>
+                  <description>Select clk_a0 and clk_a0_dig</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_1</name>
+                  <description>Select clk_a1 and clk_a1_dig</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_2</name>
+                  <description>Select clk_a2 and clk_a2_dig</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_3</name>
+                  <description>Select clk_a3 and clk_a3_dig</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_4</name>
+                  <description>Select UDB generated clock</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_5</name>
+                  <description>Reserved</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_6</name>
+                  <description>Reserved</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MX_CLK_7</name>
+                  <description>Reserved</description>
+                  <value>7</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VID_COMPARE_Comp_WRK</name>
+          <description>Comparator output working register</description>
+          <addressOffset>0x5B96</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>cmp3_out</name>
+              <description>Comparator Output</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>cmp2_out</name>
+              <description>Comparator Output</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>cmp1_out</name>
+              <description>Comparator Output</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>cmp0_out</name>
+              <description>Comparator Output</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>VID_VDAC</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -1093,1000 +2087,6 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>VIDEO_OUT_COMPARE</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_PM_ACT_CFG</name>
-          <description>Active Power Mode Configuration Register 7</description>
-          <addressOffset>0x43A7</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>en_cmp</name>
-              <description>Enable comparator. Populated subsystems are counted from the LSB, for example bit 0 corresponds to comparator 0</description>
-              <lsb>0</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_PM_STBY_CFG</name>
-          <description>Standby Power Mode Configuration Register 7</description>
-          <addressOffset>0x43B7</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>en_cmp</name>
-              <description>Enable comparator. Populated subsystems are counted from the LSB, for example bit 0 corresponds to comparator 0</description>
-              <lsb>0</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_TR0</name>
-          <description>Comparator Trim Register_TR0</description>
-          <addressOffset>0x4634</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>trimA_4_0_</name>
-              <description>Sets the trim value to be added to the P-type load for offset calibration</description>
-              <lsb>0</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>TRIMA_0</name>
-                  <description>Does not add any offset</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_1</name>
-                  <description>Adds offset of ~1mV to the positive side</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_2</name>
-                  <description>Adds offset of ~2mV to the positive side</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_3</name>
-                  <description>Adds offset of ~3mV to the positive side</description>
-                  <value>3</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_4</name>
-                  <description>Adds offset of ~4mV to the positive side</description>
-                  <value>4</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_5</name>
-                  <description>Adds offset of ~5mV to the positive side</description>
-                  <value>5</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_6</name>
-                  <description>Adds offset of ~6mV to the positive side</description>
-                  <value>6</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_7</name>
-                  <description>Adds offset of ~7mV to the positive side</description>
-                  <value>7</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_POS_SIDE_8</name>
-                  <description>Adds offset of ~8mV to the positive side</description>
-                  <value>8</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_1</name>
-                  <description>Adds offset of ~0mV to the negative side</description>
-                  <value>10</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_2</name>
-                  <description>Adds offset of ~1mV to the negative side</description>
-                  <value>11</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_3</name>
-                  <description>Adds offset of ~2mV to the negative side</description>
-                  <value>12</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_4</name>
-                  <description>Adds offset of ~3mV to the negative side</description>
-                  <value>13</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_5</name>
-                  <description>Adds offset of ~4mV to the negative side</description>
-                  <value>14</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_6</name>
-                  <description>Adds offset of ~5mV to the negative side</description>
-                  <value>15</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_7</name>
-                  <description>Adds offset of ~6mV to the negative side</description>
-                  <value>16</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_8</name>
-                  <description>Adds offset of ~7mV to the negative side</description>
-                  <value>17</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMA_NEG_SIDE_9</name>
-                  <description>Adds offset of ~8mV to the negative side</description>
-                  <value>18</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_TR1</name>
-          <description>Comparator Trim Register_TR1</description>
-          <addressOffset>0x4635</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>trimB_4_0_</name>
-              <description>Sets the trim value to be added to the N-type load for offset calibration</description>
-              <lsb>0</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>TRIMB_0</name>
-                  <description>Does not add any offset</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_1</name>
-                  <description>Adds offset of ~1mV to the negative side</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_2</name>
-                  <description>Adds offset of ~2mV to the negative side</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_3</name>
-                  <description>Adds offset of ~3mV to the negative side</description>
-                  <value>3</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_4</name>
-                  <description>Adds offset of ~4mV to the negative side</description>
-                  <value>4</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_5</name>
-                  <description>Adds offset of ~5mV to the negative side</description>
-                  <value>5</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_6</name>
-                  <description>Adds offset of ~6mV to the negative side</description>
-                  <value>6</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_7</name>
-                  <description>Adds offset of ~7mV to the negative side</description>
-                  <value>7</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_NEG_SIDE_8</name>
-                  <description>Adds offset of ~8mV to the negative side</description>
-                  <value>8</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_9</name>
-                  <description>Does not add any offset</description>
-                  <value>10</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_1</name>
-                  <description>Adds offset of ~1mV to the positive side</description>
-                  <value>11</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_2</name>
-                  <description>Adds offset of ~2mV to the positive side</description>
-                  <value>12</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_3</name>
-                  <description>Adds offset of ~3mV to the positive side</description>
-                  <value>13</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_4</name>
-                  <description>Adds offset of ~4mV to the positive side</description>
-                  <value>14</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_5</name>
-                  <description>Adds offset of ~5mV to the positive side</description>
-                  <value>15</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_6</name>
-                  <description>Adds offset of ~6mV to the positive side</description>
-                  <value>16</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_7</name>
-                  <description>Adds offset of ~7mV to the positive side</description>
-                  <value>17</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>TRIMB_POS_SIDE_8</name>
-                  <description>Adds offset of ~8mV to the positive side</description>
-                  <value>18</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_CR</name>
-          <description>Comparator Control Register</description>
-          <addressOffset>0x5842</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>filt</name>
-              <description>enables a glitch filter at the output of the comparator</description>
-              <lsb>6</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>FILT_DISABLE</name>
-                  <description>Disable glitch filter</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>FILT_ENABLE</name>
-                  <description>Enable glitch filter</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>hyst</name>
-              <description>enables a hysteresis of 10mV typ</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>HYST_DISABLE</name>
-                  <description>Disable hysteresis</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>HYST_ENABLE</name>
-                  <description>Enable hysteresis</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>cal_en</name>
-              <description>enables shorting of the two comparator inputs for trim calibration purposes</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>CAL_EN_DISABLE</name>
-                  <description>Disable calibration</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>CAL_EN_ENABLE</name>
-                  <description>Enable calibration</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>mx_ao</name>
-              <description>comparator sleep always-on logic mux control</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>MX_AO_BYPASS</name>
-                  <description>Bypass comparator sleep always-on logic</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_AO_ENABLE</name>
-                  <description>Enable comparator sleep always-on logic</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>pd_override</name>
-              <description>Power down override to allow comparator to continue operating during sleep</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>PD_OVERRIDE_DISABLE</name>
-                  <description>Don't override power down</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>PD_OVERRIDE_ENABLE</name>
-                  <description>Override power down</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>sel</name>
-              <description>Selects the mode of operation of the comparator</description>
-              <lsb>0</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>SEL_SLOW</name>
-                  <description>slow mode</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>SEL_FAST</name>
-                  <description>fast mode</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>SEL_LP</name>
-                  <description>ultra low power mode</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>SEL_ILLEGAL</name>
-                  <description>Illegal Mode</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_SW0</name>
-          <description>Comparator Analog Routing Register 0</description>
-          <addressOffset>0x5AD0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>vp_ag7</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag6</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>6</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag5</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag4</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag3</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag2</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag1</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_ag0</name>
-              <description>Connect positive voltage input to analog global of same side </description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_SW2</name>
-          <description>Comparator Analog Routing Register 2</description>
-          <addressOffset>0x5AD2</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>vp_abus1</name>
-              <description>Connect positive voltage input to analog (local) bus of the same side</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ABUS_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>ABUS_CONNECTED</name>
-                  <description>Connect to Analog (local) Bus</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_abus0</name>
-              <description>Connect positive voltage input to analog (local) bus of the same side</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ABUS_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>ABUS_CONNECTED</name>
-                  <description>Connect to Analog (local) Bus</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_SW3</name>
-          <description>Comparator Analog Routing Register 3</description>
-          <addressOffset>0x5AD3</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>vn_vref1</name>
-              <description>Connect negative voltage input to Voltage Reference 1</description>
-              <lsb>6</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>VREF_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>VREF_CONNECTED</name>
-                  <description>Connect to Voltage Reference</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_vref0</name>
-              <description>Connect negative voltage input to Voltage Reference 0</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>VREF_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>VREF_CONNECTED</name>
-                  <description>Connect to Voltage Reference</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_amx</name>
-              <description>Connect negative voltage input to Analog Mux Bus</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AMX_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AMX_CONNECTED</name>
-                  <description>Connect to AMUXBUS</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_refbuf</name>
-              <description>Connect positive voltage input to CapSense reference buffer channel</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>VP_REFBUF_ENABLED</name>
-                  <description>disable</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>VP_REFBUF_DISABLED</name>
-                  <description>enable</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vp_amx</name>
-              <description>Connect positive voltage input to Analog Mux Bus</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AMX_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AMX_CONNECTED</name>
-                  <description>Connect to AMUXBUS</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_SW4</name>
-          <description>Comparator Analog Routing Register 4</description>
-          <addressOffset>0x5AD4</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>vn_ag6</name>
-              <description>Connect negative voltage input to analog global of same side</description>
-              <lsb>6</lsb>
-              <msb>6</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_ag4</name>
-              <description>Connect negative voltage input to analog global of same side</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_ag2</name>
-              <description>Connect negative voltage input to analog global of same side</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_ag0</name>
-              <description>Connect negative voltage input to analog global of same side</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>AG_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>AG_CONNECTED</name>
-                  <description>Connect to Analog Global</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_SW6</name>
-          <description>Comparator Analog Routing Register 6</description>
-          <addressOffset>0x5AD6</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>vn_abus3</name>
-              <description>Connect negative voltage input to analog (local) bus of the same side</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ABUS_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>ABUS_CONNECTED</name>
-                  <description>Connect to Analog (local) Bus</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>vn_abus2</name>
-              <description>Connect negative voltage input to analog (local) bus of the same side</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ABUS_NC</name>
-                  <description>not connected</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>ABUS_CONNECTED</name>
-                  <description>Connect to Analog (local) Bus</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_CLK</name>
-          <description>Comparator Clock Control Register</description>
-          <addressOffset>0x5AD7</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>bypass_sync</name>
-              <description>Bypass Synchronization</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>BYPASS_SYNC_0</name>
-                  <description>Synchronization not bypassed (Synchronization enabled)</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>BYPASS_SYNC_1</name>
-                  <description>Synchronization bypassed (Synchronization disabled)</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>clk_en</name>
-              <description>Clock gating control</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>CLK_EN_0</name>
-                  <description>disable clock</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>CLK_EN_1</name>
-                  <description>enable clock</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>mx_clk</name>
-              <description>Clock Selection</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>MX_CLK_0</name>
-                  <description>Select clk_a0 and clk_a0_dig</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_1</name>
-                  <description>Select clk_a1 and clk_a1_dig</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_2</name>
-                  <description>Select clk_a2 and clk_a2_dig</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_3</name>
-                  <description>Select clk_a3 and clk_a3_dig</description>
-                  <value>3</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_4</name>
-                  <description>Select UDB generated clock</description>
-                  <value>4</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_5</name>
-                  <description>Reserved</description>
-                  <value>5</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_6</name>
-                  <description>Reserved</description>
-                  <value>6</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>MX_CLK_7</name>
-                  <description>Reserved</description>
-                  <value>7</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>VIDEO_OUT_COMPARE_Comp_WRK</name>
-          <description>Comparator output working register</description>
-          <addressOffset>0x5B96</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>cmp3_out</name>
-              <description>Comparator Output</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>cmp2_out</name>
-              <description>Comparator Output</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>cmp1_out</name>
-              <description>Comparator Output</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>cmp0_out</name>
-              <description>Comparator Output</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>MOTOR_PWM</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
@@ -2108,7 +2108,7 @@
         <register>
           <name>MOTOR_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6472</addressOffset>
+          <addressOffset>0x6473</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2390,7 +2390,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>CAM_LINEREAD_COUNTER</name>
+      <name>LINE_COUNTER</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -2400,7 +2400,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>CAM_LINEREAD_COUNTER_COUNTER</name>
+          <name>LINE_COUNTER_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
           <addressOffset>0x6401</addressOffset>
           <size>8</size>
@@ -2409,7 +2409,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_LINEREAD_COUNTER_PERIOD</name>
+          <name>LINE_COUNTER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
           <addressOffset>0x6421</addressOffset>
           <size>8</size>
@@ -2418,7 +2418,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_LINEREAD_COUNTER_COMPARE</name>
+          <name>LINE_COUNTER_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
           <addressOffset>0x6431</addressOffset>
           <size>8</size>
@@ -2427,7 +2427,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_LINEREAD_COUNTER_Control_Reg</name>
+          <name>LINE_COUNTER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
           <addressOffset>0x6471</addressOffset>
           <size>8</size>
@@ -2459,7 +2459,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_LINEREAD_COUNTER_STATUS_MASK</name>
+          <name>LINE_COUNTER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
           <addressOffset>0x6481</addressOffset>
           <size>8</size>
@@ -2519,7 +2519,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_LINEREAD_COUNTER_STATUS_AUX_CTRL</name>
+          <name>LINE_COUNTER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x6491</addressOffset>
           <size>8</size>
