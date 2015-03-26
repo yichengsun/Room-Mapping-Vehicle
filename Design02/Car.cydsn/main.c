@@ -27,6 +27,7 @@ int glinepos = 0;
 int gnum_line_reads = 0;
 double gblack_pos_first_diff = 0;
 double gblack_pos_second_diff = 0;
+double gblack_totalpos_diff = 0;
 int gCounterNReads = 0;
 
 //Averages out speed for the last wheel rotation to even out magnet spacing
@@ -67,8 +68,9 @@ CY_ISR(FRAME_inter) {
 CY_ISR(COUNTER_N_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("Reading line");
-
-    SEC_TIL_BLACK_TIMER_Start();
+    if (gCounterNReads < 2){
+        SEC_TIL_BLACK_TIMER_Start();
+    }
     LINE_COUNTER_Stop();
     
     if (gCounterNReads < 2) {
@@ -76,10 +78,11 @@ CY_ISR(COUNTER_N_inter) {
         LINE_COUNTER_WriteCompare(80);
     } 
     gCounterNReads += 1;
+    LINE_COUNTER_ReadStatusRegister();
 }
 
 
-CY_ISR(FIRST_BLACK_PIXEL_READ_inter) {
+CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     //STORE DATA HERE
     uint32 firstpos;
     uint32 secondpos;
@@ -95,7 +98,9 @@ CY_ISR(FIRST_BLACK_PIXEL_READ_inter) {
     } else {
         gnum_line_reads = 0;
         gblack_pos_second_diff = (double)(secondpos - firstpos);
+        gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
     }
+    SEC_TIL_BLACK_TIMER_ReadStatusRegister();
 }
 
 
@@ -170,7 +175,7 @@ CY_ISR(UPDATE_STEERING_inter) {
     uint16 duty_cycle;
     char buffer[15];
     //Calculate the error for feedback 
-    error = gblack_pos_first_diff - gblack_pos_second_diff;
+    error = gblack_totalpos_diff;
         //Accumulate past errors for Ki
     // left max 3600; center 4560; right max 5800
     gki_steererror = gki_steererror+error*.000011;
@@ -183,8 +188,7 @@ CY_ISR(UPDATE_STEERING_inter) {
     LCD_PrintString(buffer);
     LCD_PrintString("//");
 
-        //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
-        //certain duty cycle to prevent sporadic  behavior
+        //Have in place error checking to prevent sporadic  behavior
     if (duty_cycle_buffer > 5600){
         duty_cycle_buffer = 5600;   
     }
@@ -199,6 +203,7 @@ CY_ISR(UPDATE_STEERING_inter) {
     LCD_PrintNumber(duty_cycle);
 
     STEERING_PWM_WriteCompare(duty_cycle);
+    UPDATE_STEERING_TIMER_ReadStatusRegister();
 }
 
 
@@ -216,23 +221,20 @@ int main()
     COUNTER_N_ISR_Start();
     COUNTER_N_ISR_SetVector(COUNTER_N_inter);
     
-    FIRST_BLACK_PIXEL_READ_ISR_Start();
-    FIRST_BLACK_PIXEL_READ_ISR_SetVector(FIRST_BLACK_PIXEL_READ_inter);
+    SEC_TIL_BLACK_TIMER_ISR_Start();
+    SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
     
     UPDATE_STEERING_ISR_Start();
     UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
     
     VID_VDAC_Start();
     VID_COMPARE_Start();
-    VID_COMPARE_CLK_Start();
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
     
-//    STEERING_PWM_Start();
-//    STEERING_PWM_CLK_Start();
-//    //left max 3600; center 4560; right max 5800
-//    STEERING_PWM_WriteCompare(3600);
+    STEERING_PWM_Start();
+    STEERING_PWM_CLK_Start();
     
     LCD_Start();
     LCD_Position(0,0);

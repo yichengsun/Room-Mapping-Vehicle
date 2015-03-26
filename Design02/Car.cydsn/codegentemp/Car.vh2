@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Mar 26 03:09:49 2015
+--	Thu Mar 26 03:45:43 2015
 --
 
 USE cypress.cypress.all;
@@ -3147,11 +3147,11 @@ COM_VID_IN_PIN:cy_psoc3_pins_v1_10
 VID_COMPARE_CLK:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"5599f6eb-6a2b-47ae-ad94-0537d85c2cd2",
-		source_clock_id=>"",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
 		divisor=>0,
-		period=>"100000000000",
-		is_direct=>'0',
-		is_digital=>'0')
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
 	PORT MAP(clock_out=>Net_4889,
 		dig_domain_out=>open);
 \VID_COMPARE:ctComp\:cy_psoc3_ctcomp_v1_0
@@ -3387,7 +3387,7 @@ CAM_LINE_CLK:cy_clock_v1_0
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-FIRST_BLACK_PIXEL_READ_ISR:cy_isr_v1_0
+SEC_TIL_BLACK_TIMER_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_4949);
 COMPARE_OUT:cy_psoc3_pins_v1_10

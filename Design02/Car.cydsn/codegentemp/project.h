@@ -42,11 +42,10 @@
 #include <STEERING_PWM_CLK.h>
 #include <COM_VID_IN_PIN.h>
 #include <COM_VID_IN_PIN_aliases.h>
-#include <VID_COMPARE_CLK.h>
 #include <VID_COMPARE.h>
 #include <VID_VDAC.h>
 #include <SEC_TIL_BLACK_TIMER.h>
-#include <FIRST_BLACK_PIXEL_READ_ISR.h>
+#include <SEC_TIL_BLACK_TIMER_ISR.h>
 #include <COMPARE_OUT.h>
 #include <COMPARE_OUT_aliases.h>
 #include <UPDATE_STEERING_TIMER.h>

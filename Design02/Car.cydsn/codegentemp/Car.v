@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/26/2015 at 03:09
+// 03/26/2015 at 03:45
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -812,7 +812,7 @@ module top ;
           wire  Net_5119;
           wire  Net_5118;
           wire  Net_5117;
-          wire  Net_5125;
+          wire  Net_5134;
           wire  Net_5076;
           wire  Net_5075;
           wire  Net_5074;
@@ -1480,11 +1480,11 @@ module top ;
 
 	cy_clock_v1_0
 		#(.id("5599f6eb-6a2b-47ae-ad94-0537d85c2cd2"),
-		  .source_clock_id(""),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
 		  .divisor(0),
-		  .period("100000000000"),
-		  .is_direct(0),
-		  .is_digital(0))
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
 		VID_COMPARE_CLK
 		 (.clock_out(Net_4889));
 
@@ -1538,7 +1538,7 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		FIRST_BLACK_PIXEL_READ_ISR
+		SEC_TIL_BLACK_TIMER_ISR
 		 (.int_signal(Net_4949));
 
 

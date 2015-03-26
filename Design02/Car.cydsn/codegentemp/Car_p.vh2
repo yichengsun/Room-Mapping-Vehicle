@@ -1,5 +1,5 @@
 -- Project:   Car
--- Generated: 03/26/2015 03:09:53
+-- Generated: 03/26/2015 03:45:47
 -- PSoC Creator  3.1
 
 ENTITY Car IS
@@ -60,11 +60,6 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL Net_3712 : bit;
     SIGNAL Net_4376 : bit;
     SIGNAL Net_459 : bit;
-    SIGNAL Net_4889 : bit;
-    ATTRIBUTE global_signal OF Net_4889 : SIGNAL IS true;
-    SIGNAL Net_4889_adig : bit;
-    SIGNAL Net_4889_adig_local : bit;
-    SIGNAL Net_4889_local : bit;
     SIGNAL Net_4946 : bit;
     SIGNAL Net_4949 : bit;
     SIGNAL Net_5117 : bit;
@@ -169,7 +164,6 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
-    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.z0__sig\ : bit;
@@ -947,19 +941,7 @@ BEGIN
             dclk_1 => Net_3302_local,
             dclk_glb_2 => Net_193,
             dclk_2 => Net_193_local,
-            aclk_glb_0 => Net_4889,
-            aclk_0 => Net_4889_local,
-            clk_a_dig_glb_0 => Net_4889_adig,
-            clk_a_dig_0 => Net_4889_adig_local,
-            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
-            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
-
-    FIRST_BLACK_PIXEL_READ_ISR:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_4949,
-            clock => ClockBlock_BUS_CLK);
+            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\);
 
     FRAME_ISR:interrupt
         GENERIC MAP(
@@ -1199,6 +1181,13 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
+
+    SEC_TIL_BLACK_TIMER_ISR:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_4949,
+            clock => ClockBlock_BUS_CLK);
 
     STEERING_PWM_OUT_PIN:logicalport
         GENERIC MAP(
@@ -2418,7 +2407,7 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            clk_udb => ClockBlock_BUS_CLK_local,
             out => \VID_COMPARE:Net_1\);
 
     \VID_VDAC:viDAC8\:vidaccell
