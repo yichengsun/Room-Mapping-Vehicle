@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/25/2015 at 21:17
+// 03/25/2015 at 22:39
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -391,7 +391,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Counter_v2_40\B_Counter_v2_40.v"
 `endif
 
-// Counter_v2_40(CaptureMode=0, CaptureModeSoftware=0, ClockMode=0, CompareMode=0, CompareModeSoftware=0, CompareStatusEdgeSense=true, CompareValue=100, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InitCounterValue=0, InterruptOnCapture=false, InterruptOnCompare=false, InterruptOnOverUnderFlow=false, InterruptOnTC=false, Period=255, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, ReloadOnCapture=false, ReloadOnCompare=false, ReloadOnOverUnder=false, ReloadOnReset=false, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=true, UDBControlReg=true, UseInterrupt=true, VerilogSectionReplacementString=sC8, CY_COMPONENT_NAME=Counter_v2_40, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=CAM_COUNTER, CY_INSTANCE_SHORT_NAME=CAM_COUNTER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=40, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=CAM_COUNTER, )
+// Counter_v2_40(CaptureMode=0, CaptureModeSoftware=0, ClockMode=0, CompareMode=0, CompareModeSoftware=0, CompareStatusEdgeSense=true, CompareValue=100, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InitCounterValue=0, InterruptOnCapture=false, InterruptOnCompare=false, InterruptOnOverUnderFlow=false, InterruptOnTC=false, Period=255, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, ReloadOnCapture=false, ReloadOnCompare=false, ReloadOnOverUnder=false, ReloadOnReset=false, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=true, UDBControlReg=true, UseInterrupt=true, VerilogSectionReplacementString=sC8, CY_COMPONENT_NAME=Counter_v2_40, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=CAM_LINEREAD_COUNTER, CY_INSTANCE_SHORT_NAME=CAM_LINEREAD_COUNTER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=40, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=CAM_LINEREAD_COUNTER, )
 module Counter_v2_40_3 (
     clock,
     comp,
@@ -665,7 +665,7 @@ module VDAC8_v1_90_6 (
 
 endmodule
 
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=4, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=CAM_LINE_TIMER, CY_INSTANCE_SHORT_NAME=CAM_LINE_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=CAM_LINE_TIMER, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=2, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=VIDEO_OUT_TIMER, CY_INSTANCE_SHORT_NAME=VIDEO_OUT_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=VIDEO_OUT_TIMER, )
 module Timer_v2_70_7 (
     clock,
     reset,
@@ -1176,11 +1176,11 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b00))
-		CAM_READ_ISR
+		CAM_LINECOUNTER_ISR
 		 (.int_signal(Net_3206));
 
 
-    Counter_v2_40_3 CAM_COUNTER (
+    Counter_v2_40_3 CAM_LINEREAD_COUNTER (
         .reset(Net_3194),
         .tc(Net_3205),
         .comp(Net_3206),
@@ -1192,18 +1192,18 @@ module top ;
         .downCnt(1'b0),
         .up_ndown(1'b1),
         .count(Net_3213));
-    defparam CAM_COUNTER.CaptureMode = 0;
-    defparam CAM_COUNTER.ClockMode = 0;
-    defparam CAM_COUNTER.CompareMode = 0;
-    defparam CAM_COUNTER.CompareStatusEdgeSense = 1;
-    defparam CAM_COUNTER.EnableMode = 0;
-    defparam CAM_COUNTER.ReloadOnCapture = 0;
-    defparam CAM_COUNTER.ReloadOnCompare = 0;
-    defparam CAM_COUNTER.ReloadOnOverUnder = 0;
-    defparam CAM_COUNTER.ReloadOnReset = 0;
-    defparam CAM_COUNTER.Resolution = 8;
-    defparam CAM_COUNTER.RunMode = 0;
-    defparam CAM_COUNTER.UseInterrupt = 1;
+    defparam CAM_LINEREAD_COUNTER.CaptureMode = 0;
+    defparam CAM_LINEREAD_COUNTER.ClockMode = 0;
+    defparam CAM_LINEREAD_COUNTER.CompareMode = 0;
+    defparam CAM_LINEREAD_COUNTER.CompareStatusEdgeSense = 1;
+    defparam CAM_LINEREAD_COUNTER.EnableMode = 0;
+    defparam CAM_LINEREAD_COUNTER.ReloadOnCapture = 0;
+    defparam CAM_LINEREAD_COUNTER.ReloadOnCompare = 0;
+    defparam CAM_LINEREAD_COUNTER.ReloadOnOverUnder = 0;
+    defparam CAM_LINEREAD_COUNTER.ReloadOnReset = 0;
+    defparam CAM_LINEREAD_COUNTER.Resolution = 8;
+    defparam CAM_LINEREAD_COUNTER.RunMode = 0;
+    defparam CAM_LINEREAD_COUNTER.UseInterrupt = 1;
 
 
 	cy_isr_v1_0
@@ -1429,7 +1429,7 @@ module top ;
 		  .period("0"),
 		  .is_direct(1),
 		  .is_digital(1))
-		timer_clock
+		CAM_LINE_CLK
 		 (.clock_out(Net_10));
 
 
@@ -1444,7 +1444,7 @@ module top ;
     ZeroTerminal ZeroTerminal_3 (
         .z(Net_4932));
 
-    Timer_v2_70_7 CAM_LINE_TIMER (
+    Timer_v2_70_7 VIDEO_OUT_TIMER (
         .reset(Net_4932),
         .interrupt(Net_4949),
         .enable(1'b1),
@@ -1453,13 +1453,13 @@ module top ;
         .capture_out(Net_4962),
         .tc(Net_4963),
         .clock(Net_10));
-    defparam CAM_LINE_TIMER.CaptureCount = 2;
-    defparam CAM_LINE_TIMER.CaptureCounterEnabled = 0;
-    defparam CAM_LINE_TIMER.DeviceFamily = "PSoC3";
-    defparam CAM_LINE_TIMER.InterruptOnCapture = 1;
-    defparam CAM_LINE_TIMER.InterruptOnTC = 0;
-    defparam CAM_LINE_TIMER.Resolution = 16;
-    defparam CAM_LINE_TIMER.SiliconRevision = "3";
+    defparam VIDEO_OUT_TIMER.CaptureCount = 2;
+    defparam VIDEO_OUT_TIMER.CaptureCounterEnabled = 0;
+    defparam VIDEO_OUT_TIMER.DeviceFamily = "PSoC3";
+    defparam VIDEO_OUT_TIMER.InterruptOnCapture = 1;
+    defparam VIDEO_OUT_TIMER.InterruptOnTC = 0;
+    defparam VIDEO_OUT_TIMER.Resolution = 16;
+    defparam VIDEO_OUT_TIMER.SiliconRevision = "3";
 
 
 	cy_isr_v1_0

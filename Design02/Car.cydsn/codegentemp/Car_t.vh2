@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Edgar\OneDrive\2014\Princeton 2014\Second Semester\ele302\ELE302-Carlab\Design02\Car.cydsn\Car.cyprj
--- Generated: 03/25/2015 21:17:15
+-- Generated: 03/25/2015 22:39:43
 -- PSoC Creator  3.1
 
 ENTITY Car IS
@@ -75,54 +75,29 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL PWM_OUT_PIN(0)__PA : bit;
     SIGNAL STEERING_PWM_OUT_PIN(0)__PA : bit;
     SIGNAL VERT_SYNC_OUT_IN(0)__PA : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_i\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_0\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_1\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_2\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_3\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_4\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_5\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_6\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:control_7\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:count_enable\ : SIGNAL IS "U(3,5,A)0";
-    SIGNAL \CAM_COUNTER:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,A)1";
-    SIGNAL \CAM_COUNTER:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,A)3";
-    SIGNAL \CAM_COUNTER:CounterUDB:per_equal\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(3,5,B)0";
-    SIGNAL \CAM_COUNTER:CounterUDB:status_1\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \CAM_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(3,5,A)2";
-    SIGNAL \CAM_COUNTER:CounterUDB:status_5\ : bit;
-    SIGNAL \CAM_COUNTER:CounterUDB:status_6\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,2,A)1";
-    ATTRIBUTE soft OF \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,2,B)1";
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:capture_last\ : SIGNAL IS "U(2,2,A)2";
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_0\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_1\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_2\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_3\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_4\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_5\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_6\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:control_7\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(2,2,A)3";
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(2,2,B)0";
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:per_zero\ : bit;
-    SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:status_2\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:status_3\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \CAM_LINE_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(2,2,A)0";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_0\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_1\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_2\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_3\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_4\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_5\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_6\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_7\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ : bit;
+    ATTRIBUTE placement_force OF \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ : SIGNAL IS "U(3,5,A)0";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ : bit;
+    ATTRIBUTE placement_force OF \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,A)1";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ : bit;
+    ATTRIBUTE placement_force OF \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(3,5,A)3";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \CAM_LINEREAD_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(3,5,B)0";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_1\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \CAM_LINEREAD_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(3,5,A)2";
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_5\ : bit;
+    SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_6\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_1\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_2\ : bit;
@@ -170,8 +145,33 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:control_7\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:runmode_enable\ : bit;
     ATTRIBUTE placement_force OF \STEERING_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(3,3,A)0";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \VIDEO_OUT_COMPARE:Net_1\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE soft OF \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,2,B)1";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capture_last\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:capture_last\ : SIGNAL IS "U(2,2,A)2";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_0\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_1\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_2\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_3\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_4\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_5\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_6\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_7\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(2,2,A)3";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(2,2,B)0";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:per_zero\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_2\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_3\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_tc\ : bit;
+    ATTRIBUTE placement_force OF \VIDEO_OUT_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL __ONE__ : bit;
     ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,3,B)3";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
@@ -182,19 +182,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
-    SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
+    SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.z0__sig\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:sT32:timerdp:u0.ff0__sig\ : bit;
@@ -255,7 +243,19 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE Location OF CAM_READ_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
+    SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
+    ATTRIBUTE Location OF CAM_LINECOUNTER_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF COM_SYNC_OUT_PIN(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF COM_SYNC_OUT_PIN(0) : LABEL IS "P4[2]";
     ATTRIBUTE lib_model OF COM_VID_IN_PIN(0) : LABEL IS "iocell2";
@@ -279,55 +279,35 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE lib_model OF VERT_SYNC_OUT_IN(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF VERT_SYNC_OUT_IN(0) : LABEL IS "P4[4]";
     ATTRIBUTE Location OF VSYNC_ISR : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:count_enable\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:status_0\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \CAM_COUNTER:CounterUDB:status_2\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:capture_last\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \CAM_LINE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \CAM_LINE_TIMER:TimerUDB:status_tc\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell1";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell8";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:status_0\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \CAM_LINEREAD_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF \CAM_LINEREAD_COUNTER:CounterUDB:status_2\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell4";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell2";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell5";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell3";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell6";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell4";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell7";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell5";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell16";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
@@ -343,24 +323,44 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell13";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell11";
     ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell8";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell6";
     ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell9";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell7";
     ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
     ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell12";
     ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell10";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell8";
     ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell11";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell9";
     ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(3,3)";
     ATTRIBUTE Location OF \VDAC8_1:viDAC8\ : LABEL IS "F(VIDAC,2)";
     ATTRIBUTE Location OF \VIDEO_OUT_COMPARE:ctComp\ : LABEL IS "F(Comparator,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:capture_last\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell10";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell11";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \VIDEO_OUT_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \VIDEO_OUT_TIMER:TimerUDB:status_tc\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell19";
     ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,3)";
     ATTRIBUTE Location OF read_camera_line_ISR : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
@@ -671,7 +671,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     END COMPONENT;
 BEGIN
 
-    CAM_READ_ISR:interrupt
+    CAM_LINECOUNTER_ISR:interrupt
         GENERIC MAP(
             int_type => "00")
         PORT MAP(
@@ -996,7 +996,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => Net_3206,
-            main_0 => \CAM_COUNTER:CounterUDB:cmp_out_i\,
+            main_0 => \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
             clock_0 => ClockBlock_BUS_CLK);
 
     Net_3712:macrocell
@@ -1295,32 +1295,32 @@ BEGIN
             interrupt => Net_4376,
             clock => ClockBlock_BUS_CLK);
 
-    \CAM_COUNTER:CounterUDB:count_enable\:macrocell
+    \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_2)")
         PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:count_enable\,
+            q => \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\,
             main_0 => Net_3213,
-            main_1 => \CAM_COUNTER:CounterUDB:control_7\,
-            main_2 => \CAM_COUNTER:CounterUDB:count_stored_i\);
+            main_1 => \CAM_LINEREAD_COUNTER:CounterUDB:control_7\,
+            main_2 => \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\);
 
-    \CAM_COUNTER:CounterUDB:count_stored_i\:macrocell
+    \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)")
         PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:count_stored_i\,
+            q => \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\,
             main_0 => Net_3213,
             clock_0 => ClockBlock_BUS_CLK);
 
-    \CAM_COUNTER:CounterUDB:overflow_reg_i\:macrocell
+    \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)")
         PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:overflow_reg_i\,
-            main_0 => \CAM_COUNTER:CounterUDB:per_equal\,
+            q => \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\,
+            main_0 => \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
             clock_0 => ClockBlock_BUS_CLK);
 
-    \CAM_COUNTER:CounterUDB:sC8:counterdp:u0\:datapathcell
+    \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:u0\:datapathcell
         GENERIC MAP(
             a0_init => "00000000",
             a1_init => "00000000",
@@ -1348,15 +1348,15 @@ BEGIN
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
             cs_addr_2 => __ONE__,
-            cs_addr_1 => \CAM_COUNTER:CounterUDB:count_enable\,
-            ce0_comb => \CAM_COUNTER:CounterUDB:per_equal\,
-            z0_comb => \CAM_COUNTER:CounterUDB:status_1\,
-            ce1_comb => \CAM_COUNTER:CounterUDB:cmp_out_i\,
-            f0_bus_stat_comb => \CAM_COUNTER:CounterUDB:status_6\,
-            f0_blk_stat_comb => \CAM_COUNTER:CounterUDB:status_5\,
+            cs_addr_1 => \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\,
+            ce0_comb => \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
+            z0_comb => \CAM_LINEREAD_COUNTER:CounterUDB:status_1\,
+            ce1_comb => \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
+            f0_bus_stat_comb => \CAM_LINEREAD_COUNTER:CounterUDB:status_6\,
+            f0_blk_stat_comb => \CAM_LINEREAD_COUNTER:CounterUDB:status_5\,
             busclk => ClockBlock_BUS_CLK);
 
-    \CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+    \CAM_LINEREAD_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "11111111",
             cy_ctrl_mode_1 => "00000000",
@@ -1365,236 +1365,46 @@ BEGIN
             cy_init_value => "00000000")
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            control_7 => \CAM_COUNTER:CounterUDB:control_7\,
-            control_6 => \CAM_COUNTER:CounterUDB:control_6\,
-            control_5 => \CAM_COUNTER:CounterUDB:control_5\,
-            control_4 => \CAM_COUNTER:CounterUDB:control_4\,
-            control_3 => \CAM_COUNTER:CounterUDB:control_3\,
-            control_2 => \CAM_COUNTER:CounterUDB:control_2\,
-            control_1 => \CAM_COUNTER:CounterUDB:control_1\,
-            control_0 => \CAM_COUNTER:CounterUDB:control_0\,
+            control_7 => \CAM_LINEREAD_COUNTER:CounterUDB:control_7\,
+            control_6 => \CAM_LINEREAD_COUNTER:CounterUDB:control_6\,
+            control_5 => \CAM_LINEREAD_COUNTER:CounterUDB:control_5\,
+            control_4 => \CAM_LINEREAD_COUNTER:CounterUDB:control_4\,
+            control_3 => \CAM_LINEREAD_COUNTER:CounterUDB:control_3\,
+            control_2 => \CAM_LINEREAD_COUNTER:CounterUDB:control_2\,
+            control_1 => \CAM_LINEREAD_COUNTER:CounterUDB:control_1\,
+            control_0 => \CAM_LINEREAD_COUNTER:CounterUDB:control_0\,
             busclk => ClockBlock_BUS_CLK);
 
-    \CAM_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\:statusicell
+    \CAM_LINEREAD_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\:statusicell
         GENERIC MAP(
             cy_force_order => 1,
             cy_int_mask => "1111111",
             cy_md_select => "0011111")
         PORT MAP(
             clock => ClockBlock_BUS_CLK,
-            status_6 => \CAM_COUNTER:CounterUDB:status_6\,
-            status_5 => \CAM_COUNTER:CounterUDB:status_5\,
+            status_6 => \CAM_LINEREAD_COUNTER:CounterUDB:status_6\,
+            status_5 => \CAM_LINEREAD_COUNTER:CounterUDB:status_5\,
             status_4 => open,
             status_3 => open,
-            status_2 => \CAM_COUNTER:CounterUDB:status_2\,
-            status_1 => \CAM_COUNTER:CounterUDB:status_1\,
-            status_0 => \CAM_COUNTER:CounterUDB:status_0\);
+            status_2 => \CAM_LINEREAD_COUNTER:CounterUDB:status_2\,
+            status_1 => \CAM_LINEREAD_COUNTER:CounterUDB:status_1\,
+            status_0 => \CAM_LINEREAD_COUNTER:CounterUDB:status_0\);
 
-    \CAM_COUNTER:CounterUDB:status_0\:macrocell
+    \CAM_LINEREAD_COUNTER:CounterUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_1 * main_0)")
         PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:status_0\,
-            main_0 => \CAM_COUNTER:CounterUDB:cmp_out_i\,
+            q => \CAM_LINEREAD_COUNTER:CounterUDB:status_0\,
+            main_0 => \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
             main_1 => Net_3206);
 
-    \CAM_COUNTER:CounterUDB:status_2\:macrocell
+    \CAM_LINEREAD_COUNTER:CounterUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)")
         PORT MAP(
-            q => \CAM_COUNTER:CounterUDB:status_2\,
-            main_0 => \CAM_COUNTER:CounterUDB:per_equal\,
-            main_1 => \CAM_COUNTER:CounterUDB:overflow_reg_i\);
-
-    \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\:macrocell
-        GENERIC MAP(
-            soft => 1,
-            eqn_main => "(!main_0 * main_1 * !main_2) + (main_0 * main_1 * main_2)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_0 => \VIDEO_OUT_COMPARE:Net_1\,
-            main_1 => \CAM_LINE_TIMER:TimerUDB:control_7\,
-            main_2 => \CAM_LINE_TIMER:TimerUDB:capture_last\);
-
-    \CAM_LINE_TIMER:TimerUDB:capt_int_temp\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * !main_4) + (!main_0 * main_1 * main_2 * !main_3 * main_4) + (main_0 * !main_1 * main_2 * main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:capt_int_temp\,
-            clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \CAM_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \CAM_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\);
-
-    \CAM_LINE_TIMER:TimerUDB:capture_last\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:capture_last\,
-            clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \VIDEO_OUT_COMPARE:Net_1\);
-
-    \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * !main_1 * main_3 * !main_4) + (!main_2)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\,
-            clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \CAM_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \CAM_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\);
-
-    \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * main_2 * main_3) + (main_0 * main_2 * main_4) + (!main_1 * main_2 * main_4) + (main_2 * main_3 * main_4)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            clock_0 => ClockBlock_BUS_CLK,
-            main_0 => \CAM_LINE_TIMER:TimerUDB:control_1\,
-            main_1 => \CAM_LINE_TIMER:TimerUDB:control_0\,
-            main_2 => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            main_3 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\,
-            main_4 => \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\);
-
-    \CAM_LINE_TIMER:TimerUDB:rstSts:stsreg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "1111111",
-            cy_md_select => "0000011")
-        PORT MAP(
-            clock => ClockBlock_BUS_CLK,
-            status_6 => open,
-            status_5 => open,
-            status_4 => open,
-            status_3 => \CAM_LINE_TIMER:TimerUDB:status_3\,
-            status_2 => \CAM_LINE_TIMER:TimerUDB:status_2\,
-            status_1 => \CAM_LINE_TIMER:TimerUDB:capt_int_temp\,
-            status_0 => \CAM_LINE_TIMER:TimerUDB:status_tc\,
-            interrupt => Net_4949);
-
-    \CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "11111111",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000")
-        PORT MAP(
-            clock => ClockBlock_BUS_CLK,
-            control_7 => \CAM_LINE_TIMER:TimerUDB:control_7\,
-            control_6 => \CAM_LINE_TIMER:TimerUDB:control_6\,
-            control_5 => \CAM_LINE_TIMER:TimerUDB:control_5\,
-            control_4 => \CAM_LINE_TIMER:TimerUDB:control_4\,
-            control_3 => \CAM_LINE_TIMER:TimerUDB:control_3\,
-            control_2 => \CAM_LINE_TIMER:TimerUDB:control_2\,
-            control_1 => \CAM_LINE_TIMER:TimerUDB:control_1\,
-            control_0 => \CAM_LINE_TIMER:TimerUDB:control_0\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0')
-        PORT MAP(
-            clock => ClockBlock_BUS_CLK,
-            cs_addr_1 => \CAM_LINE_TIMER:TimerUDB:control_7\,
-            cs_addr_0 => \CAM_LINE_TIMER:TimerUDB:per_zero\,
-            f0_load => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            busclk => ClockBlock_BUS_CLK,
-            ce0 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
-            cl0 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
-            z0 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
-            ff0 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
-            ce1 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
-            cl1 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
-            z1 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
-            ff1 => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
-            co_msb => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
-            sol_msb => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
-            cfbo => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
-            sil => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
-            cmsbi => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
-
-    \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0')
-        PORT MAP(
-            clock => ClockBlock_BUS_CLK,
-            cs_addr_1 => \CAM_LINE_TIMER:TimerUDB:control_7\,
-            cs_addr_0 => \CAM_LINE_TIMER:TimerUDB:per_zero\,
-            f0_load => \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-            z0_comb => \CAM_LINE_TIMER:TimerUDB:per_zero\,
-            f0_bus_stat_comb => \CAM_LINE_TIMER:TimerUDB:status_3\,
-            f0_blk_stat_comb => \CAM_LINE_TIMER:TimerUDB:status_2\,
-            busclk => ClockBlock_BUS_CLK,
-            ce0i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
-            cl0i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
-            z0i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
-            ff0i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
-            ce1i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
-            cl1i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
-            z1i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
-            ff1i => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
-            ci => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
-            sir => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
-            cfbi => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
-            sor => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
-            cmsbo => \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
-
-    \CAM_LINE_TIMER:TimerUDB:status_tc\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1)")
-        PORT MAP(
-            q => \CAM_LINE_TIMER:TimerUDB:status_tc\,
-            main_0 => \CAM_LINE_TIMER:TimerUDB:control_7\,
-            main_1 => \CAM_LINE_TIMER:TimerUDB:per_zero\);
+            q => \CAM_LINEREAD_COUNTER:CounterUDB:status_2\,
+            main_0 => \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
+            main_1 => \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\);
 
     \HE_TIMER:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(
@@ -2296,6 +2106,196 @@ BEGIN
         PORT MAP(
             clock => \ClockBlock.aclk_glb_ff_0__sig\,
             out => \VIDEO_OUT_COMPARE:Net_1\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\:macrocell
+        GENERIC MAP(
+            soft => 1,
+            eqn_main => "(!main_0 * main_1 * !main_2) + (main_0 * main_1 * main_2)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            main_0 => \VIDEO_OUT_COMPARE:Net_1\,
+            main_1 => \VIDEO_OUT_TIMER:TimerUDB:control_7\,
+            main_2 => \VIDEO_OUT_TIMER:TimerUDB:capture_last\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * !main_4) + (!main_0 * main_1 * main_2 * !main_3 * main_4) + (main_0 * !main_1 * main_2 * main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \VIDEO_OUT_TIMER:TimerUDB:control_1\,
+            main_1 => \VIDEO_OUT_TIMER:TimerUDB:control_0\,
+            main_2 => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:capture_last\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:capture_last\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \VIDEO_OUT_COMPARE:Net_1\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * !main_1 * main_3 * !main_4) + (!main_2)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \VIDEO_OUT_TIMER:TimerUDB:control_1\,
+            main_1 => \VIDEO_OUT_TIMER:TimerUDB:control_0\,
+            main_2 => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1 * main_2 * main_3) + (main_0 * main_2 * main_4) + (!main_1 * main_2 * main_4) + (main_2 * main_3 * main_4)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \VIDEO_OUT_TIMER:TimerUDB:control_1\,
+            main_1 => \VIDEO_OUT_TIMER:TimerUDB:control_0\,
+            main_2 => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:rstSts:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0000011")
+        PORT MAP(
+            clock => ClockBlock_BUS_CLK,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => \VIDEO_OUT_TIMER:TimerUDB:status_3\,
+            status_2 => \VIDEO_OUT_TIMER:TimerUDB:status_2\,
+            status_1 => \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\,
+            status_0 => \VIDEO_OUT_TIMER:TimerUDB:status_tc\,
+            interrupt => Net_4949);
+
+    \VIDEO_OUT_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            clock => ClockBlock_BUS_CLK,
+            control_7 => \VIDEO_OUT_TIMER:TimerUDB:control_7\,
+            control_6 => \VIDEO_OUT_TIMER:TimerUDB:control_6\,
+            control_5 => \VIDEO_OUT_TIMER:TimerUDB:control_5\,
+            control_4 => \VIDEO_OUT_TIMER:TimerUDB:control_4\,
+            control_3 => \VIDEO_OUT_TIMER:TimerUDB:control_3\,
+            control_2 => \VIDEO_OUT_TIMER:TimerUDB:control_2\,
+            control_1 => \VIDEO_OUT_TIMER:TimerUDB:control_1\,
+            control_0 => \VIDEO_OUT_TIMER:TimerUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => ClockBlock_BUS_CLK,
+            cs_addr_1 => \VIDEO_OUT_TIMER:TimerUDB:control_7\,
+            cs_addr_0 => \VIDEO_OUT_TIMER:TimerUDB:per_zero\,
+            f0_load => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            busclk => ClockBlock_BUS_CLK,
+            ce0 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1 => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            co_msb => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sol_msb => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbo => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sil => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbi => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => ClockBlock_BUS_CLK,
+            cs_addr_1 => \VIDEO_OUT_TIMER:TimerUDB:control_7\,
+            cs_addr_0 => \VIDEO_OUT_TIMER:TimerUDB:per_zero\,
+            f0_load => \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+            z0_comb => \VIDEO_OUT_TIMER:TimerUDB:per_zero\,
+            f0_bus_stat_comb => \VIDEO_OUT_TIMER:TimerUDB:status_3\,
+            f0_blk_stat_comb => \VIDEO_OUT_TIMER:TimerUDB:status_2\,
+            busclk => ClockBlock_BUS_CLK,
+            ce0i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1i => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            ci => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sir => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbi => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sor => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbo => \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+
+    \VIDEO_OUT_TIMER:TimerUDB:status_tc\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)")
+        PORT MAP(
+            q => \VIDEO_OUT_TIMER:TimerUDB:status_tc\,
+            main_0 => \VIDEO_OUT_TIMER:TimerUDB:control_7\,
+            main_1 => \VIDEO_OUT_TIMER:TimerUDB:per_zero\);
 
     __ONE__:macrocell
         GENERIC MAP(

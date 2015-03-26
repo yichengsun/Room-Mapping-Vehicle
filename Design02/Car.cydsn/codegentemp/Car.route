@@ -14,7 +14,7 @@ net Net_3213
 	switch ":udb@[UDB=(3,5)]:pld0:input_permute.mc1_main_0==>:udb@[UDB=(3,5)]:pld0:mc1.main_0"
 	term   ":udb@[UDB=(3,5)]:pld0:mc1.main_0"
 end Net_3213
-net \CAM_COUNTER:CounterUDB:count_enable\
+net \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\
 	term   ":udb@[UDB=(3,5)]:pld0:mc0.q"
 	switch ":udb@[UDB=(3,5)]:pld0:mc0.q==>:udb@[UDB=(3,5)]:pld0:output_permute3.q_0"
 	switch ":udb@[UDB=(3,5)]:pld0:output_permute3.output_3==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v31"
@@ -25,8 +25,8 @@ net \CAM_COUNTER:CounterUDB:count_enable\
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v65==>:udb@[UDB=(3,5)]:dp_wrapper:input_permute.ina_0"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:input_permute.cs_addr_1==>:udb@[UDB=(3,5)]:dp_wrapper:datapath.cs_addr_1"
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.cs_addr_1"
-end \CAM_COUNTER:CounterUDB:count_enable\
-net \CAM_LINE_TIMER:TimerUDB:per_zero\
+end \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\
+net \VIDEO_OUT_TIMER:TimerUDB:per_zero\
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.z0_comb"
 	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.z0_comb==>:udb@[UDB=(2,2)]:dp_wrapper:output_permute.z0_comb"
 	switch ":udb@[UDB=(2,2)]:dp_wrapper:output_permute.outs_5==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v86"
@@ -48,18 +48,18 @@ net \CAM_LINE_TIMER:TimerUDB:per_zero\
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v6==>:udb@[UDB=(2,2)]:pld0:input_permute.input_3"
 	switch ":udb@[UDB=(2,2)]:pld0:input_permute.mc0_main_1==>:udb@[UDB=(2,2)]:pld0:mc0.main_1"
 	term   ":udb@[UDB=(2,2)]:pld0:mc0.main_1"
-end \CAM_LINE_TIMER:TimerUDB:per_zero\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\
+end \VIDEO_OUT_TIMER:TimerUDB:per_zero\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\
 	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z0"
 	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.z0i"
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.z0i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z0__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\
 	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.co_msb"
 	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.co_msb==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ci"
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ci"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\
-net \CAM_COUNTER:CounterUDB:control_7\
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.co_msb__sig\
+net \CAM_LINEREAD_COUNTER:CounterUDB:control_7\
 	term   ":udb@[UDB=(3,5)]:controlcell.control_7"
 	switch ":udb@[UDB=(3,5)]:controlcell.control_7==>:udb@[UDB=(3,5)]:controlcell_control_7_permute.in_0"
 	switch ":udb@[UDB=(3,5)]:controlcell_control_7_permute.controlcell_control_7==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v119"
@@ -70,8 +70,8 @@ net \CAM_COUNTER:CounterUDB:control_7\
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v23==>:udb@[UDB=(3,5)]:pld0:input_permute.input_11"
 	switch ":udb@[UDB=(3,5)]:pld0:input_permute.mc0_main_1==>:udb@[UDB=(3,5)]:pld0:mc0.main_1"
 	term   ":udb@[UDB=(3,5)]:pld0:mc0.main_1"
-end \CAM_COUNTER:CounterUDB:control_7\
-net \CAM_COUNTER:CounterUDB:count_stored_i\
+end \CAM_LINEREAD_COUNTER:CounterUDB:control_7\
+net \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\
 	term   ":udb@[UDB=(3,5)]:pld0:mc1.q"
 	switch ":udb@[UDB=(3,5)]:pld0:mc1.q==>:udb@[UDB=(3,5)]:pld0:output_permute1.q_1"
 	switch ":udb@[UDB=(3,5)]:pld0:output_permute1.output_1==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v27"
@@ -82,8 +82,8 @@ net \CAM_COUNTER:CounterUDB:count_stored_i\
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v11==>:udb@[UDB=(3,5)]:pld0:input_permute.input_5"
 	switch ":udb@[UDB=(3,5)]:pld0:input_permute.mc0_main_2==>:udb@[UDB=(3,5)]:pld0:mc0.main_2"
 	term   ":udb@[UDB=(3,5)]:pld0:mc0.main_2"
-end \CAM_COUNTER:CounterUDB:count_stored_i\
-net \CAM_LINE_TIMER:TimerUDB:control_7\
+end \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\
+net \VIDEO_OUT_TIMER:TimerUDB:control_7\
 	term   ":udb@[UDB=(2,2)]:controlcell.control_7"
 	switch ":udb@[UDB=(2,2)]:controlcell.control_7==>:udb@[UDB=(2,2)]:controlcell_control_7_permute.in_0"
 	switch ":udb@[UDB=(2,2)]:controlcell_control_7_permute.controlcell_control_7==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v118"
@@ -107,8 +107,8 @@ net \CAM_LINE_TIMER:TimerUDB:control_7\
 	term   ":udb@[UDB=(2,2)]:pld0:mc1.main_1"
 	switch ":udb@[UDB=(2,2)]:pld0:input_permute.mc0_main_0==>:udb@[UDB=(2,2)]:pld0:mc0.main_0"
 	term   ":udb@[UDB=(2,2)]:pld0:mc0.main_0"
-end \CAM_LINE_TIMER:TimerUDB:control_7\
-net \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\
+end \VIDEO_OUT_TIMER:TimerUDB:control_7\
+net \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\
 	term   ":udb@[UDB=(2,2)]:pld0:mc1.q"
 	switch ":udb@[UDB=(2,2)]:pld0:mc1.q==>:udb@[UDB=(2,2)]:pld0:output_permute2.q_1"
 	switch ":udb@[UDB=(2,2)]:pld0:output_permute2.output_2==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v28"
@@ -137,7 +137,7 @@ net \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v66==>:udb@[UDB=(2,2)]:dp_wrapper:input_permute.ina_1"
 	switch ":udb@[UDB=(2,2)]:dp_wrapper:input_permute.f0_load==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_load"
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_load"
-end \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\
+end \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\
 net \VIDEO_OUT_COMPARE:Net_1\
 	term   ":comparatorcell_2.out"
 	switch ":comparatorcell_2.out==>Stub-:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v6"
@@ -219,7 +219,7 @@ net \HE_TIMER:TimerUDB:sT32:timerdp:u2.co_msb__sig\
 	switch ":udb@[UDB=(3,1)]:dp_wrapper:datapath.co_msb==>:udb@[UDB=(2,1)]:dp_wrapper:datapath.ci"
 	term   ":udb@[UDB=(2,1)]:dp_wrapper:datapath.ci"
 end \HE_TIMER:TimerUDB:sT32:timerdp:u2.co_msb__sig\
-net \CAM_LINE_TIMER:TimerUDB:status_tc\
+net \VIDEO_OUT_TIMER:TimerUDB:status_tc\
 	term   ":udb@[UDB=(2,2)]:pld0:mc0.q"
 	switch ":udb@[UDB=(2,2)]:pld0:mc0.q==>:udb@[UDB=(2,2)]:pld0:output_permute0.q_0"
 	switch ":udb@[UDB=(2,2)]:pld0:output_permute0.output_0==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v24"
@@ -229,8 +229,8 @@ net \CAM_LINE_TIMER:TimerUDB:status_tc\
 	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v88"
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v88==>:udb@[UDB=(2,2)]:statusicell.status_0"
 	term   ":udb@[UDB=(2,2)]:statusicell.status_0"
-end \CAM_LINE_TIMER:TimerUDB:status_tc\
-net \CAM_COUNTER:CounterUDB:per_equal\
+end \VIDEO_OUT_TIMER:TimerUDB:status_tc\
+net \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.ce0_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:datapath.ce0_comb==>:udb@[UDB=(3,5)]:dp_wrapper:output_permute.ce0_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:output_permute.outs_1==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v79"
@@ -243,8 +243,8 @@ net \CAM_COUNTER:CounterUDB:per_equal\
 	term   ":udb@[UDB=(3,5)]:pld0:mc2.main_0"
 	switch ":udb@[UDB=(3,5)]:pld0:input_permute.mc3_main_0==>:udb@[UDB=(3,5)]:pld0:mc3.main_0"
 	term   ":udb@[UDB=(3,5)]:pld0:mc3.main_0"
-end \CAM_COUNTER:CounterUDB:per_equal\
-net \CAM_COUNTER:CounterUDB:status_2\
+end \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\
+net \CAM_LINEREAD_COUNTER:CounterUDB:status_2\
 	term   ":udb@[UDB=(3,5)]:pld0:mc2.q"
 	switch ":udb@[UDB=(3,5)]:pld0:mc2.q==>:udb@[UDB=(3,5)]:pld0:output_permute2.q_2"
 	switch ":udb@[UDB=(3,5)]:pld0:output_permute2.output_2==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v29"
@@ -254,8 +254,8 @@ net \CAM_COUNTER:CounterUDB:status_2\
 	switch "IStub-:udbswitch@[UDB=(2,5)][side=top]:v93"
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v93==>:udb@[UDB=(3,5)]:statusicell.status_2"
 	term   ":udb@[UDB=(3,5)]:statusicell.status_2"
-end \CAM_COUNTER:CounterUDB:status_2\
-net \CAM_COUNTER:CounterUDB:cmp_out_i\
+end \CAM_LINEREAD_COUNTER:CounterUDB:status_2\
+net \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.ce1_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:datapath.ce1_comb==>:udb@[UDB=(3,5)]:dp_wrapper:output_permute.ce1_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:output_permute.outs_5==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v87"
@@ -268,8 +268,8 @@ net \CAM_COUNTER:CounterUDB:cmp_out_i\
 	term   ":udb@[UDB=(3,5)]:pld1:mc0.main_0"
 	switch ":udb@[UDB=(3,5)]:pld1:input_permute.mc1_main_0==>:udb@[UDB=(3,5)]:pld1:mc1.main_0"
 	term   ":udb@[UDB=(3,5)]:pld1:mc1.main_0"
-end \CAM_COUNTER:CounterUDB:cmp_out_i\
-net \CAM_COUNTER:CounterUDB:status_0\
+end \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\
+net \CAM_LINEREAD_COUNTER:CounterUDB:status_0\
 	term   ":udb@[UDB=(3,5)]:pld1:mc0.q"
 	switch ":udb@[UDB=(3,5)]:pld1:mc0.q==>:udb@[UDB=(3,5)]:pld1:output_permute3.q_0"
 	switch ":udb@[UDB=(3,5)]:pld1:output_permute3.output_3==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v33"
@@ -279,8 +279,8 @@ net \CAM_COUNTER:CounterUDB:status_0\
 	switch "IStub-:udbswitch@[UDB=(2,5)][side=top]:v89"
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v89==>:udb@[UDB=(3,5)]:statusicell.status_0"
 	term   ":udb@[UDB=(3,5)]:statusicell.status_0"
-end \CAM_COUNTER:CounterUDB:status_0\
-net \CAM_LINE_TIMER:TimerUDB:capture_last\
+end \CAM_LINEREAD_COUNTER:CounterUDB:status_0\
+net \VIDEO_OUT_TIMER:TimerUDB:capture_last\
 	term   ":udb@[UDB=(2,2)]:pld0:mc2.q"
 	switch ":udb@[UDB=(2,2)]:pld0:mc2.q==>:udb@[UDB=(2,2)]:pld0:output_permute3.q_2"
 	switch ":udb@[UDB=(2,2)]:pld0:output_permute3.output_3==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v30"
@@ -291,7 +291,7 @@ net \CAM_LINE_TIMER:TimerUDB:capture_last\
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v0==>:udb@[UDB=(2,2)]:pld0:input_permute.input_0"
 	switch ":udb@[UDB=(2,2)]:pld0:input_permute.mc1_main_2==>:udb@[UDB=(2,2)]:pld0:mc1.main_2"
 	term   ":udb@[UDB=(2,2)]:pld0:mc1.main_2"
-end \CAM_LINE_TIMER:TimerUDB:capture_last\
+end \VIDEO_OUT_TIMER:TimerUDB:capture_last\
 net \HE_TIMER:TimerUDB:control_7\
 	term   ":udb@[UDB=(3,0)]:controlcell.control_7"
 	switch ":udb@[UDB=(3,0)]:controlcell.control_7==>:udb@[UDB=(3,0)]:controlcell_control_7_permute.in_0"
@@ -346,7 +346,7 @@ net Net_3206
 	switch ":interrupt_idmux_0.interrupt_idmux_0__out==>:interrupt_0.interrupt"
 	term   ":interrupt_0.interrupt"
 end Net_3206
-net \CAM_COUNTER:CounterUDB:overflow_reg_i\
+net \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\
 	term   ":udb@[UDB=(3,5)]:pld0:mc3.q"
 	switch ":udb@[UDB=(3,5)]:pld0:mc3.q==>:udb@[UDB=(3,5)]:pld0:output_permute0.q_3"
 	switch ":udb@[UDB=(3,5)]:pld0:output_permute0.output_0==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v25"
@@ -357,8 +357,8 @@ net \CAM_COUNTER:CounterUDB:overflow_reg_i\
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v7==>:udb@[UDB=(3,5)]:pld0:input_permute.input_3"
 	switch ":udb@[UDB=(3,5)]:pld0:input_permute.mc2_main_1==>:udb@[UDB=(3,5)]:pld0:mc2.main_1"
 	term   ":udb@[UDB=(3,5)]:pld0:mc2.main_1"
-end \CAM_COUNTER:CounterUDB:overflow_reg_i\
-net \CAM_COUNTER:CounterUDB:status_1\
+end \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\
+net \CAM_LINEREAD_COUNTER:CounterUDB:status_1\
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.z0_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:datapath.z0_comb==>:udb@[UDB=(3,5)]:dp_wrapper:output_permute.z0_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:output_permute.outs_3==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v83"
@@ -370,7 +370,7 @@ net \CAM_COUNTER:CounterUDB:status_1\
 	switch "IStub-:udbswitch@[UDB=(2,5)][side=top]:v91"
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v91==>:udb@[UDB=(3,5)]:statusicell.status_1"
 	term   ":udb@[UDB=(3,5)]:statusicell.status_1"
-end \CAM_COUNTER:CounterUDB:status_1\
+end \CAM_LINEREAD_COUNTER:CounterUDB:status_1\
 net \HE_TIMER:TimerUDB:status_tc\
 	term   ":udb@[UDB=(2,1)]:pld0:mc0.q"
 	switch ":udb@[UDB=(2,1)]:pld0:mc0.q==>:udb@[UDB=(2,1)]:pld0:output_permute3.q_0"
@@ -382,7 +382,7 @@ net \HE_TIMER:TimerUDB:status_tc\
 	switch "Stub-:udbswitch@[UDB=(2,1)][side=top]:v88==>:udb@[UDB=(2,1)]:statusicell.status_0"
 	term   ":udb@[UDB=(2,1)]:statusicell.status_0"
 end \HE_TIMER:TimerUDB:status_tc\
-net \CAM_LINE_TIMER:TimerUDB:control_0\
+net \VIDEO_OUT_TIMER:TimerUDB:control_0\
 	term   ":udb@[UDB=(2,2)]:controlcell.control_0"
 	switch ":udb@[UDB=(2,2)]:controlcell.control_0==>:udb@[UDB=(2,2)]:controlcell_control_0_permute.in_0"
 	switch ":udb@[UDB=(2,2)]:controlcell_control_0_permute.controlcell_control_0==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v104"
@@ -401,8 +401,8 @@ net \CAM_LINE_TIMER:TimerUDB:control_0\
 	term   ":udb@[UDB=(2,2)]:pld1:mc1.main_1"
 	switch ":udb@[UDB=(2,2)]:pld1:input_permute.mc0_main_1==>:udb@[UDB=(2,2)]:pld1:mc0.main_1"
 	term   ":udb@[UDB=(2,2)]:pld1:mc0.main_1"
-end \CAM_LINE_TIMER:TimerUDB:control_0\
-net \CAM_LINE_TIMER:TimerUDB:control_1\
+end \VIDEO_OUT_TIMER:TimerUDB:control_0\
+net \VIDEO_OUT_TIMER:TimerUDB:control_1\
 	term   ":udb@[UDB=(2,2)]:controlcell.control_1"
 	switch ":udb@[UDB=(2,2)]:controlcell.control_1==>:udb@[UDB=(2,2)]:controlcell_control_1_permute.in_0"
 	switch ":udb@[UDB=(2,2)]:controlcell_control_1_permute.controlcell_control_1==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v106"
@@ -421,8 +421,8 @@ net \CAM_LINE_TIMER:TimerUDB:control_1\
 	term   ":udb@[UDB=(2,2)]:pld0:mc3.main_0"
 	switch ":udb@[UDB=(2,2)]:pld1:input_permute.mc0_main_0==>:udb@[UDB=(2,2)]:pld1:mc0.main_0"
 	term   ":udb@[UDB=(2,2)]:pld1:mc0.main_0"
-end \CAM_LINE_TIMER:TimerUDB:control_1\
-net \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\
+end \VIDEO_OUT_TIMER:TimerUDB:control_1\
+net \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\
 	term   ":udb@[UDB=(2,2)]:pld0:mc3.q"
 	switch ":udb@[UDB=(2,2)]:pld0:mc3.q==>:udb@[UDB=(2,2)]:pld0:output_permute1.q_3"
 	switch ":udb@[UDB=(2,2)]:pld0:output_permute1.output_1==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v26"
@@ -440,8 +440,8 @@ net \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v4==>:udb@[UDB=(2,2)]:pld0:input_permute.input_2"
 	switch ":udb@[UDB=(2,2)]:pld0:input_permute.mc3_main_4==>:udb@[UDB=(2,2)]:pld0:mc3.main_4"
 	term   ":udb@[UDB=(2,2)]:pld0:mc3.main_4"
-end \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\
-net \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\
+end \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\
+net \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\
 	term   ":udb@[UDB=(2,2)]:pld1:mc0.q"
 	switch ":udb@[UDB=(2,2)]:pld1:mc0.q==>:udb@[UDB=(2,2)]:pld1:output_permute3.q_0"
 	switch ":udb@[UDB=(2,2)]:pld1:output_permute3.output_3==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v32"
@@ -459,8 +459,8 @@ net \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\
 	term   ":udb@[UDB=(2,2)]:pld1:mc1.main_3"
 	switch ":udb@[UDB=(2,2)]:pld1:input_permute.mc0_main_3==>:udb@[UDB=(2,2)]:pld1:mc0.main_3"
 	term   ":udb@[UDB=(2,2)]:pld1:mc0.main_3"
-end \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\
-net \CAM_LINE_TIMER:TimerUDB:capt_int_temp\
+end \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\
+net \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\
 	term   ":udb@[UDB=(2,2)]:pld1:mc1.q"
 	switch ":udb@[UDB=(2,2)]:pld1:mc1.q==>:udb@[UDB=(2,2)]:pld1:output_permute2.q_1"
 	switch ":udb@[UDB=(2,2)]:pld1:output_permute2.output_2==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v34"
@@ -470,7 +470,7 @@ net \CAM_LINE_TIMER:TimerUDB:capt_int_temp\
 	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v90"
 	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v90==>:udb@[UDB=(2,2)]:statusicell.status_1"
 	term   ":udb@[UDB=(2,2)]:statusicell.status_1"
-end \CAM_LINE_TIMER:TimerUDB:capt_int_temp\
+end \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\
 net \STEERING_PWM:PWMUDB:tc_i\
 	term   ":udb@[UDB=(3,3)]:dp_wrapper:datapath.z0_comb"
 	switch ":udb@[UDB=(3,3)]:dp_wrapper:datapath.z0_comb==>:udb@[UDB=(3,3)]:dp_wrapper:output_permute.z0_comb"
@@ -657,6 +657,28 @@ net ClockBlock_BUS_CLK
 	term   ":udb@[UDB=(3,5)]:controlcell.busclk"
 	switch ":udb@[UDB=(3,5)]:clockreset:clk_sc_mux.sc_clk==>:udb@[UDB=(3,5)]:statusicell.clock"
 	term   ":udb@[UDB=(3,5)]:statusicell.clock"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,0)]:controlcell.busclk"
+	term   ":udb@[UDB=(3,0)]:controlcell.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,0)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(2,0)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,0)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(3,0)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,1)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(3,1)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,1)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(2,1)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,4)]:controlcell.busclk"
+	term   ":udb@[UDB=(3,4)]:controlcell.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,4)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(3,4)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,4)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(2,4)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,3)]:controlcell.busclk"
+	term   ":udb@[UDB=(3,3)]:controlcell.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,3)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(2,3)]:dp_wrapper:datapath.busclk"
+	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,3)]:dp_wrapper:datapath.busclk"
+	term   ":udb@[UDB=(3,3)]:dp_wrapper:datapath.busclk"
 	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,2)]:clockreset:clk_pld1_mux.in_9"
 	switch ":udb@[UDB=(2,2)]:clockreset:clk_pld1_mux.pld1_clk==>:udb@[UDB=(2,2)]:pld1:mc1.clock_0"
 	term   ":udb@[UDB=(2,2)]:pld1:mc1.clock_0"
@@ -684,28 +706,6 @@ net ClockBlock_BUS_CLK
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.clock"
 	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.busclk"
 	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,0)]:controlcell.busclk"
-	term   ":udb@[UDB=(3,0)]:controlcell.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,0)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(2,0)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,0)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(3,0)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,1)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(3,1)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,1)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(2,1)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,4)]:controlcell.busclk"
-	term   ":udb@[UDB=(3,4)]:controlcell.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,4)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(3,4)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,4)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(2,4)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,3)]:controlcell.busclk"
-	term   ":udb@[UDB=(3,3)]:controlcell.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(2,3)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(2,3)]:dp_wrapper:datapath.busclk"
-	switch ":clockblockcell.clk_bus_glb==>:udb@[UDB=(3,3)]:dp_wrapper:datapath.busclk"
-	term   ":udb@[UDB=(3,3)]:dp_wrapper:datapath.busclk"
 	switch ":clockblockcell.clk_bus_glb==>:interrupt_3.clock"
 	term   ":interrupt_3.clock"
 end ClockBlock_BUS_CLK
@@ -855,7 +855,7 @@ net Net_4949
 	switch ":interrupt_idmux_3.interrupt_idmux_3__out==>:interrupt_3.interrupt"
 	term   ":interrupt_3.interrupt"
 end Net_4949
-net \CAM_COUNTER:CounterUDB:status_5\
+net \CAM_LINEREAD_COUNTER:CounterUDB:status_5\
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.f0_blk_stat_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:datapath.f0_blk_stat_comb==>:udb@[UDB=(3,5)]:dp_wrapper:output_permute.f0_blk_stat_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:output_permute.outs_0==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v77"
@@ -865,8 +865,8 @@ net \CAM_COUNTER:CounterUDB:status_5\
 	switch "IStub-:udbswitch@[UDB=(2,5)][side=top]:v99"
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v99==>:udb@[UDB=(3,5)]:statusicell.status_5"
 	term   ":udb@[UDB=(3,5)]:statusicell.status_5"
-end \CAM_COUNTER:CounterUDB:status_5\
-net \CAM_COUNTER:CounterUDB:status_6\
+end \CAM_LINEREAD_COUNTER:CounterUDB:status_5\
+net \CAM_LINEREAD_COUNTER:CounterUDB:status_6\
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.f0_bus_stat_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:datapath.f0_bus_stat_comb==>:udb@[UDB=(3,5)]:dp_wrapper:output_permute.f0_bus_stat_comb"
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:output_permute.outs_4==>Stub-:udbswitch@[UDB=(2,5)][side=top]:v85"
@@ -876,34 +876,7 @@ net \CAM_COUNTER:CounterUDB:status_6\
 	switch "IStub-:udbswitch@[UDB=(2,5)][side=top]:v101"
 	switch "Stub-:udbswitch@[UDB=(2,5)][side=top]:v101==>:udb@[UDB=(3,5)]:statusicell.status_6"
 	term   ":udb@[UDB=(3,5)]:statusicell.status_6"
-end \CAM_COUNTER:CounterUDB:status_6\
-net \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\
-	term   ":udb@[UDB=(2,0)]:dp_wrapper:datapath.ce0"
-	switch ":udb@[UDB=(2,0)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0i"
-	term   ":udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0i"
-end \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\
-net \CAM_LINE_TIMER:TimerUDB:status_2\
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_blk_stat_comb"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_blk_stat_comb==>:udb@[UDB=(2,2)]:dp_wrapper:output_permute.f0_blk_stat_comb"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:output_permute.outs_0==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v76"
-	switch "OStub-:udbswitch@[UDB=(2,2)][side=top]:v76"
-	switch ":udbswitch@[UDB=(2,2)][side=top]:76,31"
-	switch ":udbswitch@[UDB=(2,2)][side=top]:92,31_f"
-	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v92"
-	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v92==>:udb@[UDB=(2,2)]:statusicell.status_2"
-	term   ":udb@[UDB=(2,2)]:statusicell.status_2"
-end \CAM_LINE_TIMER:TimerUDB:status_2\
-net \CAM_LINE_TIMER:TimerUDB:status_3\
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_bus_stat_comb"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_bus_stat_comb==>:udb@[UDB=(2,2)]:dp_wrapper:output_permute.f0_bus_stat_comb"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:output_permute.outs_1==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v78"
-	switch "OStub-:udbswitch@[UDB=(2,2)][side=top]:v78"
-	switch ":udbswitch@[UDB=(2,2)][side=top]:78,25"
-	switch ":udbswitch@[UDB=(2,2)][side=top]:94,25_f"
-	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v94"
-	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v94==>:udb@[UDB=(2,2)]:statusicell.status_3"
-	term   ":udb@[UDB=(2,2)]:statusicell.status_3"
-end \CAM_LINE_TIMER:TimerUDB:status_3\
+end \CAM_LINEREAD_COUNTER:CounterUDB:status_6\
 net \HE_TIMER:TimerUDB:sT32:timerdp:u1.ce0__sig\
 	term   ":udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0"
 	switch ":udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(3,1)]:dp_wrapper:datapath.ce0i"
@@ -946,6 +919,33 @@ net \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\
 	switch ":udb@[UDB=(2,3)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(3,3)]:dp_wrapper:datapath.ce0i"
 	term   ":udb@[UDB=(3,3)]:dp_wrapper:datapath.ce0i"
 end \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce0"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ce0i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ce0i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:status_2\
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_blk_stat_comb"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_blk_stat_comb==>:udb@[UDB=(2,2)]:dp_wrapper:output_permute.f0_blk_stat_comb"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:output_permute.outs_0==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v76"
+	switch "OStub-:udbswitch@[UDB=(2,2)][side=top]:v76"
+	switch ":udbswitch@[UDB=(2,2)][side=top]:76,31"
+	switch ":udbswitch@[UDB=(2,2)][side=top]:92,31_f"
+	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v92"
+	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v92==>:udb@[UDB=(2,2)]:statusicell.status_2"
+	term   ":udb@[UDB=(2,2)]:statusicell.status_2"
+end \VIDEO_OUT_TIMER:TimerUDB:status_2\
+net \VIDEO_OUT_TIMER:TimerUDB:status_3\
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_bus_stat_comb"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.f0_bus_stat_comb==>:udb@[UDB=(2,2)]:dp_wrapper:output_permute.f0_bus_stat_comb"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:output_permute.outs_1==>Stub-:udbswitch@[UDB=(2,2)][side=top]:v78"
+	switch "OStub-:udbswitch@[UDB=(2,2)][side=top]:v78"
+	switch ":udbswitch@[UDB=(2,2)][side=top]:78,25"
+	switch ":udbswitch@[UDB=(2,2)][side=top]:94,25_f"
+	switch "IStub-:udbswitch@[UDB=(2,2)][side=top]:v94"
+	switch "Stub-:udbswitch@[UDB=(2,2)][side=top]:v94==>:udb@[UDB=(2,2)]:statusicell.status_3"
+	term   ":udb@[UDB=(2,2)]:statusicell.status_3"
+end \VIDEO_OUT_TIMER:TimerUDB:status_3\
 net __ONE__
 	term   ":udb@[UDB=(2,3)]:pld1:mc3.q"
 	switch ":udb@[UDB=(2,3)]:pld1:mc3.q==>:udb@[UDB=(2,3)]:pld1:output_permute3.q_3"
@@ -960,61 +960,11 @@ net __ONE__
 	switch ":udb@[UDB=(3,5)]:dp_wrapper:input_permute.cs_addr_2==>:udb@[UDB=(3,5)]:dp_wrapper:datapath.cs_addr_2"
 	term   ":udb@[UDB=(3,5)]:dp_wrapper:datapath.cs_addr_2"
 end __ONE__
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce0"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ce0i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ce0i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl0"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cl0i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cl0i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff0"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ff0i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ff0i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce1"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ce1i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ce1i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl1"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cl1i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cl1i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z1"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.z1i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.z1i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff1"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ff1i"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ff1i"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sol_msb"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sol_msb==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.sir"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sir"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cfbo"
-	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cfbo==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cfbi"
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cfbi"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sor"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sor==>:udb@[UDB=(3,2)]:dp_wrapper:datapath.sil"
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sil"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\
-net \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\
-	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cmsbo"
-	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cmsbo==>:udb@[UDB=(3,2)]:dp_wrapper:datapath.cmsbi"
-	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cmsbi"
-end \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\
+net \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\
+	term   ":udb@[UDB=(2,0)]:dp_wrapper:datapath.ce0"
+	switch ":udb@[UDB=(2,0)]:dp_wrapper:datapath.ce0==>:udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0i"
+	term   ":udb@[UDB=(3,0)]:dp_wrapper:datapath.ce0i"
+end \HE_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\
 net \HE_TIMER:TimerUDB:sT32:timerdp:u0.cl0__sig\
 	term   ":udb@[UDB=(2,0)]:dp_wrapper:datapath.cl0"
 	switch ":udb@[UDB=(2,0)]:dp_wrapper:datapath.cl0==>:udb@[UDB=(3,0)]:dp_wrapper:datapath.cl0i"
@@ -1255,3 +1205,53 @@ net \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\
 	switch ":udb@[UDB=(3,3)]:dp_wrapper:datapath.cmsbo==>:udb@[UDB=(2,3)]:dp_wrapper:datapath.cmsbi"
 	term   ":udb@[UDB=(2,3)]:dp_wrapper:datapath.cmsbi"
 end \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl0"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cl0i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cl0i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff0"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff0==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ff0i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ff0i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff0__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce1"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ce1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ce1i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ce1i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ce1__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl1"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cl1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cl1i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cl1i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cl1__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z1"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.z1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.z1i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.z1i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.z1__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff1"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.ff1==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.ff1i"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.ff1i"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.ff1__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sol_msb"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sol_msb==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.sir"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sir"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.sol_msb__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cfbo"
+	switch ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cfbo==>:udb@[UDB=(2,2)]:dp_wrapper:datapath.cfbi"
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cfbi"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0.cfbo__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sor"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.sor==>:udb@[UDB=(3,2)]:dp_wrapper:datapath.sil"
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.sil"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.sor__sig\
+net \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\
+	term   ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cmsbo"
+	switch ":udb@[UDB=(2,2)]:dp_wrapper:datapath.cmsbo==>:udb@[UDB=(3,2)]:dp_wrapper:datapath.cmsbi"
+	term   ":udb@[UDB=(3,2)]:dp_wrapper:datapath.cmsbi"
+end \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1.cmsbo__sig\

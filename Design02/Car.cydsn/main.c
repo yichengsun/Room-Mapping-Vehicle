@@ -52,15 +52,15 @@ double readLine() {
 CY_ISR(CAM_READ_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("read 100");
-    CAM_COUNTER_Stop();
-    CAM_LINE_CLK_Start();    
+    CAM_LINEREAD_COUNTER_Stop();
+    //CAM_LINE_CLK_Start();    
 }
 
 CY_ISR(VSYNC_inter) {
     LCD_ClearDisplay();
     LCD_PrintString("start one");
-    CAM_COUNTER_Start();
-    CAM_LINE_CLK_Start();
+    CAM_LINEREAD_COUNTER_Start();
+    //CAM_LINE_Counter_Start();
 }
 
 // CY_ISR(CAM_LINE_inter) {
@@ -92,7 +92,7 @@ CY_ISR(HE_inter) {
     double duty_cycle_buffer = 0;
     uint16 duty_cycle = 0;
     
-    //Special first time read	
+    //Special first time read   
     if (gfirst_HE_read == 1) {
         gprev_HE_count = HE_TIMER_ReadCounter();
         gfirst_HE_read = 0;
@@ -157,13 +157,14 @@ int main()
     VSYNC_ISR_Start();
     VSYNC_ISR_SetVector(VSYNC_inter);
     
-    CAM_READ_ISR_Start();
-    CAM_READ_ISR_SetVector(CAM_READ_inter);
+    CAM_LINECOUNTER_ISR_Start();
+    CAM_LINECOUNTER_ISR_SetVector(CAM_READ_inter);
     
     // CAM_LINE_ISR_Start();
     // CAM_LINE_ISR_SetVector(CAM_LINE_inter);
     
     VIDEO_OUT_COMPARE_Start();
+    VDAC8_1_Start();
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();

@@ -1,4 +1,4 @@
---------------- Rebuild Started: 03/25/2015 21:16:55 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Rebuild Started: 03/25/2015 22:39:22 Project: Car, Configuration: DP8051 Keil 9.51 Debug ---------------
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\main.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj"
@@ -25,21 +25,22 @@ Deleting file ".\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_CLK.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_READ_ISR.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_OUT_PIN.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\STEERING_PWM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_CLK.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\VSYNC_ISR.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_LINE_ISR.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_LINE_CLK.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Clock_1.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE_PM.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\Car.hex"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\Car.elf"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_LINECOUNTER_ISR.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\VDAC8_1.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\VDAC8_1_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\read_camera_line_ISR.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Car.map"
 Deleting file ".\Car.cycdx"
 Deleting file ".\Car.svd"
@@ -69,6 +70,7 @@ Dependency Generation ...
 Clean Temporary Files ...
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/main.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
 WARNING: .\main.c:56: 'CAM_LINE_CLK_Start': missing function-prototype
+WARNING: .\main.c:63: 'CAM_LINE_Counter_Start': missing function-prototype
 c51.exe .\Generated_Source\PSoC3\cyfitter_cfg.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/cyfitter_cfg.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj)
 c51.exe .\Generated_Source\PSoC3\HE_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/HE_ISR.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj)
 Ax51.exe .\Generated_Source\PSoC3\CyBootAsmKeil.a51 CASE EP "INCDIR(., .\Generated_Source\PSoC3)" DB MACRO DF(DEBUG) NOCO PR(.\DP8051\DP8051_Keil_951\Debug/CyBootAsmKeil.lst) OJ(.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj)
@@ -94,9 +96,6 @@ c51.exe .\Generated_Source\PSoC3\VERT_SYNC_OUT_IN.c NOIV LARGE MODDP2 OMF2 VB(1)
 c51.exe .\Generated_Source\PSoC3\MOTOR_PWM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/MOTOR_PWM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM.obj)
 c51.exe .\Generated_Source\PSoC3\MOTOR_PWM_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/MOTOR_PWM_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_PM.obj)
 c51.exe .\Generated_Source\PSoC3\MOTOR_PWM_CLK.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/MOTOR_PWM_CLK.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_CLK.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_READ_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_READ_ISR.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_READ_ISR.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_COUNTER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_COUNTER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_COUNTER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_COUNTER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER_PM.obj)
 c51.exe .\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/STEERING_PWM_OUT_PIN.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_OUT_PIN.obj)
 c51.exe .\Generated_Source\PSoC3\STEERING_PWM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/STEERING_PWM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM.obj)
 c51.exe .\Generated_Source\PSoC3\STEERING_PWM_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/STEERING_PWM_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_PM.obj)
@@ -105,12 +104,15 @@ c51.exe .\Generated_Source\PSoC3\VSYNC_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "
 c51.exe .\Generated_Source\PSoC3\Clock_1.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/Clock_1.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\Clock_1.obj)
 c51.exe .\Generated_Source\PSoC3\VIDEO_OUT_COMPARE.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VIDEO_OUT_COMPARE.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE.obj)
 c51.exe .\Generated_Source\PSoC3\VIDEO_OUT_COMPARE_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VIDEO_OUT_COMPARE_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE_PM.obj)
+c51.exe .\Generated_Source\PSoC3\CAM_LINECOUNTER_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINECOUNTER_ISR.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_LINECOUNTER_ISR.obj)
+c51.exe .\Generated_Source\PSoC3\CAM_LINEREAD_COUNTER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINEREAD_COUNTER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER.obj)
+c51.exe .\Generated_Source\PSoC3\CAM_LINEREAD_COUNTER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINEREAD_COUNTER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER_PM.obj)
 c51.exe .\Generated_Source\PSoC3\VDAC8_1.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VDAC8_1.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VDAC8_1.obj)
 c51.exe .\Generated_Source\PSoC3\VDAC8_1_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VDAC8_1_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VDAC8_1_PM.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_LINE_TIMER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINE_TIMER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_LINE_TIMER.obj)
-c51.exe .\Generated_Source\PSoC3\CAM_LINE_TIMER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINE_TIMER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\CAM_LINE_TIMER_PM.obj)
+c51.exe .\Generated_Source\PSoC3\VIDEO_OUT_TIMER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VIDEO_OUT_TIMER.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER.obj)
+c51.exe .\Generated_Source\PSoC3\VIDEO_OUT_TIMER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VIDEO_OUT_TIMER_PM.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER_PM.obj)
 c51.exe .\Generated_Source\PSoC3\read_camera_line_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/read_camera_line_ISR.lst) CD "OT(2, Size)" OJ(.\DP8051\DP8051_Keil_951\Debug\read_camera_line_ISR.obj)
-LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_VID_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_READ_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\VSYNC_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\Clock_1.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\VDAC8_1.obj', '.\DP8051\DP8051_Keil_951\Debug\VDAC8_1_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_LINE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_LINE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\read_camera_line_ISR.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
+LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\COM_VID_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\VERT_SYNC_OUT_IN.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Debug\VSYNC_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\Clock_1.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_LINECOUNTER_ISR.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\VDAC8_1.obj', '.\DP8051\DP8051_Keil_951\Debug\VDAC8_1_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER.obj', '.\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\read_camera_line_ISR.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\Debug\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Debug\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Debug\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
 *** WARNING L15: MULTIPLE CALL TO FUNCTION
     NAME:    _LCD_WRITECONTROL/LCD
@@ -195,14 +197,17 @@ LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\De
 *** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
     SYMBOL:  CAM_LINE_CLK_Start
     MODULE:  .\DP8051\DP8051_Keil_951\Debug\main.obj (MAIN)
+*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CAM_LINE_Counter_Start
+    MODULE:  .\DP8051\DP8051_Keil_951\Debug\main.obj (MAIN)
 *** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  CAM_LINE_CLK_Start
     MODULE:  .\DP8051\DP8051_Keil_951\Debug\main.obj (MAIN)
-    ADDRESS: 1001A26H
+    ADDRESS: 1001A8AH
 *** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  CAM_LINE_CLK_Start
+    SYMBOL:  CAM_LINE_Counter_Start
     MODULE:  .\DP8051\DP8051_Keil_951\Debug\main.obj (MAIN)
-    ADDRESS: 1001A88H
-Program Size: data=20.1 xdata=257 const=50 code=8999
+    ADDRESS: 1001AECH
+Program Size: data=20.1 xdata=258 const=50 code=9254
 The command 'LX51.exe' failed with exit code '2'.
---------------- Rebuild Failed: 03/25/2015 21:17:24 ---------------
+--------------- Rebuild Failed: 03/25/2015 22:39:51 ---------------

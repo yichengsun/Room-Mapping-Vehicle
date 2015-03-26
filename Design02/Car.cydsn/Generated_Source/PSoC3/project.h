@@ -33,8 +33,8 @@
 #include <COM_SYNC_OUT_PIN_aliases.h>
 #include <VERT_SYNC_OUT_IN.h>
 #include <VERT_SYNC_OUT_IN_aliases.h>
-#include <CAM_READ_ISR.h>
-#include <CAM_COUNTER.h>
+#include <CAM_LINECOUNTER_ISR.h>
+#include <CAM_LINEREAD_COUNTER.h>
 #include <VSYNC_ISR.h>
 #include <STEERING_PWM_OUT_PIN.h>
 #include <STEERING_PWM_OUT_PIN_aliases.h>
@@ -45,7 +45,7 @@
 #include <Clock_1.h>
 #include <VIDEO_OUT_COMPARE.h>
 #include <VDAC8_1.h>
-#include <CAM_LINE_TIMER.h>
+#include <VIDEO_OUT_TIMER.h>
 #include <read_camera_line_ISR.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>

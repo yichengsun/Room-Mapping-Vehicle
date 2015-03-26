@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 25 21:17:08 2015
+--	Wed Mar 25 22:39:37 2015
 --
 
 USE cypress.cypress.all;
@@ -806,121 +806,121 @@ TERMINAL tmpSIOVREF__VERT_SYNC_OUT_IN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__VERT_SYNC_OUT_IN_net_0 : bit;
 SIGNAL Net_3206 : bit;
 SIGNAL Net_3140 : bit;
-SIGNAL \CAM_COUNTER:Net_43\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_43\ : bit;
 SIGNAL Net_3205 : bit;
-SIGNAL \CAM_COUNTER:Net_49\ : bit;
-SIGNAL \CAM_COUNTER:Net_82\ : bit;
-SIGNAL \CAM_COUNTER:Net_89\ : bit;
-SIGNAL \CAM_COUNTER:Net_95\ : bit;
-SIGNAL \CAM_COUNTER:Net_91\ : bit;
-SIGNAL \CAM_COUNTER:Net_102\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_49\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_82\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_89\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_95\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_91\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:Net_102\ : bit;
 SIGNAL Net_3207 : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_cmod_2\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_cmod_1\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_cmod_0\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_capmode_1\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_capmode_0\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:Clk_Ctl_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_7\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_6\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_5\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_4\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_3\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_2\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_1\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:control_0\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:ctrl_enable\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:prevCapture\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:capt_rising\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:capt_falling\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:capt_either_edge\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:hwCapture\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:reload\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:final_enable\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:counter_enable\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_0\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_status\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_1\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:per_zero\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_2\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:overflow_status\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_3\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:underflow_status\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_4\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_5\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:fifo_full\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:status_6\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:fifo_nempty\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_cmod_2\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_cmod_1\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_cmod_0\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_capmode_1\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_capmode_0\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:Clk_Ctl_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_7\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_6\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_5\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_4\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_3\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_2\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_1\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:control_0\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:ctrl_enable\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:prevCapture\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:capt_rising\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:capt_falling\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:capt_either_edge\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:hwCapture\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:reload\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:final_enable\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:counter_enable\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_0\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_status\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_1\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:per_zero\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_2\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:overflow_status\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_3\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:underflow_status\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_4\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_5\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:fifo_full\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:status_6\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:fifo_nempty\ : bit;
 SIGNAL Net_3194 : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:overflow\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:dp_dir\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:per_equal\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:underflow\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:overflow_reg_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:underflow_reg_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:tc_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:tc_reg_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_equal\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:prevCompare\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_reg_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:count_stored_i\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:count_enable\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_2\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_1\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cs_addr_0\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:nc42\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:per_FF\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_less\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:z1\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:z1\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ff1\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ff1\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ov_msb\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ov_msb\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:co_msb\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:co_msb\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:cmsb\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:cmsb\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:so\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:so\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ce0_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ce0_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:cl0_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:cl0_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:z0_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:z0_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ff0_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ff0_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ce1_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ce1_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:cl1_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:cl1_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:z1_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:z1_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ff1_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ff1_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:ov_msb_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:ov_msb_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:co_msb_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:co_msb_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:cmsb_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:cmsb_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:so_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:so_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f0_bus_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f0_bus_stat_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f0_blk_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f0_blk_stat_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\:SIGNAL IS 2;
-SIGNAL \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \CAM_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:overflow\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:dp_dir\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:underflow\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:underflow_reg_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:tc_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:tc_reg_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_equal\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:prevCompare\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_reg_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cs_addr_2\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cs_addr_1\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cs_addr_0\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:nc42\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:per_FF\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_less\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z1\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z1\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff1\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:co_msb\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cmsb\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:so\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:so\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:so_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:f1_blk_stat_reg\:SIGNAL IS 2;
 SIGNAL tmpOE__STEERING_PWM_OUT_PIN_net_0 : bit;
 SIGNAL Net_3712 : bit;
 SIGNAL tmpFB_0__STEERING_PWM_OUT_PIN_net_0 : bit;
@@ -1347,263 +1347,263 @@ SIGNAL \VDAC8_1:Net_81\ : bit;
 SIGNAL \VDAC8_1:Net_82\ : bit;
 TERMINAL \VDAC8_1:Net_77\ : bit;
 SIGNAL Net_4932 : bit;
-SIGNAL \CAM_LINE_TIMER:Net_260\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:Net_260\ : bit;
 SIGNAL Net_4949 : bit;
-SIGNAL \CAM_LINE_TIMER:Net_55\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:Net_55\ : bit;
 SIGNAL Net_4963 : bit;
-SIGNAL \CAM_LINE_TIMER:Net_53\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:Clk_Ctl_i\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_7\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_6\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_5\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_4\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_3\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_2\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:control_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_enable\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_ten\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_cmode_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_cmode_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_tmode_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_tmode_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_ic_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:ctrl_ic_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:fifo_load_polarized\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capture_last\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ : bit;
-ATTRIBUTE soft of \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\:SIGNAL IS '1';
-SIGNAL \CAM_LINE_TIMER:TimerUDB:timer_enable\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:run_mode\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:hwEnable\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_tc\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:trigger_enable\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:per_zero\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:tc_i\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:tc_reg_i\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:hwEnable_reg\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capture_out_reg_i\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:Net_53\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:Clk_Ctl_i\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_7\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_6\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_5\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_4\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_3\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_2\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:control_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_enable\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_ten\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_cmode_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_cmode_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_tmode_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_tmode_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_ic_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:ctrl_ic_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capture_last\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ : bit;
+ATTRIBUTE soft of \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\:SIGNAL IS '1';
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:timer_enable\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:run_mode\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:hwEnable\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_tc\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:trigger_enable\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:per_zero\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:tc_i\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:tc_reg_i\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:hwEnable_reg\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capture_out_reg_i\ : bit;
 SIGNAL Net_4962 : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_int_temp\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_fifo_load_int\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN3_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN3_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN4_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN4_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eqi_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lti_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gti_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xneq\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlt\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlte\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgt\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgte\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN5_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODIN5_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:runmode_enable\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:trig_reg\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_6\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_5\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_4\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_2\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:fifo_full\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:status_3\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:fifo_nempty\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:cs_addr_2\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:cs_addr_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:cs_addr_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:zeros_3\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:zeros_2\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:nc0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:nc3\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:nc4\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:carry\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:msb\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \CAM_LINE_TIMER:Net_102\ : bit;
-SIGNAL \CAM_LINE_TIMER:Net_266\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load_int\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN3_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newa_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN3_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN4_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:newb_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN4_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:dataa_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:datab_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eq_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lt_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gt_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xeq\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xneq\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlt\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xlte\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgt\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:g1:a0:xgte\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:lt\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:gt\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:gte\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:lte\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_3:neq\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN5_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:a_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODIN5_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:b_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:s_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sIntCapCount:MODULE_4:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:runmode_enable\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:trig_reg\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_6\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_5\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_4\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_2\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:fifo_full\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:status_3\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:fifo_nempty\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:cs_addr_2\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:cs_addr_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:cs_addr_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:zeros_3\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:zeros_2\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:nc0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:nc3\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:nc4\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:carry\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_right\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_left\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:msb\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_1\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_0\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cfb\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \VIDEO_OUT_TIMER:Net_102\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:Net_266\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -1620,13 +1620,13 @@ SIGNAL \HE_TIMER:TimerUDB:capture_last\\D\ : bit;
 SIGNAL \HE_TIMER:TimerUDB:tc_reg_i\\D\ : bit;
 SIGNAL \HE_TIMER:TimerUDB:hwEnable_reg\\D\ : bit;
 SIGNAL \HE_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:prevCapture\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:overflow_reg_i\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:underflow_reg_i\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:tc_reg_i\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:prevCompare\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:cmp_out_reg_i\\D\ : bit;
-SIGNAL \CAM_COUNTER:CounterUDB:count_stored_i\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:prevCapture\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:underflow_reg_i\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:tc_reg_i\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:prevCompare\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_reg_i\\D\ : bit;
+SIGNAL \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -1639,13 +1639,13 @@ SIGNAL \STEERING_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \STEERING_PWM:PWMUDB:tc_i_reg\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capture_last\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:tc_reg_i\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:hwEnable_reg\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\\D\ : bit;
-SIGNAL \CAM_LINE_TIMER:TimerUDB:capt_int_temp\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capture_last\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:tc_reg_i\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:hwEnable_reg\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\\D\ : bit;
+SIGNAL \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\\D\ : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -1669,11 +1669,11 @@ Net_459 <= (not Net_2174);
 
 \HE_TIMER:TimerUDB:status_tc\ <= ((\HE_TIMER:TimerUDB:control_7\ and \HE_TIMER:TimerUDB:per_zero\));
 
-\CAM_COUNTER:CounterUDB:status_0\ <= ((not \CAM_COUNTER:CounterUDB:prevCompare\ and \CAM_COUNTER:CounterUDB:cmp_out_i\));
+\CAM_LINEREAD_COUNTER:CounterUDB:status_0\ <= ((not \CAM_LINEREAD_COUNTER:CounterUDB:prevCompare\ and \CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\));
 
-\CAM_COUNTER:CounterUDB:status_2\ <= ((not \CAM_COUNTER:CounterUDB:overflow_reg_i\ and \CAM_COUNTER:CounterUDB:per_equal\));
+\CAM_LINEREAD_COUNTER:CounterUDB:status_2\ <= ((not \CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\ and \CAM_LINEREAD_COUNTER:CounterUDB:per_equal\));
 
-\CAM_COUNTER:CounterUDB:count_enable\ <= ((not \CAM_COUNTER:CounterUDB:count_stored_i\ and Net_3213 and \CAM_COUNTER:CounterUDB:control_7\));
+\CAM_LINEREAD_COUNTER:CounterUDB:count_enable\ <= ((not \CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\ and Net_3213 and \CAM_LINEREAD_COUNTER:CounterUDB:control_7\));
 
 \STEERING_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \STEERING_PWM:PWMUDB:tc_i\);
 
@@ -1690,26 +1690,26 @@ Net_459 <= (not Net_2174);
 
 Net_4946 <= (not \VIDEO_OUT_COMPARE:Net_1\);
 
-\CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ <= ((not \VIDEO_OUT_COMPARE:Net_1\ and not \CAM_LINE_TIMER:TimerUDB:capture_last\ and \CAM_LINE_TIMER:TimerUDB:control_7\)
-	OR (\VIDEO_OUT_COMPARE:Net_1\ and \CAM_LINE_TIMER:TimerUDB:control_7\ and \CAM_LINE_TIMER:TimerUDB:capture_last\));
+\VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ <= ((not \VIDEO_OUT_COMPARE:Net_1\ and not \VIDEO_OUT_TIMER:TimerUDB:capture_last\ and \VIDEO_OUT_TIMER:TimerUDB:control_7\)
+	OR (\VIDEO_OUT_COMPARE:Net_1\ and \VIDEO_OUT_TIMER:TimerUDB:control_7\ and \VIDEO_OUT_TIMER:TimerUDB:capture_last\));
 
-\CAM_LINE_TIMER:TimerUDB:status_tc\ <= ((\CAM_LINE_TIMER:TimerUDB:control_7\ and \CAM_LINE_TIMER:TimerUDB:per_zero\));
+\VIDEO_OUT_TIMER:TimerUDB:status_tc\ <= ((\VIDEO_OUT_TIMER:TimerUDB:control_7\ and \VIDEO_OUT_TIMER:TimerUDB:per_zero\));
 
-\CAM_LINE_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \CAM_LINE_TIMER:TimerUDB:control_0\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and \CAM_LINE_TIMER:TimerUDB:control_1\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:control_0\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:control_1\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\));
+\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \VIDEO_OUT_TIMER:TimerUDB:control_0\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and \VIDEO_OUT_TIMER:TimerUDB:control_1\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:control_0\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:control_1\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\));
 
-\CAM_LINE_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:control_1\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:control_1\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:control_0\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\));
+\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:control_1\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:control_1\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:control_0\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\));
 
-\CAM_LINE_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \CAM_LINE_TIMER:TimerUDB:control_1\ and not \CAM_LINE_TIMER:TimerUDB:control_0\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:control_0\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\ and \CAM_LINE_TIMER:TimerUDB:control_1\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \CAM_LINE_TIMER:TimerUDB:control_1\ and not \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and \CAM_LINE_TIMER:TimerUDB:control_0\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\)
-	OR (\CAM_LINE_TIMER:TimerUDB:control_1\ and \CAM_LINE_TIMER:TimerUDB:control_0\ and \CAM_LINE_TIMER:TimerUDB:capt_fifo_load\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_1\ and \CAM_LINE_TIMER:TimerUDB:int_capt_count_0\));
+\VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \VIDEO_OUT_TIMER:TimerUDB:control_1\ and not \VIDEO_OUT_TIMER:TimerUDB:control_0\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:control_0\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\ and \VIDEO_OUT_TIMER:TimerUDB:control_1\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \VIDEO_OUT_TIMER:TimerUDB:control_1\ and not \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and \VIDEO_OUT_TIMER:TimerUDB:control_0\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\)
+	OR (\VIDEO_OUT_TIMER:TimerUDB:control_1\ and \VIDEO_OUT_TIMER:TimerUDB:control_0\ and \VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\ and \VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -2654,39 +2654,39 @@ VERT_SYNC_OUT_IN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__VERT_SYNC_OUT_IN_net_0);
-CAM_READ_ISR:cy_isr_v1_0
+CAM_LINECOUNTER_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_3206);
-\CAM_COUNTER:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+\CAM_LINEREAD_COUNTER:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_3207,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\);
-\CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+		clock_out=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\);
+\CAM_LINEREAD_COUNTER:CounterUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_3207,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\CAM_COUNTER:CounterUDB:Clk_Ctl_i\);
-\CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+		clock_out=>\CAM_LINEREAD_COUNTER:CounterUDB:Clk_Ctl_i\);
+\CAM_LINEREAD_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
 		cy_force_order=>'1',
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
 	PORT MAP(reset=>zero,
-		clock=>\CAM_COUNTER:CounterUDB:Clk_Ctl_i\,
-		control=>(\CAM_COUNTER:CounterUDB:control_7\, \CAM_COUNTER:CounterUDB:control_6\, \CAM_COUNTER:CounterUDB:control_5\, \CAM_COUNTER:CounterUDB:control_4\,
-			\CAM_COUNTER:CounterUDB:control_3\, \CAM_COUNTER:CounterUDB:control_2\, \CAM_COUNTER:CounterUDB:control_1\, \CAM_COUNTER:CounterUDB:control_0\));
-\CAM_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\:cy_psoc3_statusi
+		clock=>\CAM_LINEREAD_COUNTER:CounterUDB:Clk_Ctl_i\,
+		control=>(\CAM_LINEREAD_COUNTER:CounterUDB:control_7\, \CAM_LINEREAD_COUNTER:CounterUDB:control_6\, \CAM_LINEREAD_COUNTER:CounterUDB:control_5\, \CAM_LINEREAD_COUNTER:CounterUDB:control_4\,
+			\CAM_LINEREAD_COUNTER:CounterUDB:control_3\, \CAM_LINEREAD_COUNTER:CounterUDB:control_2\, \CAM_LINEREAD_COUNTER:CounterUDB:control_1\, \CAM_LINEREAD_COUNTER:CounterUDB:control_0\));
+\CAM_LINEREAD_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\:cy_psoc3_statusi
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0011111",
 		cy_int_mask=>"1111111")
 	PORT MAP(reset=>zero,
-		clock=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		status=>(\CAM_COUNTER:CounterUDB:status_6\, \CAM_COUNTER:CounterUDB:status_5\, zero, zero,
-			\CAM_COUNTER:CounterUDB:status_2\, \CAM_COUNTER:CounterUDB:status_1\, \CAM_COUNTER:CounterUDB:status_0\),
-		interrupt=>\CAM_COUNTER:Net_43\);
-\CAM_COUNTER:CounterUDB:sC8:counterdp:u0\:cy_psoc3_dp
+		clock=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		status=>(\CAM_LINEREAD_COUNTER:CounterUDB:status_6\, \CAM_LINEREAD_COUNTER:CounterUDB:status_5\, zero, zero,
+			\CAM_LINEREAD_COUNTER:CounterUDB:status_2\, \CAM_LINEREAD_COUNTER:CounterUDB:status_1\, \CAM_LINEREAD_COUNTER:CounterUDB:status_0\),
+		interrupt=>\CAM_LINEREAD_COUNTER:Net_43\);
+\CAM_LINEREAD_COUNTER:CounterUDB:sC8:counterdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -2709,28 +2709,28 @@ CAM_READ_ISR:cy_isr_v1_0
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		cs_addr=>(tmpOE__HE_IN_PIN_net_0, \CAM_COUNTER:CounterUDB:count_enable\, zero),
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		cs_addr=>(tmpOE__HE_IN_PIN_net_0, \CAM_LINEREAD_COUNTER:CounterUDB:count_enable\, zero),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>zero,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
-		ce0=>\CAM_COUNTER:CounterUDB:per_equal\,
-		cl0=>\CAM_COUNTER:CounterUDB:nc42\,
-		z0=>\CAM_COUNTER:CounterUDB:status_1\,
-		ff0=>\CAM_COUNTER:CounterUDB:per_FF\,
-		ce1=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
-		cl1=>\CAM_COUNTER:CounterUDB:cmp_less\,
+		ce0=>\CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
+		cl0=>\CAM_LINEREAD_COUNTER:CounterUDB:nc42\,
+		z0=>\CAM_LINEREAD_COUNTER:CounterUDB:status_1\,
+		ff0=>\CAM_LINEREAD_COUNTER:CounterUDB:per_FF\,
+		ce1=>\CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
+		cl1=>\CAM_LINEREAD_COUNTER:CounterUDB:cmp_less\,
 		z1=>open,
 		ff1=>open,
 		ov_msb=>open,
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\CAM_COUNTER:CounterUDB:status_6\,
-		f0_blk_stat=>\CAM_COUNTER:CounterUDB:status_5\,
+		f0_bus_stat=>\CAM_LINEREAD_COUNTER:CounterUDB:status_6\,
+		f0_blk_stat=>\CAM_LINEREAD_COUNTER:CounterUDB:status_5\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -3146,7 +3146,7 @@ Clock_1:cy_clock_v1_0
 		clock=>Net_4889,
 		clk_udb=>Net_4889,
 		cmpout=>\VIDEO_OUT_COMPARE:Net_1\);
-timer_clock:cy_clock_v1_0
+CAM_LINE_CLK:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
 		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
@@ -3171,36 +3171,36 @@ timer_clock:cy_clock_v1_0
 		iout=>\VDAC8_1:Net_77\);
 \VDAC8_1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
 	PORT MAP(noconnect=>\VDAC8_1:Net_77\);
-\CAM_LINE_TIMER:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+\VIDEO_OUT_TIMER:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\);
-\CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+		clock_out=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\);
+\VIDEO_OUT_TIMER:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
 		enable=>tmpOE__HE_IN_PIN_net_0,
-		clock_out=>\CAM_LINE_TIMER:TimerUDB:Clk_Ctl_i\);
-\CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+		clock_out=>\VIDEO_OUT_TIMER:TimerUDB:Clk_Ctl_i\);
+\VIDEO_OUT_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
 		cy_force_order=>'1',
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
 	PORT MAP(reset=>zero,
-		clock=>\CAM_LINE_TIMER:TimerUDB:Clk_Ctl_i\,
-		control=>(\CAM_LINE_TIMER:TimerUDB:control_7\, \CAM_LINE_TIMER:TimerUDB:control_6\, \CAM_LINE_TIMER:TimerUDB:control_5\, \CAM_LINE_TIMER:TimerUDB:control_4\,
-			\CAM_LINE_TIMER:TimerUDB:control_3\, \CAM_LINE_TIMER:TimerUDB:control_2\, \CAM_LINE_TIMER:TimerUDB:control_1\, \CAM_LINE_TIMER:TimerUDB:control_0\));
-\CAM_LINE_TIMER:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
+		clock=>\VIDEO_OUT_TIMER:TimerUDB:Clk_Ctl_i\,
+		control=>(\VIDEO_OUT_TIMER:TimerUDB:control_7\, \VIDEO_OUT_TIMER:TimerUDB:control_6\, \VIDEO_OUT_TIMER:TimerUDB:control_5\, \VIDEO_OUT_TIMER:TimerUDB:control_4\,
+			\VIDEO_OUT_TIMER:TimerUDB:control_3\, \VIDEO_OUT_TIMER:TimerUDB:control_2\, \VIDEO_OUT_TIMER:TimerUDB:control_1\, \VIDEO_OUT_TIMER:TimerUDB:control_0\));
+\VIDEO_OUT_TIMER:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
 	PORT MAP(reset=>zero,
-		clock=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \CAM_LINE_TIMER:TimerUDB:status_3\,
-			\CAM_LINE_TIMER:TimerUDB:status_2\, \CAM_LINE_TIMER:TimerUDB:capt_int_temp\, \CAM_LINE_TIMER:TimerUDB:status_tc\),
+		clock=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		status=>(zero, zero, zero, \VIDEO_OUT_TIMER:TimerUDB:status_3\,
+			\VIDEO_OUT_TIMER:TimerUDB:status_2\, \VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\, \VIDEO_OUT_TIMER:TimerUDB:status_tc\),
 		interrupt=>Net_4949);
-\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -3223,17 +3223,17 @@ timer_clock:cy_clock_v1_0
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \CAM_LINE_TIMER:TimerUDB:control_7\, \CAM_LINE_TIMER:TimerUDB:per_zero\),
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \VIDEO_OUT_TIMER:TimerUDB:control_7\, \VIDEO_OUT_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
-		f0_load=>\CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
+		f0_load=>\VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
 		ce0=>open,
 		cl0=>open,
-		z0=>\CAM_LINE_TIMER:TimerUDB:nc0\,
+		z0=>\VIDEO_OUT_TIMER:TimerUDB:nc0\,
 		ff0=>open,
 		ce1=>open,
 		cl1=>open,
@@ -3243,8 +3243,8 @@ timer_clock:cy_clock_v1_0
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\CAM_LINE_TIMER:TimerUDB:nc3\,
-		f0_blk_stat=>\CAM_LINE_TIMER:TimerUDB:nc4\,
+		f0_bus_stat=>\VIDEO_OUT_TIMER:TimerUDB:nc3\,
+		f0_blk_stat=>\VIDEO_OUT_TIMER:TimerUDB:nc4\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -3264,29 +3264,29 @@ timer_clock:cy_clock_v1_0
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
 		ci=>zero,
-		co=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:carry\,
+		co=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:carry\,
 		sir=>zero,
 		sor=>open,
-		sil=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\,
-		sol=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\,
-		msbi=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:msb\,
+		sil=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_right\,
+		sol=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_left\,
+		msbi=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:msb\,
 		msbo=>open,
 		cei=>(zero, zero),
-		ceo=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
 		cli=>(zero, zero),
-		clo=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
 		zi=>(zero, zero),
-		zo=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
 		fi=>(zero, zero),
-		fo=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
 		capi=>(zero, zero),
-		capo=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_0\),
 		cfbi=>zero,
-		cfbo=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cfb\,
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
-\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -3309,17 +3309,17 @@ timer_clock:cy_clock_v1_0
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \CAM_LINE_TIMER:TimerUDB:control_7\, \CAM_LINE_TIMER:TimerUDB:per_zero\),
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \VIDEO_OUT_TIMER:TimerUDB:control_7\, \VIDEO_OUT_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
-		f0_load=>\CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
+		f0_load=>\VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
 		f1_load=>zero,
 		d0_load=>zero,
 		d1_load=>zero,
 		ce0=>open,
 		cl0=>open,
-		z0=>\CAM_LINE_TIMER:TimerUDB:per_zero\,
+		z0=>\VIDEO_OUT_TIMER:TimerUDB:per_zero\,
 		ff0=>open,
 		ce1=>open,
 		cl1=>open,
@@ -3329,8 +3329,8 @@ timer_clock:cy_clock_v1_0
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\CAM_LINE_TIMER:TimerUDB:status_3\,
-		f0_blk_stat=>\CAM_LINE_TIMER:TimerUDB:status_2\,
+		f0_bus_stat=>\VIDEO_OUT_TIMER:TimerUDB:status_3\,
+		f0_blk_stat=>\VIDEO_OUT_TIMER:TimerUDB:status_2\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -3349,25 +3349,25 @@ timer_clock:cy_clock_v1_0
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:carry\,
+		ci=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:carry\,
 		co=>open,
-		sir=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_left\,
-		sor=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:sh_right\,
+		sir=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_left\,
+		sor=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:sh_right\,
 		sil=>zero,
 		sol=>open,
 		msbi=>zero,
-		msbo=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:msb\,
-		cei=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		msbo=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:msb\,
+		cei=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_eq_0\),
 		ceo=>open,
-		cli=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		cli=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_lt_0\),
 		clo=>open,
-		zi=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zi=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_zero_0\),
 		zo=>open,
-		fi=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fi=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cmp_ff_0\),
 		fo=>open,
-		capi=>(\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_1\, \CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cap_0\),
+		capi=>(\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_1\, \VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cap_0\),
 		capo=>open,
-		cfbi=>\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:cfb\,
+		cfbi=>\VIDEO_OUT_TIMER:TimerUDB:sT16:timerdp:cfb\,
 		cfbo=>open,
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
@@ -3449,34 +3449,34 @@ read_camera_line_ISR:cy_isr_v1_0
 	PORT MAP(d=>zero,
 		clk=>\HE_TIMER:TimerUDB:ClockOutFromEnBlock\,
 		q=>\HE_TIMER:TimerUDB:capture_out_reg_i\);
-\CAM_COUNTER:CounterUDB:prevCapture\:cy_dff
+\CAM_LINEREAD_COUNTER:CounterUDB:prevCapture\:cy_dff
 	PORT MAP(d=>zero,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:prevCapture\);
-\CAM_COUNTER:CounterUDB:overflow_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:per_equal\,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:overflow_reg_i\);
-\CAM_COUNTER:CounterUDB:underflow_reg_i\:cy_dff
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:prevCapture\);
+\CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\:cy_dff
+	PORT MAP(d=>\CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:overflow_reg_i\);
+\CAM_LINEREAD_COUNTER:CounterUDB:underflow_reg_i\:cy_dff
 	PORT MAP(d=>zero,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:underflow_reg_i\);
-\CAM_COUNTER:CounterUDB:tc_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:per_equal\,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:tc_reg_i\);
-\CAM_COUNTER:CounterUDB:prevCompare\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:prevCompare\);
-\CAM_COUNTER:CounterUDB:cmp_out_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_COUNTER:CounterUDB:cmp_out_i\,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:underflow_reg_i\);
+\CAM_LINEREAD_COUNTER:CounterUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\CAM_LINEREAD_COUNTER:CounterUDB:per_equal\,
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:tc_reg_i\);
+\CAM_LINEREAD_COUNTER:CounterUDB:prevCompare\:cy_dff
+	PORT MAP(d=>\CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:prevCompare\);
+\CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_reg_i\:cy_dff
+	PORT MAP(d=>\CAM_LINEREAD_COUNTER:CounterUDB:cmp_out_i\,
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
 		q=>Net_3206);
-\CAM_COUNTER:CounterUDB:count_stored_i\:cy_dff
+\CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\:cy_dff
 	PORT MAP(d=>Net_3213,
-		clk=>\CAM_COUNTER:CounterUDB:ClockOutFromEnBlock\,
-		q=>\CAM_COUNTER:CounterUDB:count_stored_i\);
+		clk=>\CAM_LINEREAD_COUNTER:CounterUDB:ClockOutFromEnBlock\,
+		q=>\CAM_LINEREAD_COUNTER:CounterUDB:count_stored_i\);
 \STEERING_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -3535,33 +3535,33 @@ read_camera_line_ISR:cy_isr_v1_0
 	PORT MAP(d=>\STEERING_PWM:PWMUDB:tc_i_reg\\D\,
 		clk=>\STEERING_PWM:PWMUDB:ClockOutFromEnBlock\,
 		q=>\STEERING_PWM:PWMUDB:tc_i_reg\);
-\CAM_LINE_TIMER:TimerUDB:capture_last\:cy_dff
+\VIDEO_OUT_TIMER:TimerUDB:capture_last\:cy_dff
 	PORT MAP(d=>Net_4946,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:capture_last\);
-\CAM_LINE_TIMER:TimerUDB:tc_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:status_tc\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:tc_reg_i\);
-\CAM_LINE_TIMER:TimerUDB:hwEnable_reg\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:control_7\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:hwEnable_reg\);
-\CAM_LINE_TIMER:TimerUDB:capture_out_reg_i\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:capt_fifo_load\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:capture_out_reg_i\);
-\CAM_LINE_TIMER:TimerUDB:int_capt_count_1\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:int_capt_count_1\\D\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:int_capt_count_1\);
-\CAM_LINE_TIMER:TimerUDB:int_capt_count_0\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:int_capt_count_0\\D\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:int_capt_count_0\);
-\CAM_LINE_TIMER:TimerUDB:capt_int_temp\:cy_dff
-	PORT MAP(d=>\CAM_LINE_TIMER:TimerUDB:capt_int_temp\\D\,
-		clk=>\CAM_LINE_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\CAM_LINE_TIMER:TimerUDB:capt_int_temp\);
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:capture_last\);
+\VIDEO_OUT_TIMER:TimerUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:status_tc\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:tc_reg_i\);
+\VIDEO_OUT_TIMER:TimerUDB:hwEnable_reg\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:control_7\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:hwEnable_reg\);
+\VIDEO_OUT_TIMER:TimerUDB:capture_out_reg_i\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:capt_fifo_load\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:capture_out_reg_i\);
+\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\\D\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_1\);
+\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\\D\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:int_capt_count_0\);
+\VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\:cy_dff
+	PORT MAP(d=>\VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\\D\,
+		clk=>\VIDEO_OUT_TIMER:TimerUDB:ClockOutFromEnBlock\,
+		q=>\VIDEO_OUT_TIMER:TimerUDB:capt_int_temp\);
 
 END R_T_L;

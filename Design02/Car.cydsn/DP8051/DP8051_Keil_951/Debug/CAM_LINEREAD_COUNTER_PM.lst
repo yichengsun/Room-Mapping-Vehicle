@@ -1,0 +1,316 @@
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE CAM_LINEREAD_COUNTER_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\CAM_LINEREAD_COUNTER_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\CAM_LINEREAD_COUNTER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) 
+                    -FF(3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/CAM_LINEREAD_COUNTER_PM.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051
+                    -_Keil_951\Debug\CAM_LINEREAD_COUNTER_PM.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: CAM_LINEREAD_COUNTER_PM.c  
+   3          * Version 2.40
+   4          *
+   5          *  Description:
+   6          *    This file provides the power management source code to API for the
+   7          *    Counter.  
+   8          *
+   9          *   Note:
+  10          *     None
+  11          *
+  12          *******************************************************************************
+  13          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14          * You may use this file only in accordance with the license, terms, conditions, 
+  15          * disclaimers, and limitations in the end user license agreement accompanying 
+  16          * the software package with which this file was provided.
+  17          ********************************************************************************/
+  18          
+  19          #include "CAM_LINEREAD_COUNTER.h"
+  20          
+  21          static CAM_LINEREAD_COUNTER_backupStruct CAM_LINEREAD_COUNTER_backup;
+  22          
+  23          
+  24          /*******************************************************************************
+  25          * Function Name: CAM_LINEREAD_COUNTER_SaveConfig
+  26          ********************************************************************************
+  27          * Summary:
+  28          *     Save the current user configuration
+  29          *
+  30          * Parameters:  
+  31          *  void
+  32          *
+  33          * Return: 
+  34          *  void
+  35          *
+  36          * Global variables:
+  37          *  CAM_LINEREAD_COUNTER_backup:  Variables of this global structure are modified to 
+  38          *  store the values of non retention configuration registers when Sleep() API is 
+  39          *  called.
+  40          *
+  41          *******************************************************************************/
+  42          void CAM_LINEREAD_COUNTER_SaveConfig(void) 
+  43          {
+  44   1          #if (!CAM_LINEREAD_COUNTER_UsingFixedFunction)
+  45   1      
+  46   1              CAM_LINEREAD_COUNTER_backup.CounterUdb = CAM_LINEREAD_COUNTER_ReadCounter();
+  47   1      
+  48   1              #if (CY_UDB_V0)
+                          CAM_LINEREAD_COUNTER_backup.CounterPeriod = CAM_LINEREAD_COUNTER_ReadPeriod();
+                          CAM_LINEREAD_COUNTER_backup.CompareValue = CAM_LINEREAD_COUNTER_ReadCompare();
+                          CAM_LINEREAD_COUNTER_backup.InterruptMaskValue = CAM_LINEREAD_COUNTER_STATUS_MASK;
+                      #endif /* CY_UDB_V0 */
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 2   
+
+  53   1      
+  54   1              #if(!CAM_LINEREAD_COUNTER_ControlRegRemoved)
+  55   1                  CAM_LINEREAD_COUNTER_backup.CounterControlRegister = CAM_LINEREAD_COUNTER_ReadControlRegister(
+             -);
+  56   1              #endif /* (!CAM_LINEREAD_COUNTER_ControlRegRemoved) */
+  57   1      
+  58   1          #endif /* (!CAM_LINEREAD_COUNTER_UsingFixedFunction) */
+  59   1      }
+  60          
+  61          
+  62          /*******************************************************************************
+  63          * Function Name: CAM_LINEREAD_COUNTER_RestoreConfig
+  64          ********************************************************************************
+  65          *
+  66          * Summary:
+  67          *  Restores the current user configuration.
+  68          *
+  69          * Parameters:  
+  70          *  void
+  71          *
+  72          * Return: 
+  73          *  void
+  74          *
+  75          * Global variables:
+  76          *  CAM_LINEREAD_COUNTER_backup:  Variables of this global structure are used to 
+  77          *  restore the values of non retention registers on wakeup from sleep mode.
+  78          *
+  79          *******************************************************************************/
+  80          void CAM_LINEREAD_COUNTER_RestoreConfig(void) 
+  81          {      
+  82   1          #if (!CAM_LINEREAD_COUNTER_UsingFixedFunction)
+  83   1      
+  84   1              #if (CY_UDB_V0)
+                          uint8 CAM_LINEREAD_COUNTER_interruptState;
+                      #endif  /* (CY_UDB_V0) */
+  87   1      
+  88   1             CAM_LINEREAD_COUNTER_WriteCounter(CAM_LINEREAD_COUNTER_backup.CounterUdb);
+  89   1      
+  90   1              #if (CY_UDB_V0)
+                          CAM_LINEREAD_COUNTER_WritePeriod(CAM_LINEREAD_COUNTER_backup.CounterPeriod);
+                          CAM_LINEREAD_COUNTER_WriteCompare(CAM_LINEREAD_COUNTER_backup.CompareValue);
+              
+                          CAM_LINEREAD_COUNTER_interruptState = CyEnterCriticalSection();
+                          CAM_LINEREAD_COUNTER_STATUS_AUX_CTRL |= CAM_LINEREAD_COUNTER_STATUS_ACTL_INT_EN_MASK;
+                          CyExitCriticalSection(CAM_LINEREAD_COUNTER_interruptState);
+              
+                          CAM_LINEREAD_COUNTER_STATUS_MASK = CAM_LINEREAD_COUNTER_backup.InterruptMaskValue;
+                      #endif  /* (CY_UDB_V0) */
+ 100   1      
+ 101   1              #if(!CAM_LINEREAD_COUNTER_ControlRegRemoved)
+ 102   1                  CAM_LINEREAD_COUNTER_WriteControlRegister(CAM_LINEREAD_COUNTER_backup.CounterControlRegister);
+ 103   1              #endif /* (!CAM_LINEREAD_COUNTER_ControlRegRemoved) */
+ 104   1      
+ 105   1          #endif /* (!CAM_LINEREAD_COUNTER_UsingFixedFunction) */
+ 106   1      }
+ 107          
+ 108          
+ 109          /*******************************************************************************
+ 110          * Function Name: CAM_LINEREAD_COUNTER_Sleep
+ 111          ********************************************************************************
+ 112          * Summary:
+ 113          *     Stop and Save the user configuration
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 3   
+
+ 114          *
+ 115          * Parameters:  
+ 116          *  void
+ 117          *
+ 118          * Return: 
+ 119          *  void
+ 120          *
+ 121          * Global variables:
+ 122          *  CAM_LINEREAD_COUNTER_backup.enableState:  Is modified depending on the enable 
+ 123          *  state of the block before entering sleep mode.
+ 124          *
+ 125          *******************************************************************************/
+ 126          void CAM_LINEREAD_COUNTER_Sleep(void) 
+ 127          {
+ 128   1          #if(!CAM_LINEREAD_COUNTER_ControlRegRemoved)
+ 129   1              /* Save Counter's enable state */
+ 130   1              if(CAM_LINEREAD_COUNTER_CTRL_ENABLE == (CAM_LINEREAD_COUNTER_CONTROL & CAM_LINEREAD_COUNTER_CTRL_E
+             -NABLE))
+ 131   1              {
+ 132   2                  /* Counter is enabled */
+ 133   2                  CAM_LINEREAD_COUNTER_backup.CounterEnableState = 1u;
+ 134   2              }
+ 135   1              else
+ 136   1              {
+ 137   2                  /* Counter is disabled */
+ 138   2                  CAM_LINEREAD_COUNTER_backup.CounterEnableState = 0u;
+ 139   2              }
+ 140   1          #else
+                      CAM_LINEREAD_COUNTER_backup.CounterEnableState = 1u;
+                      if(CAM_LINEREAD_COUNTER_backup.CounterEnableState != 0u)
+                      {
+                          CAM_LINEREAD_COUNTER_backup.CounterEnableState = 0u;
+                      }
+                  #endif /* (!CAM_LINEREAD_COUNTER_ControlRegRemoved) */
+ 147   1          
+ 148   1          CAM_LINEREAD_COUNTER_Stop();
+ 149   1          CAM_LINEREAD_COUNTER_SaveConfig();
+ 150   1      }
+ 151          
+ 152          
+ 153          /*******************************************************************************
+ 154          * Function Name: CAM_LINEREAD_COUNTER_Wakeup
+ 155          ********************************************************************************
+ 156          *
+ 157          * Summary:
+ 158          *  Restores and enables the user configuration
+ 159          *  
+ 160          * Parameters:  
+ 161          *  void
+ 162          *
+ 163          * Return: 
+ 164          *  void
+ 165          *
+ 166          * Global variables:
+ 167          *  CAM_LINEREAD_COUNTER_backup.enableState:  Is used to restore the enable state of 
+ 168          *  block on wakeup from sleep mode.
+ 169          *
+ 170          *******************************************************************************/
+ 171          void CAM_LINEREAD_COUNTER_Wakeup(void) 
+ 172          {
+ 173   1          CAM_LINEREAD_COUNTER_RestoreConfig();
+ 174   1          #if(!CAM_LINEREAD_COUNTER_ControlRegRemoved)
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 4   
+
+ 175   1              if(CAM_LINEREAD_COUNTER_backup.CounterEnableState == 1u)
+ 176   1              {
+ 177   2                  /* Enable Counter's operation */
+ 178   2                  CAM_LINEREAD_COUNTER_Enable();
+ 179   2              } /* Do nothing if Counter was disabled before */    
+ 180   1          #endif /* (!CAM_LINEREAD_COUNTER_ControlRegRemoved) */
+ 181   1          
+ 182   1      }
+ 183          
+ 184          
+ 185          /* [] END OF FILE */
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 5   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION CAM_LINEREAD_COUNTER_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 42
+                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 46
+0000 120000      E     LCALL   CAM_LINEREAD_COUNTER_ReadCounter
+0003 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup+01H
+0006 EF                MOV     A,R7
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 55
+0008 120000      E     LCALL   CAM_LINEREAD_COUNTER_ReadControlRegister
+000B 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup+02H
+000E EF                MOV     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 59
+0010 22                RET     
+             ; FUNCTION CAM_LINEREAD_COUNTER_SaveConfig (END)
+
+             ; FUNCTION CAM_LINEREAD_COUNTER_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 80
+                                           ; SOURCE LINE # 81
+                                           ; SOURCE LINE # 88
+0000 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup+01H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 120000      E     LCALL   _CAM_LINEREAD_COUNTER_WriteCounter
+                                           ; SOURCE LINE # 102
+0008 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup+02H
+000B E0                MOVX    A,@DPTR
+000C FF                MOV     R7,A
+000D 120000      E     LCALL   _CAM_LINEREAD_COUNTER_WriteControlRegister
+                                           ; SOURCE LINE # 106
+0010 22                RET     
+             ; FUNCTION CAM_LINEREAD_COUNTER_RestoreConfig (END)
+
+             ; FUNCTION CAM_LINEREAD_COUNTER_Sleep (BEGIN)
+                                           ; SOURCE LINE # 126
+                                           ; SOURCE LINE # 127
+                                           ; SOURCE LINE # 130
+0000 906471            MOV     DPTR,#06471H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 30E708            JNB     ACC.7,?C0003
+                                           ; SOURCE LINE # 131
+                                           ; SOURCE LINE # 133
+0009 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup
+000C 7401              MOV     A,#01H
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 134
+000F 8005              SJMP    ?C0004
+0011         ?C0003:
+                                           ; SOURCE LINE # 136
+                                           ; SOURCE LINE # 138
+0011 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup
+0014 E4                CLR     A
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 139
+0016         ?C0004:
+                                           ; SOURCE LINE # 148
+C51 COMPILER V9.51   CAM_LINEREAD_COUNTER_PM                                               03/25/2015 22:39:49 PAGE 6   
+
+0016 120000      E     LCALL   CAM_LINEREAD_COUNTER_Stop
+                                           ; SOURCE LINE # 149
+0019 120000      R     LCALL   CAM_LINEREAD_COUNTER_SaveConfig
+                                           ; SOURCE LINE # 150
+001C 22                RET     
+             ; FUNCTION CAM_LINEREAD_COUNTER_Sleep (END)
+
+             ; FUNCTION CAM_LINEREAD_COUNTER_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 171
+                                           ; SOURCE LINE # 172
+                                           ; SOURCE LINE # 173
+0000 120000      R     LCALL   CAM_LINEREAD_COUNTER_RestoreConfig
+                                           ; SOURCE LINE # 175
+0003 900000      R     MOV     DPTR,#CAM_LINEREAD_COUNTER_backup
+0006 E0                MOVX    A,@DPTR
+0007 FF                MOV     R7,A
+0008 EF                MOV     A,R7
+0009 B40103            CJNE    A,#01H,?C0007
+                                           ; SOURCE LINE # 176
+                                           ; SOURCE LINE # 178
+000C 120000      E     LCALL   CAM_LINEREAD_COUNTER_Enable
+                                           ; SOURCE LINE # 179
+                                           ; SOURCE LINE # 182
+000F         ?C0007:
+000F 22                RET     
+             ; FUNCTION CAM_LINEREAD_COUNTER_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     79    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      3    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

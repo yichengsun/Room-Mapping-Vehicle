@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 1   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VIDEO_OUT_COMPARE
@@ -62,7 +62,7 @@ line level    source
   50          *******************************************************************************/
   51          void VIDEO_OUT_COMPARE_Init(void) 
   52          {
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 2   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 2   
 
   53   1          /* Set default speed/power */
   54   1          VIDEO_OUT_COMPARE_SetSpeed(VIDEO_OUT_COMPARE_DEFAULT_SPEED);
@@ -126,7 +126,7 @@ line level    source
                           VIDEO_OUT_COMPARE_restoreReg = 0u;
                       }
                   #endif /* CY_PSOC5A */
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 3   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 3   
 
  115   1      }
  116          
@@ -190,7 +190,7 @@ line level    source
               
                       /* Save the control register before clearing it */
                       VIDEO_OUT_COMPARE_lowPowerBackup.compCRReg = VIDEO_OUT_COMPARE_CR;
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 4   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 4   
 
                       VIDEO_OUT_COMPARE_CR = VIDEO_OUT_COMPARE_COMP_REG_CLR;
                   #endif /* CY_PSOC5A */
@@ -254,7 +254,7 @@ line level    source
  236          ********************************************************************************
  237          *
  238          * Summary:
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 5   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 5   
 
  239          *  This function returns the comparator output value.
  240          *  This value is not affected by the Polarity parameter.
@@ -318,7 +318,7 @@ line level    source
                           #endif /* CY_PSOC5A */
  299   3                  
  300   3                  /* PSoC3, PSoC5LP or later */
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 6   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 6   
 
  301   3                  #if (CY_PSOC3 || CY_PSOC5LP)
  302   3                      VIDEO_OUT_COMPARE_TR0 |= VIDEO_OUT_COMPARE_CMP_TR0_DIR;
@@ -382,7 +382,7 @@ line level    source
                               VIDEO_OUT_COMPARE_TR += 0x10u;
                           #endif /* CY_PSOC5A */
  362   3                  
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 7   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 7   
 
  363   3                  /* PSoC3, PSoC5LP or later */
  364   3                  #if (CY_PSOC3 || CY_PSOC5LP)
@@ -446,7 +446,7 @@ line level    source
  422          *    ensure the offset is < 1 mV.
  423          *
  424          * Trim Process:   
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 8   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 8   
 
  425          *  1) User applies a voltage to the negative input.  Voltage should be in the
  426          *     comparator operating range or an average of the operating voltage range.
@@ -510,7 +510,7 @@ line level    source
  484   1          if ( (VIDEO_OUT_COMPARE_CR & VIDEO_OUT_COMPARE_PWR_MODE_MASK) == VIDEO_OUT_COMPARE_PWR_MODE_FAST)
  485   1          {
  486   2              VIDEO_OUT_COMPARE_trimAdjust(0u);
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 9   
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 9   
 
  487   2          }
  488   1          else /* default to trim for fast modes */
@@ -574,7 +574,7 @@ line level    source
  546          
  547          
  548          #if (CY_PSOC3 || CY_PSOC5LP)
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 10  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 10  
 
  549          
  550              /*******************************************************************************
@@ -623,7 +623,7 @@ line level    source
  593          
  594          
  595          /* [] END OF FILE */
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 11  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -687,7 +687,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 99
                                            ; SOURCE LINE # 100
                                            ; SOURCE LINE # 101
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 12  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 12  
 
 0000 9043A7            MOV     DPTR,#043A7H
 0003 E0                MOVX    A,@DPTR
@@ -751,7 +751,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
 0010 EF                MOV     A,R7
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 13  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 13  
 
 0011 54FB              ANL     A,#0FBH
 0013 FF                MOV     R7,A
@@ -815,7 +815,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 218
                                            ; SOURCE LINE # 226
 0045 7B0C              MOV     R3,#0CH
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 14  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 14  
 
 0047 7A01              MOV     R2,#01H
 0049 79B1              MOV     R1,#0B1H
@@ -879,7 +879,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001B 900000      R     MOV     DPTR,#cmpState
 001E E0                MOVX    A,@DPTR
 001F FF                MOV     R7,A
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 15  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 15  
 
 0020 EF                MOV     A,R7
 0021 6020              JZ      ?C0012
@@ -943,7 +943,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005C E4                CLR     A
 005D F0                MOVX    @DPTR,A
 005E         ?C0016:
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 16  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 16  
 
 005E 900000      R     MOV     DPTR,#trimCntMax
 0061 E0                MOVX    A,@DPTR
@@ -1007,7 +1007,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A4         ?C0018:
 00A4 900000      R     MOV     DPTR,#trimCnt
 00A7 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 17  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 17  
 
 00A8 04                INC     A
 00A9 F0                MOVX    @DPTR,A
@@ -1071,7 +1071,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0043 E0                MOVX    A,@DPTR
 0044 FF                MOV     R7,A
 0045 EF                MOV     A,R7
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 18  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 18  
 
 0046 4430              ORL     A,#030H
 0048 FF                MOV     R7,A
@@ -1135,7 +1135,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0091 900000      R     MOV     DPTR,#tmpSW3
 0094 E0                MOVX    A,@DPTR
 0095 FF                MOV     R7,A
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 19  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 19  
 
 0096 905AD3            MOV     DPTR,#05AD3H
 0099 EF                MOV     A,R7
@@ -1199,7 +1199,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 22                RET     
              ; FUNCTION _VIDEO_OUT_COMPARE_LoadTrim (END)
 
-C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 21:17:21 PAGE 20  
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE                                                     03/25/2015 22:39:49 PAGE 20  
 
              ; FUNCTION VIDEO_OUT_COMPARE_PwrDwnOverrideEnable (BEGIN)
                                            ; SOURCE LINE # 565

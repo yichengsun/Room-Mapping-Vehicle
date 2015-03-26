@@ -310,7 +310,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>CAM_LINE_TIMER</name>
+      <name>VIDEO_OUT_TIMER</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -320,7 +320,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>CAM_LINE_TIMER_COUNTER</name>
+          <name>VIDEO_OUT_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
           <addressOffset>0x6406</addressOffset>
           <size>16</size>
@@ -329,7 +329,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_LINE_TIMER_PERIOD</name>
+          <name>VIDEO_OUT_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
           <addressOffset>0x6426</addressOffset>
           <size>16</size>
@@ -338,7 +338,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_LINE_TIMER_Control_Reg</name>
+          <name>VIDEO_OUT_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
           <addressOffset>0x6477</addressOffset>
           <size>8</size>
@@ -384,7 +384,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_LINE_TIMER_STATUS_MASK</name>
+          <name>VIDEO_OUT_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
           <addressOffset>0x6487</addressOffset>
           <size>8</size>
@@ -423,7 +423,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_LINE_TIMER_STATUS_AUX_CTRL</name>
+          <name>VIDEO_OUT_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x6497</addressOffset>
           <size>8</size>
@@ -2390,7 +2390,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>CAM_COUNTER</name>
+      <name>CAM_LINEREAD_COUNTER</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -2400,7 +2400,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>CAM_COUNTER_COUNTER</name>
+          <name>CAM_LINEREAD_COUNTER_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
           <addressOffset>0x6401</addressOffset>
           <size>8</size>
@@ -2409,7 +2409,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_COUNTER_PERIOD</name>
+          <name>CAM_LINEREAD_COUNTER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
           <addressOffset>0x6421</addressOffset>
           <size>8</size>
@@ -2418,7 +2418,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_COUNTER_COMPARE</name>
+          <name>CAM_LINEREAD_COUNTER_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
           <addressOffset>0x6431</addressOffset>
           <size>8</size>
@@ -2427,7 +2427,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>CAM_COUNTER_Control_Reg</name>
+          <name>CAM_LINEREAD_COUNTER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
           <addressOffset>0x6471</addressOffset>
           <size>8</size>
@@ -2459,7 +2459,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_COUNTER_STATUS_MASK</name>
+          <name>CAM_LINEREAD_COUNTER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
           <addressOffset>0x6481</addressOffset>
           <size>8</size>
@@ -2519,7 +2519,7 @@
           </fields>
         </register>
         <register>
-          <name>CAM_COUNTER_STATUS_AUX_CTRL</name>
+          <name>CAM_LINEREAD_COUNTER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x6491</addressOffset>
           <size>8</size>
