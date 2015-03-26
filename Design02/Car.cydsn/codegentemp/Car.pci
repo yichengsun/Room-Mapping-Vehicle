@@ -1,5 +1,5 @@
 # Car
-# 2015-03-14 22:49:35Z
+# 2015-03-26 01:17:11Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -13,7 +13,6 @@ set_io "HE_IN_PIN(0)" iocell 4 3
 set_io "PWM_OUT_PIN(0)" iocell 4 7
 set_io "STEERING_PWM_OUT_PIN(0)" iocell 4 6
 set_io "VERT_SYNC_OUT_IN(0)" iocell 4 4
-set_location "\CAM_ADC:DSM\" dsmodcell -1 -1 0
 set_io "\LCD:LCDPort(0)\" iocell 2 0
 set_io "\LCD:LCDPort(1)\" iocell 2 1
 set_io "\LCD:LCDPort(2)\" iocell 2 2
@@ -21,3 +20,5 @@ set_io "\LCD:LCDPort(3)\" iocell 2 3
 set_io "\LCD:LCDPort(4)\" iocell 2 4
 set_io "\LCD:LCDPort(5)\" iocell 2 5
 set_io "\LCD:LCDPort(6)\" iocell 2 6
+set_location "\VDAC8_1:viDAC8\" vidaccell -1 -1 2
+set_location "\VIDEO_OUT_COMPARE:ctComp\" comparatorcell -1 -1 2

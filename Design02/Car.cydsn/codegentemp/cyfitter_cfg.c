@@ -89,13 +89,13 @@ static void CyClockStartupError(uint8 errorCode)
 
 #define cfg_byte_table ((const void CYFAR *)0x080000u)
 /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080380u)
+#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080458u)
 
 /* IOPINS0_4 Address: CYREG_PRT4_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080388u)
+#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080460u)
 
 /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
-#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x00080390u)
+#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x00080468u)
 
 
 /*******************************************************************************
@@ -122,16 +122,12 @@ static void ClockSetup(void)
 
 
 	/* Configure Digital Clocks based on settings from Clock DWR */
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0000u);
-	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG0_CFG0 + 0x2u), 0x50u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0001u);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0001u);
+	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG0_CFG0 + 0x2u), 0x18u);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0007u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG1_CFG0 + 0x2u), 0x18u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x0007u);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x0017u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG2_CFG0 + 0x2u), 0x18u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG3_CFG0), 0x0017u);
-	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG3_CFG0 + 0x2u), 0x18u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG4_CFG0), 0x0017u);
-	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG4_CFG0 + 0x2u), 0x18u);
 
 	/* Configure Analog Clocks based on settings from Clock DWR */
 	CYCONFIGCPY((void CYFAR *)(CYREG_CLKDIST_ACFG0_CFG0), (const void CYFAR *)(BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL), 4u);
@@ -169,7 +165,7 @@ static void ClockSetup(void)
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_LD), 0x02u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DLY1), 0x04u);
 
-	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x1Fu)));
+	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x07u)));
 	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG1), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG1) | 0x01u)));
 	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG0), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0) | 0x80u)));
 }
@@ -200,7 +196,9 @@ static void AnalogSetDefault(void)
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
 	CY_SET_REG8((void CYXDATA *)CYREG_PRT4_AG, 0x01u);
-	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x10u);
+	CY_SET_REG8((void CYXDATA *)CYREG_DAC2_SW0, 0x20u);
+	CY_SET_REG8((void CYXDATA *)CYREG_CMP2_SW0, 0x10u);
+	CY_SET_REG8((void CYXDATA *)CYREG_CMP2_SW4, 0x20u);
 	CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
 }
 
@@ -237,63 +235,6 @@ void SetAnalogRoutingPumps(uint8 enabled)
 }
 
 #define CY_AMUX_UNUSED CYREG_BOOST_SR
-/* This is an implementation detail of the AMux. Code that depends on it may be
-   incompatible with other versions of PSoC Creator. */
-uint8 CYXDATA * const CYCODE CAM_ADC_AMux__addrTable[2] = {
-	(uint8 CYXDATA *)CYREG_DSM0_SW3, 
-	(uint8 CYXDATA *)CY_AMUX_UNUSED, 
-};
-
-/* This is an implementation detail of the AMux. Code that depends on it may be
-   incompatible with other versions of PSoC Creator. */
-const uint8 CYCODE CAM_ADC_AMux__maskTable[2] = {
-	0x40u, 
-	0x00u, 
-};
-
-/*******************************************************************************
-* Function Name: CAM_ADC_AMux_Set
-********************************************************************************
-* Summary:
-*  This function is used to set a particular channel as active on the AMux.
-*
-* Parameters:  
-*   channel - The mux channel input to set as active
-*
-* Return:
-*   void
-*
-*******************************************************************************/
-void CAM_ADC_AMux_Set(uint8 channel)
-{
-	if (channel < 2)
-	{
-		*CAM_ADC_AMux__addrTable[channel] |= CAM_ADC_AMux__maskTable[channel];
-	}
-}
-
-/*******************************************************************************
-* Function Name: CAM_ADC_AMux_Unset
-********************************************************************************
-* Summary:
-*  This function is used to clear a particular channel from being active on the
-*  AMux.
-*
-* Parameters:  
-*   channel - The mux channel input to mark inactive
-*
-* Return:
-*   void
-*
-*******************************************************************************/
-void CAM_ADC_AMux_Unset(uint8 channel)
-{
-	if (channel < 2)
-	{
-		*CAM_ADC_AMux__addrTable[channel] &= (uint8)~CAM_ADC_AMux__maskTable[channel];
-	}
-}
-
 
 
 /*******************************************************************************
@@ -351,7 +292,7 @@ void cyfitter_cfg(void)
 		cfg_write_bytes(cfg_byte_table);
 
 		/* Perform normal device configuration. Order is not critical for these items. */
-		CY_SET_REG8((void CYXDATA *)(CYREG_DSM0_CR3), 0x0Au);
+		CY_SET_XTND_REG16((void CYFAR *)(CYREG_LUT2_CR), 0x0203u);
 
 		/* Enable digital routing */
 		CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL) | 0x02u);

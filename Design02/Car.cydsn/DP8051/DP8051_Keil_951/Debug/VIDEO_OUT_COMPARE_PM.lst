@@ -1,0 +1,245 @@
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE_PM                                                  03/25/2015 21:17:21 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE VIDEO_OUT_COMPARE_PM
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\VIDEO_OUT_COMPARE_PM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\VIDEO_OUT_COMPARE_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(
+                    -3) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/VIDEO_OUT_COMPARE_PM.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_
+                    -951\Debug\VIDEO_OUT_COMPARE_PM.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: VIDEO_OUT_COMPARE.c
+   3          * Version 2.0
+   4          *
+   5          * Description:
+   6          *  This file provides the power management source code APIs for the
+   7          *  Comparator.
+   8          *
+   9          * Note:
+  10          *  None
+  11          *
+  12          ********************************************************************************
+  13          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14          * You may use this file only in accordance with the license, terms, conditions, 
+  15          * disclaimers, and limitations in the end user license agreement accompanying 
+  16          * the software package with which this file was provided.
+  17          *******************************************************************************/
+  18          
+  19          #include "VIDEO_OUT_COMPARE.h"
+  20          
+  21          static VIDEO_OUT_COMPARE_backupStruct VIDEO_OUT_COMPARE_backup;
+  22          
+  23          
+  24          /*******************************************************************************
+  25          * Function Name: VIDEO_OUT_COMPARE_SaveConfig
+  26          ********************************************************************************
+  27          *
+  28          * Summary:
+  29          *  Save the current user configuration
+  30          *
+  31          * Parameters:
+  32          *  void:
+  33          *
+  34          * Return:
+  35          *  void
+  36          *
+  37          *******************************************************************************/
+  38          void VIDEO_OUT_COMPARE_SaveConfig(void) 
+  39          {
+  40   1          /* Empty since all are system reset for retention flops */
+  41   1      }
+  42          
+  43          
+  44          /*******************************************************************************
+  45          * Function Name: VIDEO_OUT_COMPARE_RestoreConfig
+  46          ********************************************************************************
+  47          *
+  48          * Summary:
+  49          *  Restores the current user configuration.
+  50          *
+  51          * Parameters:
+  52          *  void
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE_PM                                                  03/25/2015 21:17:21 PAGE 2   
+
+  53          *
+  54          * Return:
+  55          *  void
+  56          *
+  57          ********************************************************************************/
+  58          void VIDEO_OUT_COMPARE_RestoreConfig(void) 
+  59          {
+  60   1          /* Empty since all are system reset for retention flops */    
+  61   1      }
+  62          
+  63          
+  64          /*******************************************************************************
+  65          * Function Name: VIDEO_OUT_COMPARE_Sleep
+  66          ********************************************************************************
+  67          *
+  68          * Summary:
+  69          *  Stop and Save the user configuration
+  70          *
+  71          * Parameters:
+  72          *  void:
+  73          *
+  74          * Return:
+  75          *  void
+  76          *
+  77          * Global variables:
+  78          *  VIDEO_OUT_COMPARE_backup.enableState:  Is modified depending on the enable 
+  79          *   state of the block before entering sleep mode.
+  80          *
+  81          *******************************************************************************/
+  82          void VIDEO_OUT_COMPARE_Sleep(void) 
+  83          {
+  84   1          /* Save Comp's enable state */    
+  85   1          if(VIDEO_OUT_COMPARE_ACT_PWR_EN == (VIDEO_OUT_COMPARE_PWRMGR & VIDEO_OUT_COMPARE_ACT_PWR_EN))
+  86   1          {
+  87   2              /* Comp is enabled */
+  88   2              VIDEO_OUT_COMPARE_backup.enableState = 1u;
+  89   2          }
+  90   1          else
+  91   1          {
+  92   2              /* Comp is disabled */
+  93   2              VIDEO_OUT_COMPARE_backup.enableState = 0u;
+  94   2          }    
+  95   1          
+  96   1          VIDEO_OUT_COMPARE_Stop();
+  97   1          VIDEO_OUT_COMPARE_SaveConfig();
+  98   1      }
+  99          
+ 100          
+ 101          /*******************************************************************************
+ 102          * Function Name: VIDEO_OUT_COMPARE_Wakeup
+ 103          ********************************************************************************
+ 104          *
+ 105          * Summary:
+ 106          *  Restores and enables the user configuration
+ 107          *  
+ 108          * Parameters:
+ 109          *  void
+ 110          *
+ 111          * Return:
+ 112          *  void
+ 113          *
+ 114          * Global variables:
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE_PM                                                  03/25/2015 21:17:21 PAGE 3   
+
+ 115          *  VIDEO_OUT_COMPARE_backup.enableState:  Is used to restore the enable state of 
+ 116          *  block on wakeup from sleep mode.
+ 117          *
+ 118          *******************************************************************************/
+ 119          void VIDEO_OUT_COMPARE_Wakeup(void) 
+ 120          {
+ 121   1          VIDEO_OUT_COMPARE_RestoreConfig();
+ 122   1          
+ 123   1          if(VIDEO_OUT_COMPARE_backup.enableState == 1u)
+ 124   1          {
+ 125   2              /* Enable Comp's operation */
+ 126   2              VIDEO_OUT_COMPARE_Enable();
+ 127   2      
+ 128   2          } /* Do nothing if Comp was disabled before */ 
+ 129   1      }
+ 130          
+ 131          
+ 132          /* [] END OF FILE */
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE_PM                                                  03/25/2015 21:17:21 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION VIDEO_OUT_COMPARE_SaveConfig (BEGIN)
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 39
+                                           ; SOURCE LINE # 41
+0000 22                RET     
+             ; FUNCTION VIDEO_OUT_COMPARE_SaveConfig (END)
+
+             ; FUNCTION VIDEO_OUT_COMPARE_RestoreConfig (BEGIN)
+                                           ; SOURCE LINE # 58
+                                           ; SOURCE LINE # 59
+                                           ; SOURCE LINE # 61
+0000 22                RET     
+             ; FUNCTION VIDEO_OUT_COMPARE_RestoreConfig (END)
+
+             ; FUNCTION VIDEO_OUT_COMPARE_Sleep (BEGIN)
+                                           ; SOURCE LINE # 82
+                                           ; SOURCE LINE # 83
+                                           ; SOURCE LINE # 85
+0000 9043A7            MOV     DPTR,#043A7H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 5404              ANL     A,#04H
+0008 FF                MOV     R7,A
+0009 7E00              MOV     R6,#00H
+000B EF                MOV     A,R7
+000C 6404              XRL     A,#04H
+000E 4E                ORL     A,R6
+000F 7008              JNZ     ?C0003
+                                           ; SOURCE LINE # 86
+                                           ; SOURCE LINE # 88
+0011 900000      R     MOV     DPTR,#VIDEO_OUT_COMPARE_backup
+0014 7401              MOV     A,#01H
+0016 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 89
+0017 8005              SJMP    ?C0004
+0019         ?C0003:
+                                           ; SOURCE LINE # 91
+                                           ; SOURCE LINE # 93
+0019 900000      R     MOV     DPTR,#VIDEO_OUT_COMPARE_backup
+001C E4                CLR     A
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 94
+001E         ?C0004:
+                                           ; SOURCE LINE # 96
+001E 120000      E     LCALL   VIDEO_OUT_COMPARE_Stop
+                                           ; SOURCE LINE # 97
+0021 120000      R     LCALL   VIDEO_OUT_COMPARE_SaveConfig
+                                           ; SOURCE LINE # 98
+0024 22                RET     
+             ; FUNCTION VIDEO_OUT_COMPARE_Sleep (END)
+
+             ; FUNCTION VIDEO_OUT_COMPARE_Wakeup (BEGIN)
+                                           ; SOURCE LINE # 119
+                                           ; SOURCE LINE # 120
+                                           ; SOURCE LINE # 121
+0000 120000      R     LCALL   VIDEO_OUT_COMPARE_RestoreConfig
+                                           ; SOURCE LINE # 123
+0003 900000      R     MOV     DPTR,#VIDEO_OUT_COMPARE_backup
+C51 COMPILER V9.51   VIDEO_OUT_COMPARE_PM                                                  03/25/2015 21:17:21 PAGE 5   
+
+0006 E0                MOVX    A,@DPTR
+0007 FF                MOV     R7,A
+0008 EF                MOV     A,R7
+0009 B40103            CJNE    A,#01H,?C0007
+                                           ; SOURCE LINE # 124
+                                           ; SOURCE LINE # 126
+000C 120000      E     LCALL   VIDEO_OUT_COMPARE_Enable
+                                           ; SOURCE LINE # 128
+                                           ; SOURCE LINE # 129
+000F         ?C0007:
+000F 22                RET     
+             ; FUNCTION VIDEO_OUT_COMPARE_Wakeup (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

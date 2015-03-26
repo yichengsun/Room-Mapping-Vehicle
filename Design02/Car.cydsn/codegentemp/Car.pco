@@ -1,5 +1,5 @@
 # Car
-# 2015-03-14 22:49:36Z
+# 2015-03-26 01:17:13Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -7,13 +7,12 @@ dont_use_io iocell 1 0
 dont_use_io iocell 1 1
 # IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 3
-set_location "CAM_LINE_ISR" interrupt -1 -1 0
-set_location "CAM_READ_ISR" interrupt -1 -1 1
+set_location "CAM_READ_ISR" interrupt -1 -1 0
 set_io "COM_SYNC_OUT_PIN(0)" iocell 4 2
 set_io "COM_VID_IN_PIN(0)" iocell 4 0
 set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "HE_IN_PIN(0)" iocell 4 3
-set_location "HE_ISR" interrupt -1 -1 2
+set_location "HE_ISR" interrupt -1 -1 1
 set_location "Net_1611" 3 4 0 1
 set_location "Net_3206" 3 5 1 1
 set_location "Net_3712" 3 3 0 1
@@ -21,10 +20,7 @@ set_location "Net_459" 3 5 1 3
 set_io "PWM_OUT_PIN(0)" iocell 4 7
 set_io "STEERING_PWM_OUT_PIN(0)" iocell 4 6
 set_io "VERT_SYNC_OUT_IN(0)" iocell 4 4
-set_location "VSYNC_ISR" interrupt -1 -1 3
-set_location "\CAM_ADC:DEC\" decimatorcell -1 -1 0
-set_location "\CAM_ADC:DSM\" dsmodcell -1 -1 0
-set_location "\CAM_ADC:IRQ\" interrupt -1 -1 29
+set_location "VSYNC_ISR" interrupt -1 -1 2
 set_location "\CAM_COUNTER:CounterUDB:count_enable\" 3 5 0 0
 set_location "\CAM_COUNTER:CounterUDB:count_stored_i\" 3 5 0 1
 set_location "\CAM_COUNTER:CounterUDB:overflow_reg_i\" 3 5 0 3
@@ -33,8 +29,18 @@ set_location "\CAM_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 5 6
 set_location "\CAM_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\" 3 5 4
 set_location "\CAM_COUNTER:CounterUDB:status_0\" 3 5 1 0
 set_location "\CAM_COUNTER:CounterUDB:status_2\" 3 5 0 2
+set_location "\CAM_LINE_TIMER:TimerUDB:capt_fifo_load\" 2 2 0 1
+set_location "\CAM_LINE_TIMER:TimerUDB:capt_int_temp\" 2 2 1 1
+set_location "\CAM_LINE_TIMER:TimerUDB:capture_last\" 2 2 0 2
+set_location "\CAM_LINE_TIMER:TimerUDB:int_capt_count_0\" 2 2 0 3
+set_location "\CAM_LINE_TIMER:TimerUDB:int_capt_count_1\" 2 2 1 0
+set_location "\CAM_LINE_TIMER:TimerUDB:rstSts:stsreg\" 2 2 4
+set_location "\CAM_LINE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 2 6
+set_location "\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u0\" 3 2 2
+set_location "\CAM_LINE_TIMER:TimerUDB:sT16:timerdp:u1\" 2 2 2
+set_location "\CAM_LINE_TIMER:TimerUDB:status_tc\" 2 2 0 0
 set_location "\HE_TIMER:TimerUDB:rstSts:stsreg\" 2 1 4
-set_location "\HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 0 6
+set_location "\HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 0 6
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u0\" 2 0 2
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u1\" 3 0 2
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u2\" 3 1 2
@@ -55,4 +61,7 @@ set_location "\STEERING_PWM:PWMUDB:genblk1:ctrlreg\" 3 3 6
 set_location "\STEERING_PWM:PWMUDB:runmode_enable\" 3 3 0 0
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u0\" 2 3 2
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u1\" 3 3 2
-set_location "__ONE__" 3 4 1 0
+set_location "\VDAC8_1:viDAC8\" vidaccell -1 -1 2
+set_location "\VIDEO_OUT_COMPARE:ctComp\" comparatorcell -1 -1 2
+set_location "__ONE__" 2 3 1 3
+set_location "read_camera_line_ISR" interrupt -1 -1 3

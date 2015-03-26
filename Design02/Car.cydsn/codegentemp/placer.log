@@ -6,7 +6,7 @@
 
 #Build Date:         Oct 23 2014 13:00:08
 
-#File Generated:     Mar 14 2015 18:49:35
+#File Generated:     Mar 25 2015 21:17:11
 
 #Purpose:            
 
@@ -44,17 +44,17 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	6
-    Number of Sequential MCs    	:	7
-    Number of DPs               	:	9
-    Number of Controls          	:	4
-    Number of Status            	:	2
+    Number of Combinational MCs 	:	8
+    Number of Sequential MCs    	:	11
+    Number of DPs               	:	11
+    Number of Controls          	:	5
+    Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
 
 Device Utilization Summary after Packing
-    Macrocells                  :	13/192
-    UDBS                        :	10/24
+    Macrocells                  :	19/192
+    UDBS                        :	12/24
     IOs                         :	13/72
 
 
@@ -79,14 +79,10 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
-Clock: CAM_ADC_Ext_CP_Clk   | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_theACLK      | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_LINE_CLK         | Frequency: N/A       | Target:   1.0 MHz
-Clock: CAM_LINE_CLK(routed) | Frequency: N/A       | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:  42.7 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -94,7 +90,6 @@ Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  12.0 MHz
 Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.0 MHz
 Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
-Clock: \CAM_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -106,14 +101,10 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
-Clock: CAM_ADC_Ext_CP_Clk   | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_theACLK      | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_LINE_CLK         | Frequency: N/A       | Target:   1.0 MHz
-Clock: CAM_LINE_CLK(routed) | Frequency: N/A       | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:  42.7 MHz | Target:  24.0 MHz
+Number of clocks: 10
+Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -121,7 +112,6 @@ Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  12.0 MHz
 Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.0 MHz
 Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
-Clock: \CAM_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -129,17 +119,17 @@ Clock: \CAM_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 D2088: Phase 7, elapsed time : 0.5 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	6
-    Number of Sequential MCs    	:	7
-    Number of DPs               	:	9
-    Number of Controls          	:	4
-    Number of Status            	:	2
+    Number of Combinational MCs 	:	8
+    Number of Sequential MCs    	:	11
+    Number of DPs               	:	11
+    Number of Controls          	:	5
+    Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
     Number of IOs       	:	13
 
 Device Utilization Summary
-    Macrocells                  :	13/192
+    Macrocells                  :	19/192
     IOs                         :	13/72
 
 
@@ -156,14 +146,10 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
-Clock: CAM_ADC_Ext_CP_Clk   | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CAM_ADC_theACLK      | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.7 MHz
-Clock: CAM_LINE_CLK         | Frequency: N/A       | Target:   1.0 MHz
-Clock: CAM_LINE_CLK(routed) | Frequency: N/A       | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:  42.7 MHz | Target:  26.3 MHz
+Number of clocks: 10
+Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  26.3 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -171,7 +157,6 @@ Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
 Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
 Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
-Clock: \CAM_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -182,5 +167,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.5 sec.
+I2076: Total run-time: 1.2 sec.
 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 1   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CAM_READ_ISR
@@ -62,7 +62,7 @@ line level    source
   50   1      
   51   1          /* Set the ISR to point to the CAM_READ_ISR Interrupt. */
   52   1          CAM_READ_ISR_SetVector(&CAM_READ_ISR_Interrupt);
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 2   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 2   
 
   53   1      
   54   1          /* Set the priority. */
@@ -126,7 +126,7 @@ line level    source
  112          
  113          /*******************************************************************************
  114          * Function Name: CAM_READ_ISR_Interrupt
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 3   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 3   
 
  115          ********************************************************************************
  116          * Summary:
@@ -190,7 +190,7 @@ line level    source
  174          * Parameters:
  175          *   None
  176          *
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 4   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 4   
 
  177          * Return:
  178          *   Address of the ISR in the interrupt vector table.
@@ -254,7 +254,7 @@ line level    source
  236          /*******************************************************************************
  237          * Function Name: CAM_READ_ISR_Enable
  238          ********************************************************************************
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 5   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 5   
 
  239          *
  240          * Summary:
@@ -318,7 +318,7 @@ line level    source
  298          
  299          /*******************************************************************************
  300          * Function Name: CAM_READ_ISR_SetPending
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 6   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 6   
 
  301          ********************************************************************************
  302          *
@@ -362,7 +362,7 @@ line level    source
  340          
  341          
  342          /* [] END OF FILE */
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 7   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -426,7 +426,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 129
                                            ; SOURCE LINE # 142
 0000 32                RETI    
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 8   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 8   
 
              ; FUNCTION CAM_READ_ISR_Interrupt (END)
 
@@ -442,7 +442,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 163
 0008 7B02              MOV     R3,#02H
 000A 7A44              MOV     R2,#044H
-000C 7902              MOV     R1,#02H
+000C 7900              MOV     R1,#00H
 000E 900000      R     MOV     DPTR,#address
 0011 E0                MOVX    A,@DPTR
 0012 FE                MOV     R6,A
@@ -462,7 +462,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 183
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
-0004 7902              MOV     R1,#02H
+0004 7900              MOV     R1,#00H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 184
 0009         ?C0006:
@@ -484,20 +484,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000C 33                RLC     A
 000D 54E0              ANL     A,#0E0H
 000F FF                MOV     R7,A
-0010 904481            MOV     DPTR,#04481H
+0010 904480            MOV     DPTR,#04480H
 0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 208
 0015 22                RET     
              ; FUNCTION _CAM_READ_ISR_SetPriority (END)
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 9   
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 9   
 
 
              ; FUNCTION CAM_READ_ISR_GetPriority (BEGIN)
                                            ; SOURCE LINE # 225
                                            ; SOURCE LINE # 226
                                            ; SOURCE LINE # 230
-0000 904481            MOV     DPTR,#04481H
+0000 904480            MOV     DPTR,#04480H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
@@ -522,7 +522,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 251
                                            ; SOURCE LINE # 253
 0000 9044C0            MOV     DPTR,#044C0H
-0003 7402              MOV     A,#02H
+0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 254
 0006 22                RET     
@@ -536,7 +536,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 30E104            JNB     ACC.1,?C0010
+0006 30E004            JNB     ACC.0,?C0010
 0009 7F01              MOV     R7,#01H
 000B 8002              SJMP    ?C0011
 000D         ?C0010:
@@ -552,9 +552,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 293
                                            ; SOURCE LINE # 295
 0000 9044C8            MOV     DPTR,#044C8H
-0003 7402              MOV     A,#02H
+0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CAM_READ_ISR                                                          03/14/2015 18:49:59 PAGE 10  
+C51 COMPILER V9.51   CAM_READ_ISR                                                          03/25/2015 21:17:20 PAGE 10  
 
                                            ; SOURCE LINE # 296
 0006 22                RET     
@@ -565,7 +565,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 315
                                            ; SOURCE LINE # 316
 0000 9044D0            MOV     DPTR,#044D0H
-0003 7402              MOV     A,#02H
+0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 317
 0006 22                RET     
@@ -576,7 +576,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 335
                                            ; SOURCE LINE # 336
 0000 9044D8            MOV     DPTR,#044D8H
-0003 7402              MOV     A,#02H
+0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 337
 0006 22                RET     

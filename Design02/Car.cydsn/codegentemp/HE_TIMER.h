@@ -169,7 +169,7 @@ void HE_TIMER_Wakeup(void)        ;
 ***************************************/
 
 #define HE_TIMER_INIT_PERIOD             4294967295u
-#define HE_TIMER_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << HE_TIMER_CTRL_CAP_MODE_SHIFT))
+#define HE_TIMER_INIT_CAPTURE_MODE       ((uint8)((uint8)1u << HE_TIMER_CTRL_CAP_MODE_SHIFT))
 #define HE_TIMER_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << HE_TIMER_CTRL_TRIG_MODE_SHIFT))
 #if (HE_TIMER_UsingFixedFunction)
     #define HE_TIMER_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << HE_TIMER_STATUS_TC_INT_MASK_SHIFT)) | \
