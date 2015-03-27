@@ -48,8 +48,7 @@
 #include <CAPTURE_OUT_PIN_aliases.h>
 #include <COUNTER_OUT_PIN.h>
 #include <COUNTER_OUT_PIN_aliases.h>
-#include <COMPARATOR_OUT_PIN.h>
-#include <COMPARATOR_OUT_PIN_aliases.h>
+#include <UPDATE_STEER_ISR.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

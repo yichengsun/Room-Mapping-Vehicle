@@ -958,8 +958,6 @@
 <file name=".\DP8051\DP8051_Keil_951\Release\main.obj">
 <dep name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h" />
-<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARATOR_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARATOR_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN.h" />
@@ -992,6 +990,7 @@
 <dep name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\TIMER_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\TIMER_OUT_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\cyPm.h" />
@@ -1007,8 +1006,6 @@
 </file>
 <file name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN_aliases.h" />
-<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h" />
-<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\COMPARATOR_PIN.h" />
 <file name=".\Generated_Source\PSoC3\COMPARATOR_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\COM_SYNC_OUT_PIN.h" />
@@ -1041,6 +1038,7 @@
 <file name=".\Generated_Source\PSoC3\STEERING_PWM_OUT_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\TIMER_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\TIMER_OUT_PIN_aliases.h" />
+<file name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.h" />
 <file name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\cyPm.h" />
@@ -1064,17 +1062,6 @@
 <dep name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\COMPARATOR_OUT_PIN.obj">
-<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h" />
-<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC3\cypins.h" />
-<dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c" />
-</file>
-<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\COMPARATOR_PIN.obj">
 <dep name=".\Generated_Source\PSoC3\COMPARATOR_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\COMPARATOR_PIN_aliases.h" />
@@ -1434,6 +1421,20 @@
 <dep name=".\Generated_Source\PSoC3\TIMER_OUT_PIN.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\TIMER_OUT_PIN.c" />
+<file name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEER_ISR.obj">
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj">
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN.h" />
 <dep name=".\Generated_Source\PSoC3\VERT_SYNC_OUT_PIN_aliases.h" />
@@ -1504,6 +1505,19 @@
 <dep name=".\Generated_Source\PSoC3\cymem.a51" />
 </file>
 <file name=".\Generated_Source\PSoC3\cymem.a51" />
+<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h" />
+<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h" />
+<file name=".\DP8051\DP8051_Keil_951\Release\COMPARATOR_OUT_PIN.obj">
+<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h" />
+<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cypins.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c" />
 <file name=".\Generated_Source\PSoC3\COMP_OUT_PIN.h" />
 <file name=".\Generated_Source\PSoC3\COMP_OUT_PIN_aliases.h" />
 <file name=".\DP8051\DP8051_Keil_951\Release\COMP_OUT_PIN.obj">
@@ -2134,7 +2148,7 @@
 <dep name=".\DP8051\DP8051_Keil_951\Release\COUNTER_OUT_PIN.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\TIMER_OUT_PIN.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\CAPTURE_OUT_PIN.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\COMPARATOR_OUT_PIN.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEER_ISR.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\Car.lib" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib" />
 </file>
@@ -2299,6 +2313,7 @@
 <name_val_pair name=".\Generated_Source\PSoC3\TIMER_OUT_PIN.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 <name_val_pair name=".\Generated_Source\PSoC3\CAPTURE_OUT_PIN.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 <name_val_pair name=".\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\UPDATE_STEER_ISR.c" v="NOIV LARGE MODDP2 OMF2 VB(1) NOIP &quot;INCDIR(., .\Generated_Source\PSoC3)&quot; FF(3) DB WL(2) PR(${OutputDir}/${CompileFile}.lst) CD &quot;OT(8, Size)&quot;" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Yicheng\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.cyprj -d CY8C3866AXI-040 -s C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Generated_Source\PSoC3 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=BE" />
@@ -3042,45 +3057,13 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.c</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\aliases.h</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cysym</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cystate</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cyprimitive</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\custom.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyenums.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinsdata.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinpicture.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinutils.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\Resource1.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\Resource1.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.c</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.h</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC3\API\intc.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC3\API\intc.h</v>
 <v>.\Car.cydwr</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_20\PSoC3\API\CyBootAsmKeil.a51</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_20\PSoC3\API\CyDmac.c</v>
@@ -3344,6 +3327,8 @@
 <v>.\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.c</v>
 <v>.\Generated_Source\PSoC3\COMPARATOR_OUT_PIN.h</v>
 <v>.\Generated_Source\PSoC3\COMPARATOR_OUT_PIN_aliases.h</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEER_ISR.c</v>
+<v>.\Generated_Source\PSoC3\UPDATE_STEER_ISR.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -3360,20 +3345,25 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="130719500233825504" />
+<deps_time v="130719581644951856" />
 <top_block v="TopDesign" />
 <last_generation v="5" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130719503212066196" />
+<deps_time v="130719590653824981" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
 <debugger_breakpoint_list />
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
+</dataGuid>
+<dataGuid v="237c8ed1-e161-4c9d-af97-582eda6d6952">
+<CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31 type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyCustomAnalogDevData" version="1" ZoomToPage="True" ZoomScale="0.4023589" ScrollX="-190" ScrollY="2">
+<ComponentStates />
+</CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31>
 </dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>

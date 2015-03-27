@@ -11,7 +11,7 @@
 #define Ki 400
 #define Kd 0
 
-#define Kp_steer 100
+#define Kp_steer 10
 #define Ki_steer 50
 #define Kd_steer 0
 
@@ -30,10 +30,12 @@ double gblack_pos_second_diff = 0;
 double gblack_totalpos_diff = 0;
 int gCounterNReads = 0;
 int gblackcount = 0;
-uint32 gfirstpos;
-uint32 gsecondpos;
-uint32 gthirdpos;
-uint32 gfourthpos;
+uint32 gfirstpos = 0;
+uint32 gsecondpos = 0;
+uint32 gthirdpos = 0;
+uint32 gfourthpos = 0;
+uint32 gcaptures = 0;
+int count = 0;
 
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
@@ -74,6 +76,14 @@ void updateSteering() {
     gki_steererror = gki_steererror+error*.000011;
     duty_cycle_buffer = CENTER_DUTY - Kp_steer*error; //+ Ki_steer*gki_steererror;
 
+    LCD_ClearDisplay();
+    LCD_Position(0,0);
+    sprintf(buffer, "%f", error);
+    LCD_PrintString(buffer);
+    LCD_Position(1, 0);
+    sprintf(buffer, "%f", duty_cycle_buffer);
+    LCD_PrintString(buffer);
+
     //Have in place error checking to prevent sporadic  behavior
     if (duty_cycle_buffer > 5600){
         duty_cycle_buffer = 5600;   
@@ -82,41 +92,27 @@ void updateSteering() {
         duty_cycle_buffer = 3600;
     }
     duty_cycle = duty_cycle_buffer;
-
-    LCD_ClearDisplay();
-    LCD_Position(0,0);
-    sprintf(buffer, "%lu", gfirstpos);
-    LCD_PrintString(buffer);
-    LCD_Position(1, 0);
-    sprintf(buffer, "%lu", gsecondpos);
-    LCD_PrintString(buffer);
     
-    STEERING_PWM_WriteCompare(duty_cycle);
+    STEERING_PWM_WriteCompare(duty_cycle_buffer);
+}
+
+CY_ISR(UPDATE_STEER_inter) {
+    updateSteering();
 }
 
 CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     char buffer[15];
     gfirstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    gthirdpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    gfourthpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-   // SEC_TIL_BLACK_TIMER_ClearFIFO();
-    
+    SEC_TIL_BLACK_TIMER_ClearFIFO();
+
     gblack_totalpos_diff = (double)(gsecondpos - gfirstpos);
-//    if (gnum_line_reads == 0) {
-//        gnum_line_reads = 1;
-//        gblack_pos_first_diff = (double)(firstpos - secondpos);
-//    } else {
-//        gnum_line_reads = 0;
-//        gblack_pos_second_diff = (double)(firstpos - secondpos);
-//        gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
-//    }
-     SEC_TIL_BLACK_TIMER_ReadStatusRegister();
+
+    SEC_TIL_BLACK_TIMER_ReadStatusRegister();
     }
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
 CY_ISR(HE_inter) {
-    updateSteering();
 //    double curr_HE_count = 0;
 //    double time_diff = 0;
 //    double time_diff_s = 0;
@@ -194,6 +190,8 @@ int main()
     SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
     SEC_TIL_BLACK_TIMER_Start();
 
+    UPDATE_STEER_ISR_Start();
+    UPDATE_STEER_ISR_SetVector(UPDATE_STEER_inter);
     STEERING_PWM_Start();
     STEERING_PWM_CLK_Start();
     

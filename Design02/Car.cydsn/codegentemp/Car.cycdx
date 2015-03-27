@@ -12,15 +12,15 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="LINE_COUNTER_COUNTER" address="0x6407" bitWidth="32" desc="UDB.A0 - Current Counter Value" />
-    <register name="LINE_COUNTER_PERIOD" address="0x6427" bitWidth="32" desc="UDB.D0 - Assigned Period" />
-    <register name="LINE_COUNTER_COMPARE" address="0x6437" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" />
-    <register name="LINE_COUNTER_Control_Reg" address="0x6474" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="LINE_COUNTER_COUNTER" address="0x6400" bitWidth="32" desc="UDB.A0 - Current Counter Value" />
+    <register name="LINE_COUNTER_PERIOD" address="0x6420" bitWidth="32" desc="UDB.D0 - Assigned Period" />
+    <register name="LINE_COUNTER_COMPARE" address="0x6430" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" />
+    <register name="LINE_COUNTER_Control_Reg" address="0x6471" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" />
       <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" />
       <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" />
     </register>
-    <register name="LINE_COUNTER_STATUS_MASK" address="0x6484" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
+    <register name="LINE_COUNTER_STATUS_MASK" address="0x6483" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " />
@@ -29,7 +29,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " />
     </register>
-    <register name="LINE_COUNTER_STATUS_AUX_CTRL" address="0x6494" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="LINE_COUNTER_STATUS_AUX_CTRL" address="0x6493" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -127,7 +127,7 @@
   <block name="COM_SYNC_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="COUNTER_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="COMPARATOR_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="UPDATE_STEER_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="SEC_TIL_BLACK_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -135,15 +135,15 @@
     <block name="TimerUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="SEC_TIL_BLACK_TIMER_COUNTER" address="0x6402" bitWidth="32" desc="UDB.A0 - Current Down Counter Value" />
-    <register name="SEC_TIL_BLACK_TIMER_PERIOD" address="0x6422" bitWidth="32" desc="UDB.D0 - Assigned Period" />
-    <register name="SEC_TIL_BLACK_TIMER_STATUS_MASK" address="0x6486" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
+    <register name="SEC_TIL_BLACK_TIMER_COUNTER" address="0x6404" bitWidth="32" desc="UDB.A0 - Current Down Counter Value" />
+    <register name="SEC_TIL_BLACK_TIMER_PERIOD" address="0x6424" bitWidth="32" desc="UDB.D0 - Assigned Period" />
+    <register name="SEC_TIL_BLACK_TIMER_STATUS_MASK" address="0x6484" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
       <field name="TIMER_STS_TC" from="0" to="0" access="R" resetVal="" desc="Enables the Interrupt on TC" />
       <field name="TIMER_STS_CAPT" from="1" to="1" access="R" resetVal="" desc="Enables the Interrupt on Capture" />
       <field name="TIMER_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="FIFO Full Status " />
       <field name="TIMER_STS_FIFO_NEMPTY" from="3" to="3" access="R" resetVal="" desc="FIFO Empty status " />
     </register>
-    <register name="SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL" address="0x6496" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL" address="0x6494" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -262,7 +262,7 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <register name="HE_TIMER_COUNTER" address="0x6504" bitWidth="32" desc="UDB.A0 - Current Down Counter Value" />
     <register name="HE_TIMER_PERIOD" address="0x6524" bitWidth="32" desc="UDB.D0 - Assigned Period" />
-    <register name="HE_TIMER_Control_Reg" address="0x6575" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="HE_TIMER_Control_Reg" address="0x6574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the Timer" />
       <field name="CTRL_CMODE" from="6" to="5" access="RW" resetVal="" desc="Capture Mode" />
       <field name="CTRL_TEN" from="4" to="4" access="RW" resetVal="" desc="Trigger Enable Bit" />
