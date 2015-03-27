@@ -402,12 +402,12 @@ void SEC_TIL_BLACK_TIMER_WriteControlRegister(uint8 control)
 *  The present value of the counter.
 *
 *******************************************************************************/
-uint16 SEC_TIL_BLACK_TIMER_ReadPeriod(void) 
+uint32 SEC_TIL_BLACK_TIMER_ReadPeriod(void) 
 {
    #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
-       return ((uint16)CY_GET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
+       return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
    #else
-       return (CY_GET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
+       return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
    #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
 }
 
@@ -428,13 +428,13 @@ uint16 SEC_TIL_BLACK_TIMER_ReadPeriod(void)
 *  void
 *
 *******************************************************************************/
-void SEC_TIL_BLACK_TIMER_WritePeriod(uint16 period) 
+void SEC_TIL_BLACK_TIMER_WritePeriod(uint32 period) 
 {
     #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
         uint16 period_temp = (uint16)period;
         CY_SET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR, period_temp);
     #else
-        CY_SET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR, period);
+        CY_SET_REG32(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR, period);
     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function implementation */
 }
 
@@ -453,12 +453,12 @@ void SEC_TIL_BLACK_TIMER_WritePeriod(uint16 period)
 *  Present Capture value.
 *
 *******************************************************************************/
-uint16 SEC_TIL_BLACK_TIMER_ReadCapture(void) 
+uint32 SEC_TIL_BLACK_TIMER_ReadCapture(void) 
 {
    #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
-       return ((uint16)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+       return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
    #else
-       return (CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+       return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
    #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
 }
 
@@ -477,7 +477,7 @@ uint16 SEC_TIL_BLACK_TIMER_ReadCapture(void)
 *  void
 *
 *******************************************************************************/
-void SEC_TIL_BLACK_TIMER_WriteCounter(uint16 counter) 
+void SEC_TIL_BLACK_TIMER_WriteCounter(uint32 counter) 
 {
    #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
         /* This functionality is removed until a FixedFunction HW update to
@@ -486,7 +486,7 @@ void SEC_TIL_BLACK_TIMER_WriteCounter(uint16 counter)
         CY_SET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, (uint16)counter);
         
     #else
-        CY_SET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, counter);
+        CY_SET_REG32(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, counter);
     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fixed function Timer */
 }
 
@@ -505,7 +505,7 @@ void SEC_TIL_BLACK_TIMER_WriteCounter(uint16 counter)
 *  Present compare value.
 *
 *******************************************************************************/
-uint16 SEC_TIL_BLACK_TIMER_ReadCounter(void) 
+uint32 SEC_TIL_BLACK_TIMER_ReadCounter(void) 
 {
     /* Force capture by reading Accumulator */
     /* Must first do a software capture to be able to read the counter */
@@ -518,9 +518,9 @@ uint16 SEC_TIL_BLACK_TIMER_ReadCounter(void)
 
     /* Read the data from the FIFO (or capture register for Fixed Function)*/
     #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
-        return ((uint16)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+        return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
     #else
-        return (CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+        return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
     #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
 }
 

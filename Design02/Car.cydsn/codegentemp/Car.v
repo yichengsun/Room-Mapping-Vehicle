@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/26/2015 at 22:39
+// 03/27/2015 at 00:56
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -391,7 +391,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Counter_v2_40\B_Counter_v2_40.v"
 `endif
 
-// Counter_v2_40(CaptureMode=0, CaptureModeSoftware=0, ClockMode=0, CompareMode=0, CompareModeSoftware=0, CompareStatusEdgeSense=true, CompareValue=80, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InitCounterValue=0, InterruptOnCapture=false, InterruptOnCompare=false, InterruptOnOverUnderFlow=false, InterruptOnTC=false, Period=255, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, ReloadOnCapture=false, ReloadOnCompare=false, ReloadOnOverUnder=false, ReloadOnReset=false, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=true, UDBControlReg=true, UseInterrupt=true, VerilogSectionReplacementString=sC8, CY_COMPONENT_NAME=Counter_v2_40, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LINE_COUNTER, CY_INSTANCE_SHORT_NAME=LINE_COUNTER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=40, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=LINE_COUNTER, )
+// Counter_v2_40(CaptureMode=0, CaptureModeSoftware=0, ClockMode=0, CompareMode=0, CompareModeSoftware=0, CompareStatusEdgeSense=true, CompareValue=20, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InitCounterValue=0, InterruptOnCapture=false, InterruptOnCompare=false, InterruptOnOverUnderFlow=false, InterruptOnTC=false, Period=255, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, ReloadOnCapture=false, ReloadOnCompare=false, ReloadOnOverUnder=false, ReloadOnReset=false, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=true, UDBControlReg=true, UseInterrupt=true, VerilogSectionReplacementString=sC8, CY_COMPONENT_NAME=Counter_v2_40, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LINE_COUNTER, CY_INSTANCE_SHORT_NAME=LINE_COUNTER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=40, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=LINE_COUNTER, )
 module Counter_v2_40_3 (
     clock,
     comp,
@@ -584,7 +584,7 @@ module PWM_v3_10_4 (
 
 endmodule
 
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=2, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SEC_TIL_BLACK_TIMER, CY_INSTANCE_SHORT_NAME=SEC_TIL_BLACK_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=SEC_TIL_BLACK_TIMER, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=3, CONTROL3=0, ControlRegRemoved=1, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG32, CySetRegReplacementString=CY_SET_REG32, DeviceFamily=PSoC3, EnableMode=1, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=true, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=1, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=2, param45=1, Period=4294967295, RegDefReplacementString=reg32, RegSizeReplacementString=uint32, Resolution=32, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=true, UDB8=false, UDBControlReg=false, UsesHWEnable=1, VerilogSectionReplacementString=sT32, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=SEC_TIL_BLACK_TIMER, CY_INSTANCE_SHORT_NAME=SEC_TIL_BLACK_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=SEC_TIL_BLACK_TIMER, )
 module Timer_v2_70_5 (
     clock,
     reset,
@@ -608,7 +608,7 @@ module Timer_v2_70_5 (
     parameter DeviceFamily = "PSoC3";
     parameter InterruptOnCapture = 1;
     parameter InterruptOnTC = 0;
-    parameter Resolution = 16;
+    parameter Resolution = 32;
     parameter SiliconRevision = "3";
 
           wire  Net_261;
@@ -641,9 +641,9 @@ module Timer_v2_70_5 (
     defparam TimerUDB.Capture_Count = 2;
     defparam TimerUDB.CaptureCounterEnabled = 0;
     defparam TimerUDB.CaptureMode = 3;
-    defparam TimerUDB.EnableMode = 0;
+    defparam TimerUDB.EnableMode = 1;
     defparam TimerUDB.InterruptOnCapture = 1;
-    defparam TimerUDB.Resolution = 16;
+    defparam TimerUDB.Resolution = 32;
     defparam TimerUDB.RunMode = 0;
     defparam TimerUDB.TriggerMode = 0;
 
@@ -651,72 +651,7 @@ module Timer_v2_70_5 (
         .o(Net_102));
 
 	// VirtualMux_1 (cy_virtualmux_v1_0)
-	assign Net_266 = Net_102;
-
-
-
-endmodule
-
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC3, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=true, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=1, NumberOfCaptures=1, param45=1, Period=255, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=3, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UPDATE_STEERING_TIMER, CY_INSTANCE_SHORT_NAME=UPDATE_STEERING_TIMER, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1, INSTANCE_NAME=UPDATE_STEERING_TIMER, )
-module Timer_v2_70_6 (
-    clock,
-    reset,
-    interrupt,
-    enable,
-    capture,
-    trigger,
-    capture_out,
-    tc);
-    input       clock;
-    input       reset;
-    output      interrupt;
-    input       enable;
-    input       capture;
-    input       trigger;
-    output      capture_out;
-    output      tc;
-
-    parameter CaptureCount = 2;
-    parameter CaptureCounterEnabled = 0;
-    parameter DeviceFamily = "PSoC3";
-    parameter InterruptOnCapture = 0;
-    parameter InterruptOnTC = 1;
-    parameter Resolution = 8;
-    parameter SiliconRevision = "3";
-
-          wire  Net_261;
-          wire  Net_260;
-          wire  Net_266;
-          wire  Net_102;
-          wire  Net_55;
-          wire  Net_57;
-          wire  Net_53;
-          wire  Net_51;
-
-    cy_psoc3_timer_v1_0 TimerHW (
-        .timer_reset(reset),
-        .capture(capture),
-        .enable(Net_266),
-        .kill(Net_260),
-        .clock(clock),
-        .tc(Net_51),
-        .compare(Net_261),
-        .interrupt(Net_57));
-
-    ZeroTerminal ZeroTerminal_1 (
-        .z(Net_260));
-
-	// VirtualMux_2 (cy_virtualmux_v1_0)
-	assign interrupt = Net_57;
-
-	// VirtualMux_3 (cy_virtualmux_v1_0)
-	assign tc = Net_51;
-
-    OneTerminal OneTerminal_1 (
-        .o(Net_102));
-
-	// VirtualMux_1 (cy_virtualmux_v1_0)
-	assign Net_266 = Net_102;
+	assign Net_266 = enable;
 
 
 
@@ -725,46 +660,44 @@ endmodule
 // top
 module top ;
 
-          wire  Net_6307;
-          wire  Net_5342;
-          wire  Net_5341;
-          wire  Net_5340;
-          wire  Net_5339;
-          wire  Net_5338;
+          wire  Net_7874;
+          wire  Net_6916;
+          wire  Net_6915;
+          wire  Net_6914;
+          wire  Net_6913;
+          wire  Net_6912;
           wire  Net_5337;
-          wire  Net_6306;
-          wire  Net_5307;
-          wire  Net_5306;
-          wire  Net_5304;
-          wire  Net_5303;
+          wire  Net_7873;
+          wire  Net_7124;
+          wire  Net_7123;
+          wire  Net_7122;
           wire  Net_5302;
           wire  Net_5973;
     electrical  Net_5730;
           wire  Net_5211;
-          wire  Net_6305;
-          wire  Net_6304;
+          wire  Net_7872;
+          wire  Net_7871;
           wire  Net_5259;
-          wire  Net_6303;
-          wire  Net_6302;
-          wire  Net_6301;
-          wire  Net_6300;
-          wire  Net_6299;
-          wire  Net_6298;
-          wire  Net_6297;
-          wire  Net_6296;
-          wire  Net_6295;
-          wire  Net_6294;
+          wire  Net_7870;
+          wire  Net_7869;
+          wire  Net_7868;
+          wire  Net_7867;
+          wire  Net_7866;
+          wire  Net_7865;
+          wire  Net_7864;
+          wire  Net_7863;
+          wire  Net_7862;
+          wire  Net_7861;
           wire  Net_5248;
-          wire  Net_5396;
-          wire  Net_5395;
-          wire  Net_5394;
-          wire  Net_5393;
-          wire  Net_5392;
-          wire  Net_5391;
-          wire  Net_5389;
-          wire  Net_6293;
+          wire  Net_7266;
+          wire  Net_7265;
+          wire  Net_7264;
+          wire  Net_7263;
+          wire  Net_7262;
+          wire  Net_7261;
+          wire  Net_7260;
+          wire  Net_7860;
           wire  Net_5388;
-          wire  Net_5390;
           wire  Net_5305;
           wire  Net_2113;
           wire  Net_2112;
@@ -788,6 +721,8 @@ module top ;
           wire  Net_3089;
           wire  Net_3088;
           wire  Net_459;
+          wire  Net_7738;
+          wire  Net_4949;
     electrical  Net_5228;
           wire  Net_4376;
           wire  Net_3213;
@@ -795,7 +730,6 @@ module top ;
           wire  Net_5088;
           wire  Net_5086;
           wire  Net_10;
-          wire  Net_4949;
           wire  Net_3302;
           wire  Net_193;
           wire  Net_2174;
@@ -1092,13 +1026,6 @@ module top ;
 
 	assign tmpOE__COMPARATOR_PIN_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-
-	cy_isr_v1_0
-		#(.int_type(2'b00))
-		COUNTER_N_ISR
-		 (.int_signal(Net_5390));
-
-
 	wire [0:0] tmpOE__VERT_SYNC_OUT_PIN_net;
 	wire [0:0] tmpIO_0__VERT_SYNC_OUT_PIN_net;
 	wire [0:0] tmpINTERRUPT_0__VERT_SYNC_OUT_PIN_net;
@@ -1188,10 +1115,10 @@ module top ;
 
     Counter_v2_40_3 LINE_COUNTER (
         .reset(Net_5388),
-        .tc(Net_5389),
-        .comp(Net_5390),
+        .tc(Net_7260),
+        .comp(Net_7738),
         .clock(Net_3207),
-        .interrupt(Net_5391),
+        .interrupt(Net_7261),
         .enable(1'b0),
         .capture(1'b0),
         .upCnt(1'b0),
@@ -1226,18 +1153,18 @@ module top ;
     PWM_v3_10_4 STEERING_PWM (
         .reset(1'b0),
         .clock(Net_3302),
-        .tc(Net_6295),
-        .pwm1(Net_6296),
-        .pwm2(Net_6297),
-        .interrupt(Net_6298),
+        .tc(Net_7862),
+        .pwm1(Net_7863),
+        .pwm2(Net_7864),
+        .interrupt(Net_7865),
         .capture(1'b0),
         .kill(1'b1),
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
         .pwm(Net_5259),
-        .ph1(Net_6304),
-        .ph2(Net_6305));
+        .ph1(Net_7871),
+        .ph2(Net_7872));
     defparam STEERING_PWM.Resolution = 16;
 
 	wire [0:0] tmpOE__STEERING_PWM_OUT_PIN_net;
@@ -1319,6 +1246,79 @@ module top ;
 		FRAME_ISR
 		 (.int_signal(Net_4376));
 
+
+	wire [0:0] tmpOE__BLK_INTER_OUT_PIN_net;
+	wire [0:0] tmpFB_0__BLK_INTER_OUT_PIN_net;
+	wire [0:0] tmpIO_0__BLK_INTER_OUT_PIN_net;
+	wire [0:0] tmpINTERRUPT_0__BLK_INTER_OUT_PIN_net;
+	electrical [0:0] tmpSIOVREF__BLK_INTER_OUT_PIN_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("9b5bc2a8-36ae-4d56-b9ad-3adb8cfa4d7e"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		BLK_INTER_OUT_PIN
+		 (.oe(tmpOE__BLK_INTER_OUT_PIN_net),
+		  .y({Net_4949}),
+		  .fb({tmpFB_0__BLK_INTER_OUT_PIN_net[0:0]}),
+		  .io({tmpIO_0__BLK_INTER_OUT_PIN_net[0:0]}),
+		  .siovref(tmpSIOVREF__BLK_INTER_OUT_PIN_net),
+		  .interrupt({tmpINTERRUPT_0__BLK_INTER_OUT_PIN_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__BLK_INTER_OUT_PIN_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 	cy_isr_v1_0
@@ -1402,18 +1402,18 @@ module top ;
     Timer_v2_70_5 SEC_TIL_BLACK_TIMER (
         .reset(Net_5302),
         .interrupt(Net_4949),
-        .enable(1'b1),
+        .enable(Net_7738),
         .trigger(1'b1),
         .capture(Net_5305),
-        .capture_out(Net_5306),
-        .tc(Net_5307),
+        .capture_out(Net_7123),
+        .tc(Net_7124),
         .clock(Net_10));
     defparam SEC_TIL_BLACK_TIMER.CaptureCount = 2;
     defparam SEC_TIL_BLACK_TIMER.CaptureCounterEnabled = 0;
     defparam SEC_TIL_BLACK_TIMER.DeviceFamily = "PSoC3";
     defparam SEC_TIL_BLACK_TIMER.InterruptOnCapture = 1;
     defparam SEC_TIL_BLACK_TIMER.InterruptOnTC = 0;
-    defparam SEC_TIL_BLACK_TIMER.Resolution = 16;
+    defparam SEC_TIL_BLACK_TIMER.Resolution = 32;
     defparam SEC_TIL_BLACK_TIMER.SiliconRevision = "3";
 
     ZeroTerminal ZeroTerminal_3 (
@@ -1431,44 +1431,81 @@ module top ;
 		 (.clock_out(Net_10));
 
 
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		UPDATE_STEERING_ISR
-		 (.int_signal(Net_5337));
-
-
-    Timer_v2_70_6 UPDATE_STEERING_TIMER (
-        .reset(Net_5088),
-        .interrupt(Net_5337),
-        .enable(1'b1),
-        .trigger(1'b1),
-        .capture(1'b0),
-        .capture_out(Net_5341),
-        .tc(Net_5342),
-        .clock(Net_5086));
-    defparam UPDATE_STEERING_TIMER.CaptureCount = 2;
-    defparam UPDATE_STEERING_TIMER.CaptureCounterEnabled = 0;
-    defparam UPDATE_STEERING_TIMER.DeviceFamily = "PSoC3";
-    defparam UPDATE_STEERING_TIMER.InterruptOnCapture = 0;
-    defparam UPDATE_STEERING_TIMER.InterruptOnTC = 1;
-    defparam UPDATE_STEERING_TIMER.Resolution = 8;
-    defparam UPDATE_STEERING_TIMER.SiliconRevision = "3";
-
     ZeroTerminal ZeroTerminal_4 (
         .z(Net_5088));
 
+	wire [0:0] tmpOE__COMP_OUT_PIN_net;
+	wire [0:0] tmpFB_0__COMP_OUT_PIN_net;
+	wire [0:0] tmpIO_0__COMP_OUT_PIN_net;
+	wire [0:0] tmpINTERRUPT_0__COMP_OUT_PIN_net;
+	electrical [0:0] tmpSIOVREF__COMP_OUT_PIN_net;
 
-	cy_clock_v1_0
-		#(.id("40b5eca0-a2a3-4490-95ab-905a6f89b35c"),
-		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
-		  .divisor(0),
-		  .period("0"),
-		  .is_direct(1),
-		  .is_digital(1))
-		timer_clock
-		 (.clock_out(Net_5086));
+	cy_psoc3_pins_v1_10
+		#(.id("9ecbfa40-d7e3-40f3-9eb5-2f9a2d7dd49a"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		COMP_OUT_PIN
+		 (.oe(tmpOE__COMP_OUT_PIN_net),
+		  .y({Net_7738}),
+		  .fb({tmpFB_0__COMP_OUT_PIN_net[0:0]}),
+		  .io({tmpIO_0__COMP_OUT_PIN_net[0:0]}),
+		  .siovref(tmpSIOVREF__COMP_OUT_PIN_net),
+		  .interrupt({tmpINTERRUPT_0__COMP_OUT_PIN_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
 
+	assign tmpOE__COMP_OUT_PIN_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 

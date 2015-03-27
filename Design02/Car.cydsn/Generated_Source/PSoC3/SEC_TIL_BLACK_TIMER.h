@@ -36,16 +36,16 @@ extern uint8 SEC_TIL_BLACK_TIMER_initVar;
 *           Parameter Defaults
 **************************************/
 
-#define SEC_TIL_BLACK_TIMER_Resolution                 16u
+#define SEC_TIL_BLACK_TIMER_Resolution                 32u
 #define SEC_TIL_BLACK_TIMER_UsingFixedFunction         0u
 #define SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter      0u
 #define SEC_TIL_BLACK_TIMER_SoftwareCaptureMode        0u
 #define SEC_TIL_BLACK_TIMER_SoftwareTriggerMode        0u
-#define SEC_TIL_BLACK_TIMER_UsingHWEnable              0u
+#define SEC_TIL_BLACK_TIMER_UsingHWEnable              1u
 #define SEC_TIL_BLACK_TIMER_EnableTriggerMode          0u
 #define SEC_TIL_BLACK_TIMER_InterruptOnCaptureCount    1u
 #define SEC_TIL_BLACK_TIMER_RunModeUsed                0u
-#define SEC_TIL_BLACK_TIMER_ControlRegRemoved          0u
+#define SEC_TIL_BLACK_TIMER_ControlRegRemoved          1u
 
 #if defined(SEC_TIL_BLACK_TIMER_TimerUDB_sCTRLReg_SyncCtl_ctrlreg__CONTROL_REG)
     #define SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED            (0u)
@@ -69,7 +69,7 @@ typedef struct
     uint8 TimerEnableState;
     #if(!SEC_TIL_BLACK_TIMER_UsingFixedFunction)
 
-        uint16 TimerUdb;
+        uint32 TimerUdb;
         uint8 InterruptMaskValue;
         #if (SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter)
             uint8 TimerCaptureCounter;
@@ -100,11 +100,11 @@ uint8   SEC_TIL_BLACK_TIMER_ReadStatusRegister(void) ;
     void    SEC_TIL_BLACK_TIMER_WriteControlRegister(uint8 control) ;
 #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
 
-uint16  SEC_TIL_BLACK_TIMER_ReadPeriod(void) ;
-void    SEC_TIL_BLACK_TIMER_WritePeriod(uint16 period) ;
-uint16  SEC_TIL_BLACK_TIMER_ReadCounter(void) ;
-void    SEC_TIL_BLACK_TIMER_WriteCounter(uint16 counter) ;
-uint16  SEC_TIL_BLACK_TIMER_ReadCapture(void) ;
+uint32  SEC_TIL_BLACK_TIMER_ReadPeriod(void) ;
+void    SEC_TIL_BLACK_TIMER_WritePeriod(uint32 period) ;
+uint32  SEC_TIL_BLACK_TIMER_ReadCounter(void) ;
+void    SEC_TIL_BLACK_TIMER_WriteCounter(uint32 counter) ;
+uint32  SEC_TIL_BLACK_TIMER_ReadCapture(void) ;
 void    SEC_TIL_BLACK_TIMER_SoftwareCapture(void) ;
 
 #if(!SEC_TIL_BLACK_TIMER_UsingFixedFunction) /* UDB Prototypes */
@@ -168,7 +168,7 @@ void SEC_TIL_BLACK_TIMER_Wakeup(void)        ;
 *    Initialial Parameter Constants
 ***************************************/
 
-#define SEC_TIL_BLACK_TIMER_INIT_PERIOD             65535u
+#define SEC_TIL_BLACK_TIMER_INIT_PERIOD             4294967295u
 #define SEC_TIL_BLACK_TIMER_INIT_CAPTURE_MODE       ((uint8)((uint8)3u << SEC_TIL_BLACK_TIMER_CTRL_CAP_MODE_SHIFT))
 #define SEC_TIL_BLACK_TIMER_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << SEC_TIL_BLACK_TIMER_CTRL_TRIG_MODE_SHIFT))
 #if (SEC_TIL_BLACK_TIMER_UsingFixedFunction)
@@ -313,54 +313,54 @@ void SEC_TIL_BLACK_TIMER_Wakeup(void)        ;
     #define SEC_TIL_BLACK_TIMER_CONTROL             (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sCTRLReg_SyncCtl_ctrlreg__CONTROL_REG )
     
     #if(SEC_TIL_BLACK_TIMER_Resolution <= 8u) /* 8-bit Timer */
-        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
-        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
+        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
+        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
     #elif(SEC_TIL_BLACK_TIMER_Resolution <= 16u) /* 8-bit Timer */
         #if(CY_PSOC3) /* 8-bit addres space */
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
         #else /* 16-bit address space */
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_F0_REG )
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_F0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_D0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_D0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_A0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__16BIT_A0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_F0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_F0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_D0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_D0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_A0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg16 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__16BIT_A0_REG )
         #endif /* CY_PSOC3 */
     #elif(SEC_TIL_BLACK_TIMER_Resolution <= 24u)/* 24-bit Timer */
-        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
-        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
+        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+        #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+        #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
+        #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
     #else /* 32-bit Timer */
         #if(CY_PSOC3 || CY_PSOC5) /* 8-bit address space */
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__F0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__D0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__F0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__D0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
         #else /* 32-bit address space */
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_F0_REG )
-            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_F0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_D0_REG )
-            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_D0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_A0_REG )
-            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__32BIT_A0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_F0_REG )
+            #define SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_F0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB          (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_D0_REG )
+            #define SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR        ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_D0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB         (* (reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_A0_REG )
+            #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR       ((reg32 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__32BIT_A0_REG )
         #endif /* CY_PSOC3 || CY_PSOC5 */ 
     #endif
 
-    #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR_8BIT       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT16_timerdp_u0__A0_REG )
+    #define SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR_8BIT       ((reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sT32_timerdp_u0__A0_REG )
     
     #if (SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter)
         #define SEC_TIL_BLACK_TIMER_CAP_COUNT              (*(reg8 *) SEC_TIL_BLACK_TIMER_TimerUDB_sCapCount_counter__PERIOD_REG )

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/26/2015 22:39:51 PAGE 1   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/27/2015 00:56:52 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SEC_TIL_BLACK_TIMER_PM
@@ -62,11 +62,11 @@ line level    source
                           SEC_TIL_BLACK_TIMER_backup.TimerCaptureCounter = SEC_TIL_BLACK_TIMER_ReadCaptureCount();
                       #endif /* Back Up capture counter register  */
   51   1      
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/26/2015 22:39:51 PAGE 2   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/27/2015 00:56:52 PAGE 2   
 
   52   1              #if(!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
-  53   1                  SEC_TIL_BLACK_TIMER_backup.TimerControlRegister = SEC_TIL_BLACK_TIMER_ReadControlRegister();
-  54   1              #endif /* Backup the enable state of the Timer component */
+                          SEC_TIL_BLACK_TIMER_backup.TimerControlRegister = SEC_TIL_BLACK_TIMER_ReadControlRegister();
+                      #endif /* Backup the enable state of the Timer component */
   55   1          #endif /* Backup non retention registers in UDB implementation. All fixed function registers are reten
              -tion */
   56   1      }
@@ -101,8 +101,8 @@ line level    source
                       #endif /* Restore Capture counter register*/
   86   1      
   87   1              #if(!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
-  88   1                  SEC_TIL_BLACK_TIMER_WriteControlRegister(SEC_TIL_BLACK_TIMER_backup.TimerControlRegister);
-  89   1              #endif /* Restore the enable state of the Timer component */
+                          SEC_TIL_BLACK_TIMER_WriteControlRegister(SEC_TIL_BLACK_TIMER_backup.TimerControlRegister);
+                      #endif /* Restore the enable state of the Timer component */
   90   1          #endif /* Restore non retention registers in the UDB implementation only */
   91   1      }
   92          
@@ -126,23 +126,23 @@ line level    source
  110          *
  111          *******************************************************************************/
  112          void SEC_TIL_BLACK_TIMER_Sleep(void) 
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/26/2015 22:39:51 PAGE 3   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/27/2015 00:56:52 PAGE 3   
 
  113          {
  114   1          #if(!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
- 115   1              /* Save Counter's enable state */
- 116   1              if(SEC_TIL_BLACK_TIMER_CTRL_ENABLE == (SEC_TIL_BLACK_TIMER_CONTROL & SEC_TIL_BLACK_TIMER_CTRL_ENAB
+                      /* Save Counter's enable state */
+                      if(SEC_TIL_BLACK_TIMER_CTRL_ENABLE == (SEC_TIL_BLACK_TIMER_CONTROL & SEC_TIL_BLACK_TIMER_CTRL_ENAB
              -LE))
- 117   1              {
- 118   2                  /* Timer is enabled */
- 119   2                  SEC_TIL_BLACK_TIMER_backup.TimerEnableState = 1u;
- 120   2              }
- 121   1              else
- 122   1              {
- 123   2                  /* Timer is disabled */
- 124   2                  SEC_TIL_BLACK_TIMER_backup.TimerEnableState = 0u;
- 125   2              }
- 126   1          #endif /* Back up enable state from the Timer control register */
+                      {
+                          /* Timer is enabled */
+                          SEC_TIL_BLACK_TIMER_backup.TimerEnableState = 1u;
+                      }
+                      else
+                      {
+                          /* Timer is disabled */
+                          SEC_TIL_BLACK_TIMER_backup.TimerEnableState = 0u;
+                      }
+                  #endif /* Back up enable state from the Timer control register */
  127   1          SEC_TIL_BLACK_TIMER_Stop();
  128   1          SEC_TIL_BLACK_TIMER_SaveConfig();
  129   1      }
@@ -170,16 +170,16 @@ line level    source
  151          {
  152   1          SEC_TIL_BLACK_TIMER_RestoreConfig();
  153   1          #if(!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
- 154   1              if(SEC_TIL_BLACK_TIMER_backup.TimerEnableState == 1u)
- 155   1              {     /* Enable Timer's operation */
- 156   2                      SEC_TIL_BLACK_TIMER_Enable();
- 157   2              } /* Do nothing if Timer was disabled before */
- 158   1          #endif /* Remove this code section if Control register is removed */
+                      if(SEC_TIL_BLACK_TIMER_backup.TimerEnableState == 1u)
+                      {     /* Enable Timer's operation */
+                              SEC_TIL_BLACK_TIMER_Enable();
+                      } /* Do nothing if Timer was disabled before */
+                  #endif /* Remove this code section if Control register is removed */
  159   1      }
  160          
  161          
  162          /* [] END OF FILE */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/26/2015 22:39:51 PAGE 4   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/27/2015 00:56:52 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -190,23 +190,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 46
 0000 120000      E     LCALL   SEC_TIL_BLACK_TIMER_ReadCounter
 0003 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+01H
-0006 EE                MOV     A,R6
-0007 F0                MOVX    @DPTR,A
-0008 A3                INC     DPTR
-0009 EF                MOV     A,R7
-000A F0                MOVX    @DPTR,A
+0006 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 47
-000B 906487            MOV     DPTR,#06487H
-000E E0                MOVX    A,@DPTR
-000F 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+03H
-0012 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 53
-0013 120000      E     LCALL   SEC_TIL_BLACK_TIMER_ReadControlRegister
-0016 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+04H
-0019 EF                MOV     A,R7
-001A F0                MOVX    @DPTR,A
+0009 906587            MOV     DPTR,#06587H
+000C E0                MOVX    A,@DPTR
+000D 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+05H
+0010 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 56
-001B 22                RET     
+0011 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_SaveConfig (END)
 
              ; FUNCTION SEC_TIL_BLACK_TIMER_RestoreConfig (BEGIN)
@@ -214,56 +205,26 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 78
                                            ; SOURCE LINE # 81
 0000 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+01H
-0003 E0                MOVX    A,@DPTR
-0004 FE                MOV     R6,A
-0005 A3                INC     DPTR
-0006 E0                MOVX    A,@DPTR
-0007 FF                MOV     R7,A
-0008 120000      E     LCALL   _SEC_TIL_BLACK_TIMER_WriteCounter
+0003 120000      E     LCALL   ?C?LLDXDATA
+0006 120000      E     LCALL   _SEC_TIL_BLACK_TIMER_WriteCounter
                                            ; SOURCE LINE # 82
-000B 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+03H
-000E E0                MOVX    A,@DPTR
-000F 906487            MOV     DPTR,#06487H
-0012 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 88
-0013 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+04H
-0016 E0                MOVX    A,@DPTR
-0017 FF                MOV     R7,A
-0018 120000      E     LCALL   _SEC_TIL_BLACK_TIMER_WriteControlRegister
+0009 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup+05H
+000C E0                MOVX    A,@DPTR
+000D 906587            MOV     DPTR,#06587H
+0010 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 91
-001B 22                RET     
+0011 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_RestoreConfig (END)
 
              ; FUNCTION SEC_TIL_BLACK_TIMER_Sleep (BEGIN)
                                            ; SOURCE LINE # 112
                                            ; SOURCE LINE # 113
-                                           ; SOURCE LINE # 116
-0000 906477            MOV     DPTR,#06477H
-0003 E0                MOVX    A,@DPTR
-0004 30E708            JNB     ACC.7,?C0003
-                                           ; SOURCE LINE # 117
-                                           ; SOURCE LINE # 119
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/26/2015 22:39:51 PAGE 5   
-
-0007 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup
-000A 7401              MOV     A,#01H
-000C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 120
-000D 8005              SJMP    ?C0004
-000F         ?C0003:
-                                           ; SOURCE LINE # 122
-                                           ; SOURCE LINE # 124
-000F E4                CLR     A
-0010 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup
-0013 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 125
-0014         ?C0004:
                                            ; SOURCE LINE # 127
-0014 120000      E     LCALL   SEC_TIL_BLACK_TIMER_Stop
+0000 120000      E     LCALL   SEC_TIL_BLACK_TIMER_Stop
                                            ; SOURCE LINE # 128
-0017 120000      R     LCALL   SEC_TIL_BLACK_TIMER_SaveConfig
+0003 120000      R     LCALL   SEC_TIL_BLACK_TIMER_SaveConfig
                                            ; SOURCE LINE # 129
-001A 22                RET     
+0006 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_Sleep (END)
 
              ; FUNCTION SEC_TIL_BLACK_TIMER_Wakeup (BEGIN)
@@ -271,26 +232,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 151
                                            ; SOURCE LINE # 152
 0000 120000      R     LCALL   SEC_TIL_BLACK_TIMER_RestoreConfig
-                                           ; SOURCE LINE # 154
-0003 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_backup
-0006 E0                MOVX    A,@DPTR
-0007 B40103            CJNE    A,#01H,?C0007
-                                           ; SOURCE LINE # 155
-                                           ; SOURCE LINE # 156
-000A 120000      E     LCALL   SEC_TIL_BLACK_TIMER_Enable
-                                           ; SOURCE LINE # 157
                                            ; SOURCE LINE # 159
-000D         ?C0007:
-000D 22                RET     
+0003 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_Wakeup (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     97    ----
+   CODE SIZE        =     47    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      5    ----
+   XDATA SIZE       =      6    ----
    PDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_PM                                                03/27/2015 00:56:52 PAGE 5   
+
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

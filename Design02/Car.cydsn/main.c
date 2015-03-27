@@ -59,26 +59,23 @@ double getCurSpeed(){
 }
 
 CY_ISR(FRAME_inter) {
-    LCD_PrintString("Frame start");
+    //LCD_PrintString("Frame start");
     LINE_COUNTER_Start();
-    LINE_COUNTER_WriteCompare(20);
-    gCounterNReads = 0;
+    //gCounterNReads = 0;
 }
 
-CY_ISR(COUNTER_N_inter) {
-    LINE_COUNTER_ReadStatusRegister();
-
-    if (gCounterNReads < 2){
-        SEC_TIL_BLACK_TIMER_Start();
-    }
-    LINE_COUNTER_Stop();
-    
-    if (gCounterNReads < 2) {
-        LINE_COUNTER_Start();
-        LINE_COUNTER_WriteCompare(80);
-    } 
-    gCounterNReads += 1;
-}
+//CY_ISR(COUNTER_N_inter) {
+//    LINE_COUNTER_ReadStatusRegister();
+//    
+//    if (gCounterNReads == 2){
+//        LINE_COUNTER_Stop();   
+//    }
+//    else if (gCounterNReads == 0) {
+//        int multiples = 20+80;
+//        LINE_COUNTER_WriteCompare(multiples);
+//    } 
+//    gCounterNReads += 1;
+//}
 
 CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     uint32 firstpos;
@@ -86,18 +83,19 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
 
     SEC_TIL_BLACK_TIMER_ReadStatusRegister();
     
+    LINE_COUNTER_Stop();
     firstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     secondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    SEC_TIL_BLACK_TIMER_STOP();
-
-    if (gnum_line_reads == 0) {
-        gnum_line_reads = 1;
-        gblack_pos_first_diff = (double)(firstpos - secondpos);
-    } else {
-        gnum_line_reads = 0;
-        gblack_pos_second_diff = (double)(secondpos - firstpos);
-        gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
-    }
+    
+    gblack_totalpos_diff = (double)(firstpos - secondpos);
+//    if (gnum_line_reads == 0) {
+//        gnum_line_reads = 1;
+//        gblack_pos_first_diff = (double)(firstpos - secondpos);
+//    } else {
+//        gnum_line_reads = 0;
+//        gblack_pos_second_diff = (double)(firstpos - secondpos);
+//        gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
+//    }
     
     //LCD_ClearDisplay();
     //LCD_PrintNumber(gblack_totalpos_diff);
@@ -105,75 +103,110 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
 CY_ISR(HE_inter) {
-    double curr_HE_count = 0;
-    double time_diff = 0;
-    double time_diff_s = 0;
-    double error = 0;
-    double PID_speed = 0;
-    char buffer[15];
-    double duty_cycle_buffer = 0;
-    uint16 duty_cycle = 0;
-    
-    //Special first time read   
-    if (gfirst_HE_read == 1) {
-        gprev_HE_count = HE_TIMER_ReadCounter();
-        gfirst_HE_read = 0;
-    } 
-    else {
-        curr_HE_count = HE_TIMER_ReadCounter();
-        if (gprev_HE_count < curr_HE_count) {
-            gprev_HE_count = gprev_HE_count + HE_TIMER_ReadPeriod();
-        }
-
-        //Calculate the time difference between each magnet passing by
-        time_diff = gprev_HE_count - curr_HE_count;
-        time_diff_s = time_diff/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
-        
-        speedCounts[gspeedMeasurements%5] = time_diff;
-        gspeedMeasurements++;
-        gcurSpeed = getCurSpeed();
-        gprev_HE_count = curr_HE_count;
-        //Calculate the error for feedback 
-        error = EXPECTED_SPEED - gcurSpeed;
-        //Accumulate past errors for Ki
-        gki_speederror = gki_speederror+error*time_diff_s;
-        // Discard saved error from acceleration as it becomes less relevant after starting
-        if (gspeedMeasurements == 28) gki_speederror = 0;
-        //Calculate the duty cycle based upon Kp, Ki, and Kd
-        duty_cycle_buffer = THREE_FT_DUTY + Kp*error + Ki*gki_speederror + Kd*error/time_diff_s;
-        
-        //LCD output for debugging
-        LCD_ClearDisplay();
-        LCD_Position(0,0);
-        sprintf(buffer, "%f", error);        
-        LCD_PrintString(buffer);
-        LCD_PrintString("//");
-        sprintf(buffer, "%f", Kd*error/time_diff_s);
-        LCD_PrintString(buffer);
-        
-        //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
-        //certain duty cycle to prevent sporadic  behavior
-        if (duty_cycle_buffer > 4000){
-            duty_cycle_buffer = 1350;   
-        }
-        if (duty_cycle_buffer <= 0) duty_cycle_buffer = 1;
-        duty_cycle = duty_cycle_buffer;
-        
-        //more LCD debugging code
-        LCD_Position(1, 0);
-        //sprintf(buffer, "%f", duty_cycle);
-        LCD_PrintNumber(duty_cycle);
-        MOTOR_PWM_WriteCompare(duty_cycle);
-    }
-}
-
-CY_ISR(UPDATE_STEERING_inter) {
+//    double curr_HE_count = 0;
+//    double time_diff = 0;
+//    double time_diff_s = 0;
+//    double error = 0;
+//    double PID_speed = 0;
+//    char buffer[15];
+//    double duty_cycle_buffer = 0;
+//    uint16 duty_cycle = 0;
+//    
+//    //Special first time read   
+//    if (gfirst_HE_read == 1) {
+//        gprev_HE_count = HE_TIMER_ReadCounter();
+//        gfirst_HE_read = 0;
+//    } 
+//    else {
+//        curr_HE_count = HE_TIMER_ReadCounter();
+//        if (gprev_HE_count < curr_HE_count) {
+//            gprev_HE_count = gprev_HE_count + HE_TIMER_ReadPeriod();
+//        }
+//
+//        //Calculate the time difference between each magnet passing by
+//        time_diff = gprev_HE_count - curr_HE_count;
+//        time_diff_s = time_diff/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
+//        
+//        speedCounts[gspeedMeasurements%5] = time_diff;
+//        gspeedMeasurements++;
+//        gcurSpeed = getCurSpeed();
+//        gprev_HE_count = curr_HE_count;
+//        //Calculate the error for feedback 
+//        error = EXPECTED_SPEED - gcurSpeed;
+//        //Accumulate past errors for Ki
+//        gki_speederror = gki_speederror+error*time_diff_s;
+//        // Discard saved error from acceleration as it becomes less relevant after starting
+//        if (gspeedMeasurements == 28) gki_speederror = 0;
+//        //Calculate the duty cycle based upon Kp, Ki, and Kd
+//        duty_cycle_buffer = THREE_FT_DUTY + Kp*error + Ki*gki_speederror + Kd*error/time_diff_s;
+//        
+//        //LCD output for debugging
+//        LCD_ClearDisplay();
+//        LCD_Position(0,0);
+//        sprintf(buffer, "%f", error);        
+//        LCD_PrintString(buffer);
+//        LCD_PrintString("//");
+//        sprintf(buffer, "%f", Kd*error/time_diff_s);
+//        LCD_PrintString(buffer);
+//        
+//        //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
+//        //certain duty cycle to prevent sporadic  behavior
+//        if (duty_cycle_buffer > 4000){
+//            duty_cycle_buffer = 1350;   
+//        }
+//        if (duty_cycle_buffer <= 0) duty_cycle_buffer = 1;
+//        duty_cycle = duty_cycle_buffer;
+//        
+//        //more LCD debugging code
+//        LCD_Position(1, 0);
+//        //sprintf(buffer, "%f", duty_cycle);
+//        LCD_PrintNumber(duty_cycle);
+//        MOTOR_PWM_WriteCompare(duty_cycle);
+//    }
     double error;   
     double duty_cycle_buffer;
     uint16 duty_cycle;
     char buffer[10];
     
-    UPDATE_STEERING_TIMER_ReadStatusRegister();
+   // UPDATE_STEERING_TIMER_ReadStatusRegister();
+    
+    //Calculate the error for feedback 
+    error = gblack_totalpos_diff / SEC_TIL_BLACK_TIMER_ReadPeriod() * 179 * 1000000 - 65/2.0;
+        //Accumulate past errors for Ki
+    // left max 3600; center 4560; right max 5800
+    gki_steererror = gki_steererror+error*.000011;
+    duty_cycle_buffer = CENTER_DUTY - Kp_steer*error; //+ Ki_steer*gki_steererror;
+
+    //Have in place error checking to prevent sporadic  behavior
+    if (duty_cycle_buffer > 5600){
+        duty_cycle_buffer = 5600;   
+    }
+    if (duty_cycle_buffer <= 3600) {
+        duty_cycle_buffer = 3600;
+    }
+    duty_cycle = duty_cycle_buffer;
+
+        //LCD output for debugging
+    LCD_ClearDisplay();
+    LCD_Position(0,0);
+    sprintf(buffer, "%f", error);        
+    LCD_PrintString(buffer);
+    
+//     //more LCD debugging code
+//    LCD_Position(1, 0);
+//     //sprintf(buffer, "%f", duty_cycle);
+//    LCD_PrintNumber(duty_cycle);
+
+    STEERING_PWM_WriteCompare(duty_cycle);
+}
+
+/*CY_ISR(UPDATE_STEERING_inter) {
+    double error;   
+    double duty_cycle_buffer;
+    uint16 duty_cycle;
+    char buffer[10];
+    
+    //UPDATE_STEERING_TIMER_ReadStatusRegister();
     
     //Calculate the error for feedback 
     error = gblack_totalpos_diff;
@@ -204,33 +237,29 @@ CY_ISR(UPDATE_STEERING_inter) {
 
     STEERING_PWM_WriteCompare(duty_cycle);
 }
+*/
 
 int main()
 {
-    int testnum = 0;
-    
     //initialize all modules
     CYGlobalIntEnable;  
     HE_TIMER_Start();
     HE_ISR_Start();
     HE_ISR_SetVector(HE_inter);
+    MOTOR_PWM_Start();
+    MOTOR_PWM_CLK_Start();
     
     FRAME_ISR_Start();
     FRAME_ISR_SetVector(FRAME_inter);
-    
-    COUNTER_N_ISR_Start();
-    COUNTER_N_ISR_SetVector(COUNTER_N_inter);
-    
+    //COUNTER_N_ISR_Start();
+    //COUNTER_N_ISR_SetVector(COUNTER_N_inter);   
+    SEC_TIL_BLACK_TIMER_Start();
     SEC_TIL_BLACK_TIMER_ISR_Start();
     SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
     
-    UPDATE_STEERING_TIMER_Start();
-    UPDATE_STEERING_ISR_Start();
-    UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
-    
-    MOTOR_PWM_Start();
-    MOTOR_PWM_CLK_Start();
-    MOTOR_PWM_WriteCompare(1000);
+    //UPDATE_STEERING_TIMER_Start();
+    //UPDATE_STEERING_ISR_Start();
+    //UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
     
     STEERING_PWM_Start();
     STEERING_PWM_CLK_Start();

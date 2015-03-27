@@ -31,7 +31,6 @@
 #include <HE_TIMER.h>
 #include <COMPARATOR_PIN.h>
 #include <COMPARATOR_PIN_aliases.h>
-#include <COUNTER_N_ISR.h>
 #include <VERT_SYNC_OUT_PIN.h>
 #include <VERT_SYNC_OUT_PIN_aliases.h>
 #include <LINE_COUNTER.h>
@@ -40,12 +39,14 @@
 #include <STEERING_PWM_OUT_PIN.h>
 #include <STEERING_PWM_OUT_PIN_aliases.h>
 #include <FRAME_ISR.h>
+#include <BLK_INTER_OUT_PIN.h>
+#include <BLK_INTER_OUT_PIN_aliases.h>
 #include <SEC_TIL_BLACK_TIMER_ISR.h>
 #include <COM_SYNC_OUT_PIN.h>
 #include <COM_SYNC_OUT_PIN_aliases.h>
 #include <SEC_TIL_BLACK_TIMER.h>
-#include <UPDATE_STEERING_ISR.h>
-#include <UPDATE_STEERING_TIMER.h>
+#include <COMP_OUT_PIN.h>
+#include <COMP_OUT_PIN_aliases.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

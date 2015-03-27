@@ -6,7 +6,7 @@
 
 #Build Date:         Oct 23 2014 13:00:08
 
-#File Generated:     Mar 26 2015 22:39:36
+#File Generated:     Mar 27 2015 00:56:14
 
 #Purpose:            
 
@@ -46,16 +46,16 @@ Phase 3
 Design Statistics after Packing
     Number of Combinational MCs 	:	8
     Number of Sequential MCs    	:	11
-    Number of DPs               	:	11
-    Number of Controls          	:	5
+    Number of DPs               	:	13
+    Number of Controls          	:	4
     Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
 
 Device Utilization Summary after Packing
     Macrocells                  :	19/192
-    UDBS                        :	12/24
-    IOs                         :	13/72
+    UDBS                        :	14/24
+    IOs                         :	15/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,9 +79,8 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  24.0 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  28.0 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -100,9 +99,8 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  24.0 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  28.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -114,21 +112,21 @@ Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.8 (sec)
+D2088: Phase 7, elapsed time : 0.9 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	8
     Number of Sequential MCs    	:	11
-    Number of DPs               	:	11
-    Number of Controls          	:	5
+    Number of DPs               	:	13
+    Number of Controls          	:	4
     Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
-    Number of IOs       	:	13
+    Number of IOs       	:	15
 
 Device Utilization Summary
     Macrocells                  :	19/192
-    IOs                         :	13/72
+    IOs                         :	15/72
 
 
 
@@ -144,9 +142,8 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  26.3 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  28.4 MHz | Target:  26.3 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
@@ -164,5 +161,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.8 sec.
+I2076: Total run-time: 2.0 sec.
 
