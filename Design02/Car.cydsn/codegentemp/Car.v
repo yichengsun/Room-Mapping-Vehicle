@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/26/2015 at 19:53
+// 03/26/2015 at 22:39
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -725,36 +725,35 @@ endmodule
 // top
 module top ;
 
-          wire  Net_6078;
+          wire  Net_6307;
           wire  Net_5342;
           wire  Net_5341;
           wire  Net_5340;
           wire  Net_5339;
           wire  Net_5338;
           wire  Net_5337;
-          wire  Net_6077;
+          wire  Net_6306;
           wire  Net_5307;
           wire  Net_5306;
-          wire  Net_5305;
           wire  Net_5304;
           wire  Net_5303;
           wire  Net_5302;
           wire  Net_5973;
     electrical  Net_5730;
           wire  Net_5211;
-          wire  Net_6076;
-          wire  Net_6075;
+          wire  Net_6305;
+          wire  Net_6304;
           wire  Net_5259;
-          wire  Net_6074;
-          wire  Net_6073;
-          wire  Net_6072;
-          wire  Net_6071;
-          wire  Net_6070;
-          wire  Net_6069;
-          wire  Net_6068;
-          wire  Net_6067;
-          wire  Net_6066;
-          wire  Net_6065;
+          wire  Net_6303;
+          wire  Net_6302;
+          wire  Net_6301;
+          wire  Net_6300;
+          wire  Net_6299;
+          wire  Net_6298;
+          wire  Net_6297;
+          wire  Net_6296;
+          wire  Net_6295;
+          wire  Net_6294;
           wire  Net_5248;
           wire  Net_5396;
           wire  Net_5395;
@@ -763,9 +762,10 @@ module top ;
           wire  Net_5392;
           wire  Net_5391;
           wire  Net_5389;
-          wire  Net_6064;
+          wire  Net_6293;
           wire  Net_5388;
           wire  Net_5390;
+          wire  Net_5305;
           wire  Net_2113;
           wire  Net_2112;
           wire  Net_2111;
@@ -1020,6 +1020,78 @@ module top ;
     defparam HE_TIMER.Resolution = 32;
     defparam HE_TIMER.SiliconRevision = "3";
 
+	wire [0:0] tmpOE__COMPARATOR_PIN_net;
+	wire [0:0] tmpIO_0__COMPARATOR_PIN_net;
+	wire [0:0] tmpINTERRUPT_0__COMPARATOR_PIN_net;
+	electrical [0:0] tmpSIOVREF__COMPARATOR_PIN_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("53da74ed-e7df-4062-8585-e157093292dd"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		COMPARATOR_PIN
+		 (.oe(tmpOE__COMPARATOR_PIN_net),
+		  .y({1'b0}),
+		  .fb({Net_5305}),
+		  .io({tmpIO_0__COMPARATOR_PIN_net[0:0]}),
+		  .siovref(tmpSIOVREF__COMPARATOR_PIN_net),
+		  .interrupt({tmpINTERRUPT_0__COMPARATOR_PIN_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__COMPARATOR_PIN_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
 
 	cy_isr_v1_0
 		#(.int_type(2'b00))
@@ -1154,18 +1226,18 @@ module top ;
     PWM_v3_10_4 STEERING_PWM (
         .reset(1'b0),
         .clock(Net_3302),
-        .tc(Net_6066),
-        .pwm1(Net_6067),
-        .pwm2(Net_6068),
-        .interrupt(Net_6069),
+        .tc(Net_6295),
+        .pwm1(Net_6296),
+        .pwm2(Net_6297),
+        .interrupt(Net_6298),
         .capture(1'b0),
         .kill(1'b1),
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
         .pwm(Net_5259),
-        .ph1(Net_6075),
-        .ph2(Net_6076));
+        .ph1(Net_6304),
+        .ph2(Net_6305));
     defparam STEERING_PWM.Resolution = 16;
 
 	wire [0:0] tmpOE__STEERING_PWM_OUT_PIN_net;
@@ -1332,7 +1404,7 @@ module top ;
         .interrupt(Net_4949),
         .enable(1'b1),
         .trigger(1'b1),
-        .capture(1'b0),
+        .capture(Net_5305),
         .capture_out(Net_5306),
         .tc(Net_5307),
         .clock(Net_10));

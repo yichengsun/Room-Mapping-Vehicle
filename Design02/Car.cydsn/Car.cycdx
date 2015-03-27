@@ -236,6 +236,7 @@
   </block>
   <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="CAM_LINE_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="LINE_COUNTER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="PWM_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="MOTOR_PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -311,10 +312,10 @@
   <block name="LCD" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="LCDPort" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   </block>
+  <block name="COUNTER_N_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="VERT_SYNC_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="LINE_COUNTER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="COUNTER_N_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="COMPARATOR_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_TIMER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true">
@@ -326,7 +327,7 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <register name="HE_TIMER_COUNTER" address="0x6504" bitWidth="32" desc="UDB.A0 - Current Down Counter Value" />
     <register name="HE_TIMER_PERIOD" address="0x6524" bitWidth="32" desc="UDB.D0 - Assigned Period" />
-    <register name="HE_TIMER_Control_Reg" address="0x6575" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="HE_TIMER_Control_Reg" address="0x6574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the Timer" />
       <field name="CTRL_CMODE" from="6" to="5" access="RW" resetVal="" desc="Capture Mode" />
       <field name="CTRL_TEN" from="4" to="4" access="RW" resetVal="" desc="Trigger Enable Bit" />

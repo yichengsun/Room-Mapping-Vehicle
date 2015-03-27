@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 1   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STEERING_PWM_CLK
@@ -62,7 +62,7 @@ line level    source
   49   1              STEERING_PWM_CLK_CLKSTBY |= STEERING_PWM_CLK_CLKSTBY_MASK;
   50   1      }
   51          
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 2   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 2   
 
   52          
   53          /*******************************************************************************
@@ -126,7 +126,7 @@ line level    source
                       CLK_DIST_AMASK = STEERING_PWM_CLK_CLKEN_MASK;
                       CLK_DIST_DMASK = 0x00u;
               #else
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 3   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 3   
 
  114   2              CLK_DIST_DMASK = STEERING_PWM_CLK_CLKEN_MASK;
  115   2              CLK_DIST_AMASK = 0x00u;
@@ -190,7 +190,7 @@ line level    source
  173          *
  174          * Summary:
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 4   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 4   
 
  176          *  register is set to zero or changed from zero, the clock will be temporarily
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
@@ -254,7 +254,7 @@ line level    source
               #else
  236   4                      CLK_DIST_DMASK = STEERING_PWM_CLK_CLKEN_MASK;
  237   4                      CLK_DIST_AMASK = 0x00u;
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 5   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 5   
 
  238   4      #endif /* STEERING_PWM_CLK__CFG3 */
  239   4                      /* Clear mask of bus clock. */
@@ -318,7 +318,7 @@ line level    source
  297          uint16 STEERING_PWM_CLK_GetDividerRegister(void) 
  298          {
  299   1          return CY_GET_REG16(STEERING_PWM_CLK_DIV_PTR);
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 6   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 6   
 
  300   1      }
  301          
@@ -382,7 +382,7 @@ line level    source
  359          *                 be enabled for all synchronous clocks.
  360          *   See the Technical Reference Manual for details about setting the mode of
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 7   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 7   
 
  362          *
  363          * Returns:
@@ -446,7 +446,7 @@ line level    source
  421   1          uint16 currDiv = STEERING_PWM_CLK_GetDividerRegister();
  422   1          uint8 oldSrc = STEERING_PWM_CLK_GetSourceRegister();
  423   1      
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 8   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 8   
 
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
@@ -510,7 +510,7 @@ line level    source
               *  clkPhase: Amount to delay the phase of the clock, in 1.0ns increments.
               *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 9   
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 9   
 
               *   produces a 10ns delay.
               *
@@ -548,7 +548,7 @@ line level    source
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 10  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -612,7 +612,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 904008            MOV     DPTR,#04008H
 001B E0                MOVX    A,@DPTR
 001C 547F              ANL     A,#07FH
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 11  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 11  
 
 001E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 121
@@ -676,7 +676,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION STEERING_PWM_CLK_StopBlock (END)
 
              ; FUNCTION _STEERING_PWM_CLK_StandbyPower (BEGIN)
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 12  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 12  
 
                                            ; SOURCE LINE # 157
 ;---- Variable 'state' assigned to Register 'R7' ----
@@ -740,7 +740,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 6F                XRL     A,R7
 0027 7002              JNZ     ?C0038
 0029 EC                MOV     A,R4
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 13  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 13  
 
 002A 6E                XRL     A,R6
 002B         ?C0038:
@@ -804,7 +804,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0072 A3                INC     DPTR
 0073 E0                MOVX    A,@DPTR
 0074 FD                MOV     R5,A
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 14  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 14  
 
 0075 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 222
@@ -868,7 +868,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BF 904001            MOV     DPTR,#04001H
 00C2 E0                MOVX    A,@DPTR
 00C3 5401              ANL     A,#01H
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 15  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 15  
 
 00C5 70F8              JNZ     ?C0019
 00C7         ?C0020:
@@ -932,7 +932,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 010E 7984              MOV     R1,#084H
 0110 900000      R     MOV     DPTR,#clkDivider
 0113 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 16  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 16  
 
 0114 FC                MOV     R4,A
 0115 A3                INC     DPTR
@@ -996,7 +996,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 367
 ;---- Variable 'modeBitMask' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 368
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 17  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 17  
 
                                            ; SOURCE LINE # 369
 0000 904086            MOV     DPTR,#04086H
@@ -1060,7 +1060,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 426
                                            ; SOURCE LINE # 429
 0025 904086            MOV     DPTR,#04086H
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 18  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 18  
 
 0028 E0                MOVX    A,@DPTR
 0029 4440              ORL     A,#040H
@@ -1124,7 +1124,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 466
 0000 904086            MOV     DPTR,#04086H
 0003 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 19:53:26 PAGE 19  
+C51 COMPILER V9.51   STEERING_PWM_CLK                                                      03/26/2015 22:39:50 PAGE 19  
 
 0004 5407              ANL     A,#07H
 0006 FF                MOV     R7,A

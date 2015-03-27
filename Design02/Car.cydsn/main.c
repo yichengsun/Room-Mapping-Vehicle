@@ -29,6 +29,7 @@ double gblack_pos_first_diff = 0;
 double gblack_pos_second_diff = 0;
 double gblack_totalpos_diff = 0;
 int gCounterNReads = 0;
+int gblackcount = 0;
 
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
@@ -58,7 +59,7 @@ double getCurSpeed(){
 }
 
 CY_ISR(FRAME_inter) {
-    LCD_PrintString("Frame start");
+    //LCD_PrintString("Frame start");
     LINE_COUNTER_Start();
     LINE_COUNTER_WriteCompare(20);
     gCounterNReads = 0;
@@ -66,8 +67,7 @@ CY_ISR(FRAME_inter) {
 
 CY_ISR(COUNTER_N_inter) {
     LINE_COUNTER_ReadStatusRegister();
-    LCD_ClearDisplay();
-    LCD_PrintNumber(gCounterNReads);
+
     if (gCounterNReads < 2){
         SEC_TIL_BLACK_TIMER_Start();
     }
@@ -85,6 +85,7 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     uint32 secondpos;
 
     SEC_TIL_BLACK_TIMER_ReadStatusRegister();
+    
     firstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     secondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     SEC_TIL_BLACK_TIMER_STOP();
@@ -97,6 +98,9 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
         gblack_pos_second_diff = (double)(secondpos - firstpos);
         gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
     }
+    
+    LCD_ClearDisplay();
+    LCD_PrintNumber(gblack_totalpos_diff);
 }
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
@@ -203,7 +207,7 @@ CY_ISR(UPDATE_STEERING_inter) {
 
 int main()
 {
-       int testnum = 0;
+    int testnum = 0;
     
     //initialize all modules
     CYGlobalIntEnable;  
@@ -217,11 +221,11 @@ int main()
     COUNTER_N_ISR_Start();
     COUNTER_N_ISR_SetVector(COUNTER_N_inter);
     
-//    SEC_TIL_BLACK_TIMER_ISR_Start();
-//    SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
-//    
-//    UPDATE_STEERING_ISR_Start();
-//    UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
+    SEC_TIL_BLACK_TIMER_ISR_Start();
+    SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
+    
+    //UPDATE_STEERING_ISR_Start();
+    //UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
@@ -230,7 +234,10 @@ int main()
     STEERING_PWM_Start();
     STEERING_PWM_CLK_Start();
     
-    // VID_COMPARE_Start();
+    STEERING_PWM_WriteCompare(3600);
+    CyDelay(1000u);
+    STEERING_PWM_WriteCompare(4560);
+    CyDelay(1000u);
     
     LCD_Start();
     LCD_Position(0,0);

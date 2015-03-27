@@ -1,9 +1,10 @@
 -- Project:   Car
--- Generated: 03/26/2015 19:53:13
+-- Generated: 03/26/2015 22:39:36
 -- PSoC Creator  3.1
 
 ENTITY Car IS
     PORT(
+        COMPARATOR_PIN(0)_PAD : IN std_ulogic;
         COM_SYNC_OUT_PIN(0)_PAD : IN std_ulogic;
         HE_IN_PIN(0)_PAD : IN std_ulogic;
         PWM_OUT_PIN(0)_PAD : OUT std_ulogic;
@@ -27,6 +28,7 @@ ENTITY Car IS
 END Car;
 
 ARCHITECTURE __DEFAULT__ OF Car IS
+    SIGNAL COMPARATOR_PIN(0)__PA : bit;
     SIGNAL COM_SYNC_OUT_PIN(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
     SIGNAL ClockBlock_1k : bit;
@@ -57,6 +59,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL Net_459 : bit;
     SIGNAL Net_4949 : bit;
     SIGNAL Net_5259 : bit;
+    SIGNAL Net_5305 : bit;
     SIGNAL Net_5337 : bit;
     SIGNAL Net_5390 : bit;
     SIGNAL Net_767 : bit;
@@ -118,7 +121,10 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \MOTOR_PWM:PWMUDB:runmode_enable\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:tc_i\ : bit;
+    SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : bit;
+    ATTRIBUTE soft OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : bit;
+    SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_2\ : bit;
@@ -127,6 +133,8 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_5\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_6\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\ : bit;
+    SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : bit;
+    SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:status_2\ : bit;
@@ -227,19 +235,21 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE lib_model OF COM_SYNC_OUT_PIN(0) : LABEL IS "iocell1";
+    ATTRIBUTE lib_model OF COMPARATOR_PIN(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF COMPARATOR_PIN(0) : LABEL IS "P12[2]";
+    ATTRIBUTE lib_model OF COM_SYNC_OUT_PIN(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF COM_SYNC_OUT_PIN(0) : LABEL IS "P4[2]";
-    ATTRIBUTE lib_model OF HE_IN_PIN(0) : LABEL IS "iocell2";
+    ATTRIBUTE lib_model OF HE_IN_PIN(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF HE_IN_PIN(0) : LABEL IS "P4[3]";
     ATTRIBUTE lib_model OF Net_1611 : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_459 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_5259 : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF Net_5390 : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF PWM_OUT_PIN(0) : LABEL IS "iocell3";
+    ATTRIBUTE lib_model OF PWM_OUT_PIN(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P4[7]";
-    ATTRIBUTE lib_model OF STEERING_PWM_OUT_PIN(0) : LABEL IS "iocell4";
+    ATTRIBUTE lib_model OF STEERING_PWM_OUT_PIN(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF STEERING_PWM_OUT_PIN(0) : LABEL IS "P4[6]";
-    ATTRIBUTE lib_model OF VERT_SYNC_OUT_PIN(0) : LABEL IS "iocell5";
+    ATTRIBUTE lib_model OF VERT_SYNC_OUT_PIN(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF VERT_SYNC_OUT_PIN(0) : LABEL IS "P4[4]";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
@@ -248,19 +258,19 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell3";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell4";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell6";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell7";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell8";
     ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P2[1]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell8";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell9";
     ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell9";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell10";
     ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell10";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell11";
     ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P2[4]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell11";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell12";
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell12";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell13";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell6";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell7";
@@ -274,17 +284,21 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell6";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell7";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell16";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell8";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell9";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell17";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell5";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell18";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell10";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell11";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell19";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -599,6 +613,97 @@ ARCHITECTURE __DEFAULT__ OF Car IS
             irq : OUT std_ulogic);
     END COMPONENT;
 BEGIN
+
+    COMPARATOR_PIN:logicalport
+        GENERIC MAP(
+            drive_mode => "001",
+            ibuf_enabled => "1",
+            id => "53da74ed-e7df-4062-8585-e157093292dd",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "I",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            in_clock => open);
+
+    COMPARATOR_PIN(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "COMPARATOR_PIN",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => COMPARATOR_PIN(0)__PA,
+            oe => open,
+            fb => Net_5305,
+            pad_in => COMPARATOR_PIN(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
     COM_SYNC_OUT_PIN:logicalport
         GENERIC MAP(
@@ -1842,13 +1947,63 @@ BEGIN
             sor => \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1.sor__sig\,
             cmsbo => \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\);
 
+    \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\:macrocell
+        GENERIC MAP(
+            soft => 1,
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * main_1 * !main_2)")
+        PORT MAP(
+            q => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
+            main_0 => Net_5305,
+            main_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\,
+            main_2 => \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\);
+
     \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\:macrocell
         GENERIC MAP(
-            eqn_main => "1'b0",
+            eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * !main_4) + (!main_0 * main_1 * main_2 * !main_3 * main_4) + (main_0 * !main_1 * main_2 * main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4)",
             clk_inv => '0')
         PORT MAP(
             q => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\,
+            main_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\,
+            main_2 => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\);
+
+    \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0')
+        PORT MAP(
+            q => \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\,
+            main_0 => Net_5305,
             clock_0 => ClockBlock_BUS_CLK);
+
+    \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * !main_1 * main_3 * !main_4) + (!main_2)",
+            clk_inv => '0')
+        PORT MAP(
+            q => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\,
+            main_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\,
+            main_2 => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\);
+
+    \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1 * main_2 * main_3) + (main_0 * main_2 * main_4) + (!main_1 * main_2 * main_4) + (main_2 * main_3 * main_4)",
+            clk_inv => '0')
+        PORT MAP(
+            q => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\,
+            clock_0 => ClockBlock_BUS_CLK,
+            main_0 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_1\,
+            main_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_0\,
+            main_2 => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
+            main_3 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\,
+            main_4 => \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\);
 
     \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(
@@ -1917,7 +2072,7 @@ BEGIN
             clock => ClockBlock_BUS_CLK,
             cs_addr_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\,
             cs_addr_0 => \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\,
-            f0_load => open,
+            f0_load => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
             busclk => ClockBlock_BUS_CLK,
             ce0 => \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0.ce0__sig\,
             cl0 => \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0.cl0__sig\,
@@ -1963,7 +2118,7 @@ BEGIN
             clock => ClockBlock_BUS_CLK,
             cs_addr_1 => \SEC_TIL_BLACK_TIMER:TimerUDB:control_7\,
             cs_addr_0 => \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\,
-            f0_load => open,
+            f0_load => \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
             z0_comb => \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\,
             f0_bus_stat_comb => \SEC_TIL_BLACK_TIMER:TimerUDB:status_3\,
             f0_blk_stat_comb => \SEC_TIL_BLACK_TIMER:TimerUDB:status_2\,
