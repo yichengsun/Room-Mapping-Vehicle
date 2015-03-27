@@ -3,13 +3,13 @@
 
 #define INCH_PER_MAGNET 1.58
 #define SEC_PER_PERIOD 357.914
-#define EXPECTED_SPEED 3.05
+#define EXPECTED_SPEED 3.5
 #define THREE_FT_DUTY 900
 #define CENTER_DUTY 4560 
 
 #define Kp 5250
-#define Ki 0
-#define Kd 500
+#define Ki 400
+#define Kd 0
 
 #define Kp_steer 100
 #define Ki_steer 50
@@ -59,7 +59,7 @@ double getCurSpeed(){
 }
 
 CY_ISR(FRAME_inter) {
-    //LCD_PrintString("Frame start");
+    LCD_PrintString("Frame start");
     LINE_COUNTER_Start();
     LINE_COUNTER_WriteCompare(20);
     gCounterNReads = 0;
@@ -92,15 +92,15 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
 
     if (gnum_line_reads == 0) {
         gnum_line_reads = 1;
-        gblack_pos_first_diff = (double)(secondpos - firstpos);
+        gblack_pos_first_diff = (double)(firstpos - secondpos);
     } else {
         gnum_line_reads = 0;
         gblack_pos_second_diff = (double)(secondpos - firstpos);
         gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
     }
     
-    LCD_ClearDisplay();
-    LCD_PrintNumber(gblack_totalpos_diff);
+    //LCD_ClearDisplay();
+    //LCD_PrintNumber(gblack_totalpos_diff);
 }
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
@@ -171,24 +171,18 @@ CY_ISR(UPDATE_STEERING_inter) {
     double error;   
     double duty_cycle_buffer;
     uint16 duty_cycle;
-    char buffer[15];
+    char buffer[10];
     
     UPDATE_STEERING_TIMER_ReadStatusRegister();
+    
     //Calculate the error for feedback 
     error = gblack_totalpos_diff;
         //Accumulate past errors for Ki
     // left max 3600; center 4560; right max 5800
     gki_steererror = gki_steererror+error*.000011;
-    duty_cycle_buffer = CENTER_DUTY + Kp_steer*error + Ki_steer*gki_steererror;
+    duty_cycle_buffer = CENTER_DUTY + Kp_steer*error; //+ Ki_steer*gki_steererror;
 
-        //LCD output for debugging
-    LCD_ClearDisplay();
-    LCD_Position(0,0);
-    sprintf(buffer, "%f", error);        
-    LCD_PrintString(buffer);
-    LCD_PrintString("//");
-
-        //Have in place error checking to prevent sporadic  behavior
+    //Have in place error checking to prevent sporadic  behavior
     if (duty_cycle_buffer > 5600){
         duty_cycle_buffer = 5600;   
     }
@@ -197,10 +191,16 @@ CY_ISR(UPDATE_STEERING_inter) {
     }
     duty_cycle = duty_cycle_buffer;
 
-     //more LCD debugging code
-    LCD_Position(1, 0);
-     //sprintf(buffer, "%f", duty_cycle);
-    LCD_PrintNumber(duty_cycle);
+        //LCD output for debugging
+//    LCD_ClearDisplay();
+//    LCD_Position(0,0);
+//    sprintf(buffer, "%f", error);        
+//    LCD_PrintString(buffer);
+    
+//     //more LCD debugging code
+//    LCD_Position(1, 0);
+//     //sprintf(buffer, "%f", duty_cycle);
+//    LCD_PrintNumber(duty_cycle);
 
     STEERING_PWM_WriteCompare(duty_cycle);
 }
@@ -224,8 +224,9 @@ int main()
     SEC_TIL_BLACK_TIMER_ISR_Start();
     SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
     
-    //UPDATE_STEERING_ISR_Start();
-    //UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
+    UPDATE_STEERING_TIMER_Start();
+    UPDATE_STEERING_ISR_Start();
+    UPDATE_STEERING_ISR_SetVector(UPDATE_STEERING_inter);
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
@@ -233,11 +234,6 @@ int main()
     
     STEERING_PWM_Start();
     STEERING_PWM_CLK_Start();
-    
-    STEERING_PWM_WriteCompare(3600);
-    CyDelay(1000u);
-    STEERING_PWM_WriteCompare(4560);
-    CyDelay(1000u);
     
     LCD_Start();
     LCD_Position(0,0);
