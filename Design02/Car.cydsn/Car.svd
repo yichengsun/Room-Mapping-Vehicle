@@ -19,7 +19,7 @@
         <register>
           <name>LINE_COUNTER_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x6404</addressOffset>
+          <addressOffset>0x6407</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28,7 +28,7 @@
         <register>
           <name>LINE_COUNTER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6424</addressOffset>
+          <addressOffset>0x6427</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -37,7 +37,7 @@
         <register>
           <name>LINE_COUNTER_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x6434</addressOffset>
+          <addressOffset>0x6437</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -46,7 +46,7 @@
         <register>
           <name>LINE_COUNTER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6472</addressOffset>
+          <addressOffset>0x6474</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -78,7 +78,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6487</addressOffset>
+          <addressOffset>0x6484</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -138,7 +138,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6497</addressOffset>
+          <addressOffset>0x6494</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -578,7 +578,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x6504</addressOffset>
+          <addressOffset>0x6402</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -587,7 +587,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6524</addressOffset>
+          <addressOffset>0x6422</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -596,7 +596,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6587</addressOffset>
+          <addressOffset>0x6486</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -635,7 +635,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6597</addressOffset>
+          <addressOffset>0x6496</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -772,7 +772,7 @@
         <register>
           <name>MOTOR_PWM_COMPARE_Reg</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x6422</addressOffset>
+          <addressOffset>0x642E</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -781,7 +781,7 @@
         <register>
           <name>MOTOR_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6473</addressOffset>
+          <addressOffset>0x647F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -813,7 +813,7 @@
         <register>
           <name>MOTOR_PWM_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6492</addressOffset>
+          <addressOffset>0x649E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -938,7 +938,7 @@
         <register>
           <name>MOTOR_PWM_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6493</addressOffset>
+          <addressOffset>0x649F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1075,7 +1075,7 @@
         <register>
           <name>HE_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x6508</addressOffset>
+          <addressOffset>0x6504</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1084,7 +1084,7 @@
         <register>
           <name>HE_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6528</addressOffset>
+          <addressOffset>0x6524</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1093,7 +1093,7 @@
         <register>
           <name>HE_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6578</addressOffset>
+          <addressOffset>0x6575</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1139,7 +1139,7 @@
         <register>
           <name>HE_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x658B</addressOffset>
+          <addressOffset>0x6587</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1178,7 +1178,7 @@
         <register>
           <name>HE_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x659B</addressOffset>
+          <addressOffset>0x6597</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

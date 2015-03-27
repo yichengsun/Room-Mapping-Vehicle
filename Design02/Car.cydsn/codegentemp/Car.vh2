@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Mar 27 10:45:38 2015
+--	Fri Mar 27 13:13:30 2015
 --
 
 USE cypress.cypress.all;
@@ -800,7 +800,7 @@ SIGNAL tmpIO_0__COMPARATOR_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__COMPARATOR_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__COMPARATOR_PIN_net_0 : bit;
 SIGNAL tmpOE__VERT_SYNC_OUT_PIN_net_0 : bit;
-SIGNAL Net_8123 : bit;
+SIGNAL Net_8190 : bit;
 SIGNAL tmpIO_0__VERT_SYNC_OUT_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__VERT_SYNC_OUT_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__VERT_SYNC_OUT_PIN_net_0 : bit;
@@ -1592,7 +1592,6 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:hwEnable_reg\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_out_reg_i\ : bit;
 SIGNAL Net_7123 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : bit;
-SIGNAL Net_5302 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_3\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_4_1\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : bit;
@@ -1961,17 +1960,22 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:f1_blk_stat_reg_3\ : bit;
 ATTRIBUTE port_state_att of \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:f1_blk_stat_reg_3\:SIGNAL IS 2;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_102\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:Net_266\ : bit;
+SIGNAL tmpOE__CAPTURE_OUT_PIN_net_0 : bit;
+SIGNAL tmpFB_0__CAPTURE_OUT_PIN_net_0 : bit;
+SIGNAL tmpIO_0__CAPTURE_OUT_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__CAPTURE_OUT_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__CAPTURE_OUT_PIN_net_0 : bit;
 SIGNAL Net_5088 : bit;
 SIGNAL tmpOE__COUNTER_OUT_PIN_net_0 : bit;
 SIGNAL tmpFB_0__COUNTER_OUT_PIN_net_0 : bit;
 SIGNAL tmpIO_0__COUNTER_OUT_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__COUNTER_OUT_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__COUNTER_OUT_PIN_net_0 : bit;
-SIGNAL tmpOE__COMP_OUT_PIN_net_0 : bit;
-SIGNAL tmpFB_0__COMP_OUT_PIN_net_0 : bit;
-SIGNAL tmpIO_0__COMP_OUT_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__COMP_OUT_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__COMP_OUT_PIN_net_0 : bit;
+SIGNAL tmpOE__COMPARATOR_OUT_PIN_net_0 : bit;
+SIGNAL tmpFB_0__COMPARATOR_OUT_PIN_net_0 : bit;
+SIGNAL tmpIO_0__COMPARATOR_OUT_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__COMPARATOR_OUT_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__COMPARATOR_OUT_PIN_net_0 : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -2037,7 +2041,7 @@ Net_459 <= (not Net_2174);
 
 \HE_TIMER:TimerUDB:status_tc\ <= ((\HE_TIMER:TimerUDB:control_7\ and \HE_TIMER:TimerUDB:per_zero\));
 
-Net_8187 <= (not Net_8123);
+Net_8187 <= (not Net_8190);
 
 \LINE_COUNTER:CounterUDB:status_0\ <= ((not \LINE_COUNTER:CounterUDB:prevCompare\ and \LINE_COUNTER:CounterUDB:cmp_out_i\));
 
@@ -2063,14 +2067,14 @@ Net_8187 <= (not Net_8123);
 
 \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ <= ((Net_7738 and \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
 
-\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\));
+\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -3003,7 +3007,7 @@ VERT_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>Net_8123,
+		fb=>Net_8190,
 		analog=>(open),
 		io=>(tmpIO_0__VERT_SYNC_OUT_PIN_net_0),
 		siovref=>(tmpSIOVREF__VERT_SYNC_OUT_PIN_net_0),
@@ -3823,7 +3827,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_8187,
 		clock=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
 		status=>(zero, zero, zero, \SEC_TIL_BLACK_TIMER:TimerUDB:status_3\,
 			\SEC_TIL_BLACK_TIMER:TimerUDB:status_2\, \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\, \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\),
@@ -3852,7 +3856,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
+		cs_addr=>(Net_8187, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
@@ -3938,7 +3942,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
+		cs_addr=>(Net_8187, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
@@ -4024,7 +4028,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
+		cs_addr=>(Net_8187, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
@@ -4110,7 +4114,7 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
+		cs_addr=>(Net_8187, Net_7738, \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
@@ -4172,6 +4176,75 @@ COM_SYNC_OUT_PIN:cy_psoc3_pins_v1_10
 		pi=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		po=>open);
+CAPTURE_OUT_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"6e3fb5c0-ff54-43db-b493-2ff8254629e3",
+		drive_mode=>"011",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
+		y=>Net_7123,
+		fb=>(tmpFB_0__CAPTURE_OUT_PIN_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__CAPTURE_OUT_PIN_net_0),
+		siovref=>(tmpSIOVREF__CAPTURE_OUT_PIN_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__CAPTURE_OUT_PIN_net_0);
 CAM_LINE_CLK:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
@@ -4251,7 +4324,7 @@ COUNTER_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__COUNTER_OUT_PIN_net_0);
-COMP_OUT_PIN:cy_psoc3_pins_v1_10
+COMPARATOR_OUT_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"9f60ba6b-31c3-4092-b5d8-c0a6af2bf2df",
 		drive_mode=>"011",
 		ibuf_enabled=>"1",
@@ -4308,10 +4381,10 @@ COMP_OUT_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>Net_5305,
-		fb=>(tmpFB_0__COMP_OUT_PIN_net_0),
+		fb=>(tmpFB_0__COMPARATOR_OUT_PIN_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__COMP_OUT_PIN_net_0),
-		siovref=>(tmpSIOVREF__COMP_OUT_PIN_net_0),
+		io=>(tmpIO_0__COMPARATOR_OUT_PIN_net_0),
+		siovref=>(tmpSIOVREF__COMPARATOR_OUT_PIN_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
@@ -4319,7 +4392,7 @@ COMP_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__COMP_OUT_PIN_net_0);
+		interrupt=>tmpINTERRUPT_0__COMPARATOR_OUT_PIN_net_0);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -4495,7 +4568,7 @@ COMP_OUT_PIN:cy_psoc3_pins_v1_10
 \SEC_TIL_BLACK_TIMER:TimerUDB:capture_out_reg_i\:cy_dff
 	PORT MAP(d=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
-		q=>\SEC_TIL_BLACK_TIMER:TimerUDB:capture_out_reg_i\);
+		q=>Net_7123);
 \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\:cy_dff
 	PORT MAP(d=>\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
