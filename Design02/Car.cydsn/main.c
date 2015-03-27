@@ -60,25 +60,9 @@ double getCurSpeed(){
     return current_Speed;
 }
 
-//CY_ISR(COUNTER_N_inter) {
-//    LINE_COUNTER_ReadStatusRegister();
-//    
-//    if (gCounterNReads == 2){
-//        LINE_COUNTER_Stop();   
-//    }
-//    else if (gCounterNReads == 0) {
-//        int multiples = 20+80;
-//        LINE_COUNTER_WriteCompare(multiples);
-//    } 
-//    gCounterNReads += 1;
-//}
-
 CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     char buffer[15];
-
-    
     gfirstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
     SEC_TIL_BLACK_TIMER_ClearFIFO();
     
@@ -182,10 +166,10 @@ CY_ISR(HE_inter) {
 
     LCD_ClearDisplay();
     LCD_Position(0,0);
-    sprintf(buffer, "%f", error);
+    sprintf(buffer, "%lu", gfirstpos);
     LCD_PrintString(buffer);
     LCD_Position(1, 0);
-    sprintf(buffer, "%f", gblack_totalpos_diff);
+    sprintf(buffer, "%lu", gsecondpos);
     LCD_PrintString(buffer);
     
         //LCD output for debugging

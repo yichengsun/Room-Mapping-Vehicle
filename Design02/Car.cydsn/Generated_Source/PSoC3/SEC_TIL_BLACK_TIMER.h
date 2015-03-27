@@ -180,7 +180,7 @@ void SEC_TIL_BLACK_TIMER_Wakeup(void)        ;
                                                  ((uint8)((uint8)0 << SEC_TIL_BLACK_TIMER_STATUS_FIFOFULL_INT_MASK_SHIFT)))
 #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
 #define SEC_TIL_BLACK_TIMER_INIT_CAPTURE_COUNT      (2u)
-#define SEC_TIL_BLACK_TIMER_INIT_INT_CAPTURE_COUNT  ((uint8)((uint8)(2u - 1u) << SEC_TIL_BLACK_TIMER_CTRL_INTCNT_SHIFT))
+#define SEC_TIL_BLACK_TIMER_INIT_INT_CAPTURE_COUNT  ((uint8)((uint8)(3u - 1u) << SEC_TIL_BLACK_TIMER_CTRL_INTCNT_SHIFT))
 
 
 /***************************************
