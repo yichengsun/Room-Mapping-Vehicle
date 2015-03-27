@@ -225,6 +225,7 @@ int main()
     
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
+    MOTOR_PWM_WriteCompare(1000);
     
     STEERING_PWM_Start();
     STEERING_PWM_CLK_Start();

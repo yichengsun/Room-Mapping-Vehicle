@@ -973,8 +973,6 @@
 <dep name=".\Generated_Source\PSoC3\LCD_LCDPort.h" />
 <dep name=".\Generated_Source\PSoC3\LCD_LCDPort_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\LINE_COUNTER.h" />
-<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.h" />
-<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\MOTOR_PWM.h" />
 <dep name=".\Generated_Source\PSoC3\MOTOR_PWM_CLK.h" />
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
@@ -1018,8 +1016,6 @@
 <file name=".\Generated_Source\PSoC3\LCD_LCDPort.h" />
 <file name=".\Generated_Source\PSoC3\LCD_LCDPort_aliases.h" />
 <file name=".\Generated_Source\PSoC3\LINE_COUNTER.h" />
-<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.h" />
-<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN_aliases.h" />
 <file name=".\Generated_Source\PSoC3\MOTOR_PWM.h" />
 <file name=".\Generated_Source\PSoC3\MOTOR_PWM_CLK.h" />
 <file name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
@@ -1261,17 +1257,6 @@
 <dep name=".\Generated_Source\PSoC3\LINE_COUNTER_PM.c" />
 </file>
 <file name=".\Generated_Source\PSoC3\LINE_COUNTER_PM.c" />
-<file name=".\DP8051\DP8051_Keil_951\Release\LINE_IS_READ_PIN.obj">
-<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.h" />
-<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC3\cypins.h" />
-<dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.c" />
-</file>
-<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.c" />
 <file name=".\DP8051\DP8051_Keil_951\Release\MOTOR_PWM.obj">
 <dep name=".\Generated_Source\PSoC3\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC3\CyLib.h" />
@@ -1518,6 +1503,19 @@
 <dep name=".\Generated_Source\PSoC3\KeilStart.a51" />
 </file>
 <file name=".\Generated_Source\PSoC3\KeilStart.a51" />
+<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.h" />
+<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN_aliases.h" />
+<file name=".\DP8051\DP8051_Keil_951\Release\LINE_IS_READ_PIN.obj">
+<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.h" />
+<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cypins.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\LINE_IS_READ_PIN.c" />
 <file name=".\Generated_Source\PSoC3\COMPARE_OUT.h" />
 <file name=".\Generated_Source\PSoC3\COMPARE_OUT_aliases.h" />
 <file name=".\Generated_Source\PSoC3\COMP_VREF.h" />
@@ -2027,7 +2025,6 @@
 <dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_ISR.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj" />
-<dep name=".\DP8051\DP8051_Keil_951\Release\LINE_IS_READ_PIN.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Release\Car.lib" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib" />
 </file>
@@ -2494,45 +2491,6 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.pdf</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\Custom\custom.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cysym</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cystate</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\cy_pins_v2_10.cyprimitive</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\custom.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyenums.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinsdata.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinpicture.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinutils.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\Resource1.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.Designer.cs</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cygeneralcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyinputcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cymappingcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyoutputcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinaliasdialog.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cypinscontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyporcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\Resource1.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\Custom\cyclockingcontrol.resx</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.c</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\pins.h</v>
-<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_10\PSoC3\API\aliases.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
@@ -3131,14 +3089,14 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="130718857941342152" />
+<deps_time v="130718876016879997" />
 <top_block v="TopDesign" />
 <last_generation v="5" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130718858053301872" />
+<deps_time v="130718876126578098" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">

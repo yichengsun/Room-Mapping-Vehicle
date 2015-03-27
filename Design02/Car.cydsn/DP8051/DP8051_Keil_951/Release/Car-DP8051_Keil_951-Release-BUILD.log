@@ -1,11 +1,10 @@
---------------- Build Started: 03/26/2015 19:22:50 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
+--------------- Build Started: 03/26/2015 19:52:57 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
 cydsfit.exe -.appdatapath "C:\Users\Yicheng\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Car.cyprj -d CY8C3866AXI-040 -s C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\Generated_Source\PSoC3 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=BE
 Elaborating Design...
 HDL Generation ...
 Synthesis ...
 Place and Route ...
 Tech mapping ...
-ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: LINE_IS_READ_PIN(0)
 Analog Placement ...
 Analog Routing ...
 Analog Code Generation ...
@@ -18,7 +17,7 @@ Dependency Generation ...
 Clean Temporary Files ...
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/main.lst) CD "OT(8, Size)" OJ(.\DP8051\DP8051_Keil_951\Release\main.obj)
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
-WARNING: .\main.c:92: 'SEC_TIL_BLACK_TIMER_STOP': missing function-prototype
+WARNING: .\main.c:90: 'SEC_TIL_BLACK_TIMER_STOP': missing function-prototype
 c51.exe .\Generated_Source\PSoC3\cyfitter_cfg.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/cyfitter_cfg.lst) CD "OT(8, Size)" OJ(.\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj)
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
 c51.exe .\Generated_Source\PSoC3\HE_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/HE_ISR.lst) CD "OT(8, Size)" OJ(.\DP8051\DP8051_Keil_951\Release\HE_ISR.obj)
@@ -91,9 +90,7 @@ c51.exe .\Generated_Source\PSoC3\UPDATE_STEERING_ISR.c NOIV LARGE MODDP2 OMF2 VB
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
 c51.exe .\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER_ISR.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/SEC_TIL_BLACK_TIMER_ISR.lst) CD "OT(8, Size)" OJ(.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj)
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
-c51.exe .\Generated_Source\PSoC3\LINE_IS_READ_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "INCDIR(., .\Generated_Source\PSoC3)" FF(3) DB WL(2) PR(.\DP8051\DP8051_Keil_951\Release/LINE_IS_READ_PIN.lst) CD "OT(8, Size)" OJ(.\DP8051\DP8051_Keil_951\Release\LINE_IS_READ_PIN.obj)
-*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
-LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Release\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Release\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Release\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Release\CyLib.obj', '.\DP8051\DP8051_Keil_951\Release\cymem.obj', '.\DP8051\DP8051_Keil_951\Release\cyPm.obj', '.\DP8051\DP8051_Keil_951\Release\CySpc.obj', '.\DP8051\DP8051_Keil_951\Release\cyutils.obj', '.\DP8051\DP8051_Keil_951\Release\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Release\LCD.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\COUNTER_N_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\FRAME_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_IS_READ_PIN.obj' TO '.\DP8051\DP8051_Keil_951\Release\Car.lib'
+LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Release\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Release\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Release\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Release\CyLib.obj', '.\DP8051\DP8051_Keil_951\Release\cymem.obj', '.\DP8051\DP8051_Keil_951\Release\cyPm.obj', '.\DP8051\DP8051_Keil_951\Release\CySpc.obj', '.\DP8051\DP8051_Keil_951\Release\cyutils.obj', '.\DP8051\DP8051_Keil_951\Release\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Release\LCD.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\COUNTER_N_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\FRAME_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEERING_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj' TO '.\DP8051\DP8051_Keil_951\Release\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Release\main.obj', '.\DP8051\DP8051_Keil_951\Release\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Release\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Release/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
 *** WARNING L15: MULTIPLE CALL TO FUNCTION
     NAME:    LCD_ISREADY/LCD
@@ -195,10 +192,10 @@ LX51.exe '.\DP8051\DP8051_Keil_951\Release\main.obj', '.\DP8051\DP8051_Keil_951\
     SYMBOL:  SEC_TIL_BLACK_TIMER_STOP
     MODULE:  .\DP8051\DP8051_Keil_951\Release\main.obj (MAIN)
    DEFINED:  .\DP8051\DP8051_Keil_951\Release\Car.lib (SEC_TIL_BLACK_TIMER)
-Program Size: data=26.2 xdata=378 const=55 code=8897
+Program Size: data=26.2 xdata=378 const=55 code=8821
 OHx51.exe Car.omf HEXFILE(Car.ihx)
 c8051-elf-omf2elf.exe Car.omf Car.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Release\Car.hex -f .\DP8051\DP8051_Keil_951\Release\Car.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 8952 of 65536 bytes (13.7 %).
+Flash used: 8876 of 65536 bytes (13.5 %).
 SRAM used: 378 of 8192 bytes (4.6 %).
---------------- Build Succeeded: 03/26/2015 19:23:26 ---------------
+--------------- Build Succeeded: 03/26/2015 19:53:33 ---------------

@@ -29,8 +29,6 @@
 #include <HE_ISR.h>
 #include <HE_TIMER_CLK.h>
 #include <HE_TIMER.h>
-#include <LINE_IS_READ_PIN.h>
-#include <LINE_IS_READ_PIN_aliases.h>
 #include <COUNTER_N_ISR.h>
 #include <VERT_SYNC_OUT_PIN.h>
 #include <VERT_SYNC_OUT_PIN_aliases.h>

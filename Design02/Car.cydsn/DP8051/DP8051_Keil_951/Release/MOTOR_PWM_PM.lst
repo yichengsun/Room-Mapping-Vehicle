@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 1   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MOTOR_PWM_PM
@@ -62,7 +62,7 @@ line level    source
   49   1              MOTOR_PWM_backup.PWMUdb = MOTOR_PWM_ReadCounter();
   50   1              #if (MOTOR_PWM_UseStatus)
                           MOTOR_PWM_backup.InterruptMaskValue = MOTOR_PWM_STATUS_MASK;
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 2   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 2   
 
                       #endif /* (MOTOR_PWM_UseStatus) */
   53   1      
@@ -126,7 +126,7 @@ line level    source
  111   1                      MOTOR_PWM_WriteControlRegister(MOTOR_PWM_backup.PWMControlRegister);
  112   1                  #endif /* (MOTOR_PWM_UseControl) */
  113   1              #endif  /* (!MOTOR_PWM_UsingFixedFunction) */
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 3   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 3   
 
  114   1          }
  115          
@@ -190,7 +190,7 @@ line level    source
  173          * Global variables:
  174          *  MOTOR_PWM_backup.pwmEnable:  Is used to restore the enable state of
  175          *  block on wakeup from sleep mode.
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 4   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 4   
 
  176          *
  177          *******************************************************************************/
@@ -209,7 +209,7 @@ line level    source
  190          
  191          
  192          /* [] END OF FILE */
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 5   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -273,7 +273,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION MOTOR_PWM_Sleep (BEGIN)
                                            ; SOURCE LINE # 136
                                            ; SOURCE LINE # 137
-C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:23:18 PAGE 6   
+C51 COMPILER V9.51   MOTOR_PWM_PM                                                          03/26/2015 19:53:26 PAGE 6   
 
                                            ; SOURCE LINE # 139
 0000 906473            MOV     DPTR,#06473H

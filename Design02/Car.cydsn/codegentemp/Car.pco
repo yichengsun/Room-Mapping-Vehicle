@@ -1,5 +1,5 @@
 # Car
-# 2015-03-26 23:23:08Z
+# 2015-03-26 23:53:15Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -13,9 +13,8 @@ set_location "ClockBlock" clockblockcell -1 -1 0
 set_location "FRAME_ISR" interrupt -1 -1 1
 set_io "HE_IN_PIN(0)" iocell 4 3
 set_location "HE_ISR" interrupt -1 -1 2
-set_io "LINE_IS_READ_PIN(0)" iocell 0 0
 set_location "Net_1611" 2 4 0 1
-set_location "Net_459" 3 5 1 3
+set_location "Net_459" 3 5 1 2
 set_location "Net_5259" 3 3 0 1
 set_location "Net_5390" 3 5 0 3
 set_io "PWM_OUT_PIN(0)" iocell 4 7
@@ -49,7 +48,7 @@ set_location "\MOTOR_PWM:PWMUDB:genblk1:ctrlreg\" 2 4 6
 set_location "\MOTOR_PWM:PWMUDB:runmode_enable\" 2 4 0 0
 set_location "\MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\" 3 4 2
 set_location "\MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\" 2 4 2
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\" 2 2 1 1
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\" 2 2 0 2
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\" 2 2 4
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 2 6
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\" 3 2 2
@@ -60,4 +59,4 @@ set_location "\STEERING_PWM:PWMUDB:runmode_enable\" 3 3 0 0
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u0\" 2 3 2
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u1\" 3 3 2
 set_location "\UPDATE_STEERING_TIMER:TimerHW\" timercell -1 -1 0
-set_location "__ONE__" 1 1 1 1
+set_location "__ONE__" 3 1 1 2

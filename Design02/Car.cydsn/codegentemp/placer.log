@@ -6,7 +6,7 @@
 
 #Build Date:         Oct 23 2014 13:00:08
 
-#File Generated:     Mar 26 2015 19:23:05
+#File Generated:     Mar 26 2015 19:53:13
 
 #Purpose:            
 
@@ -55,7 +55,7 @@ Design Statistics after Packing
 Device Utilization Summary after Packing
     Macrocells                  :	15/192
     UDBS                        :	12/24
-    IOs                         :	13/72
+    IOs                         :	12/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -114,99 +114,6 @@ Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.2 (sec)
-
-Final Design Statistics
-    Number of Combinational MCs 	:	7
-    Number of Sequential MCs    	:	8
-    Number of DPs               	:	11
-    Number of Controls          	:	5
-    Number of Status            	:	3
-    Number of SyncCells         	:	0
-    Number of count7cells       	:	0
-    Number of IOs       	:	13
-
-Device Utilization Summary
-    Macrocells                  :	15/192
-    IOs                         :	13/72
-
-
-
-######################################################################
-Placement Timing Summary
-
-The timing summary is based on estimated routing delays after
-placement. For final timing report, please carry out the timing
-analysis after routing.
-======================================================================
-
-
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  26.3 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
-Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
-Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-
-Phase 6
-
-######################################################################
-Placement Timing Summary
-
-The timing summary is based on estimated routing delays after
-placement. For final timing report, please carry out the timing
-analysis after routing.
-======================================================================
-
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  26.3 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
-Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
-Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-
-D2088: Phase 6, elapsed time : 0.1 (sec)
-
-Phase 7
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  28.6 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  14.3 MHz
-Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.2 MHz
-Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.6 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
 D2088: Phase 7, elapsed time : 0.7 (sec)
 
 Final Design Statistics
@@ -217,11 +124,11 @@ Final Design Statistics
     Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
-    Number of IOs       	:	13
+    Number of IOs       	:	12
 
 Device Utilization Summary
     Macrocells                  :	15/192
-    IOs                         :	13/72
+    IOs                         :	12/72
 
 
 
@@ -238,15 +145,15 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 9
-Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  31.3 MHz
+Clock: CyBUS_CLK            | Frequency:  41.7 MHz | Target:  26.3 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  15.6 MHz
-Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.3 MHz
-Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   4.0 MHz
+Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
+Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
+Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -257,5 +164,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.9 sec.
+I2076: Total run-time: 1.7 sec.
 

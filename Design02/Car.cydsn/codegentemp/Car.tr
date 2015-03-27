@@ -75,7 +75,7 @@ Port Name  Setup to Clk  Clock Name:Phase
 Port Name                    Clock to Out  Clock Name:Phase    
 ---------------------------  ------------  ------------------  
 PWM_OUT_PIN(0)_PAD           24602         MOTOR_PWM_CLK:R     
-STEERING_PWM_OUT_PIN(0)_PAD  24448         STEERING_PWM_CLK:R  
+STEERING_PWM_OUT_PIN(0)_PAD  24444         STEERING_PWM_CLK:R  
 
 
                          3.3::Pad to Pad
@@ -675,7 +675,7 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 Path Begin     : \SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7
 Path End       : \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u1\/cs_addr_1
 Capture Clock  : \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u1\/clock
-Path slack     : 24425p
+Path slack     : 24619p
 
 Capture Clock Arrival Time                              0
 + Clock path delay                                      0
@@ -686,9 +686,9 @@ End-of-path required time (ps)                      30147
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       5721
++ Data path delay                       5528
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           5721
+End-of-path arrival time (ps)           5528
  
 Launch Clock Path
 pin name                                                       model name      delay     AT  edge  Fanout
@@ -699,8 +699,8 @@ ClockBlock/clk_bus_glb                                         clockblockcell   
 Data path
 pin name                                                           model name     delay     AT  slack  edge  Fanout
 -----------------------------------------------------------------  -------------  -----  -----  -----  ----  ------
-\SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell4    2580   2580  21288  RISE       1
-\SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u1\/cs_addr_1           datapathcell9   3141   5721  24425  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell4    2580   2580  21343  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u1\/cs_addr_1           datapathcell9   2948   5528  24619  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
@@ -715,7 +715,7 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 Path Begin     : \SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7
 Path End       : \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\/cs_addr_1
 Capture Clock  : \SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\/clock
-Path slack     : 24568p
+Path slack     : 24623p
 
 Capture Clock Arrival Time                              0
 + Clock path delay                                      0
@@ -726,9 +726,9 @@ End-of-path required time (ps)                      30147
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       5578
++ Data path delay                       5523
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           5578
+End-of-path arrival time (ps)           5523
  
 Launch Clock Path
 pin name                                                       model name      delay     AT  edge  Fanout
@@ -739,8 +739,8 @@ ClockBlock/clk_bus_glb                                         clockblockcell   
 Data path
 pin name                                                           model name     delay     AT  slack  edge  Fanout
 -----------------------------------------------------------------  -------------  -----  -----  -----  ----  ------
-\SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell4    2580   2580  21288  RISE       1
-\SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\/cs_addr_1           datapathcell8   2998   5578  24568  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell4    2580   2580  21343  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:sT16:timerdp:u0\/cs_addr_1           datapathcell8   2943   5523  24623  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
@@ -1043,7 +1043,7 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 Path Begin     : \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\/q
 Path End       : \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\/status_1
 Capture Clock  : \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\/clock
-Path slack     : 36526p
+Path slack     : 36533p
 
 Capture Clock Arrival Time                             0
 + Clock path delay                                     0
@@ -1054,9 +1054,9 @@ End-of-path required time (ps)                     40097
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       3571
++ Data path delay                       3563
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           3571
+End-of-path arrival time (ps)           3563
  
 Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
@@ -1067,8 +1067,8 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 Data path
 pin name                                               model name    delay     AT  slack  edge  Fanout
 -----------------------------------------------------  ------------  -----  -----  -----  ----  ------
-\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\/q         macrocell12    1250   1250  36526  RISE       1
-\SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\/status_1  statusicell3   2321   3571  36526  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\/q         macrocell12    1250   1250  36533  RISE       1
+\SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\/status_1  statusicell3   2313   3563  36533  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
@@ -1875,7 +1875,7 @@ Net_5259/clock_0                                           macrocell3          0
 Path Begin     : \STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7
 Path End       : Net_5259/main_0
 Capture Clock  : Net_5259/clock_0
-Path slack     : 324931p
+Path slack     : 324930p
 
 Capture Clock Arrival Time                                            0
 + Clock path delay                                                    0
@@ -1886,9 +1886,9 @@ End-of-path required time (ps)                                   329823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       4893
++ Data path delay                       4894
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           4893
+End-of-path arrival time (ps)           4894
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -1899,8 +1899,8 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 Data path
 pin name                                         model name    delay     AT   slack  edge  Fanout
 -----------------------------------------------  ------------  -----  -----  ------  ----  ------
-\STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7  controlcell5   2580   2580  324931  RISE       1
-Net_5259/main_0                                  macrocell3     2313   4893  324931  RISE       1
+\STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7  controlcell5   2580   2580  324930  RISE       1
+Net_5259/main_0                                  macrocell3     2314   4894  324930  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -1915,7 +1915,7 @@ Net_5259/clock_0                                           macrocell3          0
 Path Begin     : \STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7
 Path End       : \STEERING_PWM:PWMUDB:runmode_enable\/main_0
 Capture Clock  : \STEERING_PWM:PWMUDB:runmode_enable\/clock_0
-Path slack     : 324931p
+Path slack     : 324930p
 
 Capture Clock Arrival Time                                            0
 + Clock path delay                                                    0
@@ -1926,9 +1926,9 @@ End-of-path required time (ps)                                   329823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       4893
++ Data path delay                       4894
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           4893
+End-of-path arrival time (ps)           4894
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -1939,8 +1939,8 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 Data path
 pin name                                         model name    delay     AT   slack  edge  Fanout
 -----------------------------------------------  ------------  -----  -----  ------  ----  ------
-\STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7  controlcell5   2580   2580  324931  RISE       1
-\STEERING_PWM:PWMUDB:runmode_enable\/main_0      macrocell14    2313   4893  324931  RISE       1
+\STEERING_PWM:PWMUDB:genblk1:ctrlreg\/control_7  controlcell5   2580   2580  324930  RISE       1
+\STEERING_PWM:PWMUDB:runmode_enable\/main_0      macrocell14    2314   4894  324930  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
