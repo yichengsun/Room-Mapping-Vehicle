@@ -38,13 +38,14 @@
 #include <STEERING_PWM.h>
 #include <STEERING_PWM_OUT_PIN.h>
 #include <STEERING_PWM_OUT_PIN_aliases.h>
-#include <FRAME_ISR.h>
-#include <BLK_INTER_OUT_PIN.h>
-#include <BLK_INTER_OUT_PIN_aliases.h>
+#include <TIMER_OUT_PIN.h>
+#include <TIMER_OUT_PIN_aliases.h>
 #include <SEC_TIL_BLACK_TIMER_ISR.h>
 #include <COM_SYNC_OUT_PIN.h>
 #include <COM_SYNC_OUT_PIN_aliases.h>
 #include <SEC_TIL_BLACK_TIMER.h>
+#include <COUNTER_OUT_PIN.h>
+#include <COUNTER_OUT_PIN_aliases.h>
 #include <COMP_OUT_PIN.h>
 #include <COMP_OUT_PIN_aliases.h>
 #include <LCD_LCDPort.h>

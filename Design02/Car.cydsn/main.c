@@ -30,6 +30,8 @@ double gblack_pos_second_diff = 0;
 double gblack_totalpos_diff = 0;
 int gCounterNReads = 0;
 int gblackcount = 0;
+uint32 gfirstpos;
+uint32 gsecondpos;
 
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
@@ -58,12 +60,6 @@ double getCurSpeed(){
     return current_Speed;
 }
 
-CY_ISR(FRAME_inter) {
-    //LCD_PrintString("Frame start");
-    LINE_COUNTER_Start();
-    //gCounterNReads = 0;
-}
-
 //CY_ISR(COUNTER_N_inter) {
 //    LINE_COUNTER_ReadStatusRegister();
 //    
@@ -78,16 +74,15 @@ CY_ISR(FRAME_inter) {
 //}
 
 CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
-    uint32 firstpos;
-    uint32 secondpos;
+    char buffer[15];
 
-    SEC_TIL_BLACK_TIMER_ReadStatusRegister();
     
-    LINE_COUNTER_Stop();
-    firstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    secondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
+    gfirstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
+    gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
+    gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
+    SEC_TIL_BLACK_TIMER_ClearFIFO();
     
-    gblack_totalpos_diff = (double)(firstpos - secondpos);
+    gblack_totalpos_diff = (double)(gfirstpos - gsecondpos);
 //    if (gnum_line_reads == 0) {
 //        gnum_line_reads = 1;
 //        gblack_pos_first_diff = (double)(firstpos - secondpos);
@@ -96,10 +91,9 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
 //        gblack_pos_second_diff = (double)(firstpos - secondpos);
 //        gblack_totalpos_diff = gblack_pos_first_diff - gblack_pos_second_diff;
 //    }
-    
-    //LCD_ClearDisplay();
-    //LCD_PrintNumber(gblack_totalpos_diff);
-}
+        SEC_TIL_BLACK_TIMER_ReadStatusRegister();
+
+    }
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
 CY_ISR(HE_inter) {
@@ -171,7 +165,7 @@ CY_ISR(HE_inter) {
    // UPDATE_STEERING_TIMER_ReadStatusRegister();
     
     //Calculate the error for feedback 
-    error = gblack_totalpos_diff / SEC_TIL_BLACK_TIMER_ReadPeriod() * 179 * 1000000 - 65/2.0;
+    error = gblack_totalpos_diff - 780;
         //Accumulate past errors for Ki
     // left max 3600; center 4560; right max 5800
     gki_steererror = gki_steererror+error*.000011;
@@ -186,11 +180,19 @@ CY_ISR(HE_inter) {
     }
     duty_cycle = duty_cycle_buffer;
 
-        //LCD output for debugging
     LCD_ClearDisplay();
     LCD_Position(0,0);
-    sprintf(buffer, "%f", error);        
+    sprintf(buffer, "%f", error);
     LCD_PrintString(buffer);
+    LCD_Position(1, 0);
+    sprintf(buffer, "%f", gblack_totalpos_diff);
+    LCD_PrintString(buffer);
+    
+        //LCD output for debugging
+//    LCD_ClearDisplay();
+//    LCD_Position(0,0);
+//    sprintf(buffer, "%f", error);        
+//    LCD_PrintString(buffer);
     
 //     //more LCD debugging code
 //    LCD_Position(1, 0);
@@ -249,8 +251,7 @@ int main()
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
     
-    FRAME_ISR_Start();
-    FRAME_ISR_SetVector(FRAME_inter);
+    LINE_COUNTER_Start();
     //COUNTER_N_ISR_Start();
     //COUNTER_N_ISR_SetVector(COUNTER_N_inter);   
     SEC_TIL_BLACK_TIMER_Start();

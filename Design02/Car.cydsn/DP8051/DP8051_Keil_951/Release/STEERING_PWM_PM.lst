@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 1   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STEERING_PWM_PM
@@ -62,7 +62,7 @@ line level    source
   49   1              STEERING_PWM_backup.PWMUdb = STEERING_PWM_ReadCounter();
   50   1              #if (STEERING_PWM_UseStatus)
                           STEERING_PWM_backup.InterruptMaskValue = STEERING_PWM_STATUS_MASK;
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 2   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 2   
 
                       #endif /* (STEERING_PWM_UseStatus) */
   53   1      
@@ -126,7 +126,7 @@ line level    source
  111   1                      STEERING_PWM_WriteControlRegister(STEERING_PWM_backup.PWMControlRegister);
  112   1                  #endif /* (STEERING_PWM_UseControl) */
  113   1              #endif  /* (!STEERING_PWM_UsingFixedFunction) */
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 3   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 3   
 
  114   1          }
  115          
@@ -190,7 +190,7 @@ line level    source
  173          * Global variables:
  174          *  STEERING_PWM_backup.pwmEnable:  Is used to restore the enable state of
  175          *  block on wakeup from sleep mode.
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 4   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 4   
 
  176          *
  177          *******************************************************************************/
@@ -209,7 +209,7 @@ line level    source
  190          
  191          
  192          /* [] END OF FILE */
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 5   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -273,10 +273,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION STEERING_PWM_Sleep (BEGIN)
                                            ; SOURCE LINE # 136
                                            ; SOURCE LINE # 137
-C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 00:56:50 PAGE 6   
+C51 COMPILER V9.51   STEERING_PWM_PM                                                       03/27/2015 10:01:42 PAGE 6   
 
                                            ; SOURCE LINE # 139
-0000 906471            MOV     DPTR,#06471H
+0000 90647C            MOV     DPTR,#0647CH
 0003 E0                MOVX    A,@DPTR
 0004 30E708            JNB     ACC.7,?C0003
                                            ; SOURCE LINE # 140

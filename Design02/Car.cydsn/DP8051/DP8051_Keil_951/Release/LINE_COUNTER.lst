@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 1   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LINE_COUNTER
@@ -62,7 +62,7 @@ line level    source
                           /* Clear all bits but the enable bit (if it's already set for Timer operation */
                           LINE_COUNTER_CONTROL &= LINE_COUNTER_CTRL_ENABLE;
                           
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 2   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 2   
 
                           /* Clear the mode bits for continuous run mode */
                           #if (CY_PSOC5A)
@@ -126,7 +126,7 @@ line level    source
  111   1                  /* Use the interrupt output of the status register for IRQ output */
  112   1                  
  113   1                  /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 3   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 3   
 
  114   1                  /* Enter Critical Region*/
  115   1                  LINE_COUNTER_interruptState = CyEnterCriticalSection();
@@ -190,7 +190,7 @@ line level    source
  173          * Global variables:
  174          *  LINE_COUNTER_initVar: Is modified when this function is called for the  
  175          *   first time. Is used to ensure that initialization happens only once.
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 4   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 4   
 
  176          *
  177          *******************************************************************************/
@@ -254,7 +254,7 @@ line level    source
  235          *
  236          *******************************************************************************/
  237          void LINE_COUNTER_SetInterruptMode(uint8 interruptsMask) 
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 5   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 5   
 
  238          {
  239   1          LINE_COUNTER_STATUS_MASK = interruptsMask;
@@ -318,7 +318,7 @@ line level    source
  297          * Parameters:  
  298          *  void
  299          *
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 6   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 6   
 
  300          * Return: 
  301          *  (uint8) The contents of the control register
@@ -346,7 +346,7 @@ line level    source
  323          *  void 
  324          *
  325          *******************************************************************************/
- 326          void LINE_COUNTER_WriteCounter(uint8 counter) \
+ 326          void LINE_COUNTER_WriteCounter(uint32 counter) \
  327                                             
  328          {
  329   1          #if(LINE_COUNTER_UsingFixedFunction)
@@ -357,7 +357,7 @@ line level    source
                       CY_SET_REG16(LINE_COUNTER_COUNTER_LSB_PTR, (uint16)counter);
                       LINE_COUNTER_GLOBAL_ENABLE &= ((uint8)(~LINE_COUNTER_BLOCK_EN_MASK));
                   #else
- 337   1              CY_SET_REG8(LINE_COUNTER_COUNTER_LSB_PTR, counter);
+ 337   1              CY_SET_REG32(LINE_COUNTER_COUNTER_LSB_PTR, counter);
  338   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  339   1      }
  340          #endif /* (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A))) */
@@ -374,15 +374,15 @@ line level    source
  351          *  void:  
  352          *
  353          * Return: 
- 354          *  (uint8) The present value of the counter.
+ 354          *  (uint32) The present value of the counter.
  355          *
  356          *******************************************************************************/
- 357          uint8 LINE_COUNTER_ReadCounter(void) 
+ 357          uint32 LINE_COUNTER_ReadCounter(void) 
  358          {
  359   1          /* Force capture by reading Accumulator */
  360   1          /* Must first do a software capture to be able to read the counter */
  361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 7   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 7   
 
  362   1          #if(LINE_COUNTER_UsingFixedFunction)
                               (void)CY_GET_REG16(LINE_COUNTER_COUNTER_LSB_PTR);
@@ -392,9 +392,9 @@ line level    source
  367   1          
  368   1          /* Read the data from the FIFO (or capture register for Fixed Function)*/
  369   1          #if(LINE_COUNTER_UsingFixedFunction)
-                      return ((uint8)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+                      return ((uint32)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
                   #else
- 372   1              return (CY_GET_REG8(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+ 372   1              return (CY_GET_REG32(LINE_COUNTER_STATICCOUNT_LSB_PTR));
  373   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  374   1      }
  375          
@@ -409,15 +409,15 @@ line level    source
  384          *  void
  385          *
  386          * Return: 
- 387          *  (uint8) Present Capture value.
+ 387          *  (uint32) Present Capture value.
  388          *
  389          *******************************************************************************/
- 390          uint8 LINE_COUNTER_ReadCapture(void) 
+ 390          uint32 LINE_COUNTER_ReadCapture(void) 
  391          {
  392   1          #if(LINE_COUNTER_UsingFixedFunction)
-                      return ((uint8)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+                      return ((uint32)CY_GET_REG16(LINE_COUNTER_STATICCOUNT_LSB_PTR));
                   #else
- 395   1              return (CY_GET_REG8(LINE_COUNTER_STATICCOUNT_LSB_PTR));
+ 395   1              return (CY_GET_REG32(LINE_COUNTER_STATICCOUNT_LSB_PTR));
  396   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  397   1      }
  398          
@@ -430,23 +430,23 @@ line level    source
  405          * will be loaded the next time terminal count is detected.
  406          *
  407          * Parameters:  
- 408          *  period: (uint8) A value of 0 will result in
+ 408          *  period: (uint32) A value of 0 will result in
  409          *         the counter remaining at zero.  
  410          *
  411          * Return: 
  412          *  void
  413          *
  414          *******************************************************************************/
- 415          void LINE_COUNTER_WritePeriod(uint8 period) 
+ 415          void LINE_COUNTER_WritePeriod(uint32 period) 
  416          {
  417   1          #if(LINE_COUNTER_UsingFixedFunction)
                       CY_SET_REG16(LINE_COUNTER_PERIOD_LSB_PTR,(uint16)period);
                   #else
- 420   1              CY_SET_REG8(LINE_COUNTER_PERIOD_LSB_PTR, period);
+ 420   1              CY_SET_REG32(LINE_COUNTER_PERIOD_LSB_PTR, period);
  421   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  422   1      }
  423          
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 8   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 8   
 
  424          
  425          /*******************************************************************************
@@ -459,15 +459,15 @@ line level    source
  432          *  void:  
  433          *
  434          * Return: 
- 435          *  (uint8) Present period value.
+ 435          *  (uint32) Present period value.
  436          *
  437          *******************************************************************************/
- 438          uint8 LINE_COUNTER_ReadPeriod(void) 
+ 438          uint32 LINE_COUNTER_ReadPeriod(void) 
  439          {
  440   1          #if(LINE_COUNTER_UsingFixedFunction)
-                      return ((uint8)CY_GET_REG16(LINE_COUNTER_PERIOD_LSB_PTR));
+                      return ((uint32)CY_GET_REG16(LINE_COUNTER_PERIOD_LSB_PTR));
                   #else
- 443   1              return (CY_GET_REG8(LINE_COUNTER_PERIOD_LSB_PTR));
+ 443   1              return (CY_GET_REG32(LINE_COUNTER_PERIOD_LSB_PTR));
  444   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  445   1      }
  446          
@@ -489,13 +489,13 @@ line level    source
  462          *  void
  463          *
  464          *******************************************************************************/
- 465          void LINE_COUNTER_WriteCompare(uint8 compare) \
+ 465          void LINE_COUNTER_WriteCompare(uint32 compare) \
  466                                             
  467          {
  468   1          #if(LINE_COUNTER_UsingFixedFunction)
                       CY_SET_REG16(LINE_COUNTER_COMPARE_LSB_PTR, (uint16)compare);
                   #else
- 471   1              CY_SET_REG8(LINE_COUNTER_COMPARE_LSB_PTR, compare);
+ 471   1              CY_SET_REG32(LINE_COUNTER_COMPARE_LSB_PTR, compare);
  472   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  473   1      }
  474          
@@ -510,14 +510,14 @@ line level    source
  483          *  void:
  484          *
  485          * Return: 
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 9   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 9   
 
- 486          *  (uint8) Present compare value.
+ 486          *  (uint32) Present compare value.
  487          *
  488          *******************************************************************************/
- 489          uint8 LINE_COUNTER_ReadCompare(void) 
+ 489          uint32 LINE_COUNTER_ReadCompare(void) 
  490          {
- 491   1          return (CY_GET_REG8(LINE_COUNTER_COMPARE_LSB_PTR));
+ 491   1          return (CY_GET_REG32(LINE_COUNTER_COMPARE_LSB_PTR));
  492   1      }
  493          
  494          
@@ -574,7 +574,7 @@ line level    source
  545          /*******************************************************************************
  546          * Function Name: LINE_COUNTER_ClearFIFO
  547          ********************************************************************************
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 10  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 10  
 
  548          * Summary:
  549          *   This function clears all capture data from the capture FIFO
@@ -600,7 +600,7 @@ line level    source
  569          
  570          /* [] END OF FILE */
  571          
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 11  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -625,34 +625,47 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 96
 000D 120000      R     LCALL   LINE_COUNTER_ClearFIFO
                                            ; SOURCE LINE # 100
-0010 7FFF              MOV     R7,#0FFH
-0012 120000      R     LCALL   _LINE_COUNTER_WritePeriod
+0010 74FF              MOV     A,#0FFH
+0012 FF                MOV     R7,A
+0013 FE                MOV     R6,A
+0014 FD                MOV     R5,A
+0015 FC                MOV     R4,A
+0016 120000      R     LCALL   _LINE_COUNTER_WritePeriod
                                            ; SOURCE LINE # 102
-0015 E4                CLR     A
-0016 FF                MOV     R7,A
-0017 120000      R     LCALL   _LINE_COUNTER_WriteCounter
+0019 E4                CLR     A
+001A FF                MOV     R7,A
+001B FE                MOV     R6,A
+001C FD                MOV     R5,A
+001D FC                MOV     R4,A
+001E 120000      R     LCALL   _LINE_COUNTER_WriteCounter
                                            ; SOURCE LINE # 104
-001A E4                CLR     A
-001B FF                MOV     R7,A
-001C 120000      R     LCALL   _LINE_COUNTER_SetInterruptMode
+0021 E4                CLR     A
+0022 FF                MOV     R7,A
+0023 120000      R     LCALL   _LINE_COUNTER_SetInterruptMode
                                            ; SOURCE LINE # 108
-001F 120000      R     LCALL   LINE_COUNTER_ReadStatusRegister
+0026 120000      R     LCALL   LINE_COUNTER_ReadStatusRegister
                                            ; SOURCE LINE # 110
-0022 7F14              MOV     R7,#014H
-0024 120000      R     LCALL   _LINE_COUNTER_WriteCompare
+0029 E4                CLR     A
+002A 7F14              MOV     R7,#014H
+002C FE                MOV     R6,A
+002D FD                MOV     R5,A
+002E FC                MOV     R4,A
+002F 120000      R     LCALL   _LINE_COUNTER_WriteCompare
                                            ; SOURCE LINE # 115
-0027 120000      E     LCALL   CyEnterCriticalSection
+0032 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'LINE_COUNTER_interruptState' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 117
-002A 906492            MOV     DPTR,#06492H
-002D E0                MOVX    A,@DPTR
-002E 4410              ORL     A,#010H
-0030 F0                MOVX    @DPTR,A
+0035 906497            MOV     DPTR,#06497H
+0038 E0                MOVX    A,@DPTR
+0039 4410              ORL     A,#010H
+003B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 120
-0031 120000      E     LCALL   _CyExitCriticalSection
+003C 120000      E     LCALL   _CyExitCriticalSection
                                            ; SOURCE LINE # 123
-0034 22                RET     
+003F 22                RET     
              ; FUNCTION LINE_COUNTER_Init (END)
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 12  
+
 
              ; FUNCTION LINE_COUNTER_Enable (BEGIN)
                                            ; SOURCE LINE # 143
@@ -664,8 +677,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 158
 0007 22                RET     
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 12  
-
              ; FUNCTION LINE_COUNTER_Enable (END)
 
              ; FUNCTION LINE_COUNTER_Start (BEGIN)
@@ -707,7 +718,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'interruptsMask' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 238
                                            ; SOURCE LINE # 239
-0000 906482            MOV     DPTR,#06482H
+0000 906487            MOV     DPTR,#06487H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 240
@@ -717,8 +728,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION LINE_COUNTER_ReadStatusRegister (BEGIN)
                                            ; SOURCE LINE # 261
                                            ; SOURCE LINE # 262
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 13  
+
                                            ; SOURCE LINE # 263
-0000 906462            MOV     DPTR,#06462H
+0000 906467            MOV     DPTR,#06467H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 264
@@ -728,8 +741,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION LINE_COUNTER_ReadControlRegister (BEGIN)
                                            ; SOURCE LINE # 283
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 13  
-
                                            ; SOURCE LINE # 284
                                            ; SOURCE LINE # 285
 0000 906472            MOV     DPTR,#06472H
@@ -754,92 +765,101 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION _LINE_COUNTER_WriteCounter (BEGIN)
                                            ; SOURCE LINE # 326
-;---- Variable 'counter' assigned to Register 'R7' ----
+;---- Variable 'counter' assigned to Register 'R4/R5/R6/R7' ----
                                            ; SOURCE LINE # 328
                                            ; SOURCE LINE # 337
-0000 906402            MOV     DPTR,#06402H
-0003 EF                MOV     A,R7
-0004 F0                MOVX    @DPTR,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7904              MOV     R1,#04H
+0006 120000      E     LCALL   _cywrite32_nodpx
                                            ; SOURCE LINE # 339
-0005 22                RET     
+0009 22                RET     
              ; FUNCTION _LINE_COUNTER_WriteCounter (END)
 
              ; FUNCTION LINE_COUNTER_ReadCounter (BEGIN)
                                            ; SOURCE LINE # 357
                                            ; SOURCE LINE # 358
                                            ; SOURCE LINE # 365
-0000 906402            MOV     DPTR,#06402H
+0000 906404            MOV     DPTR,#06404H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 372
-0005 906442            MOV     DPTR,#06442H
-0008 E0                MOVX    A,@DPTR
-0009 FF                MOV     R7,A
+0005 7B02              MOV     R3,#02H
+0007 7A64              MOV     R2,#064H
+0009 7944              MOV     R1,#044H
+000B 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 374
-000A         ?C0011:
-000A 22                RET     
+000E         ?C0011:
+000E 22                RET     
              ; FUNCTION LINE_COUNTER_ReadCounter (END)
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 14  
+
 
              ; FUNCTION LINE_COUNTER_ReadCapture (BEGIN)
                                            ; SOURCE LINE # 390
                                            ; SOURCE LINE # 391
                                            ; SOURCE LINE # 395
-0000 906442            MOV     DPTR,#06442H
-0003 E0                MOVX    A,@DPTR
-0004 FF                MOV     R7,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7944              MOV     R1,#044H
+0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 397
-0005         ?C0012:
-0005 22                RET     
+0009         ?C0012:
+0009 22                RET     
              ; FUNCTION LINE_COUNTER_ReadCapture (END)
-
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 14  
 
              ; FUNCTION _LINE_COUNTER_WritePeriod (BEGIN)
                                            ; SOURCE LINE # 415
-;---- Variable 'period' assigned to Register 'R7' ----
+;---- Variable 'period' assigned to Register 'R4/R5/R6/R7' ----
                                            ; SOURCE LINE # 416
                                            ; SOURCE LINE # 420
-0000 906422            MOV     DPTR,#06422H
-0003 EF                MOV     A,R7
-0004 F0                MOVX    @DPTR,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7924              MOV     R1,#024H
+0006 120000      E     LCALL   _cywrite32_nodpx
                                            ; SOURCE LINE # 422
-0005 22                RET     
+0009 22                RET     
              ; FUNCTION _LINE_COUNTER_WritePeriod (END)
 
              ; FUNCTION LINE_COUNTER_ReadPeriod (BEGIN)
                                            ; SOURCE LINE # 438
                                            ; SOURCE LINE # 439
                                            ; SOURCE LINE # 443
-0000 906422            MOV     DPTR,#06422H
-0003 E0                MOVX    A,@DPTR
-0004 FF                MOV     R7,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7924              MOV     R1,#024H
+0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 445
-0005         ?C0014:
-0005 22                RET     
+0009         ?C0014:
+0009 22                RET     
              ; FUNCTION LINE_COUNTER_ReadPeriod (END)
 
              ; FUNCTION _LINE_COUNTER_WriteCompare (BEGIN)
                                            ; SOURCE LINE # 465
-;---- Variable 'compare' assigned to Register 'R7' ----
+;---- Variable 'compare' assigned to Register 'R4/R5/R6/R7' ----
                                            ; SOURCE LINE # 467
                                            ; SOURCE LINE # 471
-0000 906432            MOV     DPTR,#06432H
-0003 EF                MOV     A,R7
-0004 F0                MOVX    @DPTR,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7934              MOV     R1,#034H
+0006 120000      E     LCALL   _cywrite32_nodpx
                                            ; SOURCE LINE # 473
-0005 22                RET     
+0009 22                RET     
              ; FUNCTION _LINE_COUNTER_WriteCompare (END)
 
              ; FUNCTION LINE_COUNTER_ReadCompare (BEGIN)
                                            ; SOURCE LINE # 489
                                            ; SOURCE LINE # 490
                                            ; SOURCE LINE # 491
-0000 906432            MOV     DPTR,#06432H
-0003 E0                MOVX    A,@DPTR
-0004 FF                MOV     R7,A
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7934              MOV     R1,#034H
+0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 492
-0005         ?C0016:
-0005 22                RET     
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 10:01:42 PAGE 15  
+
+0009         ?C0016:
+0009 22                RET     
              ; FUNCTION LINE_COUNTER_ReadCompare (END)
 
              ; FUNCTION LINE_COUNTER_ClearFIFO (BEGIN)
@@ -856,8 +876,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 564
 000A 80F4              SJMP    ?C0017
                                            ; SOURCE LINE # 566
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 00:56:51 PAGE 15  
-
 000C         ?C0019:
 000C 22                RET     
              ; FUNCTION LINE_COUNTER_ClearFIFO (END)
@@ -865,7 +883,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    172    ----
+   CODE SIZE        =    211    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

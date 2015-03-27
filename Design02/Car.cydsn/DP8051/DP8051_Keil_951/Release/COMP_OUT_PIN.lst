@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 00:56:52 PAGE 1   
+C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 10:01:43 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE COMP_OUT_PIN
@@ -62,7 +62,7 @@ line level    source
   49          * Parameters:  
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
-C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 00:56:52 PAGE 2   
+C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 10:01:43 PAGE 2   
 
   52          *  COMP_OUT_PIN_DM_STRONG     Strong Drive 
   53          *  COMP_OUT_PIN_DM_OD_HI      Open Drain, Drives High 
@@ -126,7 +126,7 @@ line level    source
  111   1          return (COMP_OUT_PIN_DR & COMP_OUT_PIN_MASK) >> COMP_OUT_PIN_SHIFT;
  112   1      }
  113          
-C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 00:56:52 PAGE 3   
+C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 10:01:43 PAGE 3   
 
  114          
  115          /* If Interrupts Are Enabled for this Pins component */ 
@@ -156,7 +156,7 @@ line level    source
  139          
  140          
  141          /* [] END OF FILE */
-C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 00:56:52 PAGE 4   
+C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 10:01:43 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -168,18 +168,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 37
 0000 905130            MOV     DPTR,#05130H
 0003 E0                MOVX    A,@DPTR
-0004 54DF              ANL     A,#0DFH
+0004 54FE              ANL     A,#0FEH
 0006 FE                MOV     R6,A
 ;---- Variable 'staticBits' assigned to Register 'R6' ----
                                            ; SOURCE LINE # 38
 0007 EF                MOV     A,R7
-0008 C4                SWAP    A
-0009 33                RLC     A
-000A 5420              ANL     A,#020H
-000C 4E                ORL     A,R6
-000D F0                MOVX    @DPTR,A
+0008 5401              ANL     A,#01H
+000A 4E                ORL     A,R6
+000B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 39
-000E 22                RET     
+000C 22                RET     
              ; FUNCTION _COMP_OUT_PIN_Write (END)
 
              ; FUNCTION _COMP_OUT_PIN_SetDriveMode (BEGIN)
@@ -190,7 +188,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 EF                MOV     A,R7
 0001 540E              ANL     A,#0EH
 0003 FF                MOV     R7,A
-0004 90501D            MOV     DPTR,#0501DH
+0004 905018            MOV     DPTR,#05018H
 0007 E0                MOVX    A,@DPTR
 0008 54F1              ANL     A,#0F1H
 000A 4F                ORL     A,R7
@@ -205,23 +203,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 91
 0000 905131            MOV     DPTR,#05131H
 0003 E0                MOVX    A,@DPTR
-0004 5420              ANL     A,#020H
-0006 7E00              MOV     R6,#00H
-0008 7805              MOV     R0,#05H
-000A         ?C0005:
-000A CE                XCH     A,R6
-000B C3                CLR     C
-000C 13                RRC     A
-000D CE                XCH     A,R6
-000E 13                RRC     A
-000F D8F9              DJNZ    R0,?C0005
-0011 FF                MOV     R7,A
+0004 5401              ANL     A,#01H
+0006 FF                MOV     R7,A
                                            ; SOURCE LINE # 92
-0012         ?C0003:
-0012 22                RET     
+0007         ?C0003:
+0007 22                RET     
              ; FUNCTION COMP_OUT_PIN_Read (END)
-C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 00:56:52 PAGE 5   
-
 
              ; FUNCTION COMP_OUT_PIN_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 109
@@ -229,26 +216,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 111
 0000 905130            MOV     DPTR,#05130H
 0003 E0                MOVX    A,@DPTR
-0004 5420              ANL     A,#020H
-0006 7E00              MOV     R6,#00H
-0008 7805              MOV     R0,#05H
-000A         ?C0006:
-000A CE                XCH     A,R6
-000B C3                CLR     C
-000C 13                RRC     A
-000D CE                XCH     A,R6
-000E 13                RRC     A
-000F D8F9              DJNZ    R0,?C0006
-0011 FF                MOV     R7,A
+0004 5401              ANL     A,#01H
+0006 FF                MOV     R7,A
                                            ; SOURCE LINE # 112
-0012         ?C0004:
-0012 22                RET     
+0007         ?C0004:
+C51 COMPILER V9.51   COMP_OUT_PIN                                                          03/27/2015 10:01:43 PAGE 5   
+
+0007 22                RET     
              ; FUNCTION COMP_OUT_PIN_ReadDataReg (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     66    ----
+   CODE SIZE        =     42    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

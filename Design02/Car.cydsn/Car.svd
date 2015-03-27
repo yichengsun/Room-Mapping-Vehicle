@@ -19,8 +19,8 @@
         <register>
           <name>LINE_COUNTER_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x6402</addressOffset>
-          <size>8</size>
+          <addressOffset>0x6404</addressOffset>
+          <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -28,8 +28,8 @@
         <register>
           <name>LINE_COUNTER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6422</addressOffset>
-          <size>8</size>
+          <addressOffset>0x6424</addressOffset>
+          <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -37,8 +37,8 @@
         <register>
           <name>LINE_COUNTER_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x6432</addressOffset>
-          <size>8</size>
+          <addressOffset>0x6434</addressOffset>
+          <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -78,7 +78,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6482</addressOffset>
+          <addressOffset>0x6487</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -138,7 +138,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6492</addressOffset>
+          <addressOffset>0x6497</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -275,7 +275,7 @@
         <register>
           <name>STEERING_PWM_COMPARE_Reg</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x6420</addressOffset>
+          <addressOffset>0x642C</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -284,7 +284,7 @@
         <register>
           <name>STEERING_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6471</addressOffset>
+          <addressOffset>0x647C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -316,7 +316,7 @@
         <register>
           <name>STEERING_PWM_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6490</addressOffset>
+          <addressOffset>0x649C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -441,7 +441,7 @@
         <register>
           <name>STEERING_PWM_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6491</addressOffset>
+          <addressOffset>0x649D</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -772,7 +772,7 @@
         <register>
           <name>MOTOR_PWM_COMPARE_Reg</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x6424</addressOffset>
+          <addressOffset>0x6422</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -781,7 +781,7 @@
         <register>
           <name>MOTOR_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6475</addressOffset>
+          <addressOffset>0x6473</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -813,7 +813,7 @@
         <register>
           <name>MOTOR_PWM_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6494</addressOffset>
+          <addressOffset>0x6492</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -938,7 +938,7 @@
         <register>
           <name>MOTOR_PWM_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6495</addressOffset>
+          <addressOffset>0x6493</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1093,7 +1093,7 @@
         <register>
           <name>HE_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6579</addressOffset>
+          <addressOffset>0x6578</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

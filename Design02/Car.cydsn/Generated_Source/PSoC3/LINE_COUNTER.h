@@ -36,7 +36,7 @@ extern uint8 LINE_COUNTER_initVar;
 *           Parameter Defaults        
 **************************************/
 
-#define LINE_COUNTER_Resolution            8u
+#define LINE_COUNTER_Resolution            32u
 #define LINE_COUNTER_UsingFixedFunction    0u
 #define LINE_COUNTER_ControlRegRemoved     0u
 #define LINE_COUNTER_COMPARE_MODE_SOFTWARE 0u
@@ -56,11 +56,11 @@ extern uint8 LINE_COUNTER_initVar;
 typedef struct
 {
     uint8 CounterEnableState; 
-    uint8 CounterUdb;         /* Current Counter Value */
+    uint32 CounterUdb;         /* Current Counter Value */
 
     #if (CY_UDB_V0)
-        uint8 CounterPeriod;  /* Counter Period Value */
-        uint8 CompareValue;   /* Counter Compare Value */           
+        uint32 CounterPeriod;  /* Counter Period Value */
+        uint32 CompareValue;   /* Counter Compare Value */           
         uint8 InterruptMaskValue;                   /* Counter Interrupt Mask Value */
     #endif /* (CY_UDB_V0) */
 
@@ -85,18 +85,18 @@ uint8   LINE_COUNTER_ReadStatusRegister(void) ;
         ;
 #endif /* (!LINE_COUNTER_ControlRegRemoved) */
 #if (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A)))
-    void    LINE_COUNTER_WriteCounter(uint8 counter) \
+    void    LINE_COUNTER_WriteCounter(uint32 counter) \
             ; 
 #endif /* (!(LINE_COUNTER_UsingFixedFunction && (CY_PSOC5A))) */
-uint8  LINE_COUNTER_ReadCounter(void) ;
-uint8  LINE_COUNTER_ReadCapture(void) ;
-void    LINE_COUNTER_WritePeriod(uint8 period) \
+uint32  LINE_COUNTER_ReadCounter(void) ;
+uint32  LINE_COUNTER_ReadCapture(void) ;
+void    LINE_COUNTER_WritePeriod(uint32 period) \
     ;
-uint8  LINE_COUNTER_ReadPeriod( void ) ;
+uint32  LINE_COUNTER_ReadPeriod( void ) ;
 #if (!LINE_COUNTER_UsingFixedFunction)
-    void    LINE_COUNTER_WriteCompare(uint8 compare) \
+    void    LINE_COUNTER_WriteCompare(uint32 compare) \
         ;
-    uint8  LINE_COUNTER_ReadCompare( void ) \
+    uint32  LINE_COUNTER_ReadCompare( void ) \
         ;
 #endif /* (!LINE_COUNTER_UsingFixedFunction) */
 
@@ -154,7 +154,7 @@ void LINE_COUNTER_Wakeup(void)        ;
  *  Initialization Values
  **************************************/
 #define LINE_COUNTER_CAPTURE_MODE_CONF       0u
-#define LINE_COUNTER_INIT_PERIOD_VALUE       255u
+#define LINE_COUNTER_INIT_PERIOD_VALUE       4294967295u
 #define LINE_COUNTER_INIT_COUNTER_VALUE      0u
 #if (LINE_COUNTER_UsingFixedFunction)
 #define LINE_COUNTER_INIT_INTERRUPTS_MASK    ((uint8)((uint8)0u << LINE_COUNTER_STATUS_ZERO_INT_EN_MASK_SHIFT))
@@ -197,143 +197,143 @@ void LINE_COUNTER_Wakeup(void)        ;
     #if (LINE_COUNTER_Resolution <= 8u) /* 8-bit Counter */
     
         #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
         #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
         #define LINE_COUNTER_PERIOD_LSB          (*(reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
         #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
         #define LINE_COUNTER_COMPARE_LSB         (*(reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
         #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
         #define LINE_COUNTER_COUNTER_LSB         (*(reg8 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )  
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )  
         #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg8 *)\
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )
     
     #elif(LINE_COUNTER_Resolution <= 16u) /* 16-bit Counter */
         #if(CY_PSOC3) /* 8-bit address space */ 
             #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
             #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
             #define LINE_COUNTER_PERIOD_LSB          (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
             #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
             #define LINE_COUNTER_COMPARE_LSB         (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
             #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
             #define LINE_COUNTER_COUNTER_LSB         (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )  
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )  
             #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg16 *)\
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )
         #else /* 16-bit address space */
             #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_F0_REG )
             #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_F0_REG )
             #define LINE_COUNTER_PERIOD_LSB          (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_D0_REG )
             #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_D0_REG )
             #define LINE_COUNTER_COMPARE_LSB         (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_D1_REG )
             #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_D1_REG )
             #define LINE_COUNTER_COUNTER_LSB         (*(reg16 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_A0_REG )  
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_A0_REG )  
             #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg16 *)\
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__16BIT_A0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__16BIT_A0_REG )
         #endif /* CY_PSOC3 */   
     #elif(LINE_COUNTER_Resolution <= 24u) /* 24-bit Counter */
         
         #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
         #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
         #define LINE_COUNTER_PERIOD_LSB          (*(reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
         #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
         #define LINE_COUNTER_COMPARE_LSB         (*(reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
         #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
         #define LINE_COUNTER_COUNTER_LSB         (*(reg32 *) \
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )  
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )  
         #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg32 *)\
-            LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )
+            LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )
     
     #else /* 32-bit Counter */
         #if(CY_PSOC3 || CY_PSOC5) /* 8-bit address space */
             #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
             #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__F0_REG )
             #define LINE_COUNTER_PERIOD_LSB          (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
             #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D0_REG )
             #define LINE_COUNTER_COMPARE_LSB         (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
             #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__D1_REG )
             #define LINE_COUNTER_COUNTER_LSB         (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )  
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )  
             #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg32 *)\
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )
         #else /* 32-bit address space */
             #define LINE_COUNTER_STATICCOUNT_LSB     (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_F0_REG )
             #define LINE_COUNTER_STATICCOUNT_LSB_PTR ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_F0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_F0_REG )
             #define LINE_COUNTER_PERIOD_LSB          (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_D0_REG )
             #define LINE_COUNTER_PERIOD_LSB_PTR      ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_D0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_D0_REG )
             #define LINE_COUNTER_COMPARE_LSB         (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_D1_REG )
             #define LINE_COUNTER_COMPARE_LSB_PTR     ( (reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_D1_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_D1_REG )
             #define LINE_COUNTER_COUNTER_LSB         (*(reg32 *) \
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_A0_REG )  
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_A0_REG )  
             #define LINE_COUNTER_COUNTER_LSB_PTR     ( (reg32 *)\
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__32BIT_A0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__32BIT_A0_REG )
         #endif /* CY_PSOC3 || CY_PSOC5 */   
     #endif
 
 	#define LINE_COUNTER_COUNTER_LSB_PTR_8BIT     ( (reg8 *)\
-                LINE_COUNTER_CounterUDB_sC8_counterdp_u0__A0_REG )
+                LINE_COUNTER_CounterUDB_sC32_counterdp_u0__A0_REG )
 				
     #define LINE_COUNTER_AUX_CONTROLDP0 \
-        (*(reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u0__DP_AUX_CTL_REG)
+        (*(reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u0__DP_AUX_CTL_REG)
     
     #define LINE_COUNTER_AUX_CONTROLDP0_PTR \
-        ( (reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u0__DP_AUX_CTL_REG)
+        ( (reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u0__DP_AUX_CTL_REG)
     
     #if (LINE_COUNTER_Resolution == 16 || LINE_COUNTER_Resolution == 24 || LINE_COUNTER_Resolution == 32)
        #define LINE_COUNTER_AUX_CONTROLDP1 \
-           (*(reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u1__DP_AUX_CTL_REG)
+           (*(reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u1__DP_AUX_CTL_REG)
        #define LINE_COUNTER_AUX_CONTROLDP1_PTR \
-           ( (reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u1__DP_AUX_CTL_REG)
+           ( (reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u1__DP_AUX_CTL_REG)
     #endif /* (LINE_COUNTER_Resolution == 16 || LINE_COUNTER_Resolution == 24 || LINE_COUNTER_Resolution == 32) */
     
     #if (LINE_COUNTER_Resolution == 24 || LINE_COUNTER_Resolution == 32)
        #define LINE_COUNTER_AUX_CONTROLDP2 \
-           (*(reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u2__DP_AUX_CTL_REG)
+           (*(reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u2__DP_AUX_CTL_REG)
        #define LINE_COUNTER_AUX_CONTROLDP2_PTR \
-           ( (reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u2__DP_AUX_CTL_REG)
+           ( (reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u2__DP_AUX_CTL_REG)
     #endif /* (LINE_COUNTER_Resolution == 24 || LINE_COUNTER_Resolution == 32) */
     
     #if (LINE_COUNTER_Resolution == 32)
        #define LINE_COUNTER_AUX_CONTROLDP3 \
-           (*(reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u3__DP_AUX_CTL_REG)
+           (*(reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u3__DP_AUX_CTL_REG)
        #define LINE_COUNTER_AUX_CONTROLDP3_PTR \
-           ( (reg8 *) LINE_COUNTER_CounterUDB_sC8_counterdp_u3__DP_AUX_CTL_REG)
+           ( (reg8 *) LINE_COUNTER_CounterUDB_sC32_counterdp_u3__DP_AUX_CTL_REG)
     #endif /* (LINE_COUNTER_Resolution == 32) */
 
 #endif  /* (LINE_COUNTER_UsingFixedFunction) */

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 1   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SEC_TIL_BLACK_TIMER_ISR
@@ -62,7 +62,7 @@ line level    source
   49   1          SEC_TIL_BLACK_TIMER_ISR_Disable();
   50   1      
   51   1          /* Set the ISR to point to the SEC_TIL_BLACK_TIMER_ISR Interrupt. */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 2   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 2   
 
   52   1          SEC_TIL_BLACK_TIMER_ISR_SetVector(&SEC_TIL_BLACK_TIMER_ISR_Interrupt);
   53   1      
@@ -126,7 +126,7 @@ line level    source
  111          
  112          
  113          /*******************************************************************************
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 3   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 3   
 
  114          * Function Name: SEC_TIL_BLACK_TIMER_ISR_Interrupt
  115          ********************************************************************************
@@ -190,7 +190,7 @@ line level    source
  172          *   Gets the "address" of the current ISR vector for the Interrupt.
  173          *
  174          * Parameters:
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 4   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 4   
 
  175          *   None
  176          *
@@ -254,7 +254,7 @@ line level    source
  234          
  235          
  236          /*******************************************************************************
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 5   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 5   
 
  237          * Function Name: SEC_TIL_BLACK_TIMER_ISR_Enable
  238          ********************************************************************************
@@ -318,7 +318,7 @@ line level    source
  295   1          *SEC_TIL_BLACK_TIMER_ISR_INTC_CLR_EN = SEC_TIL_BLACK_TIMER_ISR__INTC_MASK;
  296   1      }
  297          
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 6   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 6   
 
  298          
  299          /*******************************************************************************
@@ -365,7 +365,7 @@ line level    source
  340          
  341          
  342          /* [] END OF FILE */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 7   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -429,7 +429,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 129
                                            ; SOURCE LINE # 142
 0000 32                RETI    
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 8   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 8   
 
              ; FUNCTION SEC_TIL_BLACK_TIMER_ISR_Interrupt (END)
 
@@ -440,7 +440,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 163
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
-0004 7904              MOV     R1,#04H
+0004 7902              MOV     R1,#02H
 0006 AD07              MOV     R5,AR7
 0008 AC06              MOV     R4,AR6
 000A 120000      E     LCALL   _cywrite16_nodpx
@@ -454,7 +454,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 183
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
-0004 7904              MOV     R1,#04H
+0004 7902              MOV     R1,#02H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 184
 0009         ?C0006:
@@ -470,7 +470,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0001 C4                SWAP    A
 0002 33                RLC     A
 0003 54E0              ANL     A,#0E0H
-0005 904482            MOV     DPTR,#04482H
+0005 904481            MOV     DPTR,#04481H
 0008 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 208
 0009 22                RET     
@@ -480,7 +480,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 225
                                            ; SOURCE LINE # 226
                                            ; SOURCE LINE # 230
-0000 904482            MOV     DPTR,#04482H
+0000 904481            MOV     DPTR,#04481H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 C4                SWAP    A
@@ -493,7 +493,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A         ?C0008:
 000A 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_ISR_GetPriority (END)
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 9   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 9   
 
 
              ; FUNCTION SEC_TIL_BLACK_TIMER_ISR_Enable (BEGIN)
@@ -501,7 +501,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 251
                                            ; SOURCE LINE # 253
 0000 9044C0            MOV     DPTR,#044C0H
-0003 7404              MOV     A,#04H
+0003 7402              MOV     A,#02H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 254
 0006 22                RET     
@@ -513,7 +513,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 274
 0000 9044C0            MOV     DPTR,#044C0H
 0003 E0                MOVX    A,@DPTR
-0004 30E204            JNB     ACC.2,?C0010
+0004 30E104            JNB     ACC.1,?C0010
 0007 7F01              MOV     R7,#01H
 0009 8002              SJMP    ?C0011
 000B         ?C0010:
@@ -529,7 +529,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 293
                                            ; SOURCE LINE # 295
 0000 9044C8            MOV     DPTR,#044C8H
-0003 7404              MOV     A,#04H
+0003 7402              MOV     A,#02H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 296
 0006 22                RET     
@@ -540,7 +540,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 315
                                            ; SOURCE LINE # 316
 0000 9044D0            MOV     DPTR,#044D0H
-0003 7404              MOV     A,#04H
+0003 7402              MOV     A,#02H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 317
 0006 22                RET     
@@ -551,13 +551,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 335
                                            ; SOURCE LINE # 336
 0000 9044D8            MOV     DPTR,#044D8H
-0003 7404              MOV     A,#04H
+0003 7402              MOV     A,#02H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 337
 0006 22                RET     
              ; FUNCTION SEC_TIL_BLACK_TIMER_ISR_ClearPending (END)
 
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 00:56:52 PAGE 10  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER_ISR                                               03/27/2015 10:01:43 PAGE 10  
 
 
 
