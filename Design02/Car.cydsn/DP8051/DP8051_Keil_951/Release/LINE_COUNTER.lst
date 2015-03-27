@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 1   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LINE_COUNTER
@@ -62,7 +62,7 @@ line level    source
                           /* Clear all bits but the enable bit (if it's already set for Timer operation */
                           LINE_COUNTER_CONTROL &= LINE_COUNTER_CTRL_ENABLE;
                           
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 2   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 2   
 
                           /* Clear the mode bits for continuous run mode */
                           #if (CY_PSOC5A)
@@ -126,7 +126,7 @@ line level    source
  111   1                  /* Use the interrupt output of the status register for IRQ output */
  112   1                  
  113   1                  /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 3   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 3   
 
  114   1                  /* Enter Critical Region*/
  115   1                  LINE_COUNTER_interruptState = CyEnterCriticalSection();
@@ -190,7 +190,7 @@ line level    source
  173          * Global variables:
  174          *  LINE_COUNTER_initVar: Is modified when this function is called for the  
  175          *   first time. Is used to ensure that initialization happens only once.
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 4   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 4   
 
  176          *
  177          *******************************************************************************/
@@ -254,7 +254,7 @@ line level    source
  235          *
  236          *******************************************************************************/
  237          void LINE_COUNTER_SetInterruptMode(uint8 interruptsMask) 
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 5   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 5   
 
  238          {
  239   1          LINE_COUNTER_STATUS_MASK = interruptsMask;
@@ -318,7 +318,7 @@ line level    source
  297          * Parameters:  
  298          *  void
  299          *
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 6   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 6   
 
  300          * Return: 
  301          *  (uint8) The contents of the control register
@@ -382,7 +382,7 @@ line level    source
  359   1          /* Force capture by reading Accumulator */
  360   1          /* Must first do a software capture to be able to read the counter */
  361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 7   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 7   
 
  362   1          #if(LINE_COUNTER_UsingFixedFunction)
                               (void)CY_GET_REG16(LINE_COUNTER_COUNTER_LSB_PTR);
@@ -446,7 +446,7 @@ line level    source
  421   1          #endif /* (LINE_COUNTER_UsingFixedFunction) */
  422   1      }
  423          
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 8   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 8   
 
  424          
  425          /*******************************************************************************
@@ -510,7 +510,7 @@ line level    source
  483          *  void:
  484          *
  485          * Return: 
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 9   
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 9   
 
  486          *  (uint32) Present compare value.
  487          *
@@ -574,7 +574,7 @@ line level    source
  545          /*******************************************************************************
  546          * Function Name: LINE_COUNTER_ClearFIFO
  547          ********************************************************************************
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 10  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 10  
 
  548          * Summary:
  549          *   This function clears all capture data from the capture FIFO
@@ -600,7 +600,7 @@ line level    source
  569          
  570          /* [] END OF FILE */
  571          
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 11  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -646,7 +646,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 120000      R     LCALL   LINE_COUNTER_ReadStatusRegister
                                            ; SOURCE LINE # 110
 0029 E4                CLR     A
-002A 7F14              MOV     R7,#014H
+002A 7F32              MOV     R7,#032H
 002C FE                MOV     R6,A
 002D FD                MOV     R5,A
 002E FC                MOV     R4,A
@@ -664,7 +664,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 123
 003F 22                RET     
              ; FUNCTION LINE_COUNTER_Init (END)
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 12  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 12  
 
 
              ; FUNCTION LINE_COUNTER_Enable (BEGIN)
@@ -728,7 +728,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION LINE_COUNTER_ReadStatusRegister (BEGIN)
                                            ; SOURCE LINE # 261
                                            ; SOURCE LINE # 262
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 13  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 13  
 
                                            ; SOURCE LINE # 263
 0000 906463            MOV     DPTR,#06463H
@@ -792,7 +792,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E         ?C0011:
 000E 22                RET     
              ; FUNCTION LINE_COUNTER_ReadCounter (END)
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 14  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 14  
 
 
              ; FUNCTION LINE_COUNTER_ReadCapture (BEGIN)
@@ -856,7 +856,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 7930              MOV     R1,#030H
 0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 492
-C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:01:30 PAGE 15  
+C51 COMPILER V9.51   LINE_COUNTER                                                          03/27/2015 15:51:41 PAGE 15  
 
 0009         ?C0016:
 0009 22                RET     
