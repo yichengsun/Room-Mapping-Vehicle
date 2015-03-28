@@ -6,6 +6,7 @@
 
 #define THREE_FT_DUTY 900
 #define CENTER_DUTY 4560 
+#define CENTER_LINE 780
 
 #define Kp 1250
 #define Ki 120
@@ -16,6 +17,7 @@
 #define Kd_steer 30000
 
 double gExpectedSpeed = 3.5;
+double gTotalTraveled = 0;
 
 double gprev_HE_count = 0;
 int gfirst_HE_read = 1;
@@ -76,7 +78,7 @@ void updateSteering() {
     
     
     //Calculate the error for feedback 
-    error = gblack_totalpos_diff - 780;
+    error = gblack_totalpos_diff - CENTER_LINE;
     
     // left max 3600; center 4560; right max 5800
     //gki_steererror = gki_steererror+error*.000011;
@@ -92,14 +94,11 @@ void updateSteering() {
 //    sprintf(buffer, "%f", duty_cycle_buffer);
 //    LCD_PrintString(buffer);
 
-    if (gsteer_dutycycle > 5200){
-        gExpectedSpeed = 2.5;
-    }
-    else if (gsteer_dutycycle < 3900){
-        gExpectedSpeed = 3;
+    if (gblack_totalpos_diff > CENTER_LINE){
+        gExpectedSpeed = 5.5 - (gblack_totalpos_diff-CENTER_LINE)/280.0*2;
     }
     else {
-        gExpectedSpeed = 3.5;
+        gExpectedSpeed = 5.5 - (CENTER_LINE-gblack_totalpos_diff)/350.0*2;
     }
     //Have in place error checking to prevent sporadic  behavior
     if (gsteer_dutycycle > 5650){
@@ -143,6 +142,7 @@ CY_ISR(HE_inter) {
     char buffer[15];
     double duty_cycle_buffer = 0;
     uint16 duty_cycle = 0;
+    gTotalTraveled+=INCH_PER_MAGNET;
     
     //Special first time read   
     if (gfirst_HE_read == 1) {
@@ -173,13 +173,13 @@ CY_ISR(HE_inter) {
         duty_cycle_buffer = THREE_FT_DUTY + Kp*error + Ki*gki_speederror + Kd*error/time_diff_s;
         
        //LCD output for debugging
-       LCD_ClearDisplay();
-       LCD_Position(0,0);
-       sprintf(buffer, "%f", gsteer_dutycycle);   
+       // LCD_ClearDisplay();
+       // LCD_Position(0,0);
+       // sprintf(buffer, "%f", gsteer_dutycycle);   
        //LCD_PrintString(buffer);
-    LCD_Position(1, 1);
-       LCD_PrintString("//");
-       sprintf(buffer, "%f", gblack_totalpos_diff);
+    //LCD_Position(1, 1);
+       //LCD_PrintString("//");
+       //sprintf(buffer, "%f", gblack_totalpos_diff);
        //LCD_PrintString(buffer);
         
         //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
@@ -188,6 +188,9 @@ CY_ISR(HE_inter) {
             duty_cycle_buffer = 1350;   
         }
         if (duty_cycle_buffer <= 0) duty_cycle_buffer = 1;
+        if (gTotalTraveled > 2450){
+            duty_cycle_buffer = 1;
+        }
         duty_cycle = duty_cycle_buffer;
 
         
@@ -195,6 +198,7 @@ CY_ISR(HE_inter) {
 //        LCD_Position(1, 0);
 //        //sprintf(buffer, "%f", duty_cycle);
 //        LCD_PrintNumber(duty_cycle);
+
         MOTOR_PWM_WriteCompare(duty_cycle);
     }   
 }
