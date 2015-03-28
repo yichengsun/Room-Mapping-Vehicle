@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 03/27/2015 at 16:08
+// 03/27/2015 at 19:22
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -657,9 +657,23 @@ module Timer_v2_70_5 (
 
 endmodule
 
+// Component: GlitchFilter_v2_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\GlitchFilter_v2_0"
+`include "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\GlitchFilter_v2_0\GlitchFilter_v2_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\GlitchFilter_v2_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\GlitchFilter_v2_0\GlitchFilter_v2_0.v"
+`endif
+
 // top
 module top ;
 
+          wire  Net_8209;
           wire  Net_8183;
           wire  Net_6916;
           wire  Net_6915;
@@ -695,6 +709,7 @@ module top ;
           wire  Net_8026;
           wire  Net_8025;
           wire  Net_8169;
+          wire  Net_8204;
           wire  Net_2113;
           wire  Net_2112;
           wire  Net_2111;
@@ -717,9 +732,9 @@ module top ;
           wire  Net_3089;
           wire  Net_3088;
           wire  Net_459;
+          wire  Net_5305;
           wire  Net_10;
           wire  Net_7123;
-          wire  Net_5305;
           wire  Net_8190;
           wire  Net_7738;
           wire  Net_8187;
@@ -1012,7 +1027,7 @@ module top ;
 		COMPARATOR_PIN
 		 (.oe(tmpOE__COMPARATOR_PIN_net),
 		  .y({1'b0}),
-		  .fb({Net_5305}),
+		  .fb({Net_8204}),
 		  .io({tmpIO_0__COMPARATOR_PIN_net[0:0]}),
 		  .siovref(tmpSIOVREF__COMPARATOR_PIN_net),
 		  .interrupt({tmpINTERRUPT_0__COMPARATOR_PIN_net[0:0]}),
@@ -1575,6 +1590,15 @@ module top ;
 		UPDATE_STEER_ISR
 		 (.int_signal(Net_8190));
 
+
+    GlitchFilter_v2_0 GlitchFilter_1 (
+        .d(Net_8204),
+        .reset(1'b0),
+        .clock(Net_10),
+        .q(Net_5305));
+    defparam GlitchFilter_1.BypassFilter = 0;
+    defparam GlitchFilter_1.GlitchLength = 25;
+    defparam GlitchFilter_1.SignalWidth = 1;
 
 
 

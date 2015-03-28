@@ -19,7 +19,7 @@
         <register>
           <name>LINE_COUNTER_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x6400</addressOffset>
+          <addressOffset>0x6407</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28,7 +28,7 @@
         <register>
           <name>LINE_COUNTER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6420</addressOffset>
+          <addressOffset>0x6427</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -37,7 +37,7 @@
         <register>
           <name>LINE_COUNTER_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x6430</addressOffset>
+          <addressOffset>0x6437</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -46,7 +46,7 @@
         <register>
           <name>LINE_COUNTER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6471</addressOffset>
+          <addressOffset>0x6472</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -78,7 +78,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6483</addressOffset>
+          <addressOffset>0x648A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -138,7 +138,7 @@
         <register>
           <name>LINE_COUNTER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6493</addressOffset>
+          <addressOffset>0x649A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -578,7 +578,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x6404</addressOffset>
+          <addressOffset>0x6402</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -587,7 +587,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6424</addressOffset>
+          <addressOffset>0x6422</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -596,7 +596,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6484</addressOffset>
+          <addressOffset>0x6485</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -635,7 +635,7 @@
         <register>
           <name>SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6494</addressOffset>
+          <addressOffset>0x6495</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

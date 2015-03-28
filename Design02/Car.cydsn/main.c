@@ -11,9 +11,9 @@
 #define Ki 120
 #define Kd 0
 
-#define Kp_steer 2.5
-#define Ki_steer 50
-#define Kd_steer 0
+#define Kp_steer 2.25
+#define Ki_steer 0
+#define Kd_steer 30000
 
 double gExpectedSpeed = 3.5;
 
@@ -74,6 +74,7 @@ void updateSteering() {
     uint16 duty_cycle;
     char buffer[10];
     
+    
     //Calculate the error for feedback 
     error = gblack_totalpos_diff - 780;
     
@@ -91,15 +92,15 @@ void updateSteering() {
 //    sprintf(buffer, "%f", duty_cycle_buffer);
 //    LCD_PrintString(buffer);
 
-    // if (gsteer_dutycycle > 5200){
-    //     gExpectedSpeed = 2.5;
-    // }
-    // else if (gsteer_dutycycle < 4000){
-    //     gExpectedSpeed = 3;
-    // }
-    // else {
-    //     gExpectedSpeed = 4;
-    // }
+    if (gsteer_dutycycle > 5200){
+        gExpectedSpeed = 2.5;
+    }
+    else if (gsteer_dutycycle < 3900){
+        gExpectedSpeed = 3;
+    }
+    else {
+        gExpectedSpeed = 3.5;
+    }
     //Have in place error checking to prevent sporadic  behavior
     if (gsteer_dutycycle > 5650){
         gsteer_dutycycle = 5650;   
@@ -122,6 +123,12 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     SEC_TIL_BLACK_TIMER_ClearFIFO();
 
     gblack_totalpos_diff = (double)(gsecondpos - gfirstpos);
+    if (gblack_totalpos_diff < 280){
+        gblack_totalpos_diff = 280;
+    }
+    else if (gblack_totalpos_diff > 1200){
+        gblack_totalpos_diff = 1200;   
+    }
 
     SEC_TIL_BLACK_TIMER_ReadStatusRegister();
     }
@@ -169,11 +176,11 @@ CY_ISR(HE_inter) {
        LCD_ClearDisplay();
        LCD_Position(0,0);
        sprintf(buffer, "%f", gsteer_dutycycle);   
-       LCD_Position(1, 0);
-       LCD_PrintString(buffer);
+       //LCD_PrintString(buffer);
+    LCD_Position(1, 1);
        LCD_PrintString("//");
        sprintf(buffer, "%f", gblack_totalpos_diff);
-       LCD_PrintString(buffer);
+       //LCD_PrintString(buffer);
         
         //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
         //certain duty cycle to prevent sporadic  behavior

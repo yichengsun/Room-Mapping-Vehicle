@@ -89,19 +89,19 @@ static void CyClockStartupError(uint8 errorCode)
 
 #define cfg_byte_table ((const void CYFAR *)0x080000u)
 /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x00080614u)
+#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x000806C4u)
 
 /* IOPINS0_7 Address: CYREG_PRT12_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x0008061Cu)
+#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x000806CCu)
 
 /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x00080624u)
+#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x000806D4u)
 
 /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x0008062Cu)
+#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x000806DCu)
 
 /* IOPINS0_4 Address: CYREG_PRT4_DR Size (bytes): 10 */
-#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x00080634u)
+#define BS_IOPINS0_4_VAL ((const uint8 CYFAR *)0x000806E4u)
 
 
 /*******************************************************************************
@@ -300,8 +300,6 @@ void cyfitter_cfg(void)
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DM0), (const void CYFAR *)(BS_IOPINS0_2_VAL), 8u);
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT3_DM0), (const void CYFAR *)(BS_IOPINS0_3_VAL), 8u);
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT4_DR), (const void CYFAR *)(BS_IOPINS0_4_VAL), 10u);
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P1_U1_CFG27), 0x44u);
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P2_U0_CFG27), 0x44u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_INTC_CSR_EN), 0x01u);
 
 	/* Switch Boost to the precision bandgap reference from its internal reference */

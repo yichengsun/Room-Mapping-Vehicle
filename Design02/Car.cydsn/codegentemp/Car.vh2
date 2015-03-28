@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Mar 27 16:08:12 2015
+--	Fri Mar 27 19:22:13 2015
 --
 
 USE cypress.cypress.all;
@@ -795,7 +795,7 @@ ATTRIBUTE port_state_att of \HE_TIMER:TimerUDB:sT32:timerdp:f1_blk_stat_reg_3\:S
 SIGNAL \HE_TIMER:Net_102\ : bit;
 SIGNAL \HE_TIMER:Net_266\ : bit;
 SIGNAL tmpOE__COMPARATOR_PIN_net_0 : bit;
-SIGNAL Net_5305 : bit;
+SIGNAL Net_8204 : bit;
 SIGNAL tmpIO_0__COMPARATOR_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__COMPARATOR_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__COMPARATOR_PIN_net_0 : bit;
@@ -1577,6 +1577,7 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:ctrl_tmode_0\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:ctrl_ic_1\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:ctrl_ic_0\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL Net_5305 : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:timer_enable\ : bit;
@@ -1970,6 +1971,72 @@ SIGNAL tmpFB_0__COUNTER_OUT_PIN_net_0 : bit;
 SIGNAL tmpIO_0__COUNTER_OUT_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__COUNTER_OUT_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__COUNTER_OUT_PIN_net_0 : bit;
+SIGNAL \GlitchFilter_1:op_clk\ : bit;
+SIGNAL \GlitchFilter_1:state_0\ : bit;
+SIGNAL \GlitchFilter_1:counter_done_0\ : bit;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cs_addr_2\ : bit;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ce0\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ce0\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cl0\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cl0\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ff0\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ff0\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ce1\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ce1\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cl1\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cl1\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:z1\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:z1\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ff1\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ff1\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ov_msb\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:co_msb\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:co_msb\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cmsb\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cmsb\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:so\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:so\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f0_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f0_bus_stat\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f0_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f0_blk_stat\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f1_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f1_bus_stat\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ce0_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cl0_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:z0_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ff0_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ce1_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cl1_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:z1_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ff1_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:so_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:so_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat_reg\:SIGNAL IS 2;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -2012,6 +2079,7 @@ SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_out_reg_i\\D\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ : bit;
 SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ : bit;
+SIGNAL \GlitchFilter_1:state_0\\D\ : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -2063,15 +2131,18 @@ Net_8187 <= (not Net_8190);
 \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\\D\ <= ((not Net_5305 and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and Net_8190 and Net_7738 and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
 	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
 	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (not Net_7738 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
-	OR (Net_5305 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
+	OR (Net_8190 and Net_5305 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
+	OR (not Net_7738 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\));
 
 \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\\D\ <= ((not Net_5305 and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and Net_7738 and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\)
 	OR (not \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (not Net_7738 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
-	OR (Net_5305 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
+	OR (Net_8190 and Net_5305 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\)
+	OR (not Net_7738 and Net_8190 and \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\));
 
 \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\ <= ((not Net_5305 and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ and not \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ and Net_8190 and Net_7738 and \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\));
+
+\GlitchFilter_1:state_0\\D\ <= ((not \GlitchFilter_1:counter_done_0\ and Net_5305)
+	OR (Net_8204 and \GlitchFilter_1:counter_done_0\));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -2935,7 +3006,7 @@ COMPARATOR_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>Net_5305,
+		fb=>Net_8204,
 		analog=>(open),
 		io=>(tmpIO_0__COMPARATOR_PIN_net_0),
 		siovref=>(tmpSIOVREF__COMPARATOR_PIN_net_0),
@@ -4324,6 +4395,97 @@ COUNTER_OUT_PIN:cy_psoc3_pins_v1_10
 UPDATE_STEER_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_8190);
+\GlitchFilter_1:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_10,
+		enable=>tmpOE__HE_IN_PIN_net_0,
+		clock_out=>\GlitchFilter_1:op_clk\);
+\GlitchFilter_1:genblk2:Counter0:DP:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000010000000010000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000000000000000000000000000000",
+		d0_init=>"00011000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\GlitchFilter_1:op_clk\,
+		cs_addr=>(zero, Net_8204, Net_5305),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\GlitchFilter_1:counter_done_0\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,
@@ -4512,5 +4674,9 @@ UPDATE_STEER_ISR:cy_isr_v1_0
 	PORT MAP(d=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\\D\,
 		clk=>\SEC_TIL_BLACK_TIMER:TimerUDB:ClockOutFromEnBlock\,
 		q=>\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\);
+\GlitchFilter_1:state_0\:cy_dff
+	PORT MAP(d=>\GlitchFilter_1:state_0\\D\,
+		clk=>\GlitchFilter_1:op_clk\,
+		q=>Net_5305);
 
 END R_T_L;
