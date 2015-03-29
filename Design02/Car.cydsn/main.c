@@ -95,17 +95,17 @@ void updateSteering() {
 //    LCD_PrintString(buffer);
 
     if (gblack_totalpos_diff > CENTER_LINE){
-        gExpectedSpeed = 5.5 - (gblack_totalpos_diff-CENTER_LINE)/280.0*2;
+        gExpectedSpeed = 5.5 - (gblack_totalpos_diff-CENTER_LINE)/240.0*2;
     }
     else {
-        gExpectedSpeed = 5.5 - (CENTER_LINE-gblack_totalpos_diff)/350.0*2;
+        gExpectedSpeed = 5.5 - (CENTER_LINE-gblack_totalpos_diff)/310.0*2;
     }
     //Have in place error checking to prevent sporadic  behavior
-    if (gsteer_dutycycle > 5650){
-        gsteer_dutycycle = 5650;   
+    if (gsteer_dutycycle > 5700){
+        gsteer_dutycycle = 5800;   
     }
     if (gsteer_dutycycle <= 3700) {
-        gsteer_dutycycle = 3700;
+        gsteer_dutycycle = 3550;
     }
     
     STEERING_PWM_WriteCompare(gsteer_dutycycle);
