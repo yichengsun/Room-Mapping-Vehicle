@@ -43,33 +43,9 @@ uint32 gcaptures = 0;
 int count = 0;
 int gsteer_error_prev = 0;
 
-//Averages out speed for the last wheel rotation to even out magnet spacing
-double getSpeedAvg(double speeds[]){
-    double counter = 0;
-    uint32 i = 0;
-    uint32 size = 5;
-    if (gspeedMeasurements < 5) {
-        size = gspeedMeasurements;
-    }
-    for (i = 0; i < size; i++){
-        counter = counter + speeds[i];   
-    }
-    return counter/(double)size;
-}
+uint8 direction = 0;
 
-//Grab current speed via unit conversions
-double getCurSpeed(){
-    double current_Speed = 0;
-    //average clock tix b/w two magnets in one rotation
-    current_Speed = getSpeedAvg(speedCounts);
-    //average sec elapsed b/w two magnets
-    current_Speed = (double)current_Speed/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
-    //average speed b/w two magnets
-    current_Speed = (double)INCH_PER_MAGNET/current_Speed/12;
-    // return (double)current_Speed;
-    return current_Speed;
-}
-
+/*
 void updateSteering() {
     double error;   
     double duty_cycle_buffer;
@@ -85,15 +61,6 @@ void updateSteering() {
     gsteer_dutycycle = CENTER_DUTY - Kp_steer*error - Kd_steer*(gsteer_error_prev-error)/395372.0;
     gsteer_error_prev=error;
     
-
-//    LCD_ClearDisplay();
-//    LCD_Position(0,0);
-//    sprintf(buffer, "%f", error);
-//    LCD_PrintString(buffer);
-//    LCD_Position(1, 0);
-//    sprintf(buffer, "%f", duty_cycle_buffer);
-//    LCD_PrintString(buffer);
-
     if (gblack_totalpos_diff > CENTER_LINE){
         gExpectedSpeed = 5.5 - (gblack_totalpos_diff-CENTER_LINE)/240.0*2;
     }
@@ -131,6 +98,34 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
 
     SEC_TIL_BLACK_TIMER_ReadStatusRegister();
     }
+*/
+
+//Averages out speed for the last wheel rotation to even out magnet spacing
+double getSpeedAvg(double speeds[]){
+    double counter = 0;
+    uint32 i = 0;
+    uint32 size = 5;
+    if (gspeedMeasurements < 5) {
+        size = gspeedMeasurements;
+    }
+    for (i = 0; i < size; i++){
+        counter = counter + speeds[i];   
+    }
+    return counter/(double)size;
+}
+
+//Grab current speed via unit conversions
+double getCurSpeed(){
+    double current_Speed = 0;
+    //average clock tix b/w two magnets in one rotation
+    current_Speed = getSpeedAvg(speedCounts);
+    //average sec elapsed b/w two magnets
+    current_Speed = (double)current_Speed/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
+    //average speed b/w two magnets
+    current_Speed = (double)INCH_PER_MAGNET/current_Speed/12;
+    // return (double)current_Speed;
+    return current_Speed;
+}
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
 CY_ISR(HE_inter) {
@@ -142,7 +137,7 @@ CY_ISR(HE_inter) {
     char buffer[15];
     double duty_cycle_buffer = 0;
     uint16 duty_cycle = 0;
-    gTotalTraveled+=INCH_PER_MAGNET;
+    gTotalTraveled += INCH_PER_MAGNET;
     
     //Special first time read   
     if (gfirst_HE_read == 1) {
@@ -173,14 +168,14 @@ CY_ISR(HE_inter) {
         duty_cycle_buffer = THREE_FT_DUTY + Kp*error + Ki*gki_speederror + Kd*error/time_diff_s;
         
        //LCD output for debugging
-       // LCD_ClearDisplay();
-       // LCD_Position(0,0);
-       // sprintf(buffer, "%f", gsteer_dutycycle);   
-       //LCD_PrintString(buffer);
-    //LCD_Position(1, 1);
-       //LCD_PrintString("//");
-       //sprintf(buffer, "%f", gblack_totalpos_diff);
-       //LCD_PrintString(buffer);
+       LCD_ClearDisplay();
+       LCD_Position(0,0);
+       sprintf(buffer, "%f", gsteer_dutycycle);   
+       LCD_PrintString(buffer);
+       LCD_Position(1, 1);
+       LCD_PrintString("//");
+       sprintf(buffer, "%f", gblack_totalpos_diff);
+       LCD_PrintString(buffer);
         
         //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
         //certain duty cycle to prevent sporadic  behavior
@@ -207,26 +202,29 @@ int main()
 {
     //initialize all modules
     CYGlobalIntEnable;  
-    HE_TIMER_Start();
-    HE_ISR_Start();
-    HE_ISR_SetVector(HE_inter);
+    //HE_TIMER_Start();
+    //HE_ISR_Start();
+    //HE_ISR_SetVector(HE_inter);
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
+    //DIR_REG_Write(0);
+    MOTOR_PWM_WriteCompare(500);
     
-    LINE_COUNTER_Start();  
-    SEC_TIL_BLACK_TIMER_ISR_Start();
-    SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
-    SEC_TIL_BLACK_TIMER_Start();
+    //LINE_COUNTER_Start();  
+    //SEC_TIL_BLACK_TIMER_ISR_Start();
+    //SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
+    //SEC_TIL_BLACK_TIMER_Start();
 
-    UPDATE_STEER_ISR_Start();
-    UPDATE_STEER_ISR_SetVector(UPDATE_STEER_inter);
+    //UPDATE_STEER_ISR_Start();
+    //UPDATE_STEER_ISR_SetVector(UPDATE_STEER_inter);
     
-    STEERING_PWM_Start();
-    STEERING_PWM_CLK_Start();
+    //STEERING_PWM_Start();
+    //STEERING_PWM_CLK_Start();
     
     LCD_Start();
     LCD_Position(0,0);
-    LCD_PrintString("ELE302 Carlab");  
+    //LCD_PrintString("ELE302 Carlab ");
+    LCD_PrintNumber(MOTOR_PWM_ReadCompare());
     for(;;)
     {
     }

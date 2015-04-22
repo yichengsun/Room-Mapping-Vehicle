@@ -23,8 +23,8 @@
 #include <HE_IN_PIN_aliases.h>
 #include <LCD.h>
 #include <MOTOR_PWM.h>
-#include <PWM_OUT_PIN.h>
-#include <PWM_OUT_PIN_aliases.h>
+#include <HBRIDGE_R_PIN.h>
+#include <HBRIDGE_R_PIN_aliases.h>
 #include <MOTOR_PWM_CLK.h>
 #include <HE_ISR.h>
 #include <HE_TIMER_CLK.h>
@@ -49,6 +49,11 @@
 #include <COUNTER_OUT_PIN.h>
 #include <COUNTER_OUT_PIN_aliases.h>
 #include <UPDATE_STEER_ISR.h>
+#include <DIR_REG.h>
+#include <HBRIDGE_L_PIN.h>
+#include <HBRIDGE_L_PIN_aliases.h>
+#include <PWM_OUT_PIN.h>
+#include <PWM_OUT_PIN_aliases.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

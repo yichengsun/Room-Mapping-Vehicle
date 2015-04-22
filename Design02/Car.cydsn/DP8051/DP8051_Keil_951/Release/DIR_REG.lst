@@ -1,0 +1,100 @@
+C51 COMPILER V9.51   DIR_REG                                                               04/19/2015 19:43:15 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE DIR_REG
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Release\DIR_REG.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\DIR_REG.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3) DB WL(2) P
+                    -R(.\DP8051\DP8051_Keil_951\Release/DIR_REG.lst) CD OT(8,SIZE) OJ(.\DP8051\DP8051_Keil_951\Release\DIR_REG.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          /*******************************************************************************
+   2          * File Name: DIR_REG.c  
+   3          * Version 1.70
+   4          *
+   5          * Description:
+   6          *  This file contains API to enable firmware control of a Control Register.
+   7          *
+   8          * Note:
+   9          *
+  10          ********************************************************************************
+  11          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12          * You may use this file only in accordance with the license, terms, conditions, 
+  13          * disclaimers, and limitations in the end user license agreement accompanying 
+  14          * the software package with which this file was provided.
+  15          *******************************************************************************/
+  16          
+  17          #include "DIR_REG.h"
+  18          
+  19          #if !defined(DIR_REG_Sync_ctrl_reg__REMOVED) /* Check for removal by optimization */
+              
+              /*******************************************************************************
+              * Function Name: DIR_REG_Write
+              ********************************************************************************
+              *
+              * Summary:
+              *  Write a byte to the Control Register.
+              *
+              * Parameters:
+              *  control:  The value to be assigned to the Control Register.
+              *
+              * Return:
+              *  None.
+              *
+              *******************************************************************************/
+              void DIR_REG_Write(uint8 control) 
+              {
+                  DIR_REG_Control = control;
+              }
+              
+              
+              /*******************************************************************************
+              * Function Name: DIR_REG_Read
+              ********************************************************************************
+              *
+              * Summary:
+              *  Reads the current value assigned to the Control Register.
+              *
+              * Parameters:
+              *  None.
+              *
+              * Return:
+              *  Returns the current value in the Control Register.
+C51 COMPILER V9.51   DIR_REG                                                               04/19/2015 19:43:15 PAGE 2   
+
+              *
+              *******************************************************************************/
+              uint8 DIR_REG_Read(void) 
+              {
+                  return DIR_REG_Control;
+              }
+              
+              #endif /* End check for removal by optimization */
+  61          
+  62          
+  63          /* [] END OF FILE */
+C51 COMPILER V9.51   DIR_REG                                                               04/19/2015 19:43:15 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

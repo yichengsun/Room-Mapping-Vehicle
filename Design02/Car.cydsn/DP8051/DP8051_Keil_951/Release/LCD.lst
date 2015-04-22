@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 1   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LCD
@@ -62,7 +62,7 @@ line level    source
   50          *
   51          * Reentrant:
   52          *  No.
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 2   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 2   
 
   53          *
   54          *******************************************************************************/
@@ -126,7 +126,7 @@ line level    source
  112          * Function Name: LCD_Start
  113          ********************************************************************************
  114          *
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 3   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 3   
 
  115          * Summary:
  116          *  Performs initialization required for the components normal work.
@@ -190,7 +190,7 @@ line level    source
  174          
  175          
  176          /*******************************************************************************
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 4   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 4   
 
  177          *  Function Name: LCD_Position
  178          ********************************************************************************
@@ -254,7 +254,7 @@ line level    source
  236   1          char8 current = *string;
  237   1      
  238   1          /* Until null is reached, print next character */
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 5   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 5   
 
  239   1          while((char8) '\0' != current)
  240   1          {
@@ -318,7 +318,7 @@ line level    source
  298          
  299          
  300          /*******************************************************************************
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 6   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 6   
 
  301          *  Function Name: LCD_WriteControl
  302          ********************************************************************************
@@ -382,7 +382,7 @@ line level    source
  360   1          #if (CY_PSOC4)
                       
                       /* Mask off data pins to clear old values out */
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 7   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 7   
 
                       value = LCD_PORT_PC_REG & ((uint32) (~ LCD_DM_DATA_MASK));
                       /* Load in high Z values for data pins, others unchanged */
@@ -446,7 +446,7 @@ line level    source
  422   2      
  423   2              /* Set enable low */
  424   2              LCD_PORT_DR_REG &= ((uint8)(~LCD_E));
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 8   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 8   
 
  425   2      
  426   2              /* If LCD is not ready make a delay */
@@ -510,7 +510,7 @@ line level    source
  484          *
  485          *******************************************************************************/
  486          static void LCD_WrDatNib(uint8 nibble) 
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 9   
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 9   
 
  487          {
  488   1          /* RS should be low to select data register */
@@ -574,7 +574,7 @@ line level    source
  546   1          CyDelayUs(1u);
  547   1      
  548   1          LCD_PORT_DR_REG &= ((uint8)(~LCD_E));
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 10  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 10  
 
  549   1      }
  550          
@@ -638,7 +638,7 @@ line level    source
  608              * Return:
  609              *  None.
  610              *
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 11  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 11  
 
  611              *******************************************************************************/
  612              void LCD_PrintInt32(uint32 value) 
@@ -702,7 +702,7 @@ line level    source
  670   1              */
  671   1              number[digIndex] = (char8) '\0';
  672   1              digIndex--;
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 12  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 12  
 
  673   1              
  674   1              /* Load these in reverse order */
@@ -735,7 +735,7 @@ line level    source
  701          
  702          
  703          /* [] END OF FILE */
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 13  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 13  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -799,7 +799,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 70
 004B 7F2C              MOV     R7,#02CH
 004D 120000      R     LCALL   _LCD_WriteControl
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 14  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 14  
 
                                            ; SOURCE LINE # 71
 0050 7F08              MOV     R7,#08H
@@ -863,7 +863,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION LCD_Stop (BEGIN)
                                            ; SOURCE LINE # 168
                                            ; SOURCE LINE # 169
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 15  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 15  
 
                                            ; SOURCE LINE # 171
 0000 7F08              MOV     R7,#08H
@@ -927,7 +927,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 209
 0034         ?C0010:
                                            ; SOURCE LINE # 210
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 16  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 16  
 
 0034 900000      R     MOV     DPTR,#column
 0037 E0                MOVX    A,@DPTR
@@ -991,7 +991,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _LCD_PrintString (END)
 
              ; FUNCTION _LCD_PutChar (BEGIN)
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 17  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 17  
 
                                            ; SOURCE LINE # 264
 ;---- Variable 'character' assigned to Register 'R7' ----
@@ -1055,7 +1055,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 120000      R     LCALL   _LCD_WrCntrlNib
                                            ; SOURCE LINE # 324
 0016 900000      R     MOV     DPTR,#cByte
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 18  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 18  
 
 0019 E0                MOVX    A,@DPTR
 001A 540F              ANL     A,#0FH
@@ -1119,7 +1119,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003F 905120            MOV     DPTR,#05120H
 0042 E0                MOVX    A,@DPTR
 0043 54DF              ANL     A,#0DFH
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 19  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 19  
 
 0045 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 392
@@ -1183,7 +1183,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 428
                                            ; SOURCE LINE # 429
 0095 7F0A              MOV     R7,#0AH
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 20  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 20  
 
 0097 FE                MOV     R6,A
 0098 120000      E     LCALL   _CyDelayUs
@@ -1247,7 +1247,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 465
 00EC E0                MOVX    A,@DPTR
 00ED 440F              ORL     A,#0FH
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 21  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 21  
 
 00EF 905124            MOV     DPTR,#05124H
 00F2 F0                MOVX    @DPTR,A
@@ -1311,7 +1311,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 528
 ;---- Variable 'nibble' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 529
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 22  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 22  
 
                                            ; SOURCE LINE # 531
 0000 905120            MOV     DPTR,#05120H
@@ -1375,7 +1375,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 591
 0000 900000      R     MOV     DPTR,#value
 0003 EE                MOV     A,R6
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 23  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 23  
 
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
@@ -1439,7 +1439,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 663
                                            ; SOURCE LINE # 666
 0006 900000      R     MOV     DPTR,#digIndex
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 24  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 24  
 
 0009 740A              MOV     A,#0AH
 000B F0                MOVX    @DPTR,A
@@ -1503,7 +1503,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005F 120000      E     LCALL   ?C?ULDIV
 0062 900000      R     MOV     DPTR,#value
 0065 120000      E     LCALL   ?C?LSTXDATA
-C51 COMPILER V9.51   LCD                                                                   03/27/2015 19:22:29 PAGE 25  
+C51 COMPILER V9.51   LCD                                                                   04/19/2015 19:43:11 PAGE 25  
 
                                            ; SOURCE LINE # 687
 0068 900000      R     MOV     DPTR,#digIndex
