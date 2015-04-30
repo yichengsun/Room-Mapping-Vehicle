@@ -1,5 +1,5 @@
 -- Project:   Car
--- Generated: 04/19/2015 19:43:00
+-- Generated: 04/29/2015 00:32:43
 -- PSoC Creator  3.1
 
 ENTITY Car IS
@@ -53,7 +53,6 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL HBRIDGE_L_PIN(0)__PA : bit;
     SIGNAL HBRIDGE_R_PIN(0)__PA : bit;
     SIGNAL HE_IN_PIN(0)__PA : bit;
-    SIGNAL Net_2174 : bit;
     SIGNAL Net_3213 : bit;
     SIGNAL Net_3302 : bit;
     ATTRIBUTE udbclken_assigned OF Net_3302 : SIGNAL IS "True";
@@ -72,15 +71,26 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL Net_8190 : bit;
     SIGNAL Net_8223 : bit;
     SIGNAL Net_8312 : bit;
-    SIGNAL Net_8577 : bit;
+    SIGNAL Net_8573 : bit;
+    SIGNAL Net_8585 : bit;
+    SIGNAL Net_8587 : bit;
     SIGNAL Net_8588 : bit;
     ATTRIBUTE udbclken_assigned OF Net_8588 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_8588 : SIGNAL IS true;
     SIGNAL Net_8588_local : bit;
+    SIGNAL Net_8638 : bit;
+    SIGNAL Net_9030 : bit;
     SIGNAL PWM_OUT_PIN(0)__PA : bit;
     SIGNAL STEERING_PWM_OUT_PIN(0)__PA : bit;
     SIGNAL TIMER_OUT_PIN(0)__PA : bit;
     SIGNAL VERT_SYNC_OUT_PIN(0)__PA : bit;
+    SIGNAL \DIR_REG:control_1\ : bit;
+    SIGNAL \DIR_REG:control_2\ : bit;
+    SIGNAL \DIR_REG:control_3\ : bit;
+    SIGNAL \DIR_REG:control_4\ : bit;
+    SIGNAL \DIR_REG:control_5\ : bit;
+    SIGNAL \DIR_REG:control_6\ : bit;
+    SIGNAL \DIR_REG:control_7\ : bit;
     SIGNAL \GlitchFilter_1:counter_done_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_1\ : bit;
@@ -321,23 +331,26 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE lib_model OF Net_7123 : LABEL IS "macrocell4";
     ATTRIBUTE lib_model OF Net_8187 : LABEL IS "macrocell5";
     ATTRIBUTE lib_model OF Net_8312 : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF Net_8577 : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Net_8585 : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Net_8587 : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF Net_8638 : LABEL IS "macrocell9";
     ATTRIBUTE lib_model OF PWM_OUT_PIN(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P4[0]";
+    ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P3[3]";
     ATTRIBUTE lib_model OF STEERING_PWM_OUT_PIN(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF STEERING_PWM_OUT_PIN(0) : LABEL IS "P4[6]";
     ATTRIBUTE lib_model OF TIMER_OUT_PIN(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF TIMER_OUT_PIN(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF VERT_SYNC_OUT_PIN(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF VERT_SYNC_OUT_PIN(0) : LABEL IS "P4[4]";
+    ATTRIBUTE lib_model OF \DIR_REG:Sync:ctrl_reg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \GlitchFilter_1:genblk2:Counter0:DP:u0\ : LABEL IS "datapathcell1";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell2";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell3";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell4";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell5";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell10";
     ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell12";
     ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell13";
@@ -352,37 +365,37 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell18";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell10";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell13";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u0\ : LABEL IS "datapathcell6";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u1\ : LABEL IS "datapathcell7";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u2\ : LABEL IS "datapathcell8";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u3\ : LABEL IS "datapathcell9";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell12";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell13";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell3";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell16";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell10";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell11";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell15";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell16";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell21";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell12";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell13";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell14";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell15";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell20";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell23";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell16";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell17";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell24";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -1075,7 +1088,7 @@ BEGIN
 
     HBRIDGE_L_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "110",
             ibuf_enabled => "1",
             id => "be2903cd-e69d-4a6a-962f-3d0b91acd8e9",
             init_dr_st => "0",
@@ -1150,10 +1163,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "HBRIDGE_L_PIN",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => HBRIDGE_L_PIN(0)__PA,
             oe => open,
+            pin_input => Net_8585,
+            pad_out => HBRIDGE_L_PIN(0)_PAD,
             pad_in => HBRIDGE_L_PIN(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
@@ -1164,7 +1179,7 @@ BEGIN
 
     HBRIDGE_R_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "011",
+            drive_mode => "110",
             ibuf_enabled => "1",
             id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
             init_dr_st => "0",
@@ -1239,10 +1254,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "HBRIDGE_R_PIN",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => HBRIDGE_R_PIN(0)__PA,
             oe => open,
+            pin_input => Net_8587,
+            pad_out => HBRIDGE_R_PIN(0)_PAD,
             pad_in => HBRIDGE_R_PIN(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
@@ -1333,7 +1350,7 @@ BEGIN
         PORT MAP(
             pa_out => HE_IN_PIN(0)__PA,
             oe => open,
-            fb => Net_2174,
+            fb => Net_9030,
             pad_in => HE_IN_PIN(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1354,7 +1371,7 @@ BEGIN
             eqn_main => "(!main_0)")
         PORT MAP(
             q => Net_459,
-            main_0 => Net_2174);
+            main_0 => Net_9030);
 
     Net_5259:macrocell
         GENERIC MAP(
@@ -1404,21 +1421,37 @@ BEGIN
             main_0 => \LINE_COUNTER:CounterUDB:cmp_out_i\,
             clock_0 => ClockBlock_BUS_CLK);
 
-    Net_8577:macrocell
+    Net_8585:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => Net_8585,
+            main_0 => Net_8638,
+            main_1 => Net_8573);
+
+    Net_8587:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)")
+        PORT MAP(
+            q => Net_8587,
+            main_0 => Net_8638,
+            main_1 => Net_8573);
+
+    Net_8638:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
             clk_inv => '0')
         PORT MAP(
-            q => Net_8577,
+            q => Net_8638,
             clock_0 => Net_8588,
             main_0 => \MOTOR_PWM:PWMUDB:control_7\,
             main_1 => \MOTOR_PWM:PWMUDB:cmp1_less\);
 
     PWM_OUT_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "110",
             ibuf_enabled => "1",
-            id => "2ba646ab-03fb-45fc-8c44-34bf5a251653",
+            id => "7d879d8d-907b-417d-9a9a-48efa7b86bbd",
             init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
@@ -1495,7 +1528,7 @@ BEGIN
         PORT MAP(
             pa_out => PWM_OUT_PIN(0)__PA,
             oe => open,
-            pin_input => Net_8577,
+            pin_input => Net_8638,
             pad_out => PWM_OUT_PIN(0)_PAD,
             pad_in => PWM_OUT_PIN(0)_PAD,
             in_clock => open,
@@ -1791,6 +1824,24 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
+
+    \DIR_REG:Sync:ctrl_reg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000000",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            control_7 => \DIR_REG:control_7\,
+            control_6 => \DIR_REG:control_6\,
+            control_5 => \DIR_REG:control_5\,
+            control_4 => \DIR_REG:control_4\,
+            control_3 => \DIR_REG:control_3\,
+            control_2 => \DIR_REG:control_2\,
+            control_1 => \DIR_REG:control_1\,
+            control_0 => Net_8573,
+            busclk => ClockBlock_BUS_CLK);
 
     \GlitchFilter_1:genblk2:Counter0:DP:u0\:datapathcell
         GENERIC MAP(

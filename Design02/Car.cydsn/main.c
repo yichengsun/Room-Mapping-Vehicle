@@ -170,11 +170,11 @@ CY_ISR(HE_inter) {
        //LCD output for debugging
        LCD_ClearDisplay();
        LCD_Position(0,0);
-       sprintf(buffer, "%f", gsteer_dutycycle);   
+       sprintf(buffer, "%f", duty_cycle_buffer);   
        LCD_PrintString(buffer);
        LCD_Position(1, 1);
        LCD_PrintString("//");
-       sprintf(buffer, "%f", gblack_totalpos_diff);
+       sprintf(buffer, "%f", error);
        LCD_PrintString(buffer);
         
         //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
@@ -207,8 +207,8 @@ int main()
     //HE_ISR_SetVector(HE_inter);
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
-    //DIR_REG_Write(0);
-    MOTOR_PWM_WriteCompare(500);
+    DIR_REG_Write(1);
+    MOTOR_PWM_WriteCompare(8000);
     
     //LINE_COUNTER_Start();  
     //SEC_TIL_BLACK_TIMER_ISR_Start();
@@ -223,8 +223,7 @@ int main()
     
     LCD_Start();
     LCD_Position(0,0);
-    //LCD_PrintString("ELE302 Carlab ");
-    LCD_PrintNumber(MOTOR_PWM_ReadCompare());
+    LCD_PrintString("ELE302 Carlab ");
     for(;;)
     {
     }

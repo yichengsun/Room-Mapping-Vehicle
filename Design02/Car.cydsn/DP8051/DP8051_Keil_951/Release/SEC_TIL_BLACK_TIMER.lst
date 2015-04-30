@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 1   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SEC_TIL_BLACK_TIMER
@@ -62,7 +62,7 @@ line level    source
   49   1      
   50   1          #if (SEC_TIL_BLACK_TIMER_UsingFixedFunction)
                       /* Clear all bits but the enable bit (if it's already set) for Timer operation */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 2   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 2   
 
                       SEC_TIL_BLACK_TIMER_CONTROL &= SEC_TIL_BLACK_TIMER_CTRL_ENABLE;
               
@@ -126,7 +126,7 @@ line level    source
                       SEC_TIL_BLACK_TIMER_RT1 |= SEC_TIL_BLACK_TIMER_SYNCDSI_EN;
               
                       /* Set the IRQ to use the status register interrupts */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 3   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 3   
 
                       SEC_TIL_BLACK_TIMER_CONTROL2 |= SEC_TIL_BLACK_TIMER_CTRL2_IRQ_SEL;
                   #endif /* Configuring registers of fixed function implementation */
@@ -190,7 +190,7 @@ line level    source
  173          * Parameters:
  174          *  void
  175          *
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 4   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 4   
 
  176          * Return:
  177          *  void
@@ -254,7 +254,7 @@ line level    source
  235          *  interrupts.
  236          *
  237          * Parameters:
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 5   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 5   
 
  238          *  void
  239          *
@@ -318,7 +318,7 @@ line level    source
  297          *
  298          * Side Effects:
  299          *  An existing hardware capture could be overwritten.
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 6   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 6   
 
  300          *
  301          *******************************************************************************/
@@ -382,7 +382,7 @@ line level    source
                       return ((uint8)SEC_TIL_BLACK_TIMER_CONTROL);
                   #else
                       return (0);
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 7   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 7   
 
                   #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
               }
@@ -446,7 +446,7 @@ line level    source
  421          *  will be loaded the next time terminal count is detected.
  422          *
  423          * Parameters:
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 8   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 8   
 
  424          *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
  425          *          result in the counter remaining at zero.
@@ -510,7 +510,7 @@ line level    source
  482   1         #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
                       /* This functionality is removed until a FixedFunction HW update to
                        * allow this register to be written
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 9   
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 9   
 
                        */
                       CY_SET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, (uint16)counter);
@@ -574,7 +574,7 @@ line level    source
               *
               * Summary:
               *  This function sets the capture mode to either rising or falling edge.
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 10  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 10  
 
               *
               * Parameters:
@@ -638,7 +638,7 @@ line level    source
               void SEC_TIL_BLACK_TIMER_SetTriggerMode(uint8 triggerMode) 
               {
                   /* This must only set to two bits of the control register associated */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 11  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 11  
 
                   triggerMode &= SEC_TIL_BLACK_TIMER_CTRL_TRIG_MODE_MASK;
               
@@ -702,7 +702,7 @@ line level    source
                   #endif /* Remove code section if control register is not used */
               }
               #endif /* Remove API is Trigger Mode is set to None */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 12  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 12  
 
  667          
  668          #if(SEC_TIL_BLACK_TIMER_InterruptOnCaptureCount)
@@ -766,7 +766,7 @@ line level    source
               
               
               /*******************************************************************************
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 13  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 13  
 
               * Function Name: SEC_TIL_BLACK_TIMER_ReadCaptureCount
               ********************************************************************************
@@ -814,7 +814,7 @@ line level    source
  772          
  773          
  774          /* [] END OF FILE */
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 14  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 14  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -840,7 +840,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'SEC_TIL_BLACK_TIMER_interruptState' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 145
-0015 906495            MOV     DPTR,#06495H
+0015 906494            MOV     DPTR,#06494H
 0018 E0                MOVX    A,@DPTR
 0019 4410              ORL     A,#010H
 001B F0                MOVX    @DPTR,A
@@ -878,7 +878,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 222
 000F         ?C0003:
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 15  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 15  
 
                                            ; SOURCE LINE # 225
 000F 120000      R     LCALL   SEC_TIL_BLACK_TIMER_Enable
@@ -898,7 +898,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'interruptMode' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 280
                                            ; SOURCE LINE # 281
-0000 906485            MOV     DPTR,#06485H
+0000 906484            MOV     DPTR,#06484H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 282
@@ -909,7 +909,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 302
                                            ; SOURCE LINE # 303
                                            ; SOURCE LINE # 308
-0000 906402            MOV     DPTR,#06402H
+0000 906404            MOV     DPTR,#06404H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 311
@@ -920,7 +920,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 333
                                            ; SOURCE LINE # 334
                                            ; SOURCE LINE # 335
-0000 906465            MOV     DPTR,#06465H
+0000 906464            MOV     DPTR,#06464H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 336
@@ -934,7 +934,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 410
 0000 7B02              MOV     R3,#02H
 0002 7A64              MOV     R2,#064H
-0004 7922              MOV     R1,#022H
+0004 7924              MOV     R1,#024H
 0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 412
 0009         ?C0009:
@@ -942,7 +942,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION SEC_TIL_BLACK_TIMER_ReadPeriod (END)
 
              ; FUNCTION _SEC_TIL_BLACK_TIMER_WritePeriod (BEGIN)
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 16  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 16  
 
                                            ; SOURCE LINE # 431
 ;---- Variable 'period' assigned to Register 'R4/R5/R6/R7' ----
@@ -950,7 +950,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 437
 0000 7B02              MOV     R3,#02H
 0002 7A64              MOV     R2,#064H
-0004 7922              MOV     R1,#022H
+0004 7924              MOV     R1,#024H
 0006 120000      E     LCALL   _cywrite32_nodpx
                                            ; SOURCE LINE # 439
 0009 22                RET     
@@ -962,7 +962,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 461
 0000 7B02              MOV     R3,#02H
 0002 7A64              MOV     R2,#064H
-0004 7942              MOV     R1,#042H
+0004 7944              MOV     R1,#044H
 0006 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 463
 0009         ?C0011:
@@ -976,7 +976,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 489
 0000 7B02              MOV     R3,#02H
 0002 7A64              MOV     R2,#064H
-0004 7902              MOV     R1,#02H
+0004 7904              MOV     R1,#04H
 0006 120000      E     LCALL   _cywrite32_nodpx
                                            ; SOURCE LINE # 491
 0009 22                RET     
@@ -986,13 +986,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 508
                                            ; SOURCE LINE # 509
                                            ; SOURCE LINE # 516
-0000 906402            MOV     DPTR,#06402H
+0000 906404            MOV     DPTR,#06404H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 523
 0005 7B02              MOV     R3,#02H
 0007 7A64              MOV     R2,#064H
-0009 7942              MOV     R1,#042H
+0009 7944              MOV     R1,#044H
 000B 120000      E     LCALL   _cyread32_nodpx
                                            ; SOURCE LINE # 525
 000E         ?C0013:
@@ -1006,7 +1006,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 691
 0000 EF                MOV     A,R7
 0001 5403              ANL     A,#03H
-C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/19/2015 19:43:14 PAGE 17  
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/29/2015 00:20:26 PAGE 17  
 
 0003 FF                MOV     R7,A
                                            ; SOURCE LINE # 699

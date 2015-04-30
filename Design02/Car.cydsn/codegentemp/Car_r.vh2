@@ -1,5 +1,5 @@
 -- Project:   Car
--- Generated: 04/19/2015 19:43:02
+-- Generated: 04/29/2015 00:32:46
 -- PSoC Creator  3.1
 
 ENTITY Car IS
@@ -53,41 +53,53 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL HBRIDGE_L_PIN(0)__PA : bit;
     SIGNAL HBRIDGE_R_PIN(0)__PA : bit;
     SIGNAL HE_IN_PIN(0)__PA : bit;
-    SIGNAL Net_2174 : bit;
     SIGNAL Net_3213 : bit;
     SIGNAL Net_3302 : bit;
     ATTRIBUTE udbclken_assigned OF Net_3302 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_3302 : SIGNAL IS true;
     SIGNAL Net_3302_local : bit;
     SIGNAL Net_459 : bit;
-    ATTRIBUTE placement_force OF Net_459 : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF Net_459 : SIGNAL IS "U(3,5,A)0";
     SIGNAL Net_4949 : bit;
     SIGNAL Net_5259 : bit;
-    ATTRIBUTE placement_force OF Net_5259 : SIGNAL IS "U(1,5,A)1";
+    ATTRIBUTE placement_force OF Net_5259 : SIGNAL IS "U(1,4,A)1";
     SIGNAL Net_5305 : bit;
-    ATTRIBUTE placement_force OF Net_5305 : SIGNAL IS "U(3,2,A)3";
+    ATTRIBUTE placement_force OF Net_5305 : SIGNAL IS "U(1,3,B)2";
     SIGNAL Net_7123 : bit;
-    ATTRIBUTE placement_force OF Net_7123 : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF Net_7123 : SIGNAL IS "U(2,1,B)3";
     SIGNAL Net_767 : bit;
     ATTRIBUTE udbclken_assigned OF Net_767 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_767 : SIGNAL IS true;
     SIGNAL Net_767_local : bit;
     SIGNAL Net_8187 : bit;
-    ATTRIBUTE placement_force OF Net_8187 : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF Net_8187 : SIGNAL IS "U(2,5,A)0";
     SIGNAL Net_8190 : bit;
     SIGNAL Net_8223 : bit;
     SIGNAL Net_8312 : bit;
-    ATTRIBUTE placement_force OF Net_8312 : SIGNAL IS "U(2,4,B)3";
-    SIGNAL Net_8577 : bit;
-    ATTRIBUTE placement_force OF Net_8577 : SIGNAL IS "U(0,4,A)1";
+    ATTRIBUTE placement_force OF Net_8312 : SIGNAL IS "U(2,3,B)2";
+    SIGNAL Net_8573 : bit;
+    SIGNAL Net_8585 : bit;
+    ATTRIBUTE placement_force OF Net_8585 : SIGNAL IS "U(3,0,A)2";
+    SIGNAL Net_8587 : bit;
+    ATTRIBUTE placement_force OF Net_8587 : SIGNAL IS "U(3,0,A)3";
     SIGNAL Net_8588 : bit;
     ATTRIBUTE udbclken_assigned OF Net_8588 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_8588 : SIGNAL IS true;
     SIGNAL Net_8588_local : bit;
+    SIGNAL Net_8638 : bit;
+    ATTRIBUTE placement_force OF Net_8638 : SIGNAL IS "U(1,0,A)0";
+    SIGNAL Net_9030 : bit;
     SIGNAL PWM_OUT_PIN(0)__PA : bit;
     SIGNAL STEERING_PWM_OUT_PIN(0)__PA : bit;
     SIGNAL TIMER_OUT_PIN(0)__PA : bit;
     SIGNAL VERT_SYNC_OUT_PIN(0)__PA : bit;
+    SIGNAL \DIR_REG:control_1\ : bit;
+    SIGNAL \DIR_REG:control_2\ : bit;
+    SIGNAL \DIR_REG:control_3\ : bit;
+    SIGNAL \DIR_REG:control_4\ : bit;
+    SIGNAL \DIR_REG:control_5\ : bit;
+    SIGNAL \DIR_REG:control_6\ : bit;
+    SIGNAL \DIR_REG:control_7\ : bit;
     SIGNAL \GlitchFilter_1:counter_done_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_0\ : bit;
     SIGNAL \HE_TIMER:TimerUDB:control_1\ : bit;
@@ -122,20 +134,20 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \LINE_COUNTER:CounterUDB:control_6\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:control_7\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:count_enable\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:count_enable\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \LINE_COUNTER:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:count_stored_i\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:count_stored_i\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \LINE_COUNTER:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(0,3,B)2";
+    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \LINE_COUNTER:CounterUDB:per_equal\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:sC32:counterdp:u1.ce0__sig\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:sC32:counterdp:u2.ce0__sig\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(0,3,B)1";
+    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:status_0\ : SIGNAL IS "U(2,4,B)2";
     SIGNAL \LINE_COUNTER:CounterUDB:status_1\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(0,3,A)1";
+    ATTRIBUTE placement_force OF \LINE_COUNTER:CounterUDB:status_2\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \LINE_COUNTER:CounterUDB:status_5\ : bit;
     SIGNAL \LINE_COUNTER:CounterUDB:status_6\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:cmp1_less\ : bit;
@@ -148,19 +160,19 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \MOTOR_PWM:PWMUDB:control_6\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:control_7\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \MOTOR_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,4,A)0";
+    ATTRIBUTE placement_force OF \MOTOR_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,0,B)0";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \MOTOR_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(3,2,A)2";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,2,A)3";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,2,A)1";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,3,A)0";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(3,2,B)3";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(3,2,B)2";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:per_zero\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1.ce0__sig\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2.ce0__sig\ : bit;
@@ -168,7 +180,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:status_2\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:status_3\ : bit;
     SIGNAL \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(2,4,A)3";
     SIGNAL \STEERING_PWM:PWMUDB:cmp1_less\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:control_0\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:control_1\ : bit;
@@ -179,10 +191,10 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     SIGNAL \STEERING_PWM:PWMUDB:control_6\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:control_7\ : bit;
     SIGNAL \STEERING_PWM:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \STEERING_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,5,A)0";
+    ATTRIBUTE placement_force OF \STEERING_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,4,B)3";
     SIGNAL \STEERING_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,5,A)2";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -340,21 +352,25 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF HE_IN_PIN(0) : LABEL IS "P4[3]";
     ATTRIBUTE Location OF HE_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF Net_459 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_459 : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF Net_459 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_5259 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_5259 : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF Net_5259 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_5305 : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF Net_5305 : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF Net_5305 : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF Net_7123 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_7123 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Net_7123 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF Net_8187 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_8187 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF Net_8187 : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF Net_8312 : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF Net_8312 : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF Net_8577 : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF Net_8577 : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF Net_8312 : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF Net_8585 : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF Net_8585 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF Net_8587 : LABEL IS "macrocell8";
+    ATTRIBUTE Location OF Net_8587 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF Net_8638 : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF Net_8638 : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF PWM_OUT_PIN(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P4[0]";
+    ATTRIBUTE Location OF PWM_OUT_PIN(0) : LABEL IS "P3[3]";
     ATTRIBUTE Location OF SEC_TIL_BLACK_TIMER_ISR : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF STEERING_PWM_OUT_PIN(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF STEERING_PWM_OUT_PIN(0) : LABEL IS "P4[6]";
@@ -363,12 +379,14 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF UPDATE_STEER_ISR : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF VERT_SYNC_OUT_PIN(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF VERT_SYNC_OUT_PIN(0) : LABEL IS "P4[4]";
+    ATTRIBUTE lib_model OF \DIR_REG:Sync:ctrl_reg\ : LABEL IS "controlcell1";
+    ATTRIBUTE Location OF \DIR_REG:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \GlitchFilter_1:genblk2:Counter0:DP:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \GlitchFilter_1:genblk2:Counter0:DP:u0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \GlitchFilter_1:genblk2:Counter0:DP:u0\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
+    ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell2";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell3";
@@ -377,7 +395,7 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell5";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \HE_TIMER:TimerUDB:status_tc\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell12";
     ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
@@ -393,68 +411,68 @@ ARCHITECTURE __DEFAULT__ OF Car IS
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell18";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:count_enable\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:count_stored_i\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:overflow_reg_i\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u0\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u0\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u1\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u1\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u1\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u2\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u2\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u2\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u3\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u3\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sC32:counterdp:u3\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,4)";
-    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:status_0\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \LINE_COUNTER:CounterUDB:status_2\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
+    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell10";
-    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell11";
-    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(0,4)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell21";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "datapathcell12";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell13";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell14";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell15";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,5)";
-    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u3\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell22";
+    ATTRIBUTE Location OF \SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell23";
+    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell16";
-    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell17";
-    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,5)";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \STEERING_PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell24";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,5)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -1128,7 +1146,7 @@ BEGIN
 
     HBRIDGE_L_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "110",
             ibuf_enabled => "1",
             id => "be2903cd-e69d-4a6a-962f-3d0b91acd8e9",
             init_dr_st => "0",
@@ -1203,10 +1221,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "HBRIDGE_L_PIN",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => HBRIDGE_L_PIN(0)__PA,
             oe => open,
+            pin_input => Net_8585,
+            pad_out => HBRIDGE_L_PIN(0)_PAD,
             pad_in => HBRIDGE_L_PIN(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
@@ -1217,7 +1237,7 @@ BEGIN
 
     HBRIDGE_R_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "011",
+            drive_mode => "110",
             ibuf_enabled => "1",
             id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
             init_dr_st => "0",
@@ -1292,10 +1312,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "HBRIDGE_R_PIN",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => HBRIDGE_R_PIN(0)__PA,
             oe => open,
+            pin_input => Net_8587,
+            pad_out => HBRIDGE_R_PIN(0)_PAD,
             pad_in => HBRIDGE_R_PIN(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
@@ -1386,7 +1408,7 @@ BEGIN
         PORT MAP(
             pa_out => HE_IN_PIN(0)__PA,
             oe => open,
-            fb => Net_2174,
+            fb => Net_9030,
             pad_in => HE_IN_PIN(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1407,7 +1429,7 @@ BEGIN
             eqn_main => "(!main_0)")
         PORT MAP(
             q => Net_459,
-            main_0 => Net_2174);
+            main_0 => Net_9030);
 
     Net_5259:macrocell
         GENERIC MAP(
@@ -1453,20 +1475,36 @@ BEGIN
             main_0 => \LINE_COUNTER:CounterUDB:cmp_out_i\,
             clock_0 => ClockBlock_BUS_CLK);
 
-    Net_8577:macrocell
+    Net_8585:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => Net_8585,
+            main_0 => Net_8638,
+            main_1 => Net_8573);
+
+    Net_8587:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)")
         PORT MAP(
-            q => Net_8577,
+            q => Net_8587,
+            main_0 => Net_8638,
+            main_1 => Net_8573);
+
+    Net_8638:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)")
+        PORT MAP(
+            q => Net_8638,
             clock_0 => Net_8588,
             main_0 => \MOTOR_PWM:PWMUDB:control_7\,
             main_1 => \MOTOR_PWM:PWMUDB:cmp1_less\);
 
     PWM_OUT_PIN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "110",
             ibuf_enabled => "1",
-            id => "2ba646ab-03fb-45fc-8c44-34bf5a251653",
+            id => "7d879d8d-907b-417d-9a9a-48efa7b86bbd",
             init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
@@ -1543,7 +1581,7 @@ BEGIN
         PORT MAP(
             pa_out => PWM_OUT_PIN(0)__PA,
             oe => open,
-            pin_input => Net_8577,
+            pin_input => Net_8638,
             pad_out => PWM_OUT_PIN(0)_PAD,
             pad_in => PWM_OUT_PIN(0)_PAD,
             in_clock => open,
@@ -1839,6 +1877,24 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
+
+    \DIR_REG:Sync:ctrl_reg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000000",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            control_7 => \DIR_REG:control_7\,
+            control_6 => \DIR_REG:control_6\,
+            control_5 => \DIR_REG:control_5\,
+            control_4 => \DIR_REG:control_4\,
+            control_3 => \DIR_REG:control_3\,
+            control_2 => \DIR_REG:control_2\,
+            control_1 => \DIR_REG:control_1\,
+            control_0 => Net_8573,
+            busclk => ClockBlock_BUS_CLK);
 
     \GlitchFilter_1:genblk2:Counter0:DP:u0\:datapathcell
         GENERIC MAP(

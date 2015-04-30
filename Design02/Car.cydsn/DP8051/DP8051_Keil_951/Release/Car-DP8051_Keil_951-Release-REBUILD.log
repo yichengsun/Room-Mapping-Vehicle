@@ -1,4 +1,4 @@
---------------- Rebuild Started: 04/19/2015 19:26:40 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
+--------------- Rebuild Started: 04/28/2015 23:06:10 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
 Deleting file ".\DP8051\DP8051_Keil_951\Release\main.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_ISR.obj"
@@ -15,7 +15,6 @@ Deleting file ".\DP8051\DP8051_Keil_951\Release\LCD.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\LCD_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Release\PWM_OUT_PIN.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_TIMER.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_TIMER_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_TIMER_CLK.obj"
@@ -41,6 +40,7 @@ Deleting file ".\DP8051\DP8051_Keil_951\Release\UPDATE_STEER_ISR.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\DIR_REG.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HBRIDGE_R_PIN.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HBRIDGE_L_PIN.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Release\PWM_OUT.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\Car.hex"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\Car.elf"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\Car.map"
@@ -57,6 +57,8 @@ HDL Generation ...
 Synthesis ...
 Place and Route ...
 Tech mapping ...
+ADD: mpr.M0037: information: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details.
+ * C:\Users\Yicheng\Dropbox\Princeton\Junior\ELE302\ELE302-Carlab\Design02\Car.cydsn\codegentemp\Car.rpt (Tech mapping)
 Analog Placement ...
 Analog Routing ...
 Analog Code Generation ...
@@ -150,34 +152,10 @@ c51.exe .\Generated_Source\PSoC3\HBRIDGE_L_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NO
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
 LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Release\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Release\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Release\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Release\CyLib.obj', '.\DP8051\DP8051_Keil_951\Release\cymem.obj', '.\DP8051\DP8051_Keil_951\Release\cyPm.obj', '.\DP8051\DP8051_Keil_951\Release\CySpc.obj', '.\DP8051\DP8051_Keil_951\Release\cyutils.obj', '.\DP8051\DP8051_Keil_951\Release\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Release\LCD.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\COMPARATOR_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\COUNTER_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\TIMER_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\CAPTURE_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEER_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\DIR_REG.obj', '.\DP8051\DP8051_Keil_951\Release\HBRIDGE_R_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HBRIDGE_L_PIN.obj' TO '.\DP8051\DP8051_Keil_951\Release\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Release\main.obj', '.\DP8051\DP8051_Keil_951\Release\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Release\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Release/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _LCD_WRITECONTROL/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    LCD_ISREADY/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _LCD_POSITION/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _LCD_PRINTSTRING/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _LCD_WRITEDATA/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-*** WARNING L15: MULTIPLE CALL TO FUNCTION
-    NAME:    _LCD_WRDATNIB/LCD
-    CALLER1: HE_INTER/MAIN
-    CALLER2: ?C_C51STARTUP
-Program Size: data=20.1 xdata=306 const=40 code=7323
+Program Size: data=14.0 xdata=200 const=35 code=3947
 OHx51.exe Car.omf HEXFILE(Car.ihx)
 c8051-elf-omf2elf.exe Car.omf Car.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Release\Car.hex -f .\DP8051\DP8051_Keil_951\Release\Car.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 7363 of 65536 bytes (11.2 %).
-SRAM used: 306 of 8192 bytes (3.7 %).
---------------- Rebuild Succeeded: 04/19/2015 19:27:13 ---------------
+Flash used: 3982 of 65536 bytes (6.1 %).
+SRAM used: 200 of 8192 bytes (2.4 %).
+--------------- Rebuild Succeeded: 04/28/2015 23:06:46 ---------------
