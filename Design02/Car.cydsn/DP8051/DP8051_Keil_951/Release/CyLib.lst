@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 1   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYLIB
@@ -62,7 +62,7 @@ line level    source
   50          static void CyBusClk_Internal_SetDivider(uint16 divider);
   51          
   52          #if(CY_PSOC5)
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 2   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 2   
 
                       static cySysTickCallback CySysTickCallbacks[CY_SYS_SYST_NUM_OF_CALLBACKS];
                   static void CySysTickServiceCallbacks(void);
@@ -126,7 +126,7 @@ line level    source
  112   2              pmTwCfg2State = CY_LIB_PM_TW_CFG2_REG;
  113   2      
  114   2              CyPmFtwSetInterval(CY_CLK_PLL_FTW_INTERVAL);
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 3   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 3   
 
  115   2      
  116   2              status = CYRET_TIMEOUT;
@@ -190,7 +190,7 @@ line level    source
  174          * Parameters:
  175          *  uint8 pDiv:
  176          *   Valid range [8 - 255].
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 4   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 4   
 
  177          *
  178          *  uint8 qDiv:
@@ -254,7 +254,7 @@ line level    source
  236          *    CY_PLL_SOURCE_IMO  :   IMO
  237          *    CY_PLL_SOURCE_XTAL :   MHz Crystal
  238          *    CY_PLL_SOURCE_DSI  :   DSI
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 5   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 5   
 
  239          *
  240          * Return:
@@ -318,7 +318,7 @@ line level    source
  298          *  this function provided the reading of the Power Manager Interrupt Status
  299          *  Register is only done using the CyPmReadStatus() function.
  300          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 6   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 6   
 
  301          *******************************************************************************/
  302          void CyIMO_Start(uint8 wait) 
@@ -382,7 +382,7 @@ line level    source
  360          ********************************************************************************
  361          *
  362          * Summary:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 7   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 7   
 
  363          *  Returns the USB power status value. A private function to cy_boot.
  364          *
@@ -446,7 +446,7 @@ line level    source
  422   2      
  423   2          case CY_IMO_FREQ_12MHZ:
  424   2              CY_LIB_IMO_TR1_REG = CY_GET_XTND_REG8(CY_LIB_TRIM_IMO_12MHZ_PTR);
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 8   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 8   
 
  425   2              break;
  426   2      
@@ -510,7 +510,7 @@ line level    source
  484          *
  485          * Side Effects:
  486          *  If this function execution results in the CPU clock frequency increasing,
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 9   
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 9   
 
  487          *  then the number of clock cycles the cache will wait before it samples data
  488          *  coming back from the Flash must be adjusted by calling CyFlash_SetWaitCycles()
@@ -574,7 +574,7 @@ line level    source
  546   2      
  547   2          default:
  548   2              CYASSERT(0u != 0u);
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 10  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 10  
 
  549   2              break;
  550   2          }
@@ -638,7 +638,7 @@ line level    source
  608   1          /* Tu rn onIMO Doubler, if switching to CY_IMO_FREQ_USB */
  609   1          if (freq == CY_IMO_FREQ_USB)
  610   1          {
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 11  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 11  
 
  611   2              CyIMO_EnableDoubler();
  612   2          }
@@ -702,7 +702,7 @@ line level    source
  670   2      
  671   2          default:
  672   2              /* Incorrect source value */
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 12  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 12  
 
  673   2              CYASSERT(0u != 0u);
  674   2              break;
@@ -766,7 +766,7 @@ line level    source
  732          *     CY_MASTER_SOURCE_XTAL
  733          *     CY_MASTER_SOURCE_DSI
  734          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 13  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 13  
 
  735          * Return:
  736          *  None
@@ -830,7 +830,7 @@ line level    source
  794          *
  795          * Summary:
  796          *  The function used by CyBusClk_SetDivider(). For internal use only.
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 14  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 14  
 
  797          *
  798          * Parameters:
@@ -894,7 +894,7 @@ line level    source
  856   1          uint8  masterClkDiv;
  857   1          uint16 busClkDiv;
  858   1          uint8 interruptState;
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 15  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 15  
 
  859   1      
  860   1          interruptState = CyEnterCriticalSection();
@@ -958,7 +958,7 @@ line level    source
  918              * Side Effects:
  919              *  If this function execution resulted in the CPU clock frequency increasing,
  920          *  then the number of clock cycles the cache will wait before it samples data
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 16  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 16  
 
  921          *  coming back from the Flash must be adjusted by calling CyFlash_SetWaitCycles()
  922          *  with an appropriate parameter. It can be optionally called if the CPU clock
@@ -1022,7 +1022,7 @@ line level    source
  980          {
  981   1          /* Set bit 1 of ILO RS */
  982   1          CY_LIB_SLOWCLK_ILO_CR0_REG |= CY_LIB_SLOWCLK_ILO_CR0_EN_1KHZ;
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 17  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 17  
 
  983   1      }
  984          
@@ -1086,7 +1086,7 @@ line level    source
 1042          *  None
 1043          *
 1044          * Return:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 18  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 18  
 
 1045          *  None
 1046          *
@@ -1150,7 +1150,7 @@ line level    source
 1104          *
 1105          * Summary:
 1106          *  Sets the source of the clock output from the ILO block.
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 19  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 19  
 
 1107          *
 1108          * Parameters:
@@ -1214,7 +1214,7 @@ line level    source
 1166          * Function Name: CyXTAL_32KHZ_Start
 1167          ********************************************************************************
 1168          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 20  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 20  
 
 1169          * Summary:
 1170          *  Enables the 32 KHz Crystal Oscillator.
@@ -1278,7 +1278,7 @@ line level    source
 1228   1                                   CY_CLK_XTAL32_CFG_LP_DEFAULT;
 1229   1          CY_CLK_XTAL32_CR_REG &= ((uint8)(~(CY_CLK_XTAL32_CR_EN | CY_CLK_XTAL32_CR_LPM)));
 1230   1      
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 21  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 21  
 
 1231   1          #if(CY_PSOC3)
 1232   1              CY_CLK_XTAL32_CR_REG &= ((uint8)(~CY_CLK_XTAL32_CR_PDBEN));
@@ -1342,7 +1342,7 @@ line level    source
 1290   2                                      CY_CLK_XTAL32_CFG_LP_LOWPOWER;
 1291   2              CyDelayUs(20u);
 1292   2              CY_CLK_XTAL32_CR_REG |= CY_CLK_XTAL32_CR_LPM;
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 22  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 22  
 
 1293   2          }
 1294   1          else
@@ -1406,7 +1406,7 @@ line level    source
 1352   1      
 1353   1      
 1354   1          /* Enables MHz crystal oscillator circuit  */
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 23  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 23  
 
 1355   1          CY_CLK_XMHZ_CSR_REG |= CY_CLK_XMHZ_CSR_ENABLE;
 1356   1      
@@ -1470,7 +1470,7 @@ line level    source
 1414          * Summary:
 1415          *  Disables the megahertz crystal oscillator.
 1416          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 24  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 24  
 
 1417          * Parameters:
 1418          *  None
@@ -1534,7 +1534,7 @@ line level    source
 1476          * Function Name: CyXTAL_ReadStatus
 1477          ********************************************************************************
 1478          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 25  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 25  
 
 1479          * Summary:
 1480          *  Reads the XERR status bit for the megahertz crystal. This status bit is a
@@ -1598,7 +1598,7 @@ line level    source
 1538          *  None
 1539          *
 1540          *******************************************************************************/
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 26  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 26  
 
 1541          void CyXTAL_DisableFaultRecovery(void) 
 1542          {
@@ -1662,7 +1662,7 @@ line level    source
 1600          ********************************************************************************
 1601          *
 1602          * Summary:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 27  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 27  
 
 1603          *  Sets the reference voltage used by the watchdog to detect a failure in the
 1604          *  crystal circuit. This function is only available for PSoC3 and PSoC 5LP.
@@ -1726,7 +1726,7 @@ line level    source
 1662          * Return:
 1663          *  None
 1664          *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 28  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 28  
 
 1665          *******************************************************************************/
 1666          void CySoftwareReset(void) 
@@ -1790,7 +1790,7 @@ line level    source
                   *
                   * Parameters:
                   *  uint16 microseconds: number of microseconds to delay.
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 29  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 29  
 
                   *
                   * Return:
@@ -1854,7 +1854,7 @@ line level    source
 1786          *
 1787          *  The timer is configured for the specified count interval, the central
 1788          *  timewheel is cleared, the setting for the low power mode is configured and the
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 30  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 30  
 
 1789          *  watchdog timer is enabled.
 1790          *
@@ -1918,7 +1918,7 @@ line level    source
 1847          *
 1848          * Summary:
 1849          *  Clears (feeds) the watchdog timer.
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 31  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 31  
 
 1850          *
 1851          * Parameters:
@@ -1982,7 +1982,7 @@ line level    source
 1909   1      
 1910   1          *CY_INT_CLR_PEND_PTR = 0x01u;
 1911   1          *CY_INT_ENABLE_PTR   = 0x01u;
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 32  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 32  
 
 1912   1      }
 1913          
@@ -2046,7 +2046,7 @@ line level    source
 1971          *
 1972          * Parameters:
 1973          *  None
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 33  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 33  
 
 1974          *
 1975          * Return:
@@ -2110,7 +2110,7 @@ line level    source
 2033          *
 2034          *******************************************************************************/
 2035          void CyVdHvAnalogEnable(void) 
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 34  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 34  
 
 2036          {
 2037   1          *CY_INT_CLEAR_PTR = 0x01u;
@@ -2174,7 +2174,7 @@ line level    source
 2095          {
 2096   1          uint8 status;
 2097   1      
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 35  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 35  
 
 2098   1          status = CY_VD_PERSISTENT_STATUS_REG;
 2099   1          CY_VD_PERSISTENT_STATUS_REG &= ((uint8)(~mask));
@@ -2238,7 +2238,7 @@ line level    source
 2157   1          #if(CY_PSOC3)
 2158   1      
 2159   1              /* Get the current interrupt state. */
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 36  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 36  
 
 2160   1              intState  = ((uint32) CY_GET_REG8(CY_INT_CLR_EN0_PTR));
 2161   1              intState |= ((uint32) (((uint32) CY_GET_REG8(CY_INT_CLR_EN1_PTR)) << 8u));
@@ -2302,7 +2302,7 @@ line level    source
                       CY_SET_REG32(CY_INT_ENABLE_PTR, mask);
               
                   #endif /* (CY_PSOC3) */
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 37  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 37  
 
 2222   1      
 2223   1          CyExitCriticalSection(interruptState);
@@ -2366,7 +2366,7 @@ line level    source
                   /*******************************************************************************
                   * Function Name: CyIntSetSysVector
                   ********************************************************************************
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 38  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 38  
 
                   * Summary:
                   *  Sets the interrupt vector of the specified system interrupt number. System
@@ -2430,7 +2430,7 @@ line level    source
                   *    CY_INT_SYSTICK_IRQN            - System Tick Interrupt
                   *
                   * Return:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 39  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 39  
 
                   *   Address of the ISR in the interrupt vector table.
                   *
@@ -2494,7 +2494,7 @@ line level    source
                   {
                       cyisraddress *ramVectorTable = *CY_INT_VECT_TABLE;
                       CYASSERT(number <= CY_INT_NUMBER_MAX);
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 40  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 40  
 
               
                       return (ramVectorTable[CY_INT_IRQ_BASE + (number & CY_INT_NUMBER_MASK)]);
@@ -2558,7 +2558,7 @@ line level    source
                   *   Gets the enable state of the specified interrupt number.
                   *
                   * Parameters:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 41  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 41  
 
                   *   number: Valid range [0-31].  Interrupt number.
                   *
@@ -2622,7 +2622,7 @@ line level    source
 2529              * Summary:
 2530              *  Gets the interrupt vector of the specified interrupt number.
 2531              *
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 42  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 42  
 
 2532              * Parameters:
 2533              *  number: Valid range [0-31].  Interrupt number
@@ -2686,7 +2686,7 @@ line level    source
 2591   1      
 2592   1              CYASSERT(number <= CY_INT_NUMBER_MAX);
 2593   1      
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 43  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 43  
 
 2594   1              priority = CY_INT_PRIORITY_PTR[number & CY_INT_NUMBER_MASK] >> 5;
 2595   1      
@@ -2750,7 +2750,7 @@ line level    source
                   * Parameters:
                   *   uint8 enable: Enable/disable SC pumps and the boost clock for the enabled SC block.
                   *                 1 - Enable
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 44  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 44  
 
                   *                 0 - Disable
                   *
@@ -2814,7 +2814,7 @@ line level    source
                           CY_LIB_SC3_BST_REG = CY_LIB_SC3_BST_REG & CY_LIB_SC_BST_CLK_INDEX_MASK;
                       }
                   }
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 45  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 45  
 
               
               #endif  /* (CYDEV_VARIABLE_VDDA == 1) */
@@ -2878,7 +2878,7 @@ line level    source
                   *******************************************************************************/
                   void CySysTickInit(void)
                   {
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 46  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 46  
 
                       uint32 i;
               
@@ -2942,7 +2942,7 @@ line level    source
                   }
               
               
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 47  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 47  
 
                   /*******************************************************************************
                   * Function Name: CySysTickEnableInterrupt
@@ -3006,7 +3006,7 @@ line level    source
                   *  None
                   *
                   *******************************************************************************/
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 48  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 48  
 
                   void CySysTickSetReload(uint32 value)
                   {
@@ -3070,7 +3070,7 @@ line level    source
                   *
                   * Return:
                   *  None
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 49  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 49  
 
                   *
                   * Side Effects:
@@ -3134,7 +3134,7 @@ line level    source
                   {
                       CY_SYS_SYST_CVR_REG = 0u;
                   }
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 50  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 50  
 
               
               
@@ -3198,7 +3198,7 @@ line level    source
                   *
                   * Return:
                   *  None
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 51  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 51  
 
                   *
                   *******************************************************************************/
@@ -3222,7 +3222,7 @@ line level    source
 3103          
 3104          
 3105          /* [] END OF FILE */
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 52  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 52  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -3286,7 +3286,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0048 60EA              JZ      ?C0002
                                            ; SOURCE LINE # 124
                                            ; SOURCE LINE # 125
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 53  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 53  
 
 004A E4                CLR     A
 004B 900000      R     MOV     DPTR,#status
@@ -3350,7 +3350,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 EB                MOV     A,R3
 000A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 198
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 54  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 54  
 
                                            ; SOURCE LINE # 200
 000B 904220            MOV     DPTR,#04220H
@@ -3414,7 +3414,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005B 904221            MOV     DPTR,#04221H
 005E E0                MOVX    A,@DPTR
 005F 548F              ANL     A,#08FH
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 55  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 55  
 
 0061 4F                ORL     A,R7
 0062 F0                MOVX    @DPTR,A
@@ -3478,7 +3478,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002E 120000      R     LCALL   _?CyHalt
                                            ; SOURCE LINE # 267
                                            ; SOURCE LINE # 268
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 56  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 56  
 
                                            ; SOURCE LINE # 269
 0031         ?C0025:
@@ -3542,7 +3542,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 329
 0042         ?C0029:
                                            ; SOURCE LINE # 331
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 57  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 57  
 
 0042 900000      R     MOV     DPTR,#pmFtwCfg0Reg
 0045 E0                MOVX    A,@DPTR
@@ -3606,7 +3606,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 381
                                            ; SOURCE LINE # 382
 0024 7F01              MOV     R7,#01H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 58  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 58  
 
                                            ; SOURCE LINE # 383
 0026         ?C0032:
@@ -3670,7 +3670,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003F 22                RET     
                                            ; SOURCE LINE # 419
 0040         ?C0039:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 59  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 59  
 
                                            ; SOURCE LINE # 420
 0040 7B0C              MOV     R3,#0CH
@@ -3734,7 +3734,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 008B         ?C0044:
                                            ; SOURCE LINE # 446
 008B 7B0C              MOV     R3,#0CH
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 60  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 60  
 
 008D 7A01              MOV     R2,#01H
 008F 790F              MOV     R1,#0FH
@@ -3798,7 +3798,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 14                DEC     A
 0027 6018              JZ      ?C0053
 0029 14                DEC     A
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 61  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 61  
 
 002A 601D              JZ      ?C0054
 002C 14                DEC     A
@@ -3862,7 +3862,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0068         ?C0058:
                                            ; SOURCE LINE # 548
 0068 7F00              MOV     R7,#00H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 62  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 62  
 
 006A 120000      R     LCALL   _?CyHalt
                                            ; SOURCE LINE # 549
@@ -3926,7 +3926,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B3 4401              ORL     A,#01H
 00B5 54BF              ANL     A,#0BFH
 00B7 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 63  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 63  
 
                                            ; SOURCE LINE # 569
 00B8 8040              SJMP    ?C0061
@@ -3990,7 +3990,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 605
                                            ; SOURCE LINE # 606
 00FA         ?C0061:
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 64  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 64  
 
                                            ; SOURCE LINE # 609
 00FA 900000      R     MOV     DPTR,#freq
@@ -4054,7 +4054,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 660
 0017 22                RET     
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 65  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 65  
 
                                            ; SOURCE LINE # 662
 0018         ?C0077:
@@ -4118,7 +4118,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _CyMasterClk_SetSource (BEGIN)
                                            ; SOURCE LINE # 750
 ;---- Variable 'source' assigned to Register 'R7' ----
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 66  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 66  
 
                                            ; SOURCE LINE # 751
                                            ; SOURCE LINE # 753
@@ -4182,7 +4182,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _CyBusClk_Internal_SetDivider (END)
 
              ; FUNCTION _CyBusClk_SetDivider (BEGIN)
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 67  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 67  
 
                                            ; SOURCE LINE # 854
 0000 900000      R     MOV     DPTR,#divider
@@ -4246,7 +4246,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0040 FF                MOV     R7,A
 0041 4E                ORL     A,R6
 0042 700C              JNZ     ?C0090
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 68  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 68  
 
                                            ; SOURCE LINE # 878
                                            ; SOURCE LINE # 880
@@ -4310,7 +4310,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 FF                MOV     R7,A
 0005 904005            MOV     DPTR,#04005H
 0008 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 69  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 69  
 
 0009 540F              ANL     A,#0FH
 000B 4F                ORL     A,R7
@@ -4374,7 +4374,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION CyILO_Stop100K (BEGIN)
                                            ; SOURCE LINE # 1048
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 70  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 70  
 
                                            ; SOURCE LINE # 1049
                                            ; SOURCE LINE # 1050
@@ -4438,7 +4438,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
 ;---- Variable 'state' assigned to Register 'R6' ----
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 71  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 71  
 
                                            ; SOURCE LINE # 1151
 0005 EF                MOV     A,R7
@@ -4502,7 +4502,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 E0                MOVX    A,@DPTR
 0019 4404              ORL     A,#04H
 001B F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 72  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 72  
 
                                            ; SOURCE LINE # 1193
 001C E0                MOVX    A,@DPTR
@@ -4566,7 +4566,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1227
 000B 904309            MOV     DPTR,#04309H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 73  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 73  
 
 000E E0                MOVX    A,@DPTR
 000F 54F3              ANL     A,#0F3H
@@ -4630,7 +4630,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1288
 0023 7F0A              MOV     R7,#0AH
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 74  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 74  
 
 0025 7E00              MOV     R6,#00H
 0027 120000      E     LCALL   _CyDelayUs
@@ -4694,7 +4694,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1347
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 75  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 75  
 
 0007 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1355
@@ -4758,7 +4758,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1378
 0058 7F01              MOV     R7,#01H
 005A 120000      E     LCALL   _CyPmReadStatus
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 76  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 76  
 
 005D EF                MOV     A,R7
 005E 30E0F7            JNB     ACC.0,?C0125
@@ -4822,7 +4822,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1407
 009F         ?C0129:
 009F 22                RET     
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 77  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 77  
 
              ; FUNCTION _CyXTAL_Start (END)
 
@@ -4886,7 +4886,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1521
 0000 904210            MOV     DPTR,#04210H
 0003 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 78  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 78  
 
 0004 4440              ORL     A,#040H
 0006 F0                MOVX    @DPTR,A
@@ -4950,7 +4950,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0002 5470              ANL     A,#070H
 0004 FF                MOV     R7,A
 0005 904213            MOV     DPTR,#04213H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 79  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 79  
 
 0008 E0                MOVX    A,@DPTR
 0009 548F              ANL     A,#08FH
@@ -5014,7 +5014,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001E 120000      E     LCALL   ?C?LLDXDATA
 0021 120000      E     LCALL   _CyDelayCycles
                                            ; SOURCE LINE # 1701
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 80  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 80  
 
 0024 850083      E     MOV     DPH,?C_XBP
 0027 850082      E     MOV     DPL,?C_XBP+01H
@@ -5078,7 +5078,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1770
                                            ; SOURCE LINE # 1771
 0027 7F00              MOV     R7,#00H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 81  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 81  
 
 0029 7E36              MOV     R6,#036H
 002B 7D6E              MOV     R5,#06EH
@@ -5142,7 +5142,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0082 900000      R     MOV     DPTR,#cydelay_freq_khz
 0085 120000      E     LCALL   ?C?LLDXDATA0
 0088 120000      E     LCALL   ?C?LMUL
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 82  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 82  
 
 008B 900000      R     MOV     DPTR,#cydelay_32k_ms
 008E 120000      E     LCALL   ?C?LSTXDATA
@@ -5206,7 +5206,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION _CyVdLvDigitEnable (BEGIN)
                                            ; SOURCE LINE # 1886
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 83  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 83  
 
 0000 900000      R     MOV     DPTR,#reset
 0003 EF                MOV     A,R7
@@ -5270,7 +5270,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0048 7401              MOV     A,#01H
 004A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1911
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 84  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 84  
 
 004B 9044C0            MOV     DPTR,#044C0H
 004E F0                MOVX    @DPTR,A
@@ -5334,7 +5334,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1955
                                            ; SOURCE LINE # 1956
 0041 9046F7            MOV     DPTR,#046F7H
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 85  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 85  
 
 0044 E0                MOVX    A,@DPTR
 0045 547F              ANL     A,#07FH
@@ -5398,7 +5398,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0011 E0                MOVX    A,@DPTR
 0012 5407              ANL     A,#07H
 0014 70F8              JNZ     ?C0161
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 86  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 86  
 
                                            ; SOURCE LINE # 2014
                                            ; SOURCE LINE # 2016
@@ -5462,7 +5462,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 2095
                                            ; SOURCE LINE # 2098
 0000 9046FA            MOV     DPTR,#046FAH
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 87  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 87  
 
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
@@ -5526,7 +5526,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 2161
 0017 900000      R     MOV     DPTR,#intState
 001A 120000      E     LCALL   ?C?LLDXDATA0
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 88  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 88  
 
 001D C000              PUSH    AR0
 001F 9044C9            MOV     DPTR,#044C9H
@@ -5590,7 +5590,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0084 A3                INC     DPTR
 0085 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 2182
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 89  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 89  
 
 0086 900000      R     MOV     DPTR,#interruptState
 0089 E0                MOVX    A,@DPTR
@@ -5654,7 +5654,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 2508
 0000 900000      R     MOV     DPTR,#address
 0003 EC                MOV     A,R4
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 90  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 90  
 
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
@@ -5718,7 +5718,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0054 FE                MOV     R6,A
 0055 A3                INC     DPTR
 0056 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 91  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 91  
 
 0057 FF                MOV     R7,A
 0058 FD                MOV     R5,A
@@ -5782,7 +5782,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 900000      R     MOV     DPTR,#number
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 92  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 92  
 
 0005 A3                INC     DPTR
 0006 ED                MOV     A,R5
@@ -5846,7 +5846,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 D3                SETB    C
 0006 941F              SUBB    A,#01FH
 0008 5002              JNC     ?C0186
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 93  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 93  
 
 000A 8001              SJMP    ?C0187
 000C         ?C0186:
@@ -5910,7 +5910,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0021 13                RRC     A
 0022 CE                XCH     A,R6
 0023 13                RRC     A
-C51 COMPILER V9.51   CYLIB                                                                 04/29/2015 00:20:21 PAGE 94  
+C51 COMPILER V9.51   CYLIB                                                                 05/02/2015 10:57:09 PAGE 94  
 
 0024 D8F9              DJNZ    R0,?C0196
 0026 24C0              ADD     A,#0C0H

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="COUNTER_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="GlitchFilter_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="UPDATE_STEER_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CAM_LINE_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="COM_SYNC_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="SEC_TIL_BLACK_TIMER_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="CAPTURE_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="SEC_TIL_BLACK_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -43,27 +50,23 @@
       </field>
     </register>
   </block>
-  <block name="COUNTER_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CAM_LINE_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="TIMER_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="STEERING_PWM_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="COM_SYNC_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SEC_TIL_BLACK_TIMER_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="PWM_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="DIR_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="DIR_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ON_OFF_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ON_OFF_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HBRIDGE_L_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="GlitchFilter_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="UPDATE_STEER_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="and_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="DIR_REG" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <register name="DIR_REG_CONTROL_REG" address="0x6575" bitWidth="8" desc="" />
   </block>
-  <block name="MOTOR_PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="HBRIDGE_R_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="HE_TIMER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="TIMER_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="HE_TIMER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="HBRIDGE_R_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_IN_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="MOTOR_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true">
@@ -136,7 +139,7 @@
   <block name="LCD" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="LCDPort" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   </block>
-  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="STEERING_PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="LINE_COUNTER" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -190,7 +193,7 @@
       </field>
     </register>
   </block>
-  <block name="LINE_COUNTER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="STEERING_PWM_OUT_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="STEERING_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -258,7 +261,7 @@
       </field>
     </register>
   </block>
-  <block name="STEERING_PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="LINE_COUNTER_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="COMPARATOR_PIN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="HE_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />

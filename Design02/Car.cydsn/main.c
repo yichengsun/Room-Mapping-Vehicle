@@ -45,6 +45,8 @@ int gsteer_error_prev = 0;
 
 uint8 direction = 0;
 
+int gONOFF = 0;
+int gcurr_dir = 0;
 /*
 void updateSteering() {
     double error;   
@@ -100,6 +102,7 @@ CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
     }
 */
 
+/*
 //Averages out speed for the last wheel rotation to even out magnet spacing
 double getSpeedAvg(double speeds[]){
     double counter = 0;
@@ -126,6 +129,7 @@ double getCurSpeed(){
     // return (double)current_Speed;
     return current_Speed;
 }
+
 
 //Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
 CY_ISR(HE_inter) {
@@ -197,6 +201,23 @@ CY_ISR(HE_inter) {
         MOTOR_PWM_WriteCompare(duty_cycle);
     }   
 }
+*/
+
+CY_ISR(DIR_inter) {
+    gcurr_dir = DIR_PIN_Read();
+    DIR_REG_Write(gcurr_dir);
+}
+
+CY_ISR(ON_OFF_inter) {
+    if (gONOFF == 0) {
+        MOTOR_PWM_WriteCompare(1000);
+        gONOFF = 1;
+    }
+    else if (gONOFF == 1) {
+        MOTOR_PWM_WriteCompare(0);
+        gONOFF = 0;
+    }
+}
 
 int main()
 {
@@ -205,10 +226,19 @@ int main()
     //HE_TIMER_Start();
     //HE_ISR_Start();
     //HE_ISR_SetVector(HE_inter);
+    
+    
+    DIR_ISR_Start();
+    DIR_ISR_SetVector(DIR_inter);
+    ON_OFF_ISR_Start();
+    ON_OFF_ISR_SetVector(ON_OFF_inter);
+    
+    
     MOTOR_PWM_Start();
     MOTOR_PWM_CLK_Start();
-    DIR_REG_Write(1);
-    MOTOR_PWM_WriteCompare(8000);
+    DIR_REG_Write(0);
+    
+    //MOTOR_PWM_WriteCompare(1500);
     
     //LINE_COUNTER_Start();  
     //SEC_TIL_BLACK_TIMER_ISR_Start();

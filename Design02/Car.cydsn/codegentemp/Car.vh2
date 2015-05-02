@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Apr 29 00:32:41 2015
+--	Sat May 02 11:01:28 2015
 --
 
 USE cypress.cypress.all;
@@ -2040,21 +2040,21 @@ SIGNAL \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \GlitchFilter_1:genblk2:Counter0:DP:f1_blk_stat_reg\:SIGNAL IS 2;
 SIGNAL \DIR_REG:clk\ : bit;
 SIGNAL \DIR_REG:rst\ : bit;
-SIGNAL Net_8573 : bit;
+SIGNAL Net_9041 : bit;
 SIGNAL \DIR_REG:control_out_0\ : bit;
-SIGNAL Net_8629 : bit;
+SIGNAL Net_9068 : bit;
 SIGNAL \DIR_REG:control_out_1\ : bit;
-SIGNAL Net_8630 : bit;
+SIGNAL Net_9069 : bit;
 SIGNAL \DIR_REG:control_out_2\ : bit;
-SIGNAL Net_8631 : bit;
+SIGNAL Net_9070 : bit;
 SIGNAL \DIR_REG:control_out_3\ : bit;
-SIGNAL Net_8632 : bit;
+SIGNAL Net_9072 : bit;
 SIGNAL \DIR_REG:control_out_4\ : bit;
-SIGNAL Net_8633 : bit;
+SIGNAL Net_9073 : bit;
 SIGNAL \DIR_REG:control_out_5\ : bit;
-SIGNAL Net_8634 : bit;
+SIGNAL Net_9074 : bit;
 SIGNAL \DIR_REG:control_out_6\ : bit;
-SIGNAL Net_8635 : bit;
+SIGNAL Net_9075 : bit;
 SIGNAL \DIR_REG:control_out_7\ : bit;
 SIGNAL \DIR_REG:control_7\ : bit;
 SIGNAL \DIR_REG:control_6\ : bit;
@@ -2071,11 +2071,16 @@ SIGNAL tmpFB_0__HBRIDGE_L_PIN_net_0 : bit;
 SIGNAL tmpIO_0__HBRIDGE_L_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__HBRIDGE_L_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__HBRIDGE_L_PIN_net_0 : bit;
-SIGNAL tmpOE__PWM_OUT_PIN_net_0 : bit;
-SIGNAL tmpFB_0__PWM_OUT_PIN_net_0 : bit;
-SIGNAL tmpIO_0__PWM_OUT_PIN_net_0 : bit;
-TERMINAL tmpSIOVREF__PWM_OUT_PIN_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__PWM_OUT_PIN_net_0 : bit;
+SIGNAL Net_9043 : bit;
+SIGNAL tmpOE__DIR_PIN_net_0 : bit;
+SIGNAL tmpFB_0__DIR_PIN_net_0 : bit;
+SIGNAL tmpIO_0__DIR_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__DIR_PIN_net_0 : bit;
+SIGNAL Net_9047 : bit;
+SIGNAL tmpOE__ON_OFF_PIN_net_0 : bit;
+SIGNAL tmpFB_0__ON_OFF_PIN_net_0 : bit;
+SIGNAL tmpIO_0__ON_OFF_PIN_net_0 : bit;
+TERMINAL tmpSIOVREF__ON_OFF_PIN_net_0 : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -2183,9 +2188,9 @@ Net_8187 <= (not Net_8190);
 \GlitchFilter_1:state_0\\D\ <= ((not \GlitchFilter_1:counter_done_0\ and Net_5305)
 	OR (Net_8223 and \GlitchFilter_1:counter_done_0\));
 
-Net_8587 <= ((Net_8638 and Net_8573));
+Net_8587 <= ((Net_8638 and Net_9041));
 
-Net_8585 <= ((not Net_8573 and Net_8638));
+Net_8585 <= ((not Net_9041 and Net_8638));
 
 HE_IN_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
@@ -4548,7 +4553,7 @@ UPDATE_STEER_ISR:cy_isr_v1_0
 	PORT MAP(reset=>zero,
 		clock=>zero,
 		control=>(\DIR_REG:control_7\, \DIR_REG:control_6\, \DIR_REG:control_5\, \DIR_REG:control_4\,
-			\DIR_REG:control_3\, \DIR_REG:control_2\, \DIR_REG:control_1\, Net_8573));
+			\DIR_REG:control_3\, \DIR_REG:control_2\, \DIR_REG:control_1\, Net_9041));
 HBRIDGE_L_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"be2903cd-e69d-4a6a-962f-3d0b91acd8e9",
 		drive_mode=>"110",
@@ -4618,15 +4623,18 @@ HBRIDGE_L_PIN:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__HBRIDGE_L_PIN_net_0);
-PWM_OUT_PIN:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"7d879d8d-907b-417d-9a9a-48efa7b86bbd",
-		drive_mode=>"110",
+DIR_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_9043);
+DIR_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"992486fc-aec4-46a0-b301-c5f288fcb326",
+		drive_mode=>"001",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"1",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
-		intr_mode=>"00",
+		intr_mode=>"11",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',
@@ -4635,7 +4643,7 @@ PWM_OUT_PIN:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
+		output_conn=>"0",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -4645,7 +4653,7 @@ PWM_OUT_PIN:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"I",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"",
@@ -4658,7 +4666,7 @@ PWM_OUT_PIN:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"10",
+		vtrip=>"00",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
@@ -4674,11 +4682,11 @@ PWM_OUT_PIN:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
-		y=>Net_8638,
-		fb=>(tmpFB_0__PWM_OUT_PIN_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__DIR_PIN_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__PWM_OUT_PIN_net_0),
-		siovref=>(tmpSIOVREF__PWM_OUT_PIN_net_0),
+		io=>(tmpIO_0__DIR_PIN_net_0),
+		siovref=>(tmpSIOVREF__DIR_PIN_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
@@ -4686,7 +4694,79 @@ PWM_OUT_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__PWM_OUT_PIN_net_0);
+		interrupt=>Net_9043);
+ON_OFF_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_9047);
+ON_OFF_PIN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"26a4a749-32bb-4b6d-9f2d-efc0461eb2aa",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"11",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__ON_OFF_PIN_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__ON_OFF_PIN_net_0),
+		siovref=>(tmpSIOVREF__ON_OFF_PIN_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
+		out_reset=>zero,
+		interrupt=>Net_9047);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,

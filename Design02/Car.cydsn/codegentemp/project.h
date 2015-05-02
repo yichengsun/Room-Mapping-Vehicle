@@ -52,8 +52,12 @@
 #include <DIR_REG.h>
 #include <HBRIDGE_L_PIN.h>
 #include <HBRIDGE_L_PIN_aliases.h>
-#include <PWM_OUT_PIN.h>
-#include <PWM_OUT_PIN_aliases.h>
+#include <DIR_ISR.h>
+#include <DIR_PIN.h>
+#include <DIR_PIN_aliases.h>
+#include <ON_OFF_ISR.h>
+#include <ON_OFF_PIN.h>
+#include <ON_OFF_PIN_aliases.h>
 #include <LCD_LCDPort.h>
 #include <LCD_LCDPort_aliases.h>
 #include <CyDmac.h>

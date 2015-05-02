@@ -1,5 +1,5 @@
 # Car
-# 2015-04-29 04:32:46Z
+# 2015-05-02 15:01:35Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -12,23 +12,28 @@ set_io "COMPARATOR_PIN(0)" iocell 12 2
 set_io "COM_SYNC_OUT_PIN(0)" iocell 4 2
 set_io "COUNTER_OUT_PIN(0)" iocell 3 4
 set_location "ClockBlock" clockblockcell -1 -1 0
+set_location "DIR_ISR" interrupt -1 -1 5
+set_location "DIR_PIN" logicalport -1 -1 1
+set_io "DIR_PIN(0)" iocell 1 2
 set_io "HBRIDGE_L_PIN(0)" iocell 3 7
 set_io "HBRIDGE_R_PIN(0)" iocell 3 5
 set_io "HE_IN_PIN(0)" iocell 4 3
 set_location "HE_ISR" interrupt -1 -1 0
 set_location "Net_459" 3 5 0 0
-set_location "Net_5259" 1 4 0 1
-set_location "Net_5305" 1 3 1 2
-set_location "Net_7123" 2 1 1 3
-set_location "Net_8187" 2 5 0 0
+set_location "Net_5259" 1 4 1 1
+set_location "Net_5305" 1 3 1 0
+set_location "Net_7123" 2 1 0 3
+set_location "Net_8187" 2 5 1 0
 set_location "Net_8312" 2 3 1 2
 set_location "Net_8585" 3 0 0 2
-set_location "Net_8587" 3 0 0 3
-set_location "Net_8638" 1 0 0 0
-set_io "PWM_OUT_PIN(0)" iocell 3 3
+set_location "Net_8587" 3 0 1 1
+set_location "Net_8638" 1 0 1 1
+set_location "ON_OFF_ISR" interrupt -1 -1 4
+set_location "ON_OFF_PIN" logicalport -1 -1 0
+set_io "ON_OFF_PIN(0)" iocell 0 6
 set_location "SEC_TIL_BLACK_TIMER_ISR" interrupt -1 -1 1
 set_io "STEERING_PWM_OUT_PIN(0)" iocell 4 6
-set_io "TIMER_OUT_PIN(0)" iocell 0 6
+set_io "TIMER_OUT_PIN(0)" iocell 12 3
 set_location "UPDATE_STEER_ISR" interrupt -1 -1 2
 set_io "VERT_SYNC_OUT_PIN(0)" iocell 4 4
 set_location "\DIR_REG:Sync:ctrl_reg\" 3 0 6
@@ -39,7 +44,7 @@ set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u0\" 2 0 2
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u1\" 3 0 2
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u2\" 3 1 2
 set_location "\HE_TIMER:TimerUDB:sT32:timerdp:u3\" 2 1 2
-set_location "\HE_TIMER:TimerUDB:status_tc\" 2 1 0 0
+set_location "\HE_TIMER:TimerUDB:status_tc\" 2 1 1 0
 set_io "\LCD:LCDPort(0)\" iocell 2 0
 set_io "\LCD:LCDPort(1)\" iocell 2 1
 set_io "\LCD:LCDPort(2)\" iocell 2 2
@@ -57,24 +62,24 @@ set_location "\LINE_COUNTER:CounterUDB:sC32:counterdp:u3\" 2 4 2
 set_location "\LINE_COUNTER:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 5 6
 set_location "\LINE_COUNTER:CounterUDB:sSTSReg:rstSts:stsreg\" 2 4 4
 set_location "\LINE_COUNTER:CounterUDB:status_0\" 2 4 1 2
-set_location "\LINE_COUNTER:CounterUDB:status_2\" 2 4 0 0
+set_location "\LINE_COUNTER:CounterUDB:status_2\" 2 4 1 1
 set_location "\MOTOR_PWM:PWMUDB:genblk1:ctrlreg\" 1 0 6
-set_location "\MOTOR_PWM:PWMUDB:runmode_enable\" 1 0 1 0
+set_location "\MOTOR_PWM:PWMUDB:runmode_enable\" 1 0 0 3
 set_location "\MOTOR_PWM:PWMUDB:sP16:pwmdp:u0\" 0 0 2
 set_location "\MOTOR_PWM:PWMUDB:sP16:pwmdp:u1\" 1 0 2
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\" 2 2 0 3
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\" 2 3 0 0
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\" 2 1 0 2
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\" 2 3 1 0
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\" 2 3 0 1
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_fifo_load\" 2 3 1 3
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capt_int_temp\" 2 3 1 0
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:capture_last\" 2 1 1 3
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_0\" 2 2 0 2
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:int_capt_count_1\" 2 2 1 3
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:rstSts:stsreg\" 2 3 4
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u0\" 2 3 2
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u1\" 3 3 2
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u2\" 3 2 2
 set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:sT32:timerdp:u3\" 2 2 2
-set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\" 2 4 0 3
+set_location "\SEC_TIL_BLACK_TIMER:TimerUDB:status_tc\" 2 4 1 3
 set_location "\STEERING_PWM:PWMUDB:genblk1:ctrlreg\" 1 4 6
-set_location "\STEERING_PWM:PWMUDB:runmode_enable\" 1 4 1 3
+set_location "\STEERING_PWM:PWMUDB:runmode_enable\" 1 4 0 0
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u0\" 1 4 2
 set_location "\STEERING_PWM:PWMUDB:sP16:pwmdp:u1\" 0 4 2
-set_location "__ONE__" 0 5 0 2
+set_location "__ONE__" 0 1 0 2

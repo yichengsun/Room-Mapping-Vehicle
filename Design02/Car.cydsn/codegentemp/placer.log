@@ -6,7 +6,7 @@
 
 #Build Date:         Oct 23 2014 13:00:08
 
-#File Generated:     Apr 29 2015 00:32:43
+#File Generated:     May 2 2015 11:01:31
 
 #Purpose:            
 
@@ -55,7 +55,7 @@ Design Statistics after Packing
 Device Utilization Summary after Packing
     Macrocells                  :	24/192
     UDBS                        :	17/24
-    IOs                         :	18/72
+    IOs                         :	19/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -93,7 +93,7 @@ Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
                      End of Clock Summary
 ######################################################################
 
-D2088: Phase 6, elapsed time : 0.1 (sec)
+D2088: Phase 6, elapsed time : 0.2 (sec)
 
 Phase 7
 ######################################################################
@@ -106,13 +106,13 @@ Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  12.0 MHz
-Clock: MOTOR_PWM_CLK        | Frequency:  40.6 MHz | Target:   1.0 MHz
+Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.0 MHz
 Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.3 (sec)
+D2088: Phase 7, elapsed time : 0.4 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	11
@@ -122,11 +122,101 @@ Final Design Statistics
     Number of Status            	:	3
     Number of SyncCells         	:	0
     Number of count7cells       	:	0
-    Number of IOs       	:	18
+    Number of IOs       	:	19
 
 Device Utilization Summary
     Macrocells                  :	24/192
-    IOs                         :	18/72
+    IOs                         :	19/72
+
+
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  25.7 MHz | Target:  26.3 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
+Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
+Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+Phase 6
+
+######################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+======================================================================
+
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  24.3 MHz | Target:  26.3 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
+Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
+Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+D2088: Phase 6, elapsed time : 0.2 (sec)
+
+Phase 7
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 8
+Clock: CyBUS_CLK            | Frequency:  25.7 MHz | Target:  26.3 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: HE_TIMER_CLK         | Frequency:  28.0 MHz | Target:  13.2 MHz
+Clock: MOTOR_PWM_CLK        | Frequency:  42.7 MHz | Target:   1.1 MHz
+Clock: STEERING_PWM_CLK     | Frequency:  42.7 MHz | Target:   3.3 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+D2088: Phase 7, elapsed time : 1.1 (sec)
+
+Final Design Statistics
+    Number of Combinational MCs 	:	11
+    Number of Sequential MCs    	:	13
+    Number of DPs               	:	17
+    Number of Controls          	:	5
+    Number of Status            	:	3
+    Number of SyncCells         	:	0
+    Number of count7cells       	:	0
+    Number of IOs       	:	19
+
+Device Utilization Summary
+    Macrocells                  :	24/192
+    IOs                         :	19/72
 
 
 
@@ -161,5 +251,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 2.4 sec.
+I2076: Total run-time: 2.9 sec.
 
