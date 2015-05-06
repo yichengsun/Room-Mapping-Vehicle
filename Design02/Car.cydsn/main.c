@@ -47,174 +47,34 @@ uint8 direction = 0;
 
 int gONOFF = 0;
 int gcurr_dir = 0;
-/*
-void updateSteering() {
-    double error;   
-    double duty_cycle_buffer;
-    uint16 duty_cycle;
-    char buffer[10];
-    
-    
-    //Calculate the error for feedback 
-    error = gblack_totalpos_diff - CENTER_LINE;
-    
-    // left max 3600; center 4560; right max 5800
-    //gki_steererror = gki_steererror+error*.000011;
-    gsteer_dutycycle = CENTER_DUTY - Kp_steer*error - Kd_steer*(gsteer_error_prev-error)/395372.0;
-    gsteer_error_prev=error;
-    
-    if (gblack_totalpos_diff > CENTER_LINE){
-        gExpectedSpeed = 5.5 - (gblack_totalpos_diff-CENTER_LINE)/240.0*2;
-    }
-    else {
-        gExpectedSpeed = 5.5 - (CENTER_LINE-gblack_totalpos_diff)/310.0*2;
-    }
-    //Have in place error checking to prevent sporadic  behavior
-    if (gsteer_dutycycle > 5700){
-        gsteer_dutycycle = 5800;   
-    }
-    if (gsteer_dutycycle <= 3700) {
-        gsteer_dutycycle = 3550;
-    }
-    
-    STEERING_PWM_WriteCompare(gsteer_dutycycle);
-}
 
-CY_ISR(UPDATE_STEER_inter) {
-    updateSteering();
-}
-
-CY_ISR(SEC_TIL_BLACK_TIMER_inter) {
-    char buffer[15];
-    gfirstpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    gsecondpos = SEC_TIL_BLACK_TIMER_ReadCapture();
-    SEC_TIL_BLACK_TIMER_ClearFIFO();
-
-    gblack_totalpos_diff = (double)(gsecondpos - gfirstpos);
-    if (gblack_totalpos_diff < 280){
-        gblack_totalpos_diff = 280;
-    }
-    else if (gblack_totalpos_diff > 1200){
-        gblack_totalpos_diff = 1200;   
-    }
-
-    SEC_TIL_BLACK_TIMER_ReadStatusRegister();
-    }
-*/
-
-/*
-//Averages out speed for the last wheel rotation to even out magnet spacing
-double getSpeedAvg(double speeds[]){
-    double counter = 0;
-    uint32 i = 0;
-    uint32 size = 5;
-    if (gspeedMeasurements < 5) {
-        size = gspeedMeasurements;
-    }
-    for (i = 0; i < size; i++){
-        counter = counter + speeds[i];   
-    }
-    return counter/(double)size;
-}
-
-//Grab current speed via unit conversions
-double getCurSpeed(){
-    double current_Speed = 0;
-    //average clock tix b/w two magnets in one rotation
-    current_Speed = getSpeedAvg(speedCounts);
-    //average sec elapsed b/w two magnets
-    current_Speed = (double)current_Speed/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
-    //average speed b/w two magnets
-    current_Speed = (double)INCH_PER_MAGNET/current_Speed/12;
-    // return (double)current_Speed;
-    return current_Speed;
-}
-
-
-//Interrupt on each hall effect sensor passing by to update speed and PWM duty cycle
-CY_ISR(HE_inter) {
-    double curr_HE_count = 0;
-    double time_diff = 0;
-    double time_diff_s = 0;
-    double error = 0;
-    double PID_speed = 0;
-    char buffer[15];
-    double duty_cycle_buffer = 0;
-    uint16 duty_cycle = 0;
-    gTotalTraveled += INCH_PER_MAGNET;
-    
-    //Special first time read   
-    if (gfirst_HE_read == 1) {
-        gprev_HE_count = HE_TIMER_ReadCounter();
-        gfirst_HE_read = 0;
-    } 
-    else {
-        curr_HE_count = HE_TIMER_ReadCounter();
-        if (gprev_HE_count < curr_HE_count) {
-            gprev_HE_count = gprev_HE_count + HE_TIMER_ReadPeriod();
-        }
-
-        //Calculate the time difference between each magnet passing by
-        time_diff = gprev_HE_count - curr_HE_count;
-        time_diff_s = time_diff/HE_TIMER_ReadPeriod() * SEC_PER_PERIOD;
-        
-        speedCounts[gspeedMeasurements%5] = time_diff;
-        gspeedMeasurements++;
-        gcurSpeed = getCurSpeed();
-        gprev_HE_count = curr_HE_count;
-        //Calculate the error for feedback 
-        error = gExpectedSpeed - gcurSpeed;
-        //Accumulate past errors for Ki
-        gki_speederror = gki_speederror+error*time_diff_s;
-        // Discard saved error from acceleration as it becomes less relevant after starting
-        if (gspeedMeasurements == 28) gki_speederror = 0;
-        //Calculate the duty cycle based upon Kp, Ki, and Kd
-        duty_cycle_buffer = THREE_FT_DUTY + Kp*error + Ki*gki_speederror + Kd*error/time_diff_s;
-        
-       //LCD output for debugging
-       LCD_ClearDisplay();
-       LCD_Position(0,0);
-       sprintf(buffer, "%f", duty_cycle_buffer);   
-       LCD_PrintString(buffer);
-       LCD_Position(1, 1);
-       LCD_PrintString("//");
-       sprintf(buffer, "%f", error);
-       LCD_PrintString(buffer);
-        
-        //Have in place error checking to ensure duty cycle goes to 1 if negative and caps at a 
-        //certain duty cycle to prevent sporadic  behavior
-        if (duty_cycle_buffer > 4000){
-            duty_cycle_buffer = 1350;   
-        }
-        if (duty_cycle_buffer <= 0) duty_cycle_buffer = 1;
-        if (gTotalTraveled > 2450){
-            duty_cycle_buffer = 1;
-        }
-        duty_cycle = duty_cycle_buffer;
-
-        
-//        //more LCD debugging code
-//        LCD_Position(1, 0);
-//        //sprintf(buffer, "%f", duty_cycle);
-//        LCD_PrintNumber(duty_cycle);
-
-        MOTOR_PWM_WriteCompare(duty_cycle);
-    }   
-}
-*/
 
 CY_ISR(DIR_inter) {
-    gcurr_dir = DIR_PIN_Read();
-    DIR_REG_Write(gcurr_dir);
+    if (gcurr_dir == 0) {
+        LCD_ClearDisplay();
+        LCD_PrintString("forwards!");
+        gcurr_dir = 1;
+        DIR_REG_Write(gcurr_dir);
+    } 
+    else if (gcurr_dir == 1) {
+        LCD_ClearDisplay();
+        LCD_PrintString("backwards!");
+        gcurr_dir = 0;
+        DIR_REG_Write(gcurr_dir);
+    }
 }
 
 CY_ISR(ON_OFF_inter) {
     if (gONOFF == 0) {
-        MOTOR_PWM_WriteCompare(1000);
+        MOTOR_PWM_WriteCompare(1500);
+        LCD_ClearDisplay();
+        LCD_PrintString("motor on!");
         gONOFF = 1;
     }
     else if (gONOFF == 1) {
         MOTOR_PWM_WriteCompare(0);
+        LCD_ClearDisplay();
+        LCD_PrintString("motor off!");
         gONOFF = 0;
     }
 }
@@ -223,37 +83,23 @@ int main()
 {
     //initialize all modules
     CYGlobalIntEnable;  
-    //HE_TIMER_Start();
-    //HE_ISR_Start();
-    //HE_ISR_SetVector(HE_inter);
-    
     
     DIR_ISR_Start();
     DIR_ISR_SetVector(DIR_inter);
+    
     ON_OFF_ISR_Start();
     ON_OFF_ISR_SetVector(ON_OFF_inter);
-    
-    
-    MOTOR_PWM_Start();
-    MOTOR_PWM_CLK_Start();
-    DIR_REG_Write(0);
-    
-    //MOTOR_PWM_WriteCompare(1500);
-    
-    //LINE_COUNTER_Start();  
-    //SEC_TIL_BLACK_TIMER_ISR_Start();
-    //SEC_TIL_BLACK_TIMER_ISR_SetVector(SEC_TIL_BLACK_TIMER_inter);
-    //SEC_TIL_BLACK_TIMER_Start();
-
-    //UPDATE_STEER_ISR_Start();
-    //UPDATE_STEER_ISR_SetVector(UPDATE_STEER_inter);
-    
-    //STEERING_PWM_Start();
-    //STEERING_PWM_CLK_Start();
     
     LCD_Start();
     LCD_Position(0,0);
     LCD_PrintString("ELE302 Carlab ");
+    
+    MOTOR_PWM_Start();
+    MOTOR_PWM_CLK_Start();
+    
+    //start off driving forward
+    DIR_REG_Write(1);
+   
     for(;;)
     {
     }

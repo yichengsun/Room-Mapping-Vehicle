@@ -17,13 +17,13 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <register name="SEC_TIL_BLACK_TIMER_COUNTER" address="0x6404" bitWidth="32" desc="UDB.A0 - Current Down Counter Value" />
     <register name="SEC_TIL_BLACK_TIMER_PERIOD" address="0x6424" bitWidth="32" desc="UDB.D0 - Assigned Period" />
-    <register name="SEC_TIL_BLACK_TIMER_STATUS_MASK" address="0x6484" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
+    <register name="SEC_TIL_BLACK_TIMER_STATUS_MASK" address="0x6487" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
       <field name="TIMER_STS_TC" from="0" to="0" access="R" resetVal="" desc="Enables the Interrupt on TC" />
       <field name="TIMER_STS_CAPT" from="1" to="1" access="R" resetVal="" desc="Enables the Interrupt on Capture" />
       <field name="TIMER_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="FIFO Full Status " />
       <field name="TIMER_STS_FIFO_NEMPTY" from="3" to="3" access="R" resetVal="" desc="FIFO Empty status " />
     </register>
-    <register name="SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL" address="0x6494" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL" address="0x6497" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -77,13 +77,13 @@
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="MOTOR_PWM_COMPARE_Reg" address="0x652A" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" />
-    <register name="MOTOR_PWM_Control_Reg" address="0x657B" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="MOTOR_PWM_COMPARE_Reg" address="0x6428" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" />
+    <register name="MOTOR_PWM_Control_Reg" address="0x6478" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" />
     </register>
-    <register name="MOTOR_PWM_STATUS_AUX_CTRLDP0" address="0x659A" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="MOTOR_PWM_STATUS_AUX_CTRLDP0" address="0x6498" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -109,7 +109,7 @@
         <value name="E_CNT_START1" value="1" desc="Enable counter" />
       </field>
     </register>
-    <register name="MOTOR_PWM_STATUS_AUX_CTRLDP1" address="0x659B" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="MOTOR_PWM_STATUS_AUX_CTRLDP1" address="0x6499" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -203,7 +203,7 @@
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <register name="STEERING_PWM_COMPARE_Reg" address="0x642C" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" />
-    <register name="STEERING_PWM_Control_Reg" address="0x647C" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="STEERING_PWM_Control_Reg" address="0x647D" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" />

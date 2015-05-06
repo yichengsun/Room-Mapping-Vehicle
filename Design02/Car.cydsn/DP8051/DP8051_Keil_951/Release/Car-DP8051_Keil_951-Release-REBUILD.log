@@ -1,4 +1,4 @@
---------------- Rebuild Started: 05/02/2015 10:56:46 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
+--------------- Rebuild Started: 05/02/2015 16:05:55 Project: Car, Configuration: DP8051 Keil 9.51 Release ---------------
 Deleting file ".\DP8051\DP8051_Keil_951\Release\main.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Release\HE_ISR.obj"
@@ -60,7 +60,6 @@ HDL Generation ...
 Synthesis ...
 Place and Route ...
 Tech mapping ...
-ADD: pft.M0040: information: The following 2 pin(s) will be assigned a location by the fitter: DIR_PIN(0), TIMER_OUT_PIN(0)
 Analog Placement ...
 Analog Routing ...
 Analog Code Generation ...
@@ -160,10 +159,50 @@ c51.exe .\Generated_Source\PSoC3\DIR_PIN.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP "IN
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
 LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Release\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Release\HE_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Release\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Release\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Release\CyLib.obj', '.\DP8051\DP8051_Keil_951\Release\cymem.obj', '.\DP8051\DP8051_Keil_951\Release\cyPm.obj', '.\DP8051\DP8051_Keil_951\Release\CySpc.obj', '.\DP8051\DP8051_Keil_951\Release\cyutils.obj', '.\DP8051\DP8051_Keil_951\Release\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Release\LCD.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_PM.obj', '.\DP8051\DP8051_Keil_951\Release\LCD_LCDPort.obj', '.\DP8051\DP8051_Keil_951\Release\HE_IN_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\HE_TIMER_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\COM_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\MOTOR_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_PM.obj', '.\DP8051\DP8051_Keil_951\Release\STEERING_PWM_CLK.obj', '.\DP8051\DP8051_Keil_951\Release\VERT_SYNC_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER.obj', '.\DP8051\DP8051_Keil_951\Release\LINE_COUNTER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_PM.obj', '.\DP8051\DP8051_Keil_951\Release\SEC_TIL_BLACK_TIMER_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\COMPARATOR_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\COUNTER_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\TIMER_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\CAPTURE_OUT_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\UPDATE_STEER_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\DIR_REG.obj', '.\DP8051\DP8051_Keil_951\Release\HBRIDGE_R_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\HBRIDGE_L_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\DIR_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\ON_OFF_ISR.obj', '.\DP8051\DP8051_Keil_951\Release\ON_OFF_PIN.obj', '.\DP8051\DP8051_Keil_951\Release\DIR_PIN.obj' TO '.\DP8051\DP8051_Keil_951\Release\Car.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Release\main.obj', '.\DP8051\DP8051_Keil_951\Release\Car.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Release\CyComponentLibrary.lib' TO '.\DP8051\DP8051_Keil_951\Release\Car.omf' CODE RU RC(10) DW(16) WL(2) PR(.\DP8051\DP8051_Keil_951\Release/Car.map) IX CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
-Program Size: data=14.0 xdata=203 const=35 code=3413
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRITECONTROL/LCD
+    CALLER1: DIR_INTER/MAIN
+    CALLER2: ON_OFF_INTER/MAIN
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    LCD_ISREADY/LCD
+    CALLER1: DIR_INTER/MAIN
+    CALLER2: ON_OFF_INTER/MAIN
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_PRINTSTRING/LCD
+    CALLER1: DIR_INTER/MAIN
+    CALLER2: ON_OFF_INTER/MAIN
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRITEDATA/LCD
+    CALLER1: DIR_INTER/MAIN
+    CALLER2: ON_OFF_INTER/MAIN
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRDATNIB/LCD
+    CALLER1: DIR_INTER/MAIN
+    CALLER2: ON_OFF_INTER/MAIN
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRITECONTROL/LCD
+    CALLER1: ON_OFF_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    LCD_ISREADY/LCD
+    CALLER1: ON_OFF_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_PRINTSTRING/LCD
+    CALLER1: ON_OFF_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRITEDATA/LCD
+    CALLER1: ON_OFF_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _LCD_WRDATNIB/LCD
+    CALLER1: ON_OFF_INTER/MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=14.0 xdata=227 const=40 code=3543
 OHx51.exe Car.omf HEXFILE(Car.ihx)
 c8051-elf-omf2elf.exe Car.omf Car.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Release\Car.hex -f .\DP8051\DP8051_Keil_951\Release\Car.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 3448 of 65536 bytes (5.3 %).
-SRAM used: 203 of 8192 bytes (2.5 %).
---------------- Rebuild Succeeded: 05/02/2015 10:57:17 ---------------
+Flash used: 3583 of 65536 bytes (5.5 %).
+SRAM used: 227 of 8192 bytes (2.8 %).
+--------------- Rebuild Succeeded: 05/02/2015 16:06:28 ---------------

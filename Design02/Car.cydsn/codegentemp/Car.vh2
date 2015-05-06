@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat May 02 11:01:28 2015
+--	Tue May 05 14:40:37 2015
 --
 
 USE cypress.cypress.all;
@@ -2071,16 +2071,16 @@ SIGNAL tmpFB_0__HBRIDGE_L_PIN_net_0 : bit;
 SIGNAL tmpIO_0__HBRIDGE_L_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__HBRIDGE_L_PIN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__HBRIDGE_L_PIN_net_0 : bit;
-SIGNAL Net_9043 : bit;
+SIGNAL Net_9088 : bit;
 SIGNAL tmpOE__DIR_PIN_net_0 : bit;
-SIGNAL tmpFB_0__DIR_PIN_net_0 : bit;
 SIGNAL tmpIO_0__DIR_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__DIR_PIN_net_0 : bit;
-SIGNAL Net_9047 : bit;
+SIGNAL tmpINTERRUPT_0__DIR_PIN_net_0 : bit;
+SIGNAL Net_9092 : bit;
 SIGNAL tmpOE__ON_OFF_PIN_net_0 : bit;
-SIGNAL tmpFB_0__ON_OFF_PIN_net_0 : bit;
 SIGNAL tmpIO_0__ON_OFF_PIN_net_0 : bit;
 TERMINAL tmpSIOVREF__ON_OFF_PIN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__ON_OFF_PIN_net_0 : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \MOTOR_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -4625,7 +4625,7 @@ HBRIDGE_L_PIN:cy_psoc3_pins_v1_10
 		interrupt=>tmpINTERRUPT_0__HBRIDGE_L_PIN_net_0);
 DIR_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_9043);
+	PORT MAP(int_signal=>Net_9088);
 DIR_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"992486fc-aec4-46a0-b301-c5f288fcb326",
 		drive_mode=>"001",
@@ -4634,7 +4634,7 @@ DIR_PIN:cy_psoc3_pins_v1_10
 		input_sync=>"1",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
-		intr_mode=>"11",
+		intr_mode=>"00",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',
@@ -4683,7 +4683,7 @@ DIR_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__DIR_PIN_net_0),
+		fb=>Net_9088,
 		analog=>(open),
 		io=>(tmpIO_0__DIR_PIN_net_0),
 		siovref=>(tmpSIOVREF__DIR_PIN_net_0),
@@ -4694,10 +4694,10 @@ DIR_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>Net_9043);
+		interrupt=>tmpINTERRUPT_0__DIR_PIN_net_0);
 ON_OFF_ISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_9047);
+	PORT MAP(int_signal=>Net_9092);
 ON_OFF_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"26a4a749-32bb-4b6d-9f2d-efc0461eb2aa",
 		drive_mode=>"001",
@@ -4706,7 +4706,7 @@ ON_OFF_PIN:cy_psoc3_pins_v1_10
 		input_sync=>"1",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
-		intr_mode=>"11",
+		intr_mode=>"00",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',
@@ -4755,7 +4755,7 @@ ON_OFF_PIN:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__HE_IN_PIN_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__ON_OFF_PIN_net_0),
+		fb=>Net_9092,
 		analog=>(open),
 		io=>(tmpIO_0__ON_OFF_PIN_net_0),
 		siovref=>(tmpSIOVREF__ON_OFF_PIN_net_0),
@@ -4766,7 +4766,7 @@ ON_OFF_PIN:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__HE_IN_PIN_net_0,
 		out_reset=>zero,
-		interrupt=>Net_9047);
+		interrupt=>tmpINTERRUPT_0__ON_OFF_PIN_net_0);
 \MOTOR_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__HE_IN_PIN_net_0,
 		s=>zero,

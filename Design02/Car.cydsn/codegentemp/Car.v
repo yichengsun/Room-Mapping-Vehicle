@@ -1,6 +1,6 @@
 // ======================================================================
 // Car.v generated from TopDesign.cysch
-// 05/02/2015 at 11:01
+// 05/05/2015 at 14:40
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -699,6 +699,7 @@ endmodule
 // top
 module top ;
 
+          wire  Net_9088;
           wire  Net_8585;
           wire  Net_8586;
           wire  Net_9077;
@@ -759,8 +760,7 @@ module top ;
           wire  Net_3089;
           wire  Net_3088;
           wire  Net_459;
-          wire  Net_9047;
-          wire  Net_9043;
+          wire  Net_9092;
           wire  Net_9041;
           wire  Net_9030;
           wire  Net_8588;
@@ -1749,12 +1749,12 @@ module top ;
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		DIR_ISR
-		 (.int_signal(Net_9043));
+		 (.int_signal(Net_9088));
 
 
 	wire [0:0] tmpOE__DIR_PIN_net;
-	wire [0:0] tmpFB_0__DIR_PIN_net;
 	wire [0:0] tmpIO_0__DIR_PIN_net;
+	wire [0:0] tmpINTERRUPT_0__DIR_PIN_net;
 	electrical [0:0] tmpSIOVREF__DIR_PIN_net;
 
 	cy_psoc3_pins_v1_10
@@ -1765,7 +1765,7 @@ module top ;
 		  .input_clk_en(0),
 		  .input_sync(1'b1),
 		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b11),
+		  .intr_mode(2'b00),
 		  .invert_in_clock(0),
 		  .invert_in_clock_en(0),
 		  .invert_in_reset(0),
@@ -1811,10 +1811,10 @@ module top ;
 		DIR_PIN
 		 (.oe(tmpOE__DIR_PIN_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__DIR_PIN_net[0:0]}),
+		  .fb({Net_9088}),
 		  .io({tmpIO_0__DIR_PIN_net[0:0]}),
 		  .siovref(tmpSIOVREF__DIR_PIN_net),
-		  .interrupt({Net_9043}),
+		  .interrupt({tmpINTERRUPT_0__DIR_PIN_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1828,12 +1828,12 @@ module top ;
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		ON_OFF_ISR
-		 (.int_signal(Net_9047));
+		 (.int_signal(Net_9092));
 
 
 	wire [0:0] tmpOE__ON_OFF_PIN_net;
-	wire [0:0] tmpFB_0__ON_OFF_PIN_net;
 	wire [0:0] tmpIO_0__ON_OFF_PIN_net;
+	wire [0:0] tmpINTERRUPT_0__ON_OFF_PIN_net;
 	electrical [0:0] tmpSIOVREF__ON_OFF_PIN_net;
 
 	cy_psoc3_pins_v1_10
@@ -1844,7 +1844,7 @@ module top ;
 		  .input_clk_en(0),
 		  .input_sync(1'b1),
 		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b11),
+		  .intr_mode(2'b00),
 		  .invert_in_clock(0),
 		  .invert_in_clock_en(0),
 		  .invert_in_reset(0),
@@ -1890,10 +1890,10 @@ module top ;
 		ON_OFF_PIN
 		 (.oe(tmpOE__ON_OFF_PIN_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__ON_OFF_PIN_net[0:0]}),
+		  .fb({Net_9092}),
 		  .io({tmpIO_0__ON_OFF_PIN_net[0:0]}),
 		  .siovref(tmpSIOVREF__ON_OFF_PIN_net),
-		  .interrupt({Net_9047}),
+		  .interrupt({tmpINTERRUPT_0__ON_OFF_PIN_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),

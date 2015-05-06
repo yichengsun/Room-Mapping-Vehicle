@@ -1,3 +1,4 @@
+
 #include <Servo.h>
 
 #define LEFTHE_PIN 3
@@ -7,7 +8,8 @@
 #define SERVOCALIBRATE 90
 
 /*PINS IN USE*/
-#define SERVOPIN 9
+#define ULTRASOUNDSERVOPIN 9
+#define STEERINGSERVOPIN 10
 #define FORWARDSTEERPIN 8
 #define TRIGPIN 7
 #define ECHOPIN 6
@@ -23,8 +25,10 @@ volatile int grightcount = 0;
 
 int gforward = false;
 int gon = false;
-int servoAngle = 90;
+int steeringServoAngle = 90;
+int ultrasoundServoAngle = 90;
 Servo steeringServo;
+Servo ultrasoundServo;
 
 void LEFTHE_ISR() {
   gleftcount++;
@@ -62,7 +66,7 @@ void scanSurroundings(){
   boolean direction = false;
   double angleCalibrate = 0;
   for (int i = 160; i >= 30; i-=4.5){
-      steeringServo.write(i);
+      ultrasoundServo.write(i);
       delay(100);
       distance = ultrasoundRead();
       if (distance < 7 || distance > 150) distance = 0;
@@ -70,7 +74,7 @@ void scanSurroundings(){
       printSurroundings(distance, angleCalibrate);
     }
     for (int i = 30; i <= 160; i+=4.5){
-      steeringServo.write(i);
+      ultrasoundServo.write(i);
       delay(100);
       distance = ultrasoundRead();
       if (distance < 7 || distance > 150) distance = 0;
@@ -96,7 +100,10 @@ void updatePos(){
 void setup() {
   attachInterrupt(1, LEFTHE_ISR, FALLING);
   attachInterrupt(0, RIGHTHE_ISR, FALLING);
-  steeringServo.attach(SERVOPIN);
+  steeringServo.attach(STEERINGSERVOPIN);
+  ultrasoundServo.attach(ULTRASOUNDSERVOPIN);
+  steeringServo.write(steeringServoAngle);
+  ultrasoundServo.write(ultrasoundServoAngle);
   sei();
   Serial.begin(9600);
 }
@@ -106,37 +113,52 @@ void loop() {
     char value = Serial.read();
     if (value == 'w'){
       gforward = !gforward;
-      if (gforward){     
-          digitalWrite(FORWARDSTEERPIN, HIGH);
+      if(gforward) {
+        digitalWrite(FORWARDSTEERPIN, LOW);
+        digitalWrite(FORWARDSTEERPIN, HIGH);
+        digitalWrite(FORWARDSTEERPIN, LOW);
+        Serial.println("GO FORWARD");
       }
       else {
         digitalWrite(FORWARDSTEERPIN, LOW);
-      }
+        digitalWrite(FORWARDSTEERPIN, HIGH);
+        digitalWrite(FORWARDSTEERPIN, LOW);
+        Serial.println("GO BACKWARD");
+      }  
     }
     else if (value == 'd'){
-      servoAngle +=7;
+      steeringServoAngle +=7;
+      Serial.println("GO RIGHT");
     }
     else if (value == 'a'){
-      servoAngle-=7;
+      steeringServoAngle-=7;
+      Serial.println("GO LEFT");
     }
     else if (value == 'r'){
-       servoAngle = 90;
+       steeringServoAngle = 90;
+       ultrasoundServoAngle = 90;
+       ultrasoundServo.write(ultrasoundServoAngle);rsad
     }
     else if (value == 's'){
+      Serial.println("SCAN SURROUNDINGS");
         scanSurroundings();
     }
     else if (value == 'o'){
         gon = !gon;
         if (gon){
+          digitalWrite(ONOFF, LOW);
           digitalWrite(ONOFF, HIGH);
+          digitalWrite(ONOFF, LOW);
+          Serial.println("ON");
         }
         else {
           digitalWrite(ONOFF, LOW);
+          digitalWrite(ONOFF, HIGH);
+          digitalWrite(ONOFF, LOW);
+          Serial.println("OFF");
         }
     }
-    steeringServo.write(servoAngle);
+    steeringServo.write(steeringServoAngle);
   }
-  steeringServo.write(90);
-  Serial.println("lol");
   delay(50);
 }

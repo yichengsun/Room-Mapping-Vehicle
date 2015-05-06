@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/02/2015 10:57:13 PAGE 1   
+C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/05/2015 14:41:01 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CAPTURE_OUT_PIN
@@ -62,7 +62,7 @@ line level    source
   49          * Parameters:  
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
-C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/02/2015 10:57:13 PAGE 2   
+C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/05/2015 14:41:01 PAGE 2   
 
   52          *  CAPTURE_OUT_PIN_DM_STRONG     Strong Drive 
   53          *  CAPTURE_OUT_PIN_DM_OD_HI      Open Drain, Drives High 
@@ -126,7 +126,7 @@ line level    source
  111   1          return (CAPTURE_OUT_PIN_DR & CAPTURE_OUT_PIN_MASK) >> CAPTURE_OUT_PIN_SHIFT;
  112   1      }
  113          
-C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/02/2015 10:57:13 PAGE 3   
+C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/05/2015 14:41:01 PAGE 3   
 
  114          
  115          /* If Interrupts Are Enabled for this Pins component */ 
@@ -156,7 +156,7 @@ line level    source
  139          
  140          
  141          /* [] END OF FILE */
-C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/02/2015 10:57:13 PAGE 4   
+C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/05/2015 14:41:01 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -166,20 +166,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'value' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 36
                                            ; SOURCE LINE # 37
-0000 905130            MOV     DPTR,#05130H
+0000 905150            MOV     DPTR,#05150H
 0003 E0                MOVX    A,@DPTR
-0004 54FB              ANL     A,#0FBH
+0004 54DF              ANL     A,#0DFH
 0006 FE                MOV     R6,A
 ;---- Variable 'staticBits' assigned to Register 'R6' ----
                                            ; SOURCE LINE # 38
 0007 EF                MOV     A,R7
-0008 25E0              ADD     A,ACC
-000A 25E0              ADD     A,ACC
-000C 5404              ANL     A,#04H
-000E 4E                ORL     A,R6
-000F F0                MOVX    @DPTR,A
+0008 C4                SWAP    A
+0009 33                RLC     A
+000A 5420              ANL     A,#020H
+000C 4E                ORL     A,R6
+000D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 39
-0010 22                RET     
+000E 22                RET     
              ; FUNCTION _CAPTURE_OUT_PIN_Write (END)
 
              ; FUNCTION _CAPTURE_OUT_PIN_SetDriveMode (BEGIN)
@@ -190,7 +190,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 EF                MOV     A,R7
 0001 540E              ANL     A,#0EH
 0003 FF                MOV     R7,A
-0004 90501A            MOV     DPTR,#0501AH
+0004 90502D            MOV     DPTR,#0502DH
 0007 E0                MOVX    A,@DPTR
 0008 54F1              ANL     A,#0F1H
 000A 4F                ORL     A,R7
@@ -203,11 +203,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 89
                                            ; SOURCE LINE # 90
                                            ; SOURCE LINE # 91
-0000 905131            MOV     DPTR,#05131H
+0000 905151            MOV     DPTR,#05151H
 0003 E0                MOVX    A,@DPTR
-0004 5404              ANL     A,#04H
+0004 5420              ANL     A,#020H
 0006 7E00              MOV     R6,#00H
-0008 7802              MOV     R0,#02H
+0008 7805              MOV     R0,#05H
 000A         ?C0005:
 000A CE                XCH     A,R6
 000B C3                CLR     C
@@ -220,18 +220,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012         ?C0003:
 0012 22                RET     
              ; FUNCTION CAPTURE_OUT_PIN_Read (END)
-C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/02/2015 10:57:13 PAGE 5   
+C51 COMPILER V9.51   CAPTURE_OUT_PIN                                                       05/05/2015 14:41:01 PAGE 5   
 
 
              ; FUNCTION CAPTURE_OUT_PIN_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 109
                                            ; SOURCE LINE # 110
                                            ; SOURCE LINE # 111
-0000 905130            MOV     DPTR,#05130H
+0000 905150            MOV     DPTR,#05150H
 0003 E0                MOVX    A,@DPTR
-0004 5404              ANL     A,#04H
+0004 5420              ANL     A,#020H
 0006 7E00              MOV     R6,#00H
-0008 7802              MOV     R0,#02H
+0008 7805              MOV     R0,#05H
 000A         ?C0006:
 000A CE                XCH     A,R6
 000B C3                CLR     C
@@ -248,7 +248,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     68    ----
+   CODE SIZE        =     66    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
