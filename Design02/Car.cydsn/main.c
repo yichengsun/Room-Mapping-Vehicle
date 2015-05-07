@@ -66,7 +66,7 @@ CY_ISR(DIR_inter) {
 
 CY_ISR(ON_OFF_inter) {
     if (gONOFF == 0) {
-        MOTOR_PWM_WriteCompare(1500);
+        MOTOR_PWM_WriteCompare(2000);
         LCD_ClearDisplay();
         LCD_PrintString("motor on!");
         gONOFF = 1;
