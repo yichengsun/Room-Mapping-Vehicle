@@ -63,7 +63,7 @@ CY_ISR(DIR_inter) {
         DIR_REG_Write(gcurr_dir);
     }
 }
-
+0
 CY_ISR(ON_OFF_inter) {
     if (gONOFF == 0) {
         MOTOR_PWM_WriteCompare(2000);

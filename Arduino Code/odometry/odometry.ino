@@ -24,8 +24,8 @@ volatile int glastLeftCount = 0;
 volatile int gleftcount = 0;
 volatile int grightcount = 0;
 
-int gforward = true;
-int gon = false;
+boolean gforward = true;
+boolean gon = false;
 int steeringServoAngle = STEERINGCALIBRATE; 
 int ultrasoundServoAngle = ULTRASONICCALIBRATE;
 Servo steeringServo;
@@ -71,7 +71,6 @@ void scanSurroundings(){
   double angleCalibrate = 0;
   for (int i = 60; i <= 120; i+=7.5){
       ultrasoundServo.write(i);
-      delay(100);
       distance = ultrasoundRead();
       if (distance < 7 || distance > 150) distance = 0;
       angleCalibrate = (i-ULTRASONICCALIBRATE)*(3.14/180);
@@ -88,9 +87,9 @@ void updatePos(){
   glastRightCount = grightcount; 
   double distanceTraveled = (rightChange+leftChange)/2.0;
   if (!gforward){
-    double tempChange = rightChange;
-    rightChange = leftChange;
-    leftChange = tempChange;
+//    double tempChange = rightChange;
+//    rightChange = leftChange;
+//    leftChange = tempChange;
     distanceTraveled = -distanceTraveled;
   }
   double servoAngleDif = steeringServoAngle - STEERINGCALIBRATE;
@@ -126,7 +125,7 @@ void printPos() {
   Serial.println(grightcount);
   Serial.print("LEFT TURNSIS:");
   Serial.println(gleftcount);
-  Serial.println();
+  Serial.println(gforward);
   Serial.println("***************************");
 }
 
@@ -188,7 +187,6 @@ void loop() {
        gxPos = 0.0;
        gyPos = 0.0;
        ganglePos = 1.57;
-       printPos();
     }
     else if (value == 's'){
 //      Serial.println("SCAN SURROUNDINGS");
@@ -198,7 +196,6 @@ void loop() {
        printPos(); 
     }
     else if (value == 'o'){
-        printPos();
         gon = !gon;
         if (gon){
           digitalWrite(ONOFF, LOW);
