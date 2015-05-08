@@ -1,0 +1,1080 @@
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE SEC_TIL_BLACK_TIMER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\SEC_TIL_BLACK_TIMER.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\SEC_TIL_BLACK_TIMER.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,.\Generated_Source\PSoC3) FF(3
+                    -) DB DF(DEBUG) WL(2) PR(.\DP8051\DP8051_Keil_951\Debug/SEC_TIL_BLACK_TIMER.lst) CD OT(2,SIZE) OJ(.\DP8051\DP8051_Keil_95
+                    -1\Debug\SEC_TIL_BLACK_TIMER.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: SEC_TIL_BLACK_TIMER.c
+   3          * Version 2.70
+   4          *
+   5          * Description:
+   6          *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7          *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8          *  or be used as a capture timer as well.  The capture can be initiated
+   9          *  by a positive or negative edge signal as well as via software.
+  10          *  A trigger input can be programmed to enable the timer on rising edge
+  11          *  falling edge, either edge or continous run.
+  12          *  Interrupts may be generated due to a terminal count condition
+  13          *  or a capture event.
+  14          *
+  15          * Note:
+  16          *
+  17          ********************************************************************************
+  18          * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19          * You may use this file only in accordance with the license, terms, conditions,
+  20          * disclaimers, and limitations in the end user license agreement accompanying
+  21          * the software package with which this file was provided.
+  22          ********************************************************************************/
+  23          
+  24          #include "SEC_TIL_BLACK_TIMER.h"
+  25          
+  26          uint8 SEC_TIL_BLACK_TIMER_initVar = 0u;
+  27          
+  28          
+  29          /*******************************************************************************
+  30          * Function Name: SEC_TIL_BLACK_TIMER_Init
+  31          ********************************************************************************
+  32          *
+  33          * Summary:
+  34          *  Initialize to the schematic state
+  35          *
+  36          * Parameters:
+  37          *  void
+  38          *
+  39          * Return:
+  40          *  void
+  41          *
+  42          *******************************************************************************/
+  43          void SEC_TIL_BLACK_TIMER_Init(void) 
+  44          {
+  45   1          #if(!SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+  46   1                  /* Interrupt State Backup for Critical Region*/
+  47   1                  uint8 SEC_TIL_BLACK_TIMER_interruptState;
+  48   1          #endif /* Interrupt state back up for Fixed Function only */
+  49   1      
+  50   1          #if (SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+                      SEC_TIL_BLACK_TIMER_CONTROL &= SEC_TIL_BLACK_TIMER_CTRL_ENABLE;
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 2   
+
+              
+                      /* Clear the mode bits for continuous run mode */
+                      #if (CY_PSOC5A)
+                          SEC_TIL_BLACK_TIMER_CONTROL2 &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_MODE_MASK));
+                      #endif /* Clear bits in CONTROL2 only in PSOC5A */
+              
+                      #if (CY_PSOC3 || CY_PSOC5LP)
+                          SEC_TIL_BLACK_TIMER_CONTROL3 &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_MODE_MASK));
+                      #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+              
+                      /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+                      #if (SEC_TIL_BLACK_TIMER_RunModeUsed != 0x0u)
+                          /* Set 3rd bit of Control register to enable one shot mode */
+                          SEC_TIL_BLACK_TIMER_CONTROL |= 0x04u;
+                      #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+              
+                      #if (SEC_TIL_BLACK_TIMER_RunModeUsed == 2)
+                          #if (CY_PSOC5A)
+                              /* Set last 2 bits of control2 register if one shot(halt on
+                              interrupt) is enabled*/
+                              SEC_TIL_BLACK_TIMER_CONTROL2 |= 0x03u;
+                          #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+              
+                          #if (CY_PSOC3 || CY_PSOC5LP)
+                              /* Set last 2 bits of control3 register if one shot(halt on
+                              interrupt) is enabled*/
+                              SEC_TIL_BLACK_TIMER_CONTROL3 |= 0x03u;
+                          #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+              
+                      #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+              
+                      #if (SEC_TIL_BLACK_TIMER_UsingHWEnable != 0)
+                          #if (CY_PSOC5A)
+                              /* Set the default Run Mode of the Timer to Continuous */
+                              SEC_TIL_BLACK_TIMER_CONTROL2 |= SEC_TIL_BLACK_TIMER_CTRL_MODE_PULSEWIDTH;
+                          #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+              
+                          #if (CY_PSOC3 || CY_PSOC5LP)
+                              /* Clear and Set ROD and COD bits of CFG2 register */
+                              SEC_TIL_BLACK_TIMER_CONTROL3 &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_RCOD_MASK));
+                              SEC_TIL_BLACK_TIMER_CONTROL3 |= SEC_TIL_BLACK_TIMER_CTRL_RCOD;
+              
+                              /* Clear and Enable the HW enable bit in CFG2 register */
+                              SEC_TIL_BLACK_TIMER_CONTROL3 &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_ENBL_MASK));
+                              SEC_TIL_BLACK_TIMER_CONTROL3 |= SEC_TIL_BLACK_TIMER_CTRL_ENBL;
+              
+                              /* Set the default Run Mode of the Timer to Continuous */
+                              SEC_TIL_BLACK_TIMER_CONTROL3 |= SEC_TIL_BLACK_TIMER_CTRL_MODE_CONTINUOUS;
+                          #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+              
+                      #endif /* Configure Run Mode with hardware enable */
+              
+                      /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+                      SEC_TIL_BLACK_TIMER_RT1 &= ((uint8)(~SEC_TIL_BLACK_TIMER_RT1_MASK));
+                      SEC_TIL_BLACK_TIMER_RT1 |= SEC_TIL_BLACK_TIMER_SYNC;
+              
+                      /*Enable DSI Sync all all inputs of the Timer*/
+                      SEC_TIL_BLACK_TIMER_RT1 &= ((uint8)(~SEC_TIL_BLACK_TIMER_SYNCDSI_MASK));
+                      SEC_TIL_BLACK_TIMER_RT1 |= SEC_TIL_BLACK_TIMER_SYNCDSI_EN;
+              
+                      /* Set the IRQ to use the status register interrupts */
+                      SEC_TIL_BLACK_TIMER_CONTROL2 |= SEC_TIL_BLACK_TIMER_CTRL2_IRQ_SEL;
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 3   
+
+                  #endif /* Configuring registers of fixed function implementation */
+ 116   1      
+ 117   1          /* Set Initial values from Configuration */
+ 118   1          SEC_TIL_BLACK_TIMER_WritePeriod(SEC_TIL_BLACK_TIMER_INIT_PERIOD);
+ 119   1          SEC_TIL_BLACK_TIMER_WriteCounter(SEC_TIL_BLACK_TIMER_INIT_PERIOD);
+ 120   1      
+ 121   1          #if (SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter)/* Capture counter is enabled */
+                      SEC_TIL_BLACK_TIMER_CAPTURE_COUNT_CTRL |= SEC_TIL_BLACK_TIMER_CNTR_ENABLE;
+                      SEC_TIL_BLACK_TIMER_SetCaptureCount(SEC_TIL_BLACK_TIMER_INIT_CAPTURE_COUNT);
+                  #endif /* Configure capture counter value */
+ 125   1      
+ 126   1          #if (!SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+ 127   1              #if (SEC_TIL_BLACK_TIMER_SoftwareCaptureMode)
+                          SEC_TIL_BLACK_TIMER_SetCaptureMode(SEC_TIL_BLACK_TIMER_INIT_CAPTURE_MODE);
+                      #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130   1      
+ 131   1              #if (SEC_TIL_BLACK_TIMER_SoftwareTriggerMode)
+                          #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
+                              if (0u == (SEC_TIL_BLACK_TIMER_CONTROL & SEC_TIL_BLACK_TIMER__B_TIMER__TM_SOFTWARE))
+                              {
+                                  SEC_TIL_BLACK_TIMER_SetTriggerMode(SEC_TIL_BLACK_TIMER_INIT_TRIGGER_MODE);
+                              }
+                          #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
+                      #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139   1      
+ 140   1              /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
+ 141   1              /* Enter Critical Region*/
+ 142   1              SEC_TIL_BLACK_TIMER_interruptState = CyEnterCriticalSection();
+ 143   1      
+ 144   1              /* Use the interrupt output of the status register for IRQ output */
+ 145   1              SEC_TIL_BLACK_TIMER_STATUS_AUX_CTRL |= SEC_TIL_BLACK_TIMER_STATUS_ACTL_INT_EN_MASK;
+ 146   1      
+ 147   1              /* Exit Critical Region*/
+ 148   1              CyExitCriticalSection(SEC_TIL_BLACK_TIMER_interruptState);
+ 149   1      
+ 150   1              #if (SEC_TIL_BLACK_TIMER_EnableTriggerMode)
+                          SEC_TIL_BLACK_TIMER_EnableTrigger();
+                      #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153   1                      
+ 154   1                      
+ 155   1              #if (SEC_TIL_BLACK_TIMER_InterruptOnCaptureCount && !SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
+                          SEC_TIL_BLACK_TIMER_SetInterruptCount(SEC_TIL_BLACK_TIMER_INIT_INT_CAPTURE_COUNT);
+                      #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*/
+ 158   1      
+ 159   1              SEC_TIL_BLACK_TIMER_ClearFIFO();
+ 160   1          #endif /* Configure additional features of UDB implementation */
+ 161   1      
+ 162   1          SEC_TIL_BLACK_TIMER_SetInterruptMode(SEC_TIL_BLACK_TIMER_INIT_INTERRUPT_MODE);
+ 163   1      }
+ 164          
+ 165          
+ 166          /*******************************************************************************
+ 167          * Function Name: SEC_TIL_BLACK_TIMER_Enable
+ 168          ********************************************************************************
+ 169          *
+ 170          * Summary:
+ 171          *  Enable the Timer
+ 172          *
+ 173          * Parameters:
+ 174          *  void
+ 175          *
+ 176          * Return:
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 4   
+
+ 177          *  void
+ 178          *
+ 179          *******************************************************************************/
+ 180          void SEC_TIL_BLACK_TIMER_Enable(void) 
+ 181          {
+ 182   1          /* Globally Enable the Fixed Function Block chosen */
+ 183   1          #if (SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      SEC_TIL_BLACK_TIMER_GLOBAL_ENABLE |= SEC_TIL_BLACK_TIMER_BLOCK_EN_MASK;
+                      SEC_TIL_BLACK_TIMER_GLOBAL_STBY_ENABLE |= SEC_TIL_BLACK_TIMER_BLOCK_STBY_EN_MASK;
+                  #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187   1      
+ 188   1          /* Remove assignment if control register is removed */
+ 189   1          #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED || SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      SEC_TIL_BLACK_TIMER_CONTROL |= SEC_TIL_BLACK_TIMER_CTRL_ENABLE;
+                  #endif /* Remove assignment if control register is removed */
+ 192   1      }
+ 193          
+ 194          
+ 195          /*******************************************************************************
+ 196          * Function Name: SEC_TIL_BLACK_TIMER_Start
+ 197          ********************************************************************************
+ 198          *
+ 199          * Summary:
+ 200          *  The start function initializes the timer with the default values, the
+ 201          *  enables the timerto begin counting.  It does not enable interrupts,
+ 202          *  the EnableInt command should be called if interrupt generation is required.
+ 203          *
+ 204          * Parameters:
+ 205          *  void
+ 206          *
+ 207          * Return:
+ 208          *  void
+ 209          *
+ 210          * Global variables:
+ 211          *  SEC_TIL_BLACK_TIMER_initVar: Is modified when this function is called for the
+ 212          *   first time. Is used to ensure that initialization happens only once.
+ 213          *
+ 214          *******************************************************************************/
+ 215          void SEC_TIL_BLACK_TIMER_Start(void) 
+ 216          {
+ 217   1          if(SEC_TIL_BLACK_TIMER_initVar == 0u)
+ 218   1          {
+ 219   2              SEC_TIL_BLACK_TIMER_Init();
+ 220   2      
+ 221   2              SEC_TIL_BLACK_TIMER_initVar = 1u;   /* Clear this bit for Initialization */
+ 222   2          }
+ 223   1      
+ 224   1          /* Enable the Timer */
+ 225   1          SEC_TIL_BLACK_TIMER_Enable();
+ 226   1      }
+ 227          
+ 228          
+ 229          /*******************************************************************************
+ 230          * Function Name: SEC_TIL_BLACK_TIMER_Stop
+ 231          ********************************************************************************
+ 232          *
+ 233          * Summary:
+ 234          *  The stop function halts the timer, but does not change any modes or disable
+ 235          *  interrupts.
+ 236          *
+ 237          * Parameters:
+ 238          *  void
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 5   
+
+ 239          *
+ 240          * Return:
+ 241          *  void
+ 242          *
+ 243          * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244          *               has no effect on the operation of the timer.
+ 245          *
+ 246          *******************************************************************************/
+ 247          void SEC_TIL_BLACK_TIMER_Stop(void) 
+ 248          {
+ 249   1          /* Disable Timer */
+ 250   1          #if(!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED || SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      SEC_TIL_BLACK_TIMER_CONTROL &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_ENABLE));
+                  #endif /* Remove assignment if control register is removed */
+ 253   1      
+ 254   1          /* Globally disable the Fixed Function Block chosen */
+ 255   1          #if (SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      SEC_TIL_BLACK_TIMER_GLOBAL_ENABLE &= ((uint8)(~SEC_TIL_BLACK_TIMER_BLOCK_EN_MASK));
+                      SEC_TIL_BLACK_TIMER_GLOBAL_STBY_ENABLE &= ((uint8)(~SEC_TIL_BLACK_TIMER_BLOCK_STBY_EN_MASK));
+                  #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259   1      }
+ 260          
+ 261          
+ 262          /*******************************************************************************
+ 263          * Function Name: SEC_TIL_BLACK_TIMER_SetInterruptMode
+ 264          ********************************************************************************
+ 265          *
+ 266          * Summary:
+ 267          *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268          *  The twosources are caputure and terminal.  One, both or neither may
+ 269          *  be selected.
+ 270          *
+ 271          * Parameters:
+ 272          *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273          *                   terminal count or capture.
+ 274          *
+ 275          * Return:
+ 276          *  void
+ 277          *
+ 278          *******************************************************************************/
+ 279          void SEC_TIL_BLACK_TIMER_SetInterruptMode(uint8 interruptMode) 
+ 280          {
+ 281   1          SEC_TIL_BLACK_TIMER_STATUS_MASK = interruptMode;
+ 282   1      }
+ 283          
+ 284          
+ 285          /*******************************************************************************
+ 286          * Function Name: SEC_TIL_BLACK_TIMER_SoftwareCapture
+ 287          ********************************************************************************
+ 288          *
+ 289          * Summary:
+ 290          *  This function forces a capture independent of the capture signal.
+ 291          *
+ 292          * Parameters:
+ 293          *  void
+ 294          *
+ 295          * Return:
+ 296          *  void
+ 297          *
+ 298          * Side Effects:
+ 299          *  An existing hardware capture could be overwritten.
+ 300          *
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 6   
+
+ 301          *******************************************************************************/
+ 302          void SEC_TIL_BLACK_TIMER_SoftwareCapture(void) 
+ 303          {
+ 304   1          /* Generate a software capture by reading the counter register */
+ 305   1          #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      (void)CY_GET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR);
+                  #else
+ 308   1              (void)CY_GET_REG8(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR_8BIT);
+ 309   1          #endif/* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
+ 310   1          /* Capture Data is now in the FIFO */
+ 311   1      }
+ 312          
+ 313          
+ 314          /*******************************************************************************
+ 315          * Function Name: SEC_TIL_BLACK_TIMER_ReadStatusRegister
+ 316          ********************************************************************************
+ 317          *
+ 318          * Summary:
+ 319          *  Reads the status register and returns it's state. This function should use
+ 320          *  defined types for the bit-field information as the bits in this register may
+ 321          *  be permuteable.
+ 322          *
+ 323          * Parameters:
+ 324          *  void
+ 325          *
+ 326          * Return:
+ 327          *  The contents of the status register
+ 328          *
+ 329          * Side Effects:
+ 330          *  Status register bits may be clear on read.
+ 331          *
+ 332          *******************************************************************************/
+ 333          uint8   SEC_TIL_BLACK_TIMER_ReadStatusRegister(void) 
+ 334          {
+ 335   1          return (SEC_TIL_BLACK_TIMER_STATUS);
+ 336   1      }
+ 337          
+ 338          
+ 339          #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_ReadControlRegister
+              ********************************************************************************
+              *
+              * Summary:
+              *  Reads the control register and returns it's value.
+              *
+              * Parameters:
+              *  void
+              *
+              * Return:
+              *  The contents of the control register
+              *
+              *******************************************************************************/
+              uint8 SEC_TIL_BLACK_TIMER_ReadControlRegister(void) 
+              {
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) 
+                      return ((uint8)SEC_TIL_BLACK_TIMER_CONTROL);
+                  #else
+                      return (0);
+                  #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 7   
+
+              }
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_WriteControlRegister
+              ********************************************************************************
+              *
+              * Summary:
+              *  Sets the bit-field of the control register.
+              *
+              * Parameters:
+              *  control: The contents of the control register
+              *
+              * Return:
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_WriteControlRegister(uint8 control) 
+              {
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) 
+                      SEC_TIL_BLACK_TIMER_CONTROL = control;
+                  #else
+                      control = 0u;
+                  #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
+              }
+              
+              #endif /* Remove API if control register is unused */
+ 389          
+ 390          
+ 391          /*******************************************************************************
+ 392          * Function Name: SEC_TIL_BLACK_TIMER_ReadPeriod
+ 393          ********************************************************************************
+ 394          *
+ 395          * Summary:
+ 396          *  This function returns the current value of the Period.
+ 397          *
+ 398          * Parameters:
+ 399          *  void
+ 400          *
+ 401          * Return:
+ 402          *  The present value of the counter.
+ 403          *
+ 404          *******************************************************************************/
+ 405          uint32 SEC_TIL_BLACK_TIMER_ReadPeriod(void) 
+ 406          {
+ 407   1         #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                     return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
+                 #else
+ 410   1             return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR));
+ 411   1         #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
+ 412   1      }
+ 413          
+ 414          
+ 415          /*******************************************************************************
+ 416          * Function Name: SEC_TIL_BLACK_TIMER_WritePeriod
+ 417          ********************************************************************************
+ 418          *
+ 419          * Summary:
+ 420          *  This function is used to change the period of the counter.  The new period
+ 421          *  will be loaded the next time terminal count is detected.
+ 422          *
+ 423          * Parameters:
+ 424          *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 8   
+
+ 425          *          result in the counter remaining at zero.
+ 426          *
+ 427          * Return:
+ 428          *  void
+ 429          *
+ 430          *******************************************************************************/
+ 431          void SEC_TIL_BLACK_TIMER_WritePeriod(uint32 period) 
+ 432          {
+ 433   1          #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      uint16 period_temp = (uint16)period;
+                      CY_SET_REG16(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR, period_temp);
+                  #else
+ 437   1              CY_SET_REG32(SEC_TIL_BLACK_TIMER_PERIOD_LSB_PTR, period);
+ 438   1          #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function impl
+             -ementation */
+ 439   1      }
+ 440          
+ 441          
+ 442          /*******************************************************************************
+ 443          * Function Name: SEC_TIL_BLACK_TIMER_ReadCapture
+ 444          ********************************************************************************
+ 445          *
+ 446          * Summary:
+ 447          *  This function returns the last value captured.
+ 448          *
+ 449          * Parameters:
+ 450          *  void
+ 451          *
+ 452          * Return:
+ 453          *  Present Capture value.
+ 454          *
+ 455          *******************************************************************************/
+ 456          uint32 SEC_TIL_BLACK_TIMER_ReadCapture(void) 
+ 457          {
+ 458   1         #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                     return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+                 #else
+ 461   1             return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+ 462   1         #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
+ 463   1      }
+ 464          
+ 465          
+ 466          /*******************************************************************************
+ 467          * Function Name: SEC_TIL_BLACK_TIMER_WriteCounter
+ 468          ********************************************************************************
+ 469          *
+ 470          * Summary:
+ 471          *  This funtion is used to set the counter to a specific value
+ 472          *
+ 473          * Parameters:
+ 474          *  counter:  New counter value.
+ 475          *
+ 476          * Return:
+ 477          *  void
+ 478          *
+ 479          *******************************************************************************/
+ 480          void SEC_TIL_BLACK_TIMER_WriteCounter(uint32 counter) 
+ 481          {
+ 482   1         #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      /* This functionality is removed until a FixedFunction HW update to
+                       * allow this register to be written
+                       */
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 9   
+
+                      CY_SET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, (uint16)counter);
+                      
+                  #else
+ 489   1              CY_SET_REG32(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR, counter);
+ 490   1          #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fixed func
+             -tion Timer */
+ 491   1      }
+ 492          
+ 493          
+ 494          /*******************************************************************************
+ 495          * Function Name: SEC_TIL_BLACK_TIMER_ReadCounter
+ 496          ********************************************************************************
+ 497          *
+ 498          * Summary:
+ 499          *  This function returns the current counter value.
+ 500          *
+ 501          * Parameters:
+ 502          *  void
+ 503          *
+ 504          * Return:
+ 505          *  Present compare value.
+ 506          *
+ 507          *******************************************************************************/
+ 508          uint32 SEC_TIL_BLACK_TIMER_ReadCounter(void) 
+ 509          {
+ 510   1          /* Force capture by reading Accumulator */
+ 511   1          /* Must first do a software capture to be able to read the counter */
+ 512   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513   1          #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      (void)CY_GET_REG16(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR);
+                  #else
+ 516   1              (void)CY_GET_REG8(SEC_TIL_BLACK_TIMER_COUNTER_LSB_PTR_8BIT);
+ 517   1          #endif/* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
+ 518   1      
+ 519   1          /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520   1          #if(SEC_TIL_BLACK_TIMER_UsingFixedFunction)
+                      return ((uint32)CY_GET_REG16(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+                  #else
+ 523   1              return (CY_GET_REG32(SEC_TIL_BLACK_TIMER_CAPTURE_LSB_PTR));
+ 524   1          #endif /* (SEC_TIL_BLACK_TIMER_UsingFixedFunction) */
+ 525   1      }
+ 526          
+ 527          
+ 528          #if(!SEC_TIL_BLACK_TIMER_UsingFixedFunction) /* UDB Specific Functions */
+ 529          
+ 530              
+ 531          /*******************************************************************************
+ 532           * The functions below this point are only available using the UDB
+ 533           * implementation.  If a feature is selected, then the API is enabled.
+ 534           ******************************************************************************/
+ 535          
+ 536          
+ 537          #if (SEC_TIL_BLACK_TIMER_SoftwareCaptureMode)
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_SetCaptureMode
+              ********************************************************************************
+              *
+              * Summary:
+              *  This function sets the capture mode to either rising or falling edge.
+              *
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 10  
+
+              * Parameters:
+              *  captureMode: This parameter sets the capture mode of the UDB capture feature
+              *  The parameter values are defined using the
+              *  #define SEC_TIL_BLACK_TIMER__B_TIMER__CM_NONE 0
+              #define SEC_TIL_BLACK_TIMER__B_TIMER__CM_RISINGEDGE 1
+              #define SEC_TIL_BLACK_TIMER__B_TIMER__CM_FALLINGEDGE 2
+              #define SEC_TIL_BLACK_TIMER__B_TIMER__CM_EITHEREDGE 3
+              #define SEC_TIL_BLACK_TIMER__B_TIMER__CM_SOFTWARE 4
+               identifiers
+              *  The following are the possible values of the parameter
+              *  SEC_TIL_BLACK_TIMER__B_TIMER__CM_NONE        - Set Capture mode to None
+              *  SEC_TIL_BLACK_TIMER__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+              *  SEC_TIL_BLACK_TIMER__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+              *  SEC_TIL_BLACK_TIMER__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_SetCaptureMode(uint8 captureMode) 
+              {
+                  /* This must only set to two bits of the control register associated */
+                  captureMode = ((uint8)((uint8)captureMode << SEC_TIL_BLACK_TIMER_CTRL_CAP_MODE_SHIFT));
+                  captureMode &= (SEC_TIL_BLACK_TIMER_CTRL_CAP_MODE_MASK);
+              
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
+                      /* Clear the Current Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_CAP_MODE_MASK));
+              
+                      /* Write The New Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL |= captureMode;
+                  #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
+              }
+              #endif /* Remove API if Capture Mode is not Software Controlled */
+ 581          
+ 582          
+ 583          #if (SEC_TIL_BLACK_TIMER_SoftwareTriggerMode)
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_SetTriggerMode
+              ********************************************************************************
+              *
+              * Summary:
+              *  This function sets the trigger input mode
+              *
+              * Parameters:
+              *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+                  #define SEC_TIL_BLACK_TIMER__B_TIMER__TM_NONE 0x00u
+                  #define SEC_TIL_BLACK_TIMER__B_TIMER__TM_RISINGEDGE 0x04u
+                  #define SEC_TIL_BLACK_TIMER__B_TIMER__TM_FALLINGEDGE 0x08u
+                  #define SEC_TIL_BLACK_TIMER__B_TIMER__TM_EITHEREDGE 0x0Cu
+                  #define SEC_TIL_BLACK_TIMER__B_TIMER__TM_SOFTWARE 0x10u
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_SetTriggerMode(uint8 triggerMode) 
+              {
+                  /* This must only set to two bits of the control register associated */
+                  triggerMode &= SEC_TIL_BLACK_TIMER_CTRL_TRIG_MODE_MASK;
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 11  
+
+              
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is remov
+             -ed */
+                  
+                      /* Clear the Current Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_TRIG_MODE_MASK));
+              
+                      /* Write The New Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL |= (triggerMode | SEC_TIL_BLACK_TIMER__B_TIMER__TM_SOFTWARE);
+                  #endif /* Remove code section if control register is not used */
+              }
+              #endif /* Remove API if Trigger Mode is not Software Controlled */
+ 620          
+ 621          #if (SEC_TIL_BLACK_TIMER_EnableTriggerMode)
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_EnableTrigger
+              ********************************************************************************
+              *
+              * Summary:
+              *  Sets the control bit enabling Hardware Trigger mode
+              *
+              * Parameters:
+              *  void
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_EnableTrigger(void) 
+              {
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is remov
+             -ed */
+                      SEC_TIL_BLACK_TIMER_CONTROL |= SEC_TIL_BLACK_TIMER_CTRL_TRIG_EN;
+                  #endif /* Remove code section if control register is not used */
+              }
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_DisableTrigger
+              ********************************************************************************
+              *
+              * Summary:
+              *  Clears the control bit enabling Hardware Trigger mode
+              *
+              * Parameters:
+              *  void
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_DisableTrigger(void) 
+              {
+                  #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is remo
+             -ved */
+                      SEC_TIL_BLACK_TIMER_CONTROL &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_TRIG_EN));
+                  #endif /* Remove code section if control register is not used */
+              }
+              #endif /* Remove API is Trigger Mode is set to None */
+ 667          
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 12  
+
+ 668          #if(SEC_TIL_BLACK_TIMER_InterruptOnCaptureCount)
+ 669          
+ 670          
+ 671          /*******************************************************************************
+ 672          * Function Name: SEC_TIL_BLACK_TIMER_SetInterruptCount
+ 673          ********************************************************************************
+ 674          *
+ 675          * Summary:
+ 676          *  This function sets the capture count before an interrupt is triggered.
+ 677          *
+ 678          * Parameters:
+ 679          *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+ 680          *                   an interrupt will occur each time a capture occurs.
+ 681          *                   A value of 1 to 3 will cause the interrupt
+ 682          *                   to delay by the same number of captures.
+ 683          *
+ 684          * Return:
+ 685          *  void
+ 686          *
+ 687          *******************************************************************************/
+ 688          void SEC_TIL_BLACK_TIMER_SetInterruptCount(uint8 interruptCount) 
+ 689          {
+ 690   1          /* This must only set to two bits of the control register associated */
+ 691   1          interruptCount &= SEC_TIL_BLACK_TIMER_CTRL_INTCNT_MASK;
+ 692   1      
+ 693   1          #if (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED)
+                      /* Clear the Current Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL &= ((uint8)(~SEC_TIL_BLACK_TIMER_CTRL_INTCNT_MASK));
+                      /* Write The New Setting */
+                      SEC_TIL_BLACK_TIMER_CONTROL |= interruptCount;
+                  #endif /* (!SEC_TIL_BLACK_TIMER_UDB_CONTROL_REG_REMOVED) */
+ 699   1      }
+ 700          #endif /* SEC_TIL_BLACK_TIMER_InterruptOnCaptureCount */
+ 701          
+ 702          
+ 703          #if (SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter)
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_SetCaptureCount
+              ********************************************************************************
+              *
+              * Summary:
+              *  This function sets the capture count
+              *
+              * Parameters:
+              *  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+              *                to 127 will cause the interrupt to delay by the same number of
+              *                captures.
+              *
+              * Return:
+              *  void
+              *
+              *******************************************************************************/
+              void SEC_TIL_BLACK_TIMER_SetCaptureCount(uint8 captureCount) 
+              {
+                  SEC_TIL_BLACK_TIMER_CAP_COUNT = captureCount;
+              }
+              
+              
+              /*******************************************************************************
+              * Function Name: SEC_TIL_BLACK_TIMER_ReadCaptureCount
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 13  
+
+              ********************************************************************************
+              *
+              * Summary:
+              *  This function reads the capture count setting
+              *
+              * Parameters:
+              *  void
+              *
+              * Return:
+              *  Returns the Capture Count Setting
+              *
+              *******************************************************************************/
+              uint8 SEC_TIL_BLACK_TIMER_ReadCaptureCount(void) 
+              {
+                  return ((uint8)SEC_TIL_BLACK_TIMER_CAP_COUNT);
+              }
+              #endif /* SEC_TIL_BLACK_TIMER_UsingHWCaptureCounter */
+ 747          
+ 748          
+ 749          /*******************************************************************************
+ 750          * Function Name: SEC_TIL_BLACK_TIMER_ClearFIFO
+ 751          ********************************************************************************
+ 752          *
+ 753          * Summary:
+ 754          *  This function clears all capture data from the capture FIFO
+ 755          *
+ 756          * Parameters:
+ 757          *  void
+ 758          *
+ 759          * Return:
+ 760          *  void
+ 761          *
+ 762          *******************************************************************************/
+ 763          void SEC_TIL_BLACK_TIMER_ClearFIFO(void) 
+ 764          {
+ 765   1          while(0u != (SEC_TIL_BLACK_TIMER_ReadStatusRegister() & SEC_TIL_BLACK_TIMER_STATUS_FIFONEMP))
+ 766   1          {
+ 767   2              (void)SEC_TIL_BLACK_TIMER_ReadCapture();
+ 768   2          }
+ 769   1      }
+ 770          
+ 771          #endif /* UDB Specific Functions */
+ 772          
+ 773          
+ 774          /* [] END OF FILE */
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 14  
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Init (BEGIN)
+                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 44
+                                           ; SOURCE LINE # 118
+0000 7FFF              MOV     R7,#0FFH
+0002 7EFF              MOV     R6,#0FFH
+0004 7DFF              MOV     R5,#0FFH
+0006 7CFF              MOV     R4,#0FFH
+0008 120000      R     LCALL   _SEC_TIL_BLACK_TIMER_WritePeriod
+                                           ; SOURCE LINE # 119
+000B 7FFF              MOV     R7,#0FFH
+000D 7EFF              MOV     R6,#0FFH
+000F 7DFF              MOV     R5,#0FFH
+0011 7CFF              MOV     R4,#0FFH
+0013 120000      R     LCALL   _SEC_TIL_BLACK_TIMER_WriteCounter
+                                           ; SOURCE LINE # 142
+0016 120000      E     LCALL   CyEnterCriticalSection
+0019 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_interruptState
+001C EF                MOV     A,R7
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 145
+001E 906495            MOV     DPTR,#06495H
+0021 E0                MOVX    A,@DPTR
+0022 FF                MOV     R7,A
+0023 EF                MOV     A,R7
+0024 4410              ORL     A,#010H
+0026 FF                MOV     R7,A
+0027 EF                MOV     A,R7
+0028 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 148
+0029 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_interruptState
+002C E0                MOVX    A,@DPTR
+002D FF                MOV     R7,A
+002E 120000      E     LCALL   _CyExitCriticalSection
+                                           ; SOURCE LINE # 159
+0031 120000      R     LCALL   SEC_TIL_BLACK_TIMER_ClearFIFO
+                                           ; SOURCE LINE # 162
+0034 7F02              MOV     R7,#02H
+0036 120000      R     LCALL   _SEC_TIL_BLACK_TIMER_SetInterruptMode
+                                           ; SOURCE LINE # 163
+0039 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Init (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Enable (BEGIN)
+                                           ; SOURCE LINE # 180
+                                           ; SOURCE LINE # 181
+                                           ; SOURCE LINE # 192
+0000 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Enable (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Start (BEGIN)
+                                           ; SOURCE LINE # 215
+                                           ; SOURCE LINE # 216
+                                           ; SOURCE LINE # 217
+0000 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_initVar
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 7009              JNZ     ?C0003
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 15  
+
+                                           ; SOURCE LINE # 218
+                                           ; SOURCE LINE # 219
+0008 120000      R     LCALL   SEC_TIL_BLACK_TIMER_Init
+                                           ; SOURCE LINE # 221
+000B 900000      R     MOV     DPTR,#SEC_TIL_BLACK_TIMER_initVar
+000E 7401              MOV     A,#01H
+0010 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 222
+0011         ?C0003:
+                                           ; SOURCE LINE # 225
+0011 120000      R     LCALL   SEC_TIL_BLACK_TIMER_Enable
+                                           ; SOURCE LINE # 226
+0014 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Start (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Stop (BEGIN)
+                                           ; SOURCE LINE # 247
+                                           ; SOURCE LINE # 248
+                                           ; SOURCE LINE # 259
+0000 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_Stop (END)
+
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_SetInterruptMode (BEGIN)
+                                           ; SOURCE LINE # 279
+0000 900000      R     MOV     DPTR,#interruptMode
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 280
+                                           ; SOURCE LINE # 281
+0005 900000      R     MOV     DPTR,#interruptMode
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A 906485            MOV     DPTR,#06485H
+000D EF                MOV     A,R7
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 282
+000F 22                RET     
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_SetInterruptMode (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_SoftwareCapture (BEGIN)
+                                           ; SOURCE LINE # 302
+                                           ; SOURCE LINE # 303
+                                           ; SOURCE LINE # 308
+0000 906402            MOV     DPTR,#06402H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 311
+0005 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_SoftwareCapture (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadStatusRegister (BEGIN)
+                                           ; SOURCE LINE # 333
+                                           ; SOURCE LINE # 334
+                                           ; SOURCE LINE # 335
+0000 906465            MOV     DPTR,#06465H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 336
+0005         ?C0008:
+0005 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadStatusRegister (END)
+
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 16  
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadPeriod (BEGIN)
+                                           ; SOURCE LINE # 405
+                                           ; SOURCE LINE # 406
+                                           ; SOURCE LINE # 410
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7922              MOV     R1,#022H
+0006 120000      E     LCALL   _cyread32_nodpx
+                                           ; SOURCE LINE # 412
+0009         ?C0009:
+0009 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadPeriod (END)
+
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_WritePeriod (BEGIN)
+                                           ; SOURCE LINE # 431
+0000 900000      R     MOV     DPTR,#period
+0003 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 432
+                                           ; SOURCE LINE # 437
+0006 7B02              MOV     R3,#02H
+0008 7A64              MOV     R2,#064H
+000A 7922              MOV     R1,#022H
+000C 900000      R     MOV     DPTR,#period
+000F 120000      E     LCALL   ?C?LLDXDATA
+0012 120000      E     LCALL   _cywrite32_nodpx
+                                           ; SOURCE LINE # 439
+0015 22                RET     
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_WritePeriod (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadCapture (BEGIN)
+                                           ; SOURCE LINE # 456
+                                           ; SOURCE LINE # 457
+                                           ; SOURCE LINE # 461
+0000 7B02              MOV     R3,#02H
+0002 7A64              MOV     R2,#064H
+0004 7942              MOV     R1,#042H
+0006 120000      E     LCALL   _cyread32_nodpx
+                                           ; SOURCE LINE # 463
+0009         ?C0011:
+0009 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadCapture (END)
+
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_WriteCounter (BEGIN)
+                                           ; SOURCE LINE # 480
+0000 900000      R     MOV     DPTR,#counter
+0003 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 481
+                                           ; SOURCE LINE # 489
+0006 7B02              MOV     R3,#02H
+0008 7A64              MOV     R2,#064H
+000A 7902              MOV     R1,#02H
+000C 900000      R     MOV     DPTR,#counter
+000F 120000      E     LCALL   ?C?LLDXDATA
+0012 120000      E     LCALL   _cywrite32_nodpx
+                                           ; SOURCE LINE # 491
+0015 22                RET     
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_WriteCounter (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadCounter (BEGIN)
+                                           ; SOURCE LINE # 508
+                                           ; SOURCE LINE # 509
+                                           ; SOURCE LINE # 516
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 17  
+
+0000 906402            MOV     DPTR,#06402H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 523
+0005 7B02              MOV     R3,#02H
+0007 7A64              MOV     R2,#064H
+0009 7942              MOV     R1,#042H
+000B 120000      E     LCALL   _cyread32_nodpx
+                                           ; SOURCE LINE # 525
+000E         ?C0013:
+000E 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ReadCounter (END)
+
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_SetInterruptCount (BEGIN)
+                                           ; SOURCE LINE # 688
+0000 900000      R     MOV     DPTR,#interruptCount
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 689
+                                           ; SOURCE LINE # 691
+0005 900000      R     MOV     DPTR,#interruptCount
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B 5403              ANL     A,#03H
+000D FF                MOV     R7,A
+000E 900000      R     MOV     DPTR,#interruptCount
+0011 EF                MOV     A,R7
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 699
+0013 22                RET     
+             ; FUNCTION _SEC_TIL_BLACK_TIMER_SetInterruptCount (END)
+
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ClearFIFO (BEGIN)
+                                           ; SOURCE LINE # 763
+                                           ; SOURCE LINE # 764
+0000         ?C0015:
+                                           ; SOURCE LINE # 765
+0000 120000      R     LCALL   SEC_TIL_BLACK_TIMER_ReadStatusRegister
+0003 EF                MOV     A,R7
+0004 30E305            JNB     ACC.3,?C0017
+                                           ; SOURCE LINE # 766
+                                           ; SOURCE LINE # 767
+0007 120000      R     LCALL   SEC_TIL_BLACK_TIMER_ReadCapture
+                                           ; SOURCE LINE # 768
+000A 80F4              SJMP    ?C0015
+                                           ; SOURCE LINE # 769
+000C         ?C0017:
+000C 22                RET     
+             ; FUNCTION SEC_TIL_BLACK_TIMER_ClearFIFO (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    221    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1      11
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   SEC_TIL_BLACK_TIMER                                                   04/02/2015 15:24:55 PAGE 18  
+
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
