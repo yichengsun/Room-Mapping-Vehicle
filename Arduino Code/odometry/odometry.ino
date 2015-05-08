@@ -2,10 +2,10 @@
 
 #define LEFTHE_PIN 3
 #define RIGHTHE_PIN 2
-#define CARLENFT .521
-#define WHEELLENFT .0649
+#define CARLENFT .82
+#define WHEELLENFT .0202
 #define ULTRASONICCALIBRATE 90
-#define STEERINGCALIBRATE 105
+#define STEERINGCALIBRATE 100
 
 /*PINS IN USE*/
 #define ULTRASOUNDSERVOPIN 9
@@ -16,6 +16,7 @@
 #define ONOFF 5
 
 volatile double gxPos = 0;
+volatile int totalReads = 0;
 volatile double gyPos = 0;
 volatile double ganglePos = 1.57;
 volatile int glastRightCount = 0;
@@ -23,7 +24,7 @@ volatile int glastLeftCount = 0;
 volatile int gleftcount = 0;
 volatile int grightcount = 0;
 
-int gforward = false;
+int gforward = true;
 int gon = false;
 int steeringServoAngle = STEERINGCALIBRATE; 
 int ultrasoundServoAngle = ULTRASONICCALIBRATE;
@@ -32,7 +33,10 @@ Servo ultrasoundServo;
 
 void LEFTHE_ISR() {
   gleftcount++;
-  updatePos();
+  if (totalReads%10 == 0){
+    updatePos();
+  }
+  totalReads+=1;
 }
 
 void RIGHTHE_ISR() {
@@ -65,7 +69,7 @@ void scanSurroundings(){
   int angleRotation = 45;
   boolean direction = false;
   double angleCalibrate = 0;
-  for (int i = 160; i >= 30; i-=7.5){
+  for (int i = 60; i <= 120; i+=7.5){
       ultrasoundServo.write(i);
       delay(100);
       distance = ultrasoundRead();
@@ -78,46 +82,52 @@ void scanSurroundings(){
 void updatePos(){
   double rightChange = (grightcount - glastRightCount)*WHEELLENFT;
   double leftChange = (gleftcount - glastLeftCount)*WHEELLENFT;
-    //Serial.print("RIGHT SPINS IS:");
-  double theRightAnswer = grightcount - glastRightCount;
-  double theLeftAnswer = gleftcount - glastLeftCount;
-  //Serial.println(theRightAnswer, DEC);
-  //Serial.print("LEFT SPINS IS:");
-  //Serial.println(theLeftAnswer, DEC);
+//  double theRightAnswer = grightcount - glastRightCount;
+//  double theLeftAnswer = gleftcount - glastLeftCount;
   glastLeftCount = gleftcount;
   glastRightCount = grightcount; 
   double distanceTraveled = (rightChange+leftChange)/2.0;
-  double servoAngleDif = steeringServoAngle - ULTRASONICCALIBRATE;
-  double angleChange = 2 * (rightChange - leftChange)/(2.0*CARLENFT);
-  if (abs(servoAngleDif) < 15){
+  if (!gforward){
+    double tempChange = rightChange;
+    rightChange = leftChange;
+    leftChange = tempChange;
+    distanceTraveled = -distanceTraveled;
+  }
+  double servoAngleDif = steeringServoAngle - STEERINGCALIBRATE;
+  double angleChange = (rightChange - leftChange)/(CARLENFT);
+  if (abs(servoAngleDif) < 10){
   	angleChange = 0;
   }
   /*servoangle and actual angle are opposites*/
-  else if (servoAngleDif < -15 && angleChange < 0){
+  else if (servoAngleDif < -10 && angleChange < 0){
     angleChange = 0;
   }
-  else if (servoAngleDif > 15 && angleChange > 0){
+  else if (servoAngleDif > 10 && angleChange > 0){
     angleChange = 0;
   }
   
+  double xChange = distanceTraveled*cos(ganglePos+angleChange/2);
+  double yChange = distanceTraveled*sin(ganglePos+angleChange/2);
   ganglePos += angleChange;
-  double xChange = distanceTraveled*cos(ganglePos);
-  double yChange = distanceTraveled*sin(ganglePos);
   gxPos += xChange;
   gyPos += yChange;
 }
 
 void printPos() {
-//  Serial.print("X POS IS:");
-//  Serial.print(gxPos, DEC);
-//  Serial.println();
-//  Serial.print("Y POS IS:");
-//  Serial.print(gyPos, DEC);
-//  Serial.println();
-//  Serial.print("ANGLE IS");
-//  Serial.print((ganglePos*180/3.14), DEC);
-//  Serial.println();
-//  Serial.println("***************************");
+  Serial.print("X POS IS:");
+  Serial.print(gxPos, DEC);
+  Serial.println();
+  Serial.print("Y POS IS:");
+  Serial.print(gyPos, DEC);
+  Serial.println();
+  Serial.print("ANGLE IS");
+  Serial.println((ganglePos*180/3.14), DEC);
+  Serial.print("RIGHTTURNS IS:");
+  Serial.println(grightcount);
+  Serial.print("LEFT TURNSIS:");
+  Serial.println(gleftcount);
+  Serial.println();
+  Serial.println("***************************");
 }
 
 void setup() {
@@ -135,37 +145,37 @@ void loop() {
   if (Serial.available() > 0) {
     char value = Serial.read();
     if (value == 'w'){
-      gforward = !gforward;
       if(gforward) {
         digitalWrite(FORWARDSTEERPIN, LOW);
         digitalWrite(FORWARDSTEERPIN, HIGH);
         digitalWrite(FORWARDSTEERPIN, LOW);
-//        Serial.println("GO FORWARD");
+//        Serial.println("GO FORWARD");oo
       }
       else {
         digitalWrite(FORWARDSTEERPIN, LOW);
         digitalWrite(FORWARDSTEERPIN, HIGH);
         digitalWrite(FORWARDSTEERPIN, LOW);
 //        Serial.println("GO BACKWARD");
-      }  
+      }
+      gforward = !gforward;  
     }
     else if (value == 'd'){
-      if (steeringServoAngle > 130) {
-        steeringServoAngle = 132;
+      if (steeringServoAngle > 124) {
+        steeringServoAngle = 124;
       }
       else {
-        steeringServoAngle +=16;
+        steeringServoAngle +=12;
       }
 //      Serial.println("GO RIGHT");
 //      Serial.println("STEERING ANGLE");
 //      Serial.println(steeringServoAngle);
     }
     else if (value == 'a'){
-      if (steeringServoAngle < 70) {
-        steeringServoAngle = 68;
+      if (steeringServoAngle < 64) {
+        steeringServoAngle = 64;
       }
       else {
-        steeringServoAngle -=16;
+        steeringServoAngle -=12;
       }
 //      Serial.println("GO LEFT");
 //      Serial.println("STEERING ANGLE");
@@ -183,6 +193,9 @@ void loop() {
     else if (value == 's'){
 //      Serial.println("SCAN SURROUNDINGS");
         scanSurroundings();
+    }
+    else if (value == 'p'){
+       printPos(); 
     }
     else if (value == 'o'){
         printPos();
