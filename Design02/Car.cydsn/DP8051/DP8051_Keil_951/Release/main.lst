@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
@@ -58,11 +58,11 @@ line level    source
   46          uint8 direction = 0;
   47          
   48          int gONOFF = 0;
-  49          int gcurr_dir = 0;
+  49          int gcurr_dir = 1;
   50          
   51          
   52          CY_ISR(DIR_inter) {
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 2   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 2   
 
   53   1          if (gcurr_dir == 0) {
   54   2              LCD_ClearDisplay();
@@ -118,7 +118,7 @@ line level    source
  104   1          {
  105   2          }
  106   1      }
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 3   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -182,7 +182,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0057 900000      R     MOV     DPTR,#gcurr_dir
 005A E0                MOVX    A,@DPTR
 005B 7004              JNZ     ?C0013
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 4   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 4   
 
 005D A3                INC     DPTR
 005E E0                MOVX    A,@DPTR
@@ -246,7 +246,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 750000      E     MOV     ?C?XPAGE1SFR,#?C?XPAGE1RST
 0016 C0D0              PUSH    PSW
 0018 75D000            MOV     PSW,#00H
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 5   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 5   
 
 001B C000              PUSH    AR0
 001D C001              PUSH    AR1
@@ -310,7 +310,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0070 120000      E     LCALL   _LCD_PrintString
                                            ; SOURCE LINE # 78
 0073 900000      R     MOV     DPTR,#gONOFF
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 6   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 6   
 
 0076 E4                CLR     A
 0077 F0                MOVX    @DPTR,A
@@ -374,7 +374,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 97
 002E 120000      E     LCALL   MOTOR_PWM_Start
                                            ; SOURCE LINE # 98
-C51 COMPILER V9.51   MAIN                                                                  05/07/2015 03:16:30 PAGE 7   
+C51 COMPILER V9.51   MAIN                                                                  05/08/2015 01:26:12 PAGE 7   
 
 0031 120000      E     LCALL   MOTOR_PWM_CLK_Start
                                            ; SOURCE LINE # 101

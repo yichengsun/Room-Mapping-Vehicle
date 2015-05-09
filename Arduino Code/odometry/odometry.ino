@@ -79,6 +79,8 @@ void scanSurroundings(){
 }
 
 void updatePos(){
+  double xChange = 0;
+    double yChange = 0;
   double rightChange = (grightcount - glastRightCount)*WHEELLENFT;
   double leftChange = (gleftcount - glastLeftCount)*WHEELLENFT;
 //  double theRightAnswer = grightcount - glastRightCount;
@@ -86,13 +88,9 @@ void updatePos(){
   glastLeftCount = gleftcount;
   glastRightCount = grightcount; 
   double distanceTraveled = (rightChange+leftChange)/2.0;
-  if (!gforward){
-//    double tempChange = rightChange;
-//    rightChange = leftChange;
-//    leftChange = tempChange;
-    distanceTraveled = -distanceTraveled;
-  }
   double servoAngleDif = steeringServoAngle - STEERINGCALIBRATE;
+  
+  
   double angleChange = (rightChange - leftChange)/(CARLENFT);
   if (abs(servoAngleDif) < 10){
   	angleChange = 0;
@@ -105,8 +103,15 @@ void updatePos(){
     angleChange = 0;
   }
   
-  double xChange = distanceTraveled*cos(ganglePos+angleChange/2);
-  double yChange = distanceTraveled*sin(ganglePos+angleChange/2);
+  
+  if (!gforward){ 
+    distanceTraveled = - distanceTraveled;
+  }
+    
+    xChange = distanceTraveled*cos(ganglePos+angleChange/2);
+    yChange = distanceTraveled*sin(ganglePos+angleChange/2);
+
+  
   ganglePos += angleChange;
   gxPos += xChange;
   gyPos += yChange;

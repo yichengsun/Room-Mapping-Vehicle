@@ -1,5 +1,5 @@
 -- Project:   Car
--- Generated: 05/05/2015 14:40:43
+-- Generated: 05/08/2015 01:18:52
 -- PSoC Creator  3.1
 
 ENTITY Car IS
@@ -1154,7 +1154,7 @@ BEGIN
 
     DIR_ISR:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "00")
         PORT MAP(
             interrupt => Net_9088,
             clock => ClockBlock_BUS_CLK);
@@ -1608,7 +1608,7 @@ BEGIN
 
     ON_OFF_ISR:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "00")
         PORT MAP(
             interrupt => Net_9092,
             clock => ClockBlock_BUS_CLK);

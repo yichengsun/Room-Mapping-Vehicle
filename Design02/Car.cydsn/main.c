@@ -46,7 +46,7 @@ int gsteer_error_prev = 0;
 uint8 direction = 0;
 
 int gONOFF = 0;
-int gcurr_dir = 0;
+int gcurr_dir = 1;
 
 
 CY_ISR(DIR_inter) {
@@ -63,7 +63,7 @@ CY_ISR(DIR_inter) {
         DIR_REG_Write(gcurr_dir);
     }
 }
-0
+
 CY_ISR(ON_OFF_inter) {
     if (gONOFF == 0) {
         MOTOR_PWM_WriteCompare(2000);

@@ -2,7 +2,7 @@
 --	Conversion of Car.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue May 05 14:40:37 2015
+--	Fri May 08 01:18:47 2015
 --
 
 USE cypress.cypress.all;
@@ -4624,7 +4624,7 @@ HBRIDGE_L_PIN:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__HBRIDGE_L_PIN_net_0);
 DIR_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_9088);
 DIR_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"992486fc-aec4-46a0-b301-c5f288fcb326",
@@ -4696,7 +4696,7 @@ DIR_PIN:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__DIR_PIN_net_0);
 ON_OFF_ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_9092);
 ON_OFF_PIN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"26a4a749-32bb-4b6d-9f2d-efc0461eb2aa",
