@@ -1,5 +1,5 @@
 # Room Mapping Vehicle
-![Picture](https://raw.githubusercontent.com/yichengsun/Room-Mapping-Vehicle/master/Image%20Assets/2015-08-05_17-12-18.png) 
+![Picture](https://raw.githubusercontent.com/yichengsun/Room-Mapping-Vehicle/master/CAD%20Files/car.png) 
 
 *On left, the autonomous vehicle. On right, room visualization with obstacles marked in red, car in blue, and unexplored regions in black.*
 
